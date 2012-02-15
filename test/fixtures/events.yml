@@ -1,0 +1,27 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  start: 2012-01-25 01:13:15
+  end: 2012-01-25 01:13:15
+  event_types: 
+  title: MyString
+  location: MyString
+  latitude: MyString
+  longitude: MyString
+  URL: MyString
+  contact_info: MyString
+  details: MyText
+  entered_by: MyString
+
+two:
+  start: 2012-01-25 01:13:15
+  end: 2012-01-25 01:13:15
+  event_types: 
+  title: MyString
+  location: MyString
+  latitude: MyString
+  longitude: MyString
+  URL: MyString
+  contact_info: MyString
+  details: MyText
+  entered_by: MyString

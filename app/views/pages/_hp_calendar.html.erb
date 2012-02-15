@@ -1,0 +1,24 @@
+<div class="home-right-box">
+
+<h1>Calendar</h1>
+
+<table class="table_border" width="400">
+    <tr>
+        <th>Date</th>
+        <th>Event</th>
+        <th>Type</th>
+    </tr>
+
+<% @events.each do |event| %>
+  <tr class="<%= cycle('odd_row', 'even_row') %>">
+    <td><%= event.start.strftime("%b %d, %y") %></td>
+    <td><%= link_to event.title, event %></td>
+    <td><%#= event.event_types.title %></td>
+  </tr>
+<% end %>
+</table>   
+    
+<div align="right"><p><%= link_to "See all calendar events...", calendar_path %></p></div>
+
+<!-- CLOSE left-column-box CONTAINER -->
+</div>

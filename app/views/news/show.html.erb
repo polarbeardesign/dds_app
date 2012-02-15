@@ -1,0 +1,26 @@
+<div class="content-left">
+
+<p id="notice"><%= notice %></p>
+
+<p align="right"><%= @news.date.strftime("%b %d, %Y") %></p>
+
+<h1><%= @news.title %></h1>
+
+  <%= simple_format(@news.content) %>
+
+<%= link_to 'Edit', edit_news_path(@news) %> |
+<%= link_to 'Back', news_index_path %>
+
+<!-- Close content-left -->
+</div>
+
+
+<div id="right-column">
+
+
+
+<!-- Close right-column -->
+</div>
+
+<!-- Close content -->
+</div>

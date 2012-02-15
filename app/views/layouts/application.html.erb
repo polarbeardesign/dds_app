@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Devil Dog Squadron :: </title>
+  <%#= stylesheet_link_tag    "application" %>
+  <%= stylesheet_link_tag 'web_style' %>
+  <%= javascript_include_tag "application" %>
+  <%#= csrf_meta_tags %>
+</head>
+<body>
+
+<div id="page">
+
+<%= render 'layouts/header' %>
+
+<div id="main-area">
+
+<div id="content">
+
+<%= yield %>
+
+</div>
+
+<%= render 'layouts/footer' %>
+
+
+<!-- Close main-area -->
+</div>
+
+<!-- Close page -->
+</div>
+
+
+</body>
+</html>

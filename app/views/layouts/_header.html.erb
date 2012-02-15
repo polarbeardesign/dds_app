@@ -1,0 +1,49 @@
+<div id="header">
+
+<div id="header_logo">
+
+<a href="index.php"><img src="/images/logo.png" width="213" height="140" border="0" /></a>
+
+<!-- CLOSE header_logo CONTAINER -->
+</div>
+
+<img src="/images/header_home_2.jpg" width="687" height="140" />
+
+<div id="navbox">
+
+<ul id="nav">
+
+
+    <li><%= link_to 'Home', "/" %></li>
+    <li><%= link_to "News & Events", news_index_path %>
+        <ul>
+        <li><%= link_to "Calendar", calendar_path %></li>
+        <li><%= link_to "News Items", news_index_path %></li>
+        </ul>
+    </li>
+    <li><%= link_to "History", pages_PBJs_path %></a>
+        <ul>
+        <li><%= link_to "PBJs", pages_PBJs_path %></li>
+        <li><%= link_to "VMB 612", pages_VMB612_path %></li>
+        </ul>
+    </li>
+    <li><a href="px.php">Support</a>
+        <ul>
+        <li><a href="px.php">PX</a></li>
+        <li><%#= link_to "Squadron", pages_squadron_path %></li>
+<!--        <li><a href="sponsorship.php">Sponsorship</a></li> -->
+<!--        <li><a href="members.php">Members</a></li> -->
+        </ul>
+    </li>
+    <li><a href="photo_galleries.php">Photos &amp; Videos</a>
+        <ul>
+        <li><%#= link_to "Photo Galleries", galleries_path %></li>
+        <li><a href="video_galleries.php">Video Gallery</a></li>
+        </ul>
+    </li>
+</ul>
+
+<!-- CLOSE NAV CONTAINER -->
+</div>
+
+</div>

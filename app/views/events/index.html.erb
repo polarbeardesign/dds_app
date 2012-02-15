@@ -1,0 +1,65 @@
+<div class="content-left">
+
+<h1>Devil Dog Calendar:</h1>
+ 
+<table width="500" class="table_border">
+  <tr>
+    <th>Date</th>
+    <th>Title</th>
+  </tr>
+
+<% @events.each do |event| %>
+  <tr class="<%= cycle('odd_row', 'even_row') %>">
+    <td><%= event.start.strftime("%b %d, %Y") %></td>
+    <td><%= link_to event.title, event %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Event', new_event_path %>
+
+<!-- Close content-left -->
+</div>
+
+
+<div id="right-column">
+
+<div class="right-column-box">
+
+<h1>Squadron Alerts</h1>
+
+
+
+<p>Sign up for Alerts to Devil Dog news, newsletters and calendar updates. Simply enter your email address and click on subscribe.</p>
+
+<p>If you wish to cancel your news alerts, enter your email address and click unsubscribe.</p>
+
+
+<form name="mail_list" method="post" action="admin/mail_list_add.php">            
+<table align="center" class="table_nobrdr">
+    <tr> 
+        <td><div align="right">email:</div></td>
+        <td><input name="address" type="text" id="address" maxlength="50" /></td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td><div align="center"><input type="submit" name="Submit" value="Subscribe" /></div></td>
+    </tr>
+    <tr> 
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+    </tr>
+    <tr> 
+          <td>&nbsp;</td>
+          <td><div align="center"><input type="submit" name="Submit" value="Unsubscribe" /></div></td>
+    </tr>
+</table>
+</form>
+
+<!-- Close right-column-box -->
+</div>
+
+<!-- Close right-column -->
+</div>
