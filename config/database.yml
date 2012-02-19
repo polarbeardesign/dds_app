@@ -32,8 +32,8 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: dds_app_production
+  database: devildog_main
   pool: 5
-  username: root
-  password:
+  username: devildog_user1
+  password: dkhNxB2DA3k2EFnD7
   socket: /tmp/mysql.sock
