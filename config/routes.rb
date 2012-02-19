@@ -5,14 +5,14 @@ DdsApp::Application.routes.draw do
 
   resources :event_types
 
-  match 'calendar' => '~devildog/events#index', :as => :calendar
+  match 'calendar' => 'events#index', :as => :calendar
 
-  get "~devildog/pages/home"
-  get "~devildog/pages/VMB612"
-  get "~devildog/pages/PBJs"
-  get "~devildog/pages/squadron"
+  get "pages/home"
+  get "pages/VMB612"
+  get "pages/PBJs"
+  get "pages/squadron"
   
-  root :to => '~devildog/pages#home'
+  root :to => 'pages#home'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
