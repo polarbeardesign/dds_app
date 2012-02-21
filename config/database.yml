@@ -32,8 +32,8 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: devildog_main
+  database: polarbea_dds
   pool: 5
-  username: devildog_user1
-  password: dkhNxB2DA3k2EFnD7
+  username: polarbea_web
+  password: tensai14
   socket: /tmp/mysql.sock
