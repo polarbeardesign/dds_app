@@ -2,12 +2,11 @@
 
 <div id="header_logo">
 
-<a href="index.php"><img src="images/logo.png" width="213" height="140" border="0" /></a>
+<%= link_to image_tag("logo.png", :width => "213", :height => "140", :border => "0", :alt => "Devil Dog Squadron"), "/" %>
 
 <!-- CLOSE header_logo CONTAINER -->
 </div>
-
-<img src="images/header_home_2.jpg" width="687" height="140" />
+<%= image_tag("header_home_2.jpg", :width => "687", :height => "140", :border => "0", :alt => "flying high") %>
 
 <div id="navbox">
 
@@ -29,15 +28,15 @@
     </li>
     <li><a href="px.php">Support</a>
         <ul>
-        <li><a href="px.php">PX</a></li>
-        <li><%#= link_to "Squadron", pages_squadron_path %></li>
+        <li><%= link_to "PX", pages_squadron_path %></li>
+        <li><%= link_to "Squadron", pages_squadron_path %></li>
 <!--        <li><a href="sponsorship.php">Sponsorship</a></li> -->
 <!--        <li><a href="members.php">Members</a></li> -->
         </ul>
     </li>
     <li><a href="photo_galleries.php">Photos &amp; Videos</a>
         <ul>
-        <li><%#= link_to "Photo Galleries", galleries_path %></li>
+        <li><%= link_to "Photo Galleries", pages_squadron_path %></li>
         <li><a href="video_galleries.php">Video Gallery</a></li>
         </ul>
     </li>
