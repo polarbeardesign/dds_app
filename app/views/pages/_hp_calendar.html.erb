@@ -9,7 +9,7 @@
         <th>Type</th>
     </tr>
 
-<% @events.each do |event| %>
+<% @events.published.recent.each do |event| %>
   <tr class="<%= cycle('odd_row', 'even_row') %>">
     <td><%= event.start.strftime("%b %d, %y") %></td>
     <td><%= link_to event.title, event %></td>
