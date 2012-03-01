@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Gallery:</b>
+  <%= @photo.gallery %>
+</p>
+
+<p>
+  <b>Photographer:</b>
+  <%= @photo.photographer %>
+</p>
+
+<p>
+  <b>Photo title:</b>
+  <%= @photo.photo_title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @photo.description %>
+</p>
+
+<p>
+  <b>Filename:</b>
+  <%= @photo.filename %>
+</p>
+
+<p>
+  <b>Order:</b>
+  <%= @photo.order %>
+</p>
+
+
+<%= link_to 'Edit', edit_photo_path(@photo) %> |
+<%= link_to 'Back', photos_path %>

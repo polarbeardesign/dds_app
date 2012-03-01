@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Category name:</b>
+  <%= @gallery_category.category_name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @gallery_category.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_gallery_category_path(@gallery_category) %> |
+<%= link_to 'Back', gallery_categories_path %>

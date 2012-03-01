@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120125081313) do
+ActiveRecord::Schema.define(:version => 20120301223643) do
 
   create_table "event_types", :force => true do |t|
     t.string   "title"
@@ -35,6 +35,24 @@ ActiveRecord::Schema.define(:version => 20120125081313) do
     t.datetime "updated_at"
   end
 
+  create_table "galleries", :force => true do |t|
+    t.integer  "gallery_category_id"
+    t.string   "gallery_name"
+    t.string   "description"
+    t.string   "gallery_pic"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "galleries", ["gallery_category_id"], :name => "index_galleries_on_gallery_category_id"
+
+  create_table "gallery_categories", :force => true do |t|
+    t.string   "category_name"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "news", :force => true do |t|
     t.string   "title"
     t.text     "content"
@@ -44,5 +62,24 @@ ActiveRecord::Schema.define(:version => 20120125081313) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "photographers", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "photos", :force => true do |t|
+    t.integer  "gallery_id"
+    t.integer  "photographer_id"
+    t.string   "photo_title"
+    t.string   "description"
+    t.string   "filename"
+    t.integer  "order"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "photos", ["gallery_id", "photographer_id"], :name => "index_photos_on_gallery_id_and_photographer_id"
 
 end

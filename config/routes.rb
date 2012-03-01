@@ -1,5 +1,13 @@
 DdsApp::Application.routes.draw do
   
+  resources :photos
+
+  resources :photographers
+
+  resources :galleries
+
+  resources :gallery_categories
+
   resources :news
 
   resources :events
