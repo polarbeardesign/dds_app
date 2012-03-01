@@ -1,8 +1,10 @@
+<div class="content-left">
+
 <p id="notice"><%= notice %></p>
 
 <p>
   <b>Gallery category:</b>
-  <%= @gallery.gallery_category %>
+  <%= @gallery.gallery_category.category_name %>
 </p>
 
 <p>
@@ -15,11 +17,14 @@
   <%= @gallery.description %>
 </p>
 
-<p>
-  <b>Gallery pic:</b>
-  <%= @gallery.gallery_pic %>
-</p>
+<% @gallery.photos.each do |photo| %>
+
+<%= link_to (image_tag 'photos/'+ photo.filename, :width=>"150", :height=>"100"), photo_path(photo) %><br />
+
+<% end %>
 
 
 <%= link_to 'Edit', edit_gallery_path(@gallery) %> |
 <%= link_to 'Back', galleries_path %>
+
+</div>

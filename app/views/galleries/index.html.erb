@@ -13,7 +13,7 @@
 
 <% @galleries.each do |gallery| %>
   <tr>
-    <td><%= gallery.gallery_category %></td>
+    <td><%= gallery.gallery_category.category_name %></td>
     <td><%= gallery.gallery_name %></td>
     <td><%= gallery.description %></td>
     <td><%= gallery.gallery_pic %></td>
