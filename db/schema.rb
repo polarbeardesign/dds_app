@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120301223643) do
+ActiveRecord::Schema.define(:version => 20120305225236) do
 
   create_table "event_types", :force => true do |t|
     t.string   "title"
@@ -81,5 +81,19 @@ ActiveRecord::Schema.define(:version => 20120301223643) do
   end
 
   add_index "photos", ["gallery_id", "photographer_id"], :name => "index_photos_on_gallery_id_and_photographer_id"
+
+  create_table "products", :force => true do |t|
+    t.integer  "item_no"
+    t.integer  "display_order"
+    t.string   "name"
+    t.text     "description"
+    t.text     "size"
+    t.decimal  "value",         :precision => 10, :scale => 0
+    t.string   "photo_path"
+    t.boolean  "available"
+    t.decimal  "ship_handling", :precision => 10, :scale => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

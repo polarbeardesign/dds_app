@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  item_no: 1
+  name: MyString
+  description: MyText
+  size: MyText
+  value: 9.99
+  photo_path: MyString
+  available: false
+  ship_handling: 9.99
+
+two:
+  item_no: 1
+  name: MyString
+  description: MyText
+  size: MyText
+  value: 9.99
+  photo_path: MyString
+  available: false
+  ship_handling: 9.99

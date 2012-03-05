@@ -1,0 +1,40 @@
+<div class="content-left">
+
+<h1>Listing products</h1>
+
+<table width="500" class="table_border">
+  <tr>
+    <th>Item no</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Size</th>
+    <th>Value</th>
+    <th>Photo path</th>
+    <th>Available</th>
+    <th>Ship handling</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @products.each do |product| %>
+  <tr class="<%= cycle('odd_row', 'even_row') %>"> 
+    <td><%= product.item_no %></td>
+    <td><%= product.name %></td>
+    <td><%= product.description %></td>
+    <td><%= product.size %></td>
+    <td><%= product.value %></td>
+    <td><%= product.photo_path %></td>
+    <td><%= product.available %></td>
+    <td><%= product.ship_handling %></td>
+    <td><%= link_to 'Show', product %></td>
+    <td><%= link_to 'Edit', edit_product_path(product) %></td>
+    <td><%= link_to 'Destroy', product, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Product', new_product_path %>
+</div>

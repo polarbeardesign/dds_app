@@ -1,5 +1,7 @@
 DdsApp::Application.routes.draw do
   
+  resources :products
+
   resources :photos
 
   resources :photographers

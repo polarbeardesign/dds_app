@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Item no:</b>
+  <%= @product.item_no %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @product.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @product.description %>
+</p>
+
+<p>
+  <b>Size:</b>
+  <%= @product.size %>
+</p>
+
+<p>
+  <b>Value:</b>
+  <%= @product.value %>
+</p>
+
+<p>
+  <b>Photo path:</b>
+  <%= @product.photo_path %>
+</p>
+
+<p>
+  <b>Available:</b>
+  <%= @product.available %>
+</p>
+
+<p>
+  <b>Ship handling:</b>
+  <%= @product.ship_handling %>
+</p>
+
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>
