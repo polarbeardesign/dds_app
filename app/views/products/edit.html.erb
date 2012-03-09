@@ -1,6 +1,10 @@
-<h1>Editing product</h1>
+<div class="content-left">
+
+<h1>Editing <%= @product.name %></h1>
 
 <%= render 'form' %>
 
 <%= link_to 'Show', @product %> |
-<%= link_to 'Back', products_path %>
+<%= link_to 'Back', products_path %> |
+<%= link_to 'Destroy', @product, :confirm => 'Are you sure?', :method => :delete %>
+</div>

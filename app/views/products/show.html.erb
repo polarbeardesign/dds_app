@@ -1,45 +1,45 @@
+<div class="content-left">
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Item no:</b>
-  <%= @product.item_no %>
-</p>
+<div class="form_row">
+  <div class="form_cell">
+    <p><b>Name:</b> <%= @product.name %></p>
+  </div>
+  <div class="form_cell">
+    <p><b>Item no:</b> <%= @product.item_no %></p>
+  </div>
+</div>
 
-<p>
-  <b>Name:</b>
-  <%= @product.name %>
-</p>
+<div class="form_row">
+  <div class="form_cell">
+    <p><b>Description:</b> <%= @product.description %></p>
+  </div>
+</div>
 
-<p>
-  <b>Description:</b>
-  <%= @product.description %>
-</p>
+<div class="form_row">
+  <div class="form_cell">
+    <p><b>Value:</b> <%= @product.value %></p>
+  </div>
+  <div class="form_cell">
+    <p><b>Ship handling:</b> <%= @product.ship_handling %></p>
+  </div>
+  <div class="form_cell">
+    <p><b>Available:</b> <%= @product.available %></p>
+  </div>
+</div>
 
-<p>
-  <b>Size:</b>
-  <%= @product.size %>
-</p>
+<div class="form_row">
+  <div class="form_cell">
+    <p><b>Photo path:</b> <%= @product.photo_path %></p>
+  </div>
+  <div class="form_cell">
+    <%= image_tag  @product.photo_path, :width => "320", :height => "213", :border => "0" %>
+  </div>
+</div>
 
-<p>
-  <b>Value:</b>
-  <%= @product.value %>
-</p>
-
-<p>
-  <b>Photo path:</b>
-  <%= @product.photo_path %>
-</p>
-
-<p>
-  <b>Available:</b>
-  <%= @product.available %>
-</p>
-
-<p>
-  <b>Ship handling:</b>
-  <%= @product.ship_handling %>
-</p>
-
+<div class="clearer"></div>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
+</div>

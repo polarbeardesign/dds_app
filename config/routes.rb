@@ -17,6 +17,8 @@ DdsApp::Application.routes.draw do
   resources :event_types
 
   match 'calendar' => 'events#index', :as => :calendar
+  
+  match 'px' => 'products#px', :as => :px
 
   get "pages/home"
   get "pages/VMB612"

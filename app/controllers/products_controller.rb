@@ -10,6 +10,17 @@ class ProductsController < ApplicationController
     end
   end
 
+  def px
+    @products = Product.available
+    @events = Event.published.recent :order => 'start ASC', :limit => 7
+    
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @products }
+    end
+  end
+
+
   # GET /products/1
   # GET /products/1.xml
   def show
@@ -35,6 +46,7 @@ class ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
     @product = Product.find(params[:id])
+    @sizes = Size.by_size.all
   end
 
   # POST /products
@@ -57,6 +69,23 @@ class ProductsController < ApplicationController
   # PUT /products/1.xml
   def update
     @product = Product.find(params[:id])
+    @sizes = Size.find(:all)
+
+        checked_sizes = []
+        checked_params = params[:size_list] || []
+        for check_box_id in checked_params
+          size = Size.find(check_box_id)
+          if not @product.sizes.include?(size)
+            @product.sizes << size
+          end
+          checked_sizes << size
+        end
+        missing_sizes = @sizes - checked_sizes
+        for size in missing_sizes
+          if @product.sizes.include?(size)
+            @product.sizes.delete(size)
+          end
+        end
 
     respond_to do |format|
       if @product.update_attributes(params[:product])

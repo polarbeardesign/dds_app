@@ -11,39 +11,87 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :item_no %><br />
-    <%= f.text_field :item_no %>
+<div class="form_row">
+  <div class="form_cell">
+    <div class="field">
+      <%= f.label :name, "Product Name" %><br />
+      <%= f.text_field :name %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+  <div class="form_cell">
+    <div class="field">
+      <%= f.label :item_no %><br />
+      <%= f.text_field :item_no, :size => 15 %><br /><span class="form_tip">Used for PayPal buttons - e.g. "500"</span>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
+</div>
+<div class="form_row">
+  <div class="form_cell">
+    <div class="field">
+      <%= f.label :description %><br />
+      <%= f.text_area :description, :rows => 5, :cols => 65  %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :size %><br />
-    <%= f.text_area :size %>
+</div>
+<div class="form_row">
+  <div class="form_cell">
+    <div class="field">
+      <%= f.label :value %><br />
+      <%= f.text_field :value %><br /> <span class="form_tip">Item's price</span>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :value %><br />
-    <%= f.text_field :value %>
+  <div class="form_cell">
+    <div class="field">
+      <%= f.label :ship_handling %><br />
+      <%= f.text_field :ship_handling %><br /><span class="form_tip">Shipping and Handling Charge</span>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :photo_path %><br />
-    <%= f.text_field :photo_path %>
-  </div>
+  <div class="form_cell">
   <div class="field">
     <%= f.label :available %><br />
-    <%= f.check_box :available %>
+    <div align="center"><%= f.check_box :available %></div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :ship_handling %><br />
-    <%= f.text_field :ship_handling %>
+</div>
+
+
+<div class="form_row">
+  <div class="form_cell">
+    <p>Sizes:</p>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+
+    <% @sizes.each_with_index do |size, i| %>
+    <% if i == 0 %>
+      <div class="form_cell">
+    <% elsif i == 4 %>
+      </div>
+      <div class="form_cell"> 
+    <% elsif i == 8 %>
+      </div>
+      <div class="form_cell">
+    <% end %>
+    
+    <%= check_box_tag('size_list[]', size.id, @product.sizes.collect {|obj| obj.id}.include?(size.id)) %><%= size.size %><br />
+ 
+    <% end %>
+    </div>
+
+</div>
+
+
+<div class="form_row">
+  <div class="form_cell">
+    <div class="field">
+      <%= f.label :photo_path %><br />
+      <%= f.text_field :photo_path %><br /><span class="form_tip">e.g. 600.jpg</span>
+    </div>
+</div>
+</div>
+<div class="form_row">
+  <div class="form_cell">
+    <div class="actions">
+      <%= f.submit %>
+    </div>
   </div>
+</div>
 <% end %>

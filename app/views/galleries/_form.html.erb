@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :gallery_category_id %><br />
-    <%= f.text_field :gallery_category_id %>
+    <%= f.collection_select :gallery_category_id, GalleryCategory.all, :id, :category_name, :order => 'category_name ASC', :prompt => true %>
   </div>
   <div class="field">
     <%= f.label :gallery_name %><br />

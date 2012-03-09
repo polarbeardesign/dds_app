@@ -377,6 +377,16 @@ div.clearer {
 	vertical-align: top;
     }
 
+.table2 { 
+    margin: 10px;
+    border: none;
+    border-collapse: collapse;
+    }
+
+.table2 th {
+  background: #628134;
+  }
+
 /* -------------- */
 /* FOOTER STYLING */
 /* -------------- */
@@ -514,3 +524,24 @@ img.fr {
     float: left;
     margin: 0 10px 20px 20px;
     }
+
+/* Forms Styling */
+
+.form_row {
+  float: left;
+  width: 565px;
+
+  }
+
+.form_cell {
+  float: left;
+  padding: 4px;
+
+  }
+
+.form_tip {
+  color: #999;
+  font-style: italic;
+  font-size: .85em;
+  }
+

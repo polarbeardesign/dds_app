@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  size: MyString
+  size_short: MyString
+  product: 
+
+two:
+  size: MyString
+  size_short: MyString
+  product: 

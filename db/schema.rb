@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120305225236) do
+ActiveRecord::Schema.define(:version => 20120308222558) do
 
   create_table "event_types", :force => true do |t|
     t.string   "title"
@@ -94,6 +94,21 @@ ActiveRecord::Schema.define(:version => 20120305225236) do
     t.decimal  "ship_handling", :precision => 10, :scale => 0
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "products_sizes", :id => false, :force => true do |t|
+    t.integer "product_id"
+    t.integer "size_id"
+  end
+
+  add_index "products_sizes", ["product_id", "size_id"], :name => "index_products_sizes_on_product_id_and_size_id"
+
+  create_table "sizes", :force => true do |t|
+    t.string   "size"
+    t.string   "size_short"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "display_order"
   end
 
 end
