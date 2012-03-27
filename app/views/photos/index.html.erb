@@ -1,3 +1,5 @@
+<div class="content-left">
+
 <h1>Listing photos</h1>
 
 <table>
@@ -15,8 +17,8 @@
 
 <% @photos.each do |photo| %>
   <tr>
-    <td><%= photo.gallery %></td>
-    <td><%= photo.photographer %></td>
+    <td><%= photo.gallery.gallery_name %></td>
+    <td><%= photo.photographer.name %></td>
     <td><%= photo.photo_title %></td>
     <td><%= photo.description %></td>
     <td><%= photo.filename %></td>
@@ -31,3 +33,5 @@
 <br />
 
 <%= link_to 'New Photo', new_photo_path %>
+
+</div>

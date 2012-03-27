@@ -6,7 +6,9 @@ DdsApp::Application.routes.draw do
 
   resources :photographers
 
-  resources :galleries
+  resources :galleries do
+    resources :photos
+  end
 
   resources :gallery_categories
 
@@ -24,6 +26,7 @@ DdsApp::Application.routes.draw do
   get "pages/VMB612"
   get "pages/PBJs"
   get "pages/squadron"
+  
   
   root :to => 'pages#home'
 

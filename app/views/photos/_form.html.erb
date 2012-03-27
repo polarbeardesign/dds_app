@@ -13,11 +13,12 @@
 
   <div class="field">
     <%= f.label :gallery_id %><br />
-    <%= f.text_field :gallery_id %>
+    <%= f.collection_select :gallery_id, Gallery.all, :id, :gallery_name, :order => 'category_name ASC', :prompt => true %>
   </div>
+
   <div class="field">
     <%= f.label :photographer_id %><br />
-    <%= f.text_field :photographer_id %>
+    <%= f.collection_select :photographer_id, Photographer.all, :id, :name, :order => 'name ASC', :prompt => true %>
   </div>
   <div class="field">
     <%= f.label :photo_title %><br />
@@ -26,6 +27,10 @@
   <div class="field">
     <%= f.label :description %><br />
     <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :path %><br />
+    <%= f.text_field :path %>
   </div>
   <div class="field">
     <%= f.label :filename %><br />
