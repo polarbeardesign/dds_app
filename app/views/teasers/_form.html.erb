@@ -1,0 +1,21 @@
+<%= form_for(@teaser) do |f| %>
+  <% if @teaser.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@teaser.errors.count, "error") %> prohibited this teaser from being saved:</h2>
+
+      <ul>
+      <% @teaser.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :content %><br />
+    <%= f.text_area :content %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

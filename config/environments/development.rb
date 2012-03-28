@@ -17,6 +17,10 @@ DdsApp::Application.configure do
   # Don't care if the mailer can't send
   config.action_mailer.raise_delivery_errors = false
 
+  # Add html tags and attribute to allow from sanitize function 
+  config.action_view.sanitized_allowed_tags = 'table', 'tbody', 'tr', 'td', 'th' 
+  config.action_view.sanitized_allowed_attributes = 'id', 'class', 'style', 'colspan', 'rowspan', 'cellspacing', 'cellpadding', 'cellborder', 'align', 'nowrap', 'bgcolor'
+
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
 

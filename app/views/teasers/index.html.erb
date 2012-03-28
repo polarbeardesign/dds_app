@@ -1,0 +1,29 @@
+<div class="content-left">
+
+<h1>Listing teasers</h1>
+
+<table width="575" class="table_border">
+  <tr>
+    <th>Date</th>
+    <th>Content</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @teasers.each do |teaser| %>
+  <tr>
+    <td><%= teaser.created_at.strftime("%b %d, %Y") %></td>
+    <td><%= sanitize(teaser.content) %></td>
+    <td><%= link_to 'Show', teaser %></td>
+    <td><%= link_to 'Edit', edit_teaser_path(teaser) %></td>
+    <td><%= link_to 'Destroy', teaser, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Teaser', new_teaser_path %>
+
+</div>

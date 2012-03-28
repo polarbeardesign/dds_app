@@ -1,5 +1,7 @@
 DdsApp::Application.routes.draw do
   
+  resources :teasers
+
   resources :products
 
   resources :photos
@@ -30,4 +32,5 @@ DdsApp::Application.routes.draw do
   
   root :to => 'pages#home'
 
+   match ':controller(/:action(/:id(.:format)))'
 end
