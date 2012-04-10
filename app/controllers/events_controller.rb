@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.xml
   def index
-    @events = Event.published.all
+    @events = Event.published.recent.all
 
     respond_to do |format|
       format.html # index.html.erb

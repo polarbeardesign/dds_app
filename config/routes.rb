@@ -28,6 +28,7 @@ DdsApp::Application.routes.draw do
   get "pages/VMB612"
   get "pages/PBJs"
   get "pages/squadron"
+  get "pages/thank_you"
   
   
   root :to => 'pages#home'

@@ -28,7 +28,7 @@
   <div class="cell">
   <div class="field">
     <%= f.label :event_types_id %><br />
-    <%= f.collection_select :event_types_id, EventType.all, :id, :title, :order => 'title ASC', :prompt => true %>
+    <%= f.collection_select :event_type_id, EventType.all, :id, :title, :order => 'title ASC', :prompt => true %>
   </div>
   <div class="field">
     <%= f.label :title, "Event Name" %><br />

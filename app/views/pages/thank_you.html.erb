@@ -1,66 +1,10 @@
 <div class="content-left">
 
-<p id="notice"><%= notice %></p>
+<h1>Thank You!</h1>
 
-<h1>Event Details</h1>
-<p>
-  <b>Start:</b>
-  <%= @event.start %>
-</p>
+<p>Thank you for your donation. All donations go to maintaining and operating the Devil Dog in its mission to bring history to life and honor those who fought for our freedoms.</p>
 
-<p>
-  <b>End:</b>
-  <%= @event.end %>
-</p>
-
-<p>
-  <b>Type:</b>
-  <%= @event.event_type.title%>
-</p>
-
-<p>
-  <b>Title:</b>
-  <%= @event.title %>
-</p>
-
-<p>
-  <b>Location:</b>
-  <%= @event.location %>
-</p>
-
-<p>
-  <b>Latitude:</b>
-  <%= @event.latitude %>
-</p>
-
-<p>
-  <b>Longitude:</b>
-  <%= @event.longitude %>
-</p>
-
-<p>
-  <b>Url:</b>
-  <%= @event.URL %>
-</p>
-
-<p>
-  <b>Contact info:</b>
-  <%= @event.contact_info %>
-</p>
-
-<p>
-  <b>Details:</b></p>
-  <%= sanitize(@event.details) %>
-
-
-<p>
-  <b>Entered by:</b>
-  <%= @event.entered_by %>
-</p>
-
-
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<p>Your transaction has been completed, and a receipt for your purchase has been emailed to you from Paypal. You may log into your account at <a href="http://www.paypal.com/us">www.paypal.com/us</a> to view details of this transaction.</p>
 
 <!-- Close content-left -->
 </div>
@@ -71,8 +15,6 @@
 <div class="right-column-box">
 
 <h1>Squadron Alerts</h1>
-
-
 
 <p>Sign up for Alerts to Devil Dog news, newsletters and calendar updates. Simply enter your email address and click on subscribe.</p>
 
@@ -104,4 +46,7 @@
 </div>
 
 <!-- Close right-column -->
+</div>
+
+<!-- Close content -->
 </div>

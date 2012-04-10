@@ -13,7 +13,7 @@
   <tr class="<%= cycle('odd_row', 'even_row') %>">
     <td><%= event.start.strftime("%b %d, %y") %></td>
     <td><%= link_to event.title, event %></td>
-    <td><%#= event.event_types.title %></td>
+    <td><%= event.event_type.title %></td>
   </tr>
 <% end %>
 </table>   
