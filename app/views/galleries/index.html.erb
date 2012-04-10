@@ -1,22 +1,7 @@
 <div class="content-left">
 
-<h1>Photo Galleries</h1>
+<h1>Galleries</h1>
 
-<table>
-
-
-<% @galleries.each do |gallery| %>
-  <tr>
-    <td><%= image_tag 'photos/'+ gallery.gallery_pic %></td>
-    <td><%= link_to gallery.gallery_name, gallery %></td>
-    <td><%= gallery.description %></td>
-    <td><%= link_to 'Edit', edit_gallery_path(gallery) %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Gallery', new_gallery_path %>
+<p>The video and photo galleries are undergoing maintenenace - check back soon.</p>
 
 </div>
