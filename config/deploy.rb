@@ -1,5 +1,5 @@
-set :user, "polarbea"  # The server's user for deploys
-set :scm_passphrase, "IMDWoj5I4"  # The deploy user's password
+set :user, "devildog"  # The server's user for deploys
+set :scm_passphrase, "mu767orupi"  # The deploy user's password
 set :domain, 'http://174.120.254.194/~devildog/'
 set :application, "dds_app"
 set :repository,  "git@github.com:polarbeardesign/dds_app.git"
