@@ -1,4 +1,7 @@
 class ProductsController < ApplicationController
+
+skip_before_filter :check_authorization, :only => :px
+
   # GET /products
   # GET /products.xml
   def index
@@ -36,6 +39,7 @@ class ProductsController < ApplicationController
   # GET /products/new.xml
   def new
     @product = Product.new
+    @sizes = Size.by_size.all
 
     respond_to do |format|
       format.html # new.html.erb

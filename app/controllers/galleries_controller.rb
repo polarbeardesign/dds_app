@@ -1,4 +1,7 @@
 class GalleriesController < ApplicationController
+
+skip_before_filter :check_authorization, :only => [:index, :show]
+
   # GET /galleries
   # GET /galleries.xml
   def index

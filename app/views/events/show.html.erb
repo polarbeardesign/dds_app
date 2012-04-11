@@ -58,10 +58,11 @@
   <%= @event.entered_by %>
 </p>
 
-
+<% if session[:user_id] %>
 <%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
-
+<%= link_to 'Back', events_path %> | 
+<%= link_to 'Logout', logout_path, :method => :DELETE	%>
+<% end %>
 <!-- Close content-left -->
 </div>
 

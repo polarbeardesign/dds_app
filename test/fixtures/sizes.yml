@@ -3,9 +3,9 @@
 one:
   size: MyString
   size_short: MyString
-  product: 
+  product: one
 
 two:
   size: MyString
   size_short: MyString
-  product: 
+  product: two

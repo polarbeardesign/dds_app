@@ -10,7 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120328113950) do
+ActiveRecord::Schema.define(:version => 20120411113748) do
+
+  create_table "assignments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "role_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "event_types", :force => true do |t|
     t.string   "title"
@@ -22,7 +29,7 @@ ActiveRecord::Schema.define(:version => 20120328113950) do
   create_table "events", :force => true do |t|
     t.datetime "start"
     t.datetime "end"
-    t.integer  "event_types_id"
+    t.integer  "event_type_id"
     t.string   "title"
     t.string   "location"
     t.string   "latitude"
@@ -49,6 +56,13 @@ ActiveRecord::Schema.define(:version => 20120328113950) do
   create_table "gallery_categories", :force => true do |t|
     t.string   "category_name"
     t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "grants", :force => true do |t|
+    t.integer  "right_id"
+    t.integer  "role_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -104,6 +118,19 @@ ActiveRecord::Schema.define(:version => 20120328113950) do
 
   add_index "products_sizes", ["product_id", "size_id"], :name => "index_products_sizes_on_product_id_and_size_id"
 
+  create_table "rights", :force => true do |t|
+    t.string   "resource"
+    t.string   "operation"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roles", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "sizes", :force => true do |t|
     t.string   "size"
     t.string   "size_short"
@@ -114,6 +141,13 @@ ActiveRecord::Schema.define(:version => 20120328113950) do
 
   create_table "teasers", :force => true do |t|
     t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "username"
+    t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

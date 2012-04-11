@@ -4,7 +4,7 @@ one:
   item_no: 1
   name: MyString
   description: MyText
-  size: MyText
+  size: one
   value: 9.99
   photo_path: MyString
   available: false
@@ -14,7 +14,7 @@ two:
   item_no: 1
   name: MyString
   description: MyText
-  size: MyText
+  size: two
   value: 9.99
   photo_path: MyString
   available: false

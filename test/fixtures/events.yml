@@ -3,7 +3,7 @@
 one:
   start: 2012-01-25 01:13:15
   end: 2012-01-25 01:13:15
-  event_types: 
+  event_type: two
   title: MyString
   location: MyString
   latitude: MyString
@@ -16,7 +16,7 @@ one:
 two:
   start: 2012-01-25 01:13:15
   end: 2012-01-25 01:13:15
-  event_types: 
+  event_type: two
   title: MyString
   location: MyString
   latitude: MyString

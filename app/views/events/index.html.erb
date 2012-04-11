@@ -17,9 +17,9 @@
 </table>
 
 <br />
-
+<% if session[:user_id] %>
 <%= link_to 'New Event', new_event_path %>
-
+<% end %>
 <!-- Close content-left -->
 </div>
 

@@ -17,21 +17,7 @@
   <%= @gallery.description %>
 </p>
 
-<% @gallery.photos.each_with_index do |photo, i| %>
-<% if i == 0 || i % 3 == 0 %>
-  <div class="form_row">
-<% end %>
 
-
-  <div class="form_cell">
-    <%= link_to (image_tag 'photos/'+ photo.path + '/thumbs/' + photo.filename), photo_path(photo) %>
-  </div>
-
-<% if i > 0 && i == 2 || i == 5 || i == 8 || i == 11 %>
-  <!-- close form_row div -->
-  </div>
-<% end %>
-<% end %>
 
 
 <%= link_to 'Edit', edit_gallery_path(@gallery) %> |

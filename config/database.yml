@@ -24,16 +24,16 @@ test:
   reconnect: false
   database: dds_app_test
   pool: 5
-  username: root
-  password:
+  username: jri
+  password: tensai14
   socket: /tmp/mysql.sock
 
 production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: polarbea_dds
+  database: devildog_main
   pool: 5
-  username: polarbea_web
-  password: tensai14
+  username: devildog_dbadmin
+  password: dkhNxB2DA3k2EFnD7
   socket: /tmp/mysql.sock

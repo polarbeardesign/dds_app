@@ -1,4 +1,14 @@
 DdsApp::Application.routes.draw do
+
+
+
+  controller :session do
+    get 'login' => :new
+    post 'login' => :create
+    delete 'logout' => :destroy
+  end
+
+  resource :session
   
   resources :teasers
 

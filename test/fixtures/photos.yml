@@ -1,17 +1,19 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  gallery: 
-  photographer: 
+  gallery: one
+  photographer: two
   photo_title: MyString
   description: MyString
   filename: MyString
+  path: MyString
   order: 1
 
 two:
-  gallery: 
-  photographer: 
+  gallery: two
+  photographer: one
   photo_title: MyString
   description: MyString
   filename: MyString
+  path: MyString
   order: 1

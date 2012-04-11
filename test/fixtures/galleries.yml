@@ -1,13 +1,13 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  gallery_category: 
+  gallery_category: one
   gallery_name: MyString
   description: MyString
   gallery_pic: MyString
 
 two:
-  gallery_category: 
+  gallery_category: two
   gallery_name: MyString
   description: MyString
   gallery_pic: MyString
