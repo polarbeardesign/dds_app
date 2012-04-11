@@ -34,6 +34,6 @@ production:
   reconnect: false
   database: devildog_main
   pool: 5
-  username: devildog_dbadmin
-  password: dkhNxB2DA3k2EFnD7
+  username: devildog
+  password: mu767orupi
   socket: /tmp/mysql.sock
