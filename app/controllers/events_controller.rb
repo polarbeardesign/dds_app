@@ -14,7 +14,8 @@ end
   # GET /events
   # GET /events.xml
   def index
-    @events = Event.published.recent.all
+    @events = Event.published.ordered.all
+    @event_types = EventType.all
 
     respond_to do |format|
       format.html # index.html.erb

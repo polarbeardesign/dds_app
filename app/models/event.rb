@@ -7,7 +7,8 @@ scope :published, lambda {
   where ("events.start IS NOT NULL AND events.start >= ?"), Time.zone.now
   }
 
-scope :recent, order("events.start ASC")
+scope :ordered, order("events.start ASC")
 
+scope :tease, :limit => 4
 
 end
