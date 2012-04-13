@@ -2,61 +2,45 @@
 
 <p id="notice"><%= notice %></p>
 
-<h1>Event Details</h1>
-<p>
-  <b>Start:</b>
-  <%= @event.start %>
-</p>
+<h1><%= @event.title %></h1>
 
-<p>
-  <b>End:</b>
-  <%= @event.end %>
-</p>
+
+<p><strong><%= @event.start.strftime("%b %d, %Y") %> - <%= @event.end.strftime("%b %d, %Y") %></strong></p>
+
 
 <p>
   <b>Type:</b>
   <%= @event.event_type.title%>
 </p>
 
+<% if @event.details? %>
 <p>
-  <b>Title:</b>
-  <%= @event.title %>
+  <b>Details:</b></p>
+  <%= sanitize(@event.details) %>
 </p>
+<% end %>
 
 <p>
   <b>Location:</b>
-  <%= @event.location %>
+  <%= @event.location %> 
+  <% if @event.latitude? %>
+  [<%= link_to 'Google Map', "http://maps.google.com/maps?q="+@event.latitude+",+"+@event.longitude, :target => "_blank" %>]
+  <% end %>
 </p>
 
+<% if @event.URL? %>
 <p>
-  <b>Latitude:</b>
-  <%= @event.latitude %>
+  <b>Website:</b>
+  <%= link_to @event.URL, @event.URL %>
 </p>
+<% end %>
 
-<p>
-  <b>Longitude:</b>
-  <%= @event.longitude %>
-</p>
-
-<p>
-  <b>Url:</b>
-  <%= @event.URL %>
-</p>
-
+<% if @event.contact_info? %>
 <p>
   <b>Contact info:</b>
   <%= @event.contact_info %>
 </p>
-
-<p>
-  <b>Details:</b></p>
-  <%= sanitize(@event.details) %>
-
-
-<p>
-  <b>Entered by:</b>
-  <%= @event.entered_by %>
-</p>
+<% end %>
 
 <% if session[:user_id] %>
 <%= link_to 'Edit', edit_event_path(@event) %> |

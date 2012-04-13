@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   private 
   def check_authorization
-    unless user.can?(action_name, controller_name)
+    unless current_user.can?(action_name, controller_name)
       redirect_to :back,
                   :error => "You are not authorized to view the page you requested"
     end
