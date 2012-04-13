@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
                 :controller => session[:intended_controller]
   end
 
-self.current_user
+#self.current_user
 
   def destroy
     session[:user_id] = nil
