@@ -15,7 +15,7 @@ skip_before_filter :check_authorization, :only => :px
 
   def px
     @products = Product.available
-    @events = Event.published.recent :order => 'start ASC', :limit => 7
+     @events = Event.published.ordered.tease
     
     respond_to do |format|
       format.html # index.html.erb
