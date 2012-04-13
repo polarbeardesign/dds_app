@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
     user
   end
 
-  def self.current_user
+#  def self.current_user
 
   def can?(action, resource)
     roles.includes(:rights).for(action, resource).any?
