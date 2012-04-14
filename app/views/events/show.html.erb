@@ -1,7 +1,8 @@
 <div class="content-left">
 
+<% if notice %>
 <p id="notice"><%= notice %></p>
-
+<% end %>
 <h1><%= @event.title %></h1>
 
 
@@ -31,7 +32,7 @@
 <% if @event.URL? %>
 <p>
   <b>Website:</b>
-  <%= link_to @event.URL, @event.URL %>
+  <%= link_to @event.URL, @event.URL, :target => "_blank" %>
 </p>
 <% end %>
 
@@ -42,10 +43,10 @@
 </p>
 <% end %>
 
-<% if session[:user_id] %>
+<% if session[:current_user] %>
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %> | 
-<%= link_to 'Logout', logout_path, :method => :DELETE	%>
+<%= link_to 'Logout', logout_path, :method => :delete	%>
 <% end %>
 <!-- Close content-left -->
 </div>

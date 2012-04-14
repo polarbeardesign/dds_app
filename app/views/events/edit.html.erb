@@ -5,7 +5,7 @@
 <%= render 'form' %>
 
 <%= link_to 'Show', @event %> |
-<%= link_to 'Back', events_path %> |
-<%= link_to 'Destroy', @event, :confirm => 'Are you sure?', :method => :delete %>
+<%= link_to 'Back', events_path %><br />
+<div align="right"><%= button_to 'Delete Event', @event, :confirm => 'Are you sure?', :method => :delete %></div>
 
 </div>

@@ -7,14 +7,16 @@ class User < ActiveRecord::Base
   has_many :roles, :through => :assignments
 
   def self.authenticate(username, password) 
-    user = User.find_by_username(username) 
-    unless user && user.authenticate(password)
+    current_user = User.find_by_username(username) 
+    unless current_user && current_user.authenticate(password)
       raise "Username or password invalid"
     end
-    user
+    current_user
   end
 
 #  def self.current_user
+#    session[:current_user]
+#  end
 
   def can?(action, resource)
     roles.includes(:rights).for(action, resource).any?

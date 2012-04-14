@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
 
-skip_before_filter :check_authorization
+skip_before_filter :check_authorization, :check_authentication
 
   def home
     @events = Event.published.ordered.tease

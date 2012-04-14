@@ -1,4 +1,6 @@
 class TeasersController < ApplicationController
+
+
   # GET /teasers
   # GET /teasers.xml
   def index

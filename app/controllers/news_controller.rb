@@ -1,9 +1,9 @@
 class NewsController < ApplicationController
+
+skip_before_filter :check_authorization, :check_authentication, :only => [:index, :show]
+
   # GET /news
   # GET /news.xml
-
-skip_before_filter :check_authorization, :only => [:index, :show]
-
   def index
     @news = News.all
 

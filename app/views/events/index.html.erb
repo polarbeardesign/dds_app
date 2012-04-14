@@ -1,7 +1,9 @@
 <div class="content-left">
-
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
 <h1>Devil Dog Calendar:</h1>
- 
+
 <table width="500" class="table_border">
   <tr>
     <th>Date</th>
@@ -23,10 +25,12 @@
 </table>
 
 <br />
-<% if session[:user_id] %>
+
+<% if session[:current_user] %>
 <%= link_to 'New Event', new_event_path %>
 <% end %>
 <!-- Close content-left -->
+
 </div>
 
 
