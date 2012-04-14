@@ -4,7 +4,7 @@ class Event < ActiveRecord::Base
 
 scope :published, lambda {
 #  where ("events.start IS NOT NULL AND events.start >= ?", Time.zone.now)
-  where ("events.start IS NOT NULL AND events.start >= ?"), Time.zone.now
+  where ("events.start IS NOT NULL AND events.end > ?"), Time.zone.now
   }
 
 scope :ordered, order("events.start ASC")
