@@ -13,6 +13,10 @@ gem 'mysql2', '< 0.3.7'
 # Deploy with Capistrano
  gem 'capistrano'
 
+group :production do
+  gem 'rack-google_analytics', :require => "rack/google_analytics"
+end
+
 # To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
 # gem 'ruby-debug'
 # gem 'ruby-debug19'
