@@ -1,0 +1,29 @@
+<div class="content-left">
+
+<p id="notice"><%= notice %></p>
+
+<h1><%= @video.title %></h1>
+
+<%= raw(@video.ext_url) %>
+
+<p>
+  <b>Description:</b>
+  <%= @video.description %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @video.date %>
+</p>
+<p>
+  <b>Source:</b>
+  <%= @video.source %>
+</p>
+
+
+<% if session[:current_user] %>
+<%= link_to 'Edit', edit_video_path(@video) %> |
+<%= link_to 'Back', videos_path %>
+<% end %>
+
+</div>

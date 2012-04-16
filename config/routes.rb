@@ -2,6 +2,10 @@ DdsApp::Application.routes.draw do
 
 
 
+  resources :videos
+
+  match 'video_gallery' => 'videos#video_gallery', :as => :video_gallery
+
   controller :sessions do
     get 'login' => :new
     post 'login' => :create

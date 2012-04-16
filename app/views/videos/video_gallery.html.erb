@@ -1,0 +1,27 @@
+<div class="content-left">
+
+<h1>Video Gallery</h1>
+
+<table width="500" class="table_border">
+  <tr>
+    <th>Date</th>
+    <th>Title</th>
+    <th>Source</th>
+  </tr>
+
+<% @videos.each do |video| %>
+  <tr class="<%= cycle('odd_row', 'even_row') %>">
+    <td><%= video.date %></td>
+    <td><%= link_to video.title, video %></td>
+    <td><%= video.source %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<% if session[:current_user] %>
+<%= link_to 'New Video', new_video_path %>
+<% end %>
+
+</div>
