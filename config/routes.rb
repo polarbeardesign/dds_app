@@ -2,6 +2,8 @@ DdsApp::Application.routes.draw do
 
 
 
+  resources :members
+
   resources :videos
 
   match 'video_gallery' => 'videos#video_gallery', :as => :video_gallery

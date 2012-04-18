@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 1
+  user: 
+  caf_col_no: 1
+  dd_dues_date: 2012-04-18
+  first_name: MyString
+  last_name: MyString
+  street_1: MyString
+  street_2: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  home_phone: MyString
+  work_phone: MyString
+  cell_phone: MyString
+  email: MyString
+
+two:
+  id: 1
+  user: 
+  caf_col_no: 1
+  dd_dues_date: 2012-04-18
+  first_name: MyString
+  last_name: MyString
+  street_1: MyString
+  street_2: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  home_phone: MyString
+  work_phone: MyString
+  cell_phone: MyString
+  email: MyString
