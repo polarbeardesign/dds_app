@@ -27,7 +27,7 @@
     <td><%= video.members_only %></td>
     <td><%= link_to 'Show', video %></td>
     <td><%= link_to 'Edit', edit_video_path(video) %></td>
-    <td><%= link_to 'Destroy', video, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= button_to 'Destroy', video, :confirm => 'Are you sure?', :method => :delete %></td></td>
   </tr>
 <% end %>
 </table>
