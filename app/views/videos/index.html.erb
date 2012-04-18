@@ -2,13 +2,11 @@
 
 <h1>Listing videos</h1>
 
-<table>
+<table width="500" class="table_border">
   <tr>
-    <th>Title</th>
-    <th>Description</th>
     <th>Date</th>
+    <th>Title</th>
     <th>Source</th>
-    <th>Ext url</th>
     <th>Publish</th>
     <th>Members only</th>
     <th></th>
@@ -17,12 +15,10 @@
   </tr>
 
 <% @videos.each do |video| %>
-  <tr>
-    <td><%= video.title %></td>
-    <td><%= video.description %></td>
+  <tr class="<%= cycle('odd_row', 'even_row') %>">
     <td><%= video.date %></td>
+    <td><%= link_to video.title, video %></td>
     <td><%= video.source %></td>
-    <td><%= video.ext_url %></td>
     <td><%= video.publish %></td>
     <td><%= video.members_only %></td>
     <td><%= link_to 'Show', video %></td>

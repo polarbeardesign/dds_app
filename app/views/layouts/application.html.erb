@@ -16,10 +16,12 @@
 <div id="main-area">
 
 <div id="content">
-<% if session[:current_user] %>
-<%= link_to 'Logout', logout_path, :method => :delete	%>
-<% end %>
+
 <%= yield %>
+
+<% if session[:current_user] %>
+<%= button_to 'Logout', logout_path, :method => :delete	%>
+<% end %>
 
 </div>
 
