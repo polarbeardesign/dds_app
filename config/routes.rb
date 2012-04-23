@@ -41,12 +41,16 @@ DdsApp::Application.routes.draw do
   
   match 'px' => 'products#px', :as => :px
 
+  match 'members_list' => 'members#members_list', :as => :members_list
+
+  match 'account/:id' => 'members#account', :as => :account
+  
   get "pages/home"
   get "pages/VMB612"
   get "pages/PBJs"
   get "pages/squadron"
   get "pages/thank_you"
-  
+  get "pages/member_home"
   
   root :to => 'pages#home'
 

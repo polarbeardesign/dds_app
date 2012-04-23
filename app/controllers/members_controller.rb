@@ -10,9 +10,29 @@ class MembersController < ApplicationController
     end
   end
 
+  # members view of membership list
+  def members_list
+    @members = Member.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render :json => @members }
+    end
+  end
+
   # GET /members/1
   # GET /members/1.json
   def show
+    @member = Member.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render :json => @member }
+    end
+  end
+
+  # show member account profile
+  def account
     @member = Member.find(params[:id])
 
     respond_to do |format|

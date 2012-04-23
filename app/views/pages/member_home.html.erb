@@ -1,0 +1,36 @@
+<div class="content-left">
+
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+
+<h1>Members Section</h1>
+
+<p>Members only section provides access to information...</p>
+
+<!-- Close content-left -->
+</div>
+
+
+<div id="right-column">
+
+<div class="right-column-box">
+
+<h1>Members Pages</h1>
+
+<ul>
+  <li>Forum</li>
+  <li>Event Sign-up</li>
+  <li>Documents</li>
+  <li><%= link_to "Membership", members_list_path %></li>
+  <li><%= link_to "Account/Profile", account_path(@user.member.id) %></li>
+</ul>
+
+<!-- Close right-column-box -->
+</div>
+
+<!-- Close right-column -->
+</div>
+
+<!-- Close content -->
+</div>
