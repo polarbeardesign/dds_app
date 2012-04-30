@@ -44,6 +44,8 @@ DdsApp::Application.routes.draw do
   match 'members_list' => 'members#members_list', :as => :members_list
 
   match 'account/:id' => 'members#account', :as => :account
+
+match 'photo_viewer' => 'galleries#photo_viewer', :as => :photo_viewer
   
   get "pages/home"
   get "pages/VMB612"

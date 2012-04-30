@@ -1,4 +1,8 @@
 class PhotosController < ApplicationController
+
+skip_before_filter :check_authorization, :check_authentication, :only => [:show]
+
+
   # GET /photos
   # GET /photos.xml
   def index
