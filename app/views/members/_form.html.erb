@@ -1,0 +1,118 @@
+<%= form_for(@member) do |f| %>
+  <% if @member.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@member.errors.count, "error") %> prohibited this member from being saved:</h2>
+
+      <ul>
+      <% @member.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="indent_row">
+  <div class="cell">
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :street_1 %><br />
+    <%= f.text_field :street_1 %>
+  </div>
+  </div>
+  <div class="cell">  
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :street_2 %><br />
+    <%= f.text_field :street_2 %>
+  </div>
+  </div>
+</div>
+
+<div class="clearer"></div>
+
+<div class="indent_row">
+  <div class="cell">
+  <div class="field">
+    <%= f.label :city %><br />
+    <%= f.text_field :city %>
+  </div>
+  </div>
+  <div class="cell">
+  <div class="field">
+    <%= f.label :state %><br />
+    <%= f.text_field :state, :size => '5' %>
+  </div>
+  </div>
+  <div class="cell">
+  <div class="field">
+    <%= f.label :zip %><br />
+    <%= f.text_field :zip, :size => '10' %>
+  </div>
+  </div>
+</div>
+
+<div class="clearer"></div>
+
+<div class="indent_row">
+  <div class="cell">
+  <div class="field">
+    <%= f.label :home_phone %><br />
+    <%= f.text_field :home_phone, :size => '15' %>
+  </div>
+  </div>
+  <div class="cell">
+  <div class="field">
+    <%= f.label :work_phone %><br />
+    <%= f.text_field :work_phone, :size => '15' %>
+  </div>
+  </div>
+  <div class="cell">
+  <div class="field">
+    <%= f.label :cell_phone %><br />
+    <%= f.text_field :cell_phone, :size => '15' %>
+  </div>
+  </div>
+</div>
+
+<div class="clearer"></div>
+
+<div class="indent_row">
+  <div class="cell">
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  </div>
+</div>
+
+<div class="clearer"></div>
+
+<div class="indent_row">
+  <div class="cell">
+  <div class="field">
+    <%= f.label :caf_col_no, "CAF Col #" %><br />
+    <%= f.number_field :caf_col_no %>
+  </div>
+  </div>
+  <div class="cell">
+  <div class="field">
+    <%= f.label :dd_dues_date, "Dues Date" %><br />
+    <%= f.date_select :dd_dues_date %>
+  </div>
+   </div>
+</div> 
+  
+  
+  
+<div class="clearer"></div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

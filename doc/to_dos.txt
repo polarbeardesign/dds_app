@@ -1,12 +1,20 @@
+Add Google analytics - COMPLETED
+create videos gallery - COMPLETED
+
 DDS to Dos
+
+get picture galleries working
+  120430:
+  in members branch
+    galleries page working - maybe style in a table format
+    gallery show page - working for pages with photos in multiples of 3
+      how to get a closing div if that's not the case
+    Need picture viewer mechanism
+      previous / next functionality on gallery sets
 
 Add mechanism to capture emails for newsletters
 
 Map 'pages' to show w/o 'pages'
-
-get picture galleries working
-
-create videos gallery
 
 Add sidebars to pages w/o any
 	-sidebar ideas?
@@ -19,8 +27,6 @@ Calendar show page
 	add google map?
 	add calendar graphic
 	event images?
-	
-Add Google analytics
 
 Add user auth/roles
 	admin - can do anything
@@ -29,9 +35,11 @@ Add user auth/roles
 	user?
 
 add members section
+added login and auth for section in members branch
+members resources
 	bulletin board
 	airshow sign up
-	members list
+	members list - added in members branch
 		renewal date reminders
 	maintenance announcements
 	

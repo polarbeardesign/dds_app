@@ -17,10 +17,29 @@
   <%= @gallery.description %>
 </p>
 
+<% @gallery.photos.each_with_index do |photo, i| %>
+<% if i == 0 || i % 3 == 0 %>
+  <div class="form_row">
+<% end %>
 
 
+  <div class="photo_cell">
+    <%= link_to (image_tag 'photos/'+ photo.path + '/thumbs/' + photo.filename), photo_path(photo) %><br />
+    <%= photo.photo_title %>
+  </div>
 
+<% if i > 0 && i == 2 || i == 5 || i == 8 || i == 11 || i == 14 || i == 17 || i == 20 || i == 23 || i == 26 || i == 29 || i == 32 || i == 35 || i == 38 || i == 41 || i == 44 || i == 47 %>
+  <!-- close form_row div -->
+  </div>
+<% elsif i+1 >= @gallery.photos.size %>
+  </div>
+<% end %>
+
+<% end %>
+
+<% if session[:current_user] %>
 <%= link_to 'Edit', edit_gallery_path(@gallery) %> |
 <%= link_to 'Back', galleries_path %>
+<% end %>
 
 </div>

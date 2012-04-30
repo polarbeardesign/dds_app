@@ -24,6 +24,20 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:index
     end
   end
 
+  def photo_viewer
+    @gallery = Gallery.find(params[:id])
+    @photos = @gallery.photos.all
+    set = @photos.map(&:id)
+    
+    @next_photo = @photos.next(set)
+    @prev_photo = @photos.previous(set)
+
+    respond_to do |format|
+      format.html # photo_viewer.html.erb
+      format.xml  { render :xml => @gallery }
+    end
+  end
+
   # GET /galleries/new
   # GET /galleries/new.xml
   def new

@@ -560,3 +560,27 @@ img.fr {
   font-size: .85em;
   }
 
+.photo_cell {
+  float: left;
+  text-align: center;
+  width: 170px;
+  padding: 4px;
+  margin: 4px;
+  border: 1px solid #ccc;
+  }
+
+
+.photo_viewer {
+  float: left;
+  width: 840px;
+  padding: 25px;
+  font-family: Verdana, Helvetica, sans-serif;
+  font-size: 12px;
+  color: #333333;
+        }
+
+.photo_viewer img {
+  display: block;
+  margin: auto;
+  border: 1px solid #000;
+  }

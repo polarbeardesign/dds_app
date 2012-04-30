@@ -1,0 +1,32 @@
+<div class="content-left">
+
+<h1>Members List</h1>
+
+<table width="500" class="table_border">
+  <tr>
+    <th>Name</th>
+    <th>Location</th>
+    <th>Email</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @members.each do |member| %>
+  <tr class="<%= cycle('odd_row', 'even_row') %>">
+    <td><%= member.last_name+", "+member.first_name %></td>
+    <td><%= member.city+", "+member.state %></td>
+    <td><%= member.email %></td>
+    <td><%= link_to 'Show', member %></td>
+    <td><%= link_to 'Edit', edit_member_path(member) %></td>
+    <td><%= link_to 'Destroy', member, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Member', new_member_path %>
+
+</div>

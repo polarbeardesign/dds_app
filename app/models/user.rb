@@ -22,4 +22,6 @@ class User < ActiveRecord::Base
     roles.includes(:rights).for(action, resource).any?
   end
 
+  has_one :member
+
 end

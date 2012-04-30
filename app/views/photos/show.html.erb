@@ -1,4 +1,4 @@
-<div class="content-left">
+<div class="photo_viewer">
 
 <p id="notice"><%= notice %></p>
 
@@ -15,13 +15,10 @@
   <%= @photo.description %>
 </p>
 
-<p>
-  <b>Order:</b>
-  <%= @photo.order %>
-</p>
+<%= link_to 'Back', :back %>
 
-
+<% if session[:current_user] %>
 <%= link_to 'Edit', edit_photo_path(@photo) %> |
 <%= link_to 'Back', photos_path %>
-
+<% end %>
 </div>
