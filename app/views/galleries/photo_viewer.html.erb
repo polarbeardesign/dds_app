@@ -1,0 +1,29 @@
+<div class="photo_viewer">
+
+<p>
+  <b>Gallery name:</b>
+  <%= @gallery.gallery_name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @gallery.description %>
+</p>
+
+    <%= image_tag 'photos/'+ @gallery.photos.first.path + '/' + @gallery.photos.first.filename %><br />
+    <%= @gallery.photos.first.photo_title %>
+
+    <%=  if @prev_photo || @next_photo
+    .prev
+      = link_to image_tag( @prev_photo.file.url :tenth ), collection_photo_path(@gallery, @prev_photo) if @prev_photo
+      - if @prev_photo
+        %span Previous
+    .next
+      = link_to image_tag( @next_photo.file.url :tenth ), collection_photo_path(@gallery, @next_photo) if @next_photo
+      - if @next_photo
+        %span Next
+     %>
+<%= link_to 'Edit', edit_gallery_path(@gallery) %> |
+<%= link_to 'Back', galleries_path %>
+
+</div>
