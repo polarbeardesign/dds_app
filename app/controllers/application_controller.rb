@@ -21,10 +21,10 @@ end
   private 
   def check_authorization
     
-#    unless User.find(session[:current_user]).can?(action_name, controller_name)
-#      redirect_to :back,
-#                  :notice => "You are not authorized to do "+action_name+" "+controller_name
-#    end
+    unless User.find(session[:current_user]).can?(action_name, controller_name)
+      redirect_to :back,
+                  :notice => "You are not authorized to do "+action_name+" "+controller_name
+    end
   end
 
 end
