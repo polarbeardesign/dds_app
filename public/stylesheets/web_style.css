@@ -569,6 +569,12 @@ img.fr {
   border: 1px solid #ccc;
   }
 
+.error {
+  display: block;
+  margin: 5px auto;
+  font-style: italic;
+  color: #cc0000;
+  }
 
 .photo_viewer {
   float: left;

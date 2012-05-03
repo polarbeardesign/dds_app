@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   def self.authenticate(username, password) 
     current_user = User.find_by_username(username) 
     unless current_user && current_user.authenticate(password)
-      raise "Username or password invalid"
+      raise "Username or password was invalid"
     end
     current_user
   end

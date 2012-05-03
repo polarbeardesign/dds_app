@@ -13,7 +13,8 @@ class Right < ActiveRecord::Base
     "member_home" => "READ",
     "members_list" => "READ",
     "photo_viewer" => "READ",
-    "account" => "READ"
+    "account" => "READ",
+    "account_edit" => "UPDATE"
 }
 
 end

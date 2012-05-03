@@ -13,7 +13,8 @@ class MembersController < ApplicationController
   # members view of membership list
   def members_list
     @members = Member.all
-
+    @user = User.find(session[:current_user])
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @members }
@@ -34,11 +35,16 @@ class MembersController < ApplicationController
   # show member account profile
   def account
     @member = Member.find(params[:id])
+    @user = User.find(session[:current_user])
 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @member }
     end
+  end
+
+  def account_edit
+    @member = Member.find(params[:id])
   end
 
   # GET /members/new

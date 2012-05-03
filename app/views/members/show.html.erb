@@ -2,80 +2,47 @@
 
 <p id="notice"><%= notice %></p>
 
+<div class="form_row">
+
+<div class="form_cell" style="width: 200px;">
+
+<p><b><%= @member.first_name %> <%= @member.last_name %></b></p>
+
+<p><%= @member.street_1 %>
+ <% if @member.street_2? %>
+   <br /><%= @member.street_2 %>
+ <% end %>
+<br /><%= @member.city %>, <%= @member.state %> <%= @member.zip %>
+</p>
+</div>
+<div class="form_cell">
 <p>
-  <b>Id:</b>
-  <%= @member.id %>
+  <% if @member.home_phone? %>
+    <em>Home:</em> <%= @member.home_phone %><br />
+  <% end %>
+  <% if @member.work_phone? %>
+    <em>Work:</em> <%= @member.work_phone %><br />
+  <% end %>
+  <% if @member.cell_phone? %>
+    <em>Cell:</em> <%= @member.cell_phone %><br />
+  <% end %>
+  <% if @member.email? %>
+    <em>Email:</em> <%= @member.email %>
+  <% end %>
 </p>
 
 <p>
-  <b>User:</b>
-  <%= @member.user %>
-</p>
-
-<p>
-  <b>Caf col no:</b>
+  <em>Username:</em>
+  <%= @member.user.username %>
+<br />
+  <em>CAF Col No:</em>
   <%= @member.caf_col_no %>
-</p>
-
-<p>
-  <b>Dd dues date:</b>
+<br />
+  <em>DDS dues date:</em>
   <%= @member.dd_dues_date %>
 </p>
-
-<p>
-  <b>First name:</b>
-  <%= @member.first_name %>
-</p>
-
-<p>
-  <b>Last name:</b>
-  <%= @member.last_name %>
-</p>
-
-<p>
-  <b>Street 1:</b>
-  <%= @member.street_1 %>
-</p>
-
-<p>
-  <b>Street 2:</b>
-  <%= @member.street_2 %>
-</p>
-
-<p>
-  <b>City:</b>
-  <%= @member.city %>
-</p>
-
-<p>
-  <b>State:</b>
-  <%= @member.state %>
-</p>
-
-<p>
-  <b>Zip:</b>
-  <%= @member.zip %>
-</p>
-
-<p>
-  <b>Home phone:</b>
-  <%= @member.home_phone %>
-</p>
-
-<p>
-  <b>Work phone:</b>
-  <%= @member.work_phone %>
-</p>
-
-<p>
-  <b>Cell phone:</b>
-  <%= @member.cell_phone %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @member.email %>
-</p>
+</div>
+</div>
 
 
 <%= link_to 'Edit', edit_member_path(@member) %> |

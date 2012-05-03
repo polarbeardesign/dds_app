@@ -2,9 +2,16 @@
 
 <h1>Squadron Member Login</h1>
 
+
+
 <%= form_tag sessions_path do %> 
 
 <div align="center">
+
+<% if alert %>
+<p class="error"><%= alert %></p>
+<% end %>
+
 <table width="300" class="table_border">
   <tr>
     <th colspan="2" align="left">Login:</th>
