@@ -2,7 +2,9 @@
 
 <p id="notice"><%= notice %></p>
 
-
+<div align="center">
+<p><%= link_to 'Previous', photo_path(@photo.id - 1) %> | <%= link_to 'Next', photo_path(@photo.id + 1) %></p>
+</div>
   <%= image_tag 'photos/'+ @photo.path + '/' + @photo.filename %>
 
 <p>
@@ -15,7 +17,7 @@
   <%= @photo.description %>
 </p>
 
-<%= link_to 'Back', :back %>
+<%= link_to 'Back to ' + @photo.gallery.gallery_name + ' Gallery', gallery_url(@photo.gallery_id) %>
 
 <% if session[:current_user] %>
 <%= link_to 'Edit', edit_photo_path(@photo) %> |
