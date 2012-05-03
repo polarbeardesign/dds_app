@@ -3,7 +3,20 @@
 <p id="notice"><%= notice %></p>
 
 <div align="center">
-<p><%= link_to 'Previous', photo_path(@photo.id - 1) %> | <%= link_to 'Next', photo_path(@photo.id + 1) %></p>
+<p>
+<% if @photo.id - 1 >= @photo.gallery.photos.first.id %>
+  <%= link_to 'Previous', photo_path(@photo.id - 1) %> 
+<% else %>
+  <em>beginning -></em>
+<% end %>
+
+| 
+<% if @photo.id + 1 <= @photo.gallery.photos.last.id %>
+  <%= link_to 'Next', photo_path(@photo.id + 1) %> 
+<% else %>
+  <em> <- end</em>
+<% end %>
+</p>
 </div>
   <%= image_tag 'photos/'+ @photo.path + '/' + @photo.filename %>
 
