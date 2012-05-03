@@ -1,0 +1,20 @@
+<div class="content-left">
+
+<p id="notice"><%= notice %></p>
+
+<div class="form_row">
+
+<div class="form_cell">
+<p><em>Resource:</em> <%= @right.resource %><br />
+</div>
+<div class="form_cell">
+<p><em>Operation:</em> <%= @right.operation %><br />
+</div>
+
+</div>
+
+
+<%= link_to 'Edit', edit_right_path(@right) %> |
+<%= link_to 'Back', rights_path %>
+
+</div>

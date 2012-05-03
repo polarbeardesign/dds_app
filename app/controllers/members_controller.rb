@@ -47,6 +47,20 @@ class MembersController < ApplicationController
     @member = Member.find(params[:id])
   end
 
+  def update_pwd
+    @user = User.find(session[:current_user])
+
+    respond_to do |format|
+      if @user.update_attributes(params[:user])
+        format.html { redirect_to account_path(@user.member.id), :notice => 'Password was successfully updated.' }
+        format.json { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.json { render :json => @member.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
   # GET /members/new
   # GET /members/new.json
   def new

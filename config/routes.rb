@@ -3,6 +3,8 @@ DdsApp::Application.routes.draw do
 
 
   resources :members
+  
+  resources :rights
 
   resources :videos
 

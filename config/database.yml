@@ -36,4 +36,5 @@ production:
   pool: 5
   username: devildog
   password: mu767orupi
-  socket: /tmp/mysql.sock
+#  socket: /tmp/mysql.sock
+  host: localhost
