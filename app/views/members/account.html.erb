@@ -1,4 +1,6 @@
-<div class="content-left">
+<% content_for :sidebar do %>
+  <%= render "sidebars/members" %>
+<% end %>
 
 <p id="notice"><%= notice %></p>
 
@@ -47,27 +49,3 @@
 <%= link_to 'Edit', account_edit_path(@member) %> |
 <%= link_to 'Back', pages_member_home_path %>
 
-</div>
-
-<div id="right-column">
-
-<div class="right-column-box">
-
-<h1>Members Pages</h1>
-
-<p>Active</p>
-<ul>
-  <li><%= link_to "Membership", members_list_path %></li>
-  <li><%= link_to "Account/Profile", account_path(@user.member.id) %></li>
-</ul>
-<p>Coming Soon</p>
-<ul>
-  <li>Forum</li>
-  <li>Event Sign-up</li>
-  <li>Documents</li>
-</ul>
-<!-- Close right-column-box -->
-</div>
-
-<!-- Close right-column -->
-</div>

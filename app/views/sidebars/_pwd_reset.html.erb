@@ -1,0 +1,25 @@
+
+<h2>Lost Password?</h2>
+
+<p class="error">Not working yet...</p>
+<p>Enter your email below to have your password reset.</p>
+
+<%= form_tag sessions_path do %> 
+
+<div align="center">
+<table width="200" class="table_border">
+  <tr>
+    <th colspan="2" align="left">Password Reset:</th>
+  </tr>
+  <tr>
+    <td><%= label_tag :username %></td>
+    <td><%= text_field_tag :username %></td>
+  </tr>
+  <tr>
+    <th colspan="2" align="center"><%= submit_tag "reset" %></td>
+  </tr>
+</table>
+</div>
+<% end %>
+<p>After account is varified password will be sent to your email address.</p>
+

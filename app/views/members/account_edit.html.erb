@@ -1,4 +1,6 @@
-<div class="content-left">
+<% content_for :sidebar do %>
+  <%= render "sidebars/members" %>
+<% end %>
 
 <h1>Edit Account</h1>
 
@@ -6,5 +8,3 @@
 
 <%= link_to 'Show',  account_path(@member) %>
 <%#= link_to 'Back', members_list_path %>
-
-</div>

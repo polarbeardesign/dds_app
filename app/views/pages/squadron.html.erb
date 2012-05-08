@@ -1,4 +1,6 @@
-<div class="content-left">
+<% content_for :sidebar do %>
+  <%= render "sidebars/calendar" %>
+<% end %>
 
 <h1>Devil Dog Squadron</h1>
 
@@ -72,17 +74,3 @@ Georgetown, TX </p>
 </table>
             <p>If you have any questions or comments, please send us an email 
               at <a href="mailto:info@devildogsquadron.com">info@devildogsquadron.com</a></p>
-
-<!-- Close content-left -->
-</div>
-
-
-<div id="right-column">
-
-<?php include("includes/sidebar_calendar.php") ?>
-
-<!-- Close right-column -->
-</div>
-
-<!-- Close content -->
-</div>

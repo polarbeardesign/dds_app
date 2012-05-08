@@ -1,10 +1,10 @@
-<div class="content-left">
+<% content_for :sidebar do %>
+  <%= render "sidebars/web_maintenance" %>
+<% end %>
 
 <h1>Photo Galleries</h1>
 
 <table>
-
-
 <% @galleries.each do |gallery| %>
   <tr>
     <td><%= image_tag 'photos/'+ gallery.gallery_pic %></td>
@@ -20,19 +20,3 @@
 <% if session[:current_user] %>
 <%= link_to 'New Gallery', new_gallery_path %>
 <% end %>
-
-</div>
-
-<div id="right-column">
-
-<div class="right-column-box">
-
-<h1>Web Maintenance</h1>
-
-<p>Our photo gallery is getting an upgrade. We appreciate your patience as we add new features.</p>
-
-<!-- Close right-column-box -->
-</div>
-
-<!-- Close right-column -->
-</div>

@@ -1,9 +1,6 @@
 Add Google analytics - COMPLETED
 create videos gallery - COMPLETED
-
-DDS to Dos
-
-get picture galleries working
+get picture galleries working - COMPLETED
   120430:
   in members branch
     galleries page working - maybe style in a table format
@@ -11,6 +8,11 @@ get picture galleries working
       how to get a closing div if that's not the case
     Need picture viewer mechanism
       previous / next functionality on gallery sets
+
+
+DDS to Dos
+
+
 
 Add mechanism to capture emails for newsletters
 
@@ -20,6 +22,7 @@ Add sidebars to pages w/o any
 	-sidebar ideas?
 		-factoids
 		-member stories
+		-pca map / visiting dog
 
 Calendar show page
 	if one day event just show one day with times
