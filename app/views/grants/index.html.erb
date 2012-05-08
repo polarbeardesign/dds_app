@@ -1,0 +1,26 @@
+<h1>Grants List</h1>
+
+<table width="500" class="table_border">
+  <tr>
+    <th>right id</th>
+    <th>role_id</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @grants.each do |grant| %>
+  <tr class="<%= cycle('odd_row', 'even_row') %>">
+    <td><%= grant.right_id %></td>
+    <td><%= grant.role_id %></td>
+    <td><%= link_to 'Show', grant %></td>
+    <td><%= link_to 'Edit', edit_grant_path(grant) %></td>
+    <td><%= link_to 'Destroy', grant, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Grant', new_grant_path %>
