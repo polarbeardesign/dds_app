@@ -11,10 +11,15 @@
 
 </div>
 
-<% @role.rights.ordered.each do |right| %>
-  <p><%= right.resource %></p>
-
-
+<% @role.rights.unique_resources.ordered.each do |right| %>
+  <p><strong><%= right.resource %></strong></p>
+    <div class="indent_row">
+    <% @role.rights.ordered_ops.each do |operation| %>
+      <% if operation.resource == right.resource %>
+        <%= check_box_tag operation, :true %><%= operation.operation %>
+      <% end %>
+    <% end %>
+      </div><div class="clearer"></div>
 <% end %>
 </table>
 
