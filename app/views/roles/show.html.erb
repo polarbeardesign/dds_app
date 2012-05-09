@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<div class="form_row">
+
+<div class="form_cell">
+<p><em>ID:</em> <%= @role.id %><br />
+</div>
+<div class="form_cell">
+<p><em>Name:</em> <%= @role.name %><br />
+</div>
+
+</div>
+
+<% @role.rights.ordered.each do |right| %>
+  <p><%= right.resource %></p>
+
+
+<% end %>
+</table>
+
+<%= link_to 'Edit', edit_role_path(@role) %> |
+<%= link_to 'Back', roles_path %>

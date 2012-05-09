@@ -5,6 +5,10 @@ DdsApp::Application.routes.draw do
   resources :members
   
   resources :rights
+  
+  resources :grants
+
+  resources :roles
 
   resources :videos
 

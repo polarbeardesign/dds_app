@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<div class="form_row">
+
+<div class="form_cell">
+<p><em>Right ID:</em> <%= @grant.right_id %><br />
+</div>
+<div class="form_cell">
+<p><em>Role ID:</em> <%= @grant.role_id %><br />
+</div>
+
+</div>
+
+
+<%= link_to 'Edit', edit_grant_path(@grant) %> |
+<%= link_to 'Back', grants_path %>
