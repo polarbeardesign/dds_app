@@ -8,6 +8,8 @@ DdsApp::Application.routes.draw do
   
   resources :grants
 
+  resources :roles
+
   resources :videos
 
   match 'video_gallery' => 'videos#video_gallery', :as => :video_gallery

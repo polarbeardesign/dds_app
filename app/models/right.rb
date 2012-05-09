@@ -17,4 +17,7 @@ class Right < ActiveRecord::Base
     "account_edit" => "UPDATE"
 }
 
+scope :ordered, order("rights.resource ASC")
+
+
 end
