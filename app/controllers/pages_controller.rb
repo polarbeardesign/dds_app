@@ -15,6 +15,7 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:home,
   end
 
   def squadron
+    @events = Event.published.ordered.tease
   end
 
   def member_home

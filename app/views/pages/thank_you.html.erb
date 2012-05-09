@@ -1,52 +1,9 @@
-<div class="content-left">
+<% content_for :sidebar do %>
+  <%= render "sidebars/newsletter_signup" %>
+<% end %>
 
 <h1>Thank You!</h1>
 
 <p>Thank you for your donation. All donations go to maintaining and operating the Devil Dog in its mission to bring history to life and honor those who fought for our freedoms.</p>
 
 <p>Your transaction has been completed, and a receipt for your purchase has been emailed to you from Paypal. You may log into your account at <a href="http://www.paypal.com/us">www.paypal.com/us</a> to view details of this transaction.</p>
-
-<!-- Close content-left -->
-</div>
-
-
-<div id="right-column">
-
-<div class="right-column-box">
-
-<h1>Squadron Alerts</h1>
-
-<p>Sign up for Alerts to Devil Dog news, newsletters and calendar updates. Simply enter your email address and click on subscribe.</p>
-
-<p>If you wish to cancel your news alerts, enter your email address and click unsubscribe.</p>
-
-
-<form name="mail_list" method="post" action="admin/mail_list_add.php">            
-<table align="center" class="table_nobrdr">
-    <tr> 
-        <td><div align="right">email:</div></td>
-        <td><input name="address" type="text" id="address" maxlength="50" /></td>
-    </tr>
-    <tr>
-        <td>&nbsp;</td>
-        <td><div align="center"><input type="submit" name="Submit" value="Subscribe" /></div></td>
-    </tr>
-    <tr> 
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-    </tr>
-    <tr> 
-          <td>&nbsp;</td>
-          <td><div align="center"><input type="submit" name="Submit" value="Unsubscribe" /></div></td>
-    </tr>
-</table>
-</form>
-
-<!-- Close right-column-box -->
-</div>
-
-<!-- Close right-column -->
-</div>
-
-<!-- Close content -->
-</div>

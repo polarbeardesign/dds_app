@@ -10,8 +10,9 @@ get picture galleries working - COMPLETED
       previous / next functionality on gallery sets
 
 
-
 DDS to Dos
+
+
 
 Add mechanism to capture emails for newsletters
 
@@ -21,7 +22,7 @@ Add sidebars to pages w/o any
 	-sidebar ideas?
 		-factoids
 		-member stories
-		-PCA location / visit the dog
+		-pca map / visiting dog
 
 Calendar show page
 	if one day event just show one day with times
