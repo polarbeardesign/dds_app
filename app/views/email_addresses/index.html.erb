@@ -1,0 +1,29 @@
+<h1>Listing email_addresses</h1>
+
+<table width="500" class="table_border">
+  <tr>
+    <th>Address</th>
+    <th>Active</th>
+    <th>Source</th>
+    <th width="75">Date</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @email_addresses.each do |email_address| %>
+  <tr class="<%= cycle('odd_row', 'even_row') %>">
+    <td><%= email_address.address %></td>
+    <td><%= email_address.active %></td>
+    <td><%= email_address.source %></td>
+    <td><%= email_address.created_at.strftime("%b %d, %Y") %></td>
+    <td><%= link_to 'Show', email_address %></td>
+    <td><%= link_to 'Edit', edit_email_address_path(email_address) %></td>
+    <td><%= link_to 'Destroy', email_address, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Email address', new_email_address_path %>

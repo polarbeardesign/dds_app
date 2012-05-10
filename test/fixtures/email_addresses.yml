@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  address: MyString
+  status: false
+  source: MyText
+
+two:
+  address: MyString
+  status: false
+  source: MyText

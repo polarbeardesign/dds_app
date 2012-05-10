@@ -19,5 +19,8 @@ class Right < ActiveRecord::Base
 
 scope :ordered, order("rights.resource ASC")
 
+scope :ordered_ops, :order => "field(operation,'CREATE','READ','UPDATE','DELETE')"
+
+scope :unique_resources, :select => 'DISTINCT resource'
 
 end
