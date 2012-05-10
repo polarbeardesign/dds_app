@@ -45,7 +45,7 @@
           <ul>
             <li><%= link_to 'Bulletin Board', posts_path %></li>
             <li><%= link_to 'Members List', members_list_path %></li>
-            <li><%#= link_to "Account/Profile", account_path(@user.member.id) %></li>
+            <li><%= link_to "Account/Profile", account_path(@user.member.id) %></li>
             <li><%= link_to 'Logout', logout_path, :method => :delete %></li>
           </ul>
         <% end %></li>
