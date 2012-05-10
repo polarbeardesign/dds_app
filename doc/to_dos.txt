@@ -8,14 +8,25 @@ get picture galleries working - COMPLETED
       how to get a closing div if that's not the case
     Need picture viewer mechanism
       previous / next functionality on gallery sets
+add members section - COMPLETED
+	members list - added in members branch
+added login and auth for section in members branch - COMPLETED
+Add mechanism to capture emails for newsletters - COMPLETED 120510
 
 
 DDS to Dos
 
+members resources
+	password reset
+	bulletin board / blog
+	airshow sign up
+	renewal date reminders
+	maintenance announcements
+	documentation
 
 
-Add mechanism to capture emails for newsletters
 
+Make galleries pages look like gallery page (& video)
 Map 'pages' to show w/o 'pages'
 
 Add sidebars to pages w/o any
@@ -23,6 +34,8 @@ Add sidebars to pages w/o any
 		-factoids
 		-member stories
 		-pca map / visiting dog
+
+Add events map showing event locations (differentiate from past and present)
 
 Calendar show page
 	if one day event just show one day with times
@@ -37,12 +50,5 @@ Add user auth/roles
 	members - can view info, post to bulletin board, flight sign up
 	user?
 
-add members section
-added login and auth for section in members branch
-members resources
-	bulletin board
-	airshow sign up
-	members list - added in members branch
-		renewal date reminders
-	maintenance announcements
+
 	
