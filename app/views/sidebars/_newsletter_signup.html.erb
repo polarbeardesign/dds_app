@@ -1,32 +1,23 @@
 <div class="right-column-box">
-
+<%  @email_address = EmailAddress.new %>
 <h1>Squadron Alerts</h1>
 
 <p>Sign up for Alerts to Devil Dog news, newsletters and calendar updates. Simply enter your email address and click on subscribe.</p>
 
 <p>If you wish to cancel your news alerts, enter your email address and click unsubscribe.</p>
 
+<%= form_for(@email_address) do |f| %>
+<%= f.hidden_field :active, :value => 'true' %>
+<%= f.hidden_field :source, :value => 'web' %>
+ 
+<p><%= f.label :address, "Email Address" %>:</p>
+<div align="center"><%= f.text_field :address, :size => '30' %>
+<br />
+<br />
 
-<form name="mail_list" method="post" action="admin/mail_list_add.php">            
-<table align="center" class="table_nobrdr">
-    <tr> 
-        <td><div align="right">email:</div></td>
-        <td><input name="address" type="text" id="address" maxlength="50" /></td>
-    </tr>
-    <tr>
-        <td>&nbsp;</td>
-        <td><div align="center"><input type="submit" name="Submit" value="Subscribe" /></div></td>
-    </tr>
-    <tr> 
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-    </tr>
-    <tr> 
-          <td>&nbsp;</td>
-          <td><div align="center"><input type="submit" name="Submit" value="Unsubscribe" /></div></td>
-    </tr>
-</table>
-</form>
+<%= f.submit "add me to the list" %></div>
+<br />
+<% end %>
 
 <!-- Close right-column-box -->
 </div>
