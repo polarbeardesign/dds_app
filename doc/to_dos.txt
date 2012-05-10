@@ -51,4 +51,29 @@ Add user auth/roles
 	user?
 
 
-	
+		password reset
+		
+	bulletin board / blog
+
+POSTS
+  - has many categories
+  - has one user
+  - has many comments
+  
+COMMENTS
+  - has one user
+  - belongs to post
+
+CATEGORIES
+  - has and belongs to many posts
+
+USERS
+  - has many posts
+  - has many comments
+
+
+
+
+
+
+

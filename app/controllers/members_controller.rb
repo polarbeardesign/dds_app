@@ -45,6 +45,7 @@ class MembersController < ApplicationController
 
   def account_edit
     @member = Member.find(params[:id])
+    @user = User.find(session[:current_user])
   end
 
   def update_pwd
@@ -97,10 +98,11 @@ class MembersController < ApplicationController
   # PUT /members/1.json
   def update
     @member = Member.find(params[:id])
+    @user = User.find(session[:current_user])
 
     respond_to do |format|
       if @member.update_attributes(params[:member])
-        format.html { redirect_to @member, :notice => 'Member was successfully updated.' }
+        format.html { redirect_to account_path(@user.member.id), :notice => 'Member was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render :action => "edit" }
