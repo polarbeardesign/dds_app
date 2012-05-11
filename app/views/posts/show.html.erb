@@ -1,23 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @post.title %>
-</p>
+<h1 class="post"><%= @post.title %></h1>
 
-<p>
-  <b>Content:</b>
-  <%= @post.content %>
-</p>
+<p><%= @post.content %></p>
 
-<p>
-  <b>Blog category:</b>
-  <%= @post.category %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @post.user %>
+<p>This entry was posted on <%= @post.created_at.strftime("%B %d, %Y") %> by <% if @post.user_id? %><%= @post.user.member.first_name %> <%= @post.user.member.last_name.first %><% end %>. It was filed under 
+    <% @post.categories.each do |category| %>
+      <%= category.name %> 
+    <%end %>
 </p>
 
 

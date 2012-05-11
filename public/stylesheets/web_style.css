@@ -590,3 +590,16 @@ img.fr {
   margin: auto;
   border: 1px solid #000;
   }
+
+.post {
+  font-size: 1.5em;
+  font-weight: bold;
+  font-family: Times, serif;
+  }
+
+.post_parameters {
+  font-style: italic;
+  padding: 3px 8px;
+  color:#fff;
+  background: #1d2644;
+  }
