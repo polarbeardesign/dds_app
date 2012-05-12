@@ -4,16 +4,30 @@
 
 <h1>Photo Galleries</h1>
 
-<table>
-<% @galleries.each do |gallery| %>
-  <tr>
-    <td><%= image_tag 'photos/'+ gallery.gallery_pic %></td>
-    <td><%= link_to gallery.gallery_name, gallery %></td>
-    <td><%= gallery.description %></td>
-    <td><% if session[:current_user] %><%= link_to 'Edit', edit_gallery_path(gallery) %><% end %></td>
-  </tr>
+
+<% @galleries.each_with_index do |gallery, i| %>
+<% if i == 0 || i % 3 == 0 %>
+  <div class="form_row">
 <% end %>
-</table>
+
+
+  <div class="photo_cell">
+    <%= image_tag 'photos/'+ gallery.gallery_pic %>
+    <%= link_to gallery.gallery_name, gallery %><br />
+    <%= gallery.description %>
+    <% if session[:current_user] %><br /><%= link_to 'Edit', edit_gallery_path(gallery) %><% end %>
+  </div>
+
+<% if i > 0 && i == 2 || i == 5 || i == 8 || i == 11 || i == 14 || i == 17 || i == 20 || i == 23 || i == 26 || i == 29 || i == 32 || i == 35 || i == 38 || i == 41 || i == 44 || i == 47 %>
+  <!-- close form_row div -->
+  </div>
+<% elsif i+1 >= @galleries.size %>
+  </div>
+<% end %>
+
+<% end %>
+
+
 
 <br />
 
