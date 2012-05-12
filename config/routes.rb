@@ -2,6 +2,10 @@ DdsApp::Application.routes.draw do
 
 
 
+  resources :posts
+
+  resources :categories
+
   resources :email_addresses
 
   resources :members

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120510055447) do
+ActiveRecord::Schema.define(:version => 20120510190445) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -18,6 +18,25 @@ ActiveRecord::Schema.define(:version => 20120510055447) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "categories_posts", :id => false, :force => true do |t|
+    t.integer "category_id"
+    t.integer "post_id"
+  end
+
+  create_table "categories_posts", :id => false, :force => true do |t|
+    t.integer "category_id"
+    t.integer "post_id"
+  end
+
+  add_index "categories_posts", ["category_id", "post_id"], :name => "index_categories_posts_on_category_id_and_post_id"
 
   create_table "email_addresses", :force => true do |t|
     t.string   "address"
@@ -128,6 +147,16 @@ ActiveRecord::Schema.define(:version => 20120510055447) do
   end
 
   add_index "photos", ["gallery_id", "photographer_id"], :name => "index_photos_on_gallery_id_and_photographer_id"
+
+  create_table "posts", :force => true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
 
   create_table "products", :force => true do |t|
     t.integer  "item_no"
