@@ -17,12 +17,12 @@ Add mechanism to capture emails for newsletters - COMPLETED 120510
 DDS to Dos
 
 members resources
-	password reset
-	bulletin board / blog
+	!! password reset - see below
+	bulletin board / blog - see below
 	airshow sign up
-	renewal date reminders
 	maintenance announcements
 	documentation
+	renewal date reminders
 
 
 
@@ -44,16 +44,23 @@ Calendar show page
 	add calendar graphic
 	event images?
 
-Add user auth/roles
+!!Add user auth/roles
 	admin - can do anything
 	super/user - can administer some of the site (calendar events, maintenance)
 	members - can view info, post to bulletin board, flight sign up
 	user?
 
 
-		password reset
-		
-	bulletin board / blog
+!!password reset
+  - after logged in
+  - forgotten
+    - check email is in database
+    	if yes - generate new password, send by email
+    	if no - error message email not found, contact site admin
+
+==========================================
+bulletin board / blog
+==========================================
 
 POSTS
   - has many categories
@@ -71,7 +78,13 @@ USERS
   - has many posts
   - has many comments
 
-
+Need to add comment capability
+  - !!add comments form
+  - !!add ability to allow comments or not
+!!Add links to category views
+Limit index to last n entries
+truncate index stories with more link?
+Add category selection to create/update
 
 
 
