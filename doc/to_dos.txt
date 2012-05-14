@@ -43,6 +43,13 @@ Calendar show page
 	add google map?
 	add calendar graphic
 	event images?
+	index page
+	  - if no event for category, don't show category
+	    - pluralize category heading
+	  - some other format other than table?
+	  - show events that are slightly expired
+	access to past events to recreate as new events
+	add locations model (to assign location to event - event has one location, location belongs to event)
 
 Add user auth/roles
 	admin - can do anything
