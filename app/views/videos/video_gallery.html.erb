@@ -1,20 +1,30 @@
 <h1>Video Gallery</h1>
 
-<table width="500" class="table_border">
-  <tr>
-    <th>Date</th>
-    <th>Title</th>
-    <th>Source</th>
-  </tr>
 
-<% @videos.each do |video| %>
-  <tr class="<%= cycle('odd_row', 'even_row') %>">
-    <td><%= video.date %></td>
-    <td><%= link_to video.title, video %></td>
-    <td><%= video.source %></td>
-  </tr>
+
+
+
+<% @videos.each_with_index do |video, i| %>
+<% if i == 0 || i % 3 == 0 %>
+  <div class="form_row">
 <% end %>
-</table>
+
+
+  <div class="photo_cell">
+    <%= image_tag video.video_graphic %>
+    <%= link_to link_to video.title, video %><br />
+    <%= video.date %> - <%= video.source %>
+    <% if session[:current_user] %><br /><%= link_to 'Edit', edit_video_path(video) %><% end %>
+  </div>
+
+<% if i > 0 && i == 2 || i == 5 || i == 8 || i == 11 || i == 14 || i == 17 || i == 20 || i == 23 || i == 26 || i == 29 || i == 32 || i == 35 || i == 38 || i == 41 || i == 44 || i == 47 %>
+  <!-- close form_row div -->
+  </div>
+<% elsif i+1 >= @videos.size %>
+  </div>
+<% end %>
+
+<% end %>
 
 <br />
 

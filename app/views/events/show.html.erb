@@ -5,31 +5,40 @@
 <% if notice %>
 <p id="notice"><%= notice %></p>
 <% end %>
+
+<div id="calendar">
+  <div id="calendar_year">
+    <%= @event.start.strftime("%Y") %>
+  </div>
+  <div id="calendar_month">
+    <%= @event.start.strftime("%b") %>
+  </div>
+  <div id="calendar_day">
+    <%= @event.start.strftime("%A") %>
+  </div>
+  <div id="calendar_date">
+    <%= @event.start.strftime("%-d") %>
+  </div>
+</div>
+
 <h1><%= @event.title %></h1>
 
-
-<p><strong><%= @event.start.strftime("%b %d, %Y") %> - <%= @event.end.strftime("%b %d, %Y") %></strong></p>
-
-
-<p>
-  <b>Type:</b>
-  <%= @event.event_type.title%>
-</p>
-
-<% if @event.details? %>
-<p>
-  <b>Details:</b></p>
-  <%= sanitize(@event.details) %>
-</p>
+<p><b>When:</b>
+<% if @event.start.strftime("%b %d, %Y" ) == @event.end.strftime("%b %d, %Y") %>
+  <%= @event.start.strftime("%b %d, %Y | %H:%M %p") %> - <%= @event.end.strftime("%H:%M %p") %></p>
+<% else %>
+  <%= @event.start.strftime("%b %d, %Y") %> - <%= @event.end.strftime("%b %d, %Y") %> | <%= @event.start.strftime("%H:%M %p") %> - <%= @event.end.strftime("%H:%M %p") %></p>
 <% end %>
 
-<p>
-  <b>Location:</b>
-  <%= @event.location %> 
+<p><b>What:</b> <%= @event.event_type.title%></p>
+
+<p><b>Where:</b> <%= @event.location %> 
   <% if @event.latitude? %>
-  [<%= link_to 'Google Map', "http://maps.google.com/maps?q="+@event.latitude+",+"+@event.longitude, :target => "_blank" %>]
+    [<%= link_to 'Google Map', "http://maps.google.com/maps?q="+@event.latitude+",+"+@event.longitude, :target => "_blank" %>]
   <% end %>
 </p>
+
+
 
 <% if @event.URL? %>
 <p>
@@ -43,6 +52,14 @@
   <b>Contact info:</b>
   <%= @event.contact_info %>
 </p>
+<% end %>
+
+<% if @event.graphic_address? %>
+  <div class="event_graphic"><%= image_tag(@event.graphic_address) %></div>
+<% end %>
+
+<% if @event.details? %>
+  <p><%= sanitize(@event.details) %></p>
 <% end %>
 
 <% if session[:current_user] %>

@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120510190445) do
+ActiveRecord::Schema.define(:version => 20120514210405) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -24,11 +25,6 @@ ActiveRecord::Schema.define(:version => 20120510190445) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "categories_posts", :id => false, :force => true do |t|
-    t.integer "category_id"
-    t.integer "post_id"
   end
 
   create_table "categories_posts", :id => false, :force => true do |t|
@@ -67,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20120510190445) do
     t.string   "entered_by"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "graphic_address"
   end
 
   create_table "galleries", :force => true do |t|
@@ -223,6 +220,7 @@ ActiveRecord::Schema.define(:version => 20120510190445) do
     t.boolean  "members_only"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "video_graphic"
   end
 
 end
