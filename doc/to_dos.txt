@@ -12,9 +12,18 @@ add members section - COMPLETED
 	members list - added in members branch
 added login and auth for section in members branch - COMPLETED
 Add mechanism to capture emails for newsletters - COMPLETED 120510
+Make galleries pages look like gallery page (& video) COMPLETED 120514
+Calendar show page
+	if one day event just show one day with times COMPLETED 120514
+	if multiple just show date span then time span COMPLETED 120514
+	add calendar graphic COMPLETED 120514
+	event images? COMPLETED 120514
 
+Add social media icons COMPLETED 120514
 
+====================================================================
 DDS to Dos
+====================================================================
 
 members resources
 	!! password reset - see below
@@ -26,7 +35,6 @@ members resources
 
 
 
-Make galleries pages look like gallery page (& video)
 Map 'pages' to show w/o 'pages'
 
 Add sidebars to pages w/o any
@@ -38,11 +46,7 @@ Add sidebars to pages w/o any
 Add events map showing event locations (differentiate from past and present)
 
 Calendar show page
-	if one day event just show one day with times
-	if multiple just show dates
 	add google map?
-	add calendar graphic
-	event images?
 	index page
 	  - if no event for category, don't show category
 	    - pluralize category heading

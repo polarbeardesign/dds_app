@@ -650,6 +650,9 @@ img.fr {
   color: #fff;
   }
 
-
+.social_icons {
+  float: left;
+  margin-left: 10px;
+  }
 
 
