@@ -1,17 +1,13 @@
 <p id="notice"><%= notice %></p>
 
+<%= raw(@video.ext_url) %>
 <h1><%= @video.title %></h1>
 
-<%= raw(@video.ext_url) %>
-
-<p>
-  <b>Description:</b>
-  <%= @video.description %>
-</p>
+<%= sanitize(@video.description) %>
 
 <p>
   <b>Date:</b>
-  <%= @video.date %>
+  <%= @video.date.strftime("%b %d, %Y") %>
 </p>
 <p>
   <b>Source:</b>
