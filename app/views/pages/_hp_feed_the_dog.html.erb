@@ -4,29 +4,21 @@
 
 <p>Giving history a future requires support. The Devil Dog Squadron relies on support from personal and business donations to cover the ongoing operating, maintenance and restoration costs.</p>
 
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" class="donateform"> 
-<table width="150" border="0" align="left" class="table_paypal"> 
-    <tr> 
-        <td align="center" bgcolor="#cccccc"> 
-            <input type="hidden" name="cmd" value="_xclick" /> 
-            <input type="hidden" name="business" value="px_info@devildogsquadron.com" /> 
-            <input type="hidden" name="no_shipping" value="2" /> 
-            <input type="hidden" name="no_note" value="1" /> 
-            <input type="hidden" name="currency_code" value="USD" /> 
-            <input type="hidden" name="tax" value="0" /> 
-            <input type="hidden" name="lc" value="US" /> 
-            <input type="hidden" name="bn" value="PP-DonationsBF" /> 
-            Make a donation:<br /> 
-            $ <input type="text" name="amount" size="10" /> 
-            <br />
-            <br />&nbsp;
-            <input type="image" src="https://www.paypal.com/en_US/i/btn/x-click-but21.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!" /> 
-            <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
-            <br /><span class="tiny-text">Donations utilize PayPal for transaction processing</span></td> 
-    </tr> 
-</table>
-</form> 
-
-<img src="images/dog_bowl.jpg" width="151" height="103" class="fr" />
-
+<div class="ftd_row">
+  <div class="ftd_left_cell">
+    <div align="center">
+    <img src="images/dog_bowl.jpg" width="151" height="93" />
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" class="donateform"> 
+      <input type="image" src="https://www.paypal.com/en_US/i/btn/x-click-but21.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!" /> 
+      <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+    </div>
+    </form> 
+  </div>
+  <div class="ftd_right_cell">
+    <div align="center"> 
+  <%= link_to image_tag('home_tshirt.jpg'), px_path %>
+  <%= link_to "Visit our PX", px_path %>
+  </div>
+  </div>
+</div>
 </div>

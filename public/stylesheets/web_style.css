@@ -655,4 +655,22 @@ img.fr {
   margin-left: 10px;
   }
 
+.ftd_row {
+  float: left;
+  width: 420px;
+  }
+
+.ftd_left_cell {
+  float: left;
+  width: 205px;
+  border-right: 1px solid #999;
+  }
+
+.ftd_right_cell {
+  float: left;
+  width: 209px;
+  margin-left: 5px;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  }
 
