@@ -166,7 +166,7 @@ div.clearer {
         float: left;
         width: 840px;
         margin: 70px 0 20px 30px;
-        background: #fff;
+        background: #fff url("../images/planform_sidebar.gif") repeat-y top right;
         border: 1px solid #000;
         }
 
@@ -214,6 +214,7 @@ div.clearer {
         font-family: Verdana, Helvetica, sans-serif;
         font-size: 12px;
         color: #333333;
+        /*background:  url("../images/planform_sidebar.gif") repeat-y top left;
         /*border: 1px solid #cadbeb;*/
         }
 
@@ -221,6 +222,7 @@ div.clearer {
         float: left;
         width: 200px;
         margin: 20px 10px 30px 10px;
+        background: #fff;
         border: 1px solid #999999;
         }
 
