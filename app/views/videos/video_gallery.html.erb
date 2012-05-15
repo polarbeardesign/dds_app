@@ -13,7 +13,7 @@
   <div class="photo_cell">
     <%= image_tag video.video_graphic %>
     <%= link_to link_to video.title, video %><br />
-    <%= video.date %> - <%= video.source %>
+    <%= video.date.strftime("%b %d, %Y") %> - <%= video.source %>
     <% if session[:current_user] %><br /><%= link_to 'Edit', edit_video_path(video) %><% end %>
   </div>
 
