@@ -1,0 +1,30 @@
+<h1>Listing Users</h1>
+
+<table width="550" class="table_border">
+  <tr>
+    <th>Date</th>
+    <th>Username</th>
+    <th>Roles</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.created_at.strftime("%b %d, %Y") %></td>
+    <td><%= user.username %></td>
+    <td><% user.roles.each do |role| %>
+        <%= role.name %> 
+      <% end %>
+    </td>
+    <td><%= link_to 'Show', user %></td>
+    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+    <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New User', new_user_path %>
