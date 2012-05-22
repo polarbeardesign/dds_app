@@ -23,5 +23,6 @@ class User < ActiveRecord::Base
   end
 
   has_one :member
+  accepts_nested_attributes_for :member
 
 end

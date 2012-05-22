@@ -27,6 +27,7 @@ class UsersController < ApplicationController
   # GET /users/new.xml
   def new
     @user = User.new
+#    member = @user.member.build
 
     respond_to do |format|
       format.html # new.html.erb
