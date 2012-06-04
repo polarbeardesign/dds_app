@@ -16,6 +16,8 @@ DdsApp::Application.routes.draw do
 
   resources :roles
 
+  resources :users
+
   resources :videos
 
   match 'video_gallery' => 'videos#video_gallery', :as => :video_gallery
@@ -58,6 +60,8 @@ DdsApp::Application.routes.draw do
   match 'account/:id' => 'members#account', :as => :account
   
   match 'account_edit/:id' => 'members#account_edit', :as => :account_edit
+
+  match 'change_password/:id' => 'users#change_password', :as => :change_password
 
 match 'photo_viewer' => 'galleries#photo_viewer', :as => :photo_viewer
   

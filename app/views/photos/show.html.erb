@@ -19,19 +19,11 @@
   <em> <- end</em>
 <% end %>
 </p>
-</div>
+
   <%= image_tag 'photos/'+ @photo.path + '/' + @photo.filename %>
 
-<p>
-  <b>Photo title:</b>
-  <%= @photo.photo_title %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @photo.description %>
-</p>
-
+<p><%= @photo.description %></p>
+</div>
 <%= link_to 'Back to ' + @photo.gallery.gallery_name + ' Gallery', gallery_url(@photo.gallery_id) %>
 
 <% if session[:current_user] %>

@@ -33,7 +33,7 @@ members resources
 	documentation
 	renewal date reminders
 
-
+   - user_id must be set in member (no logins w/o a member record)
 
 Map 'pages' to show w/o 'pages'
 
@@ -63,7 +63,9 @@ Calendar show page
 
 
 !!password reset
-  - after logged in
+  - after logged in COMPLETED 120518
+    - need to prevent URL hacking (only allow access to record of logged in user)
+    - send email after change?
   - forgotten
     - check email is in database
     	if yes - generate new password, send by email
