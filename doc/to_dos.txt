@@ -1,6 +1,11 @@
 Add Google analytics - COMPLETED
 create videos gallery - COMPLETED
 get picture galleries working - COMPLETED
+added users for each member, set password to 'welcome' - COMPLETED
+Granted each user members role - COMPLETED
+
+
+
   120430:
   in members branch
     galleries page working - maybe style in a table format
