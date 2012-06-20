@@ -2,6 +2,7 @@
 
 <table width="500" class="table_border">
   <tr>
+    <th>Active</th>
     <th>Name</th>
     <th>Location</th>
     <th>Email</th>
@@ -13,8 +14,13 @@
 
 <% @members.each do |member| %>
   <tr class="<%= cycle('odd_row', 'even_row') %>">
+    <td><%= member.active %></td>
     <td><%= member.last_name+", "+member.first_name %></td>
-    <td><%= member.city+", "+member.state %></td>
+    <% if member.city? %>
+      <td><%= member.city+", "+member.state %></td>
+    <% else %>
+      <td>---</td>    
+    <% end %>
     <td><%= member.email %></td>
     <td><%= link_to 'Show', member %></td>
     <td><%= link_to 'Edit', edit_member_path(member) %></td>

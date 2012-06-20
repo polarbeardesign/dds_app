@@ -2,7 +2,7 @@ class MembersController < ApplicationController
   # GET /members
   # GET /members.json
   def index
-    @members = Member.all
+    @members = Member.ordered.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -12,7 +12,7 @@ class MembersController < ApplicationController
 
   # members view of membership list
   def members_list
-    @members = Member.all
+    @members = Member.active.ordered.all
     @user = User.find(session[:current_user])
     
     respond_to do |format|

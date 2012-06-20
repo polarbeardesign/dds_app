@@ -14,7 +14,11 @@
 <% @members.each do |member| %>
   <tr class="<%= cycle('odd_row', 'even_row') %>">
     <td><%= member.last_name+", "+member.first_name %></td>
-    <td><%= member.city+", "+member.state %></td>
+    <% if member.city? %>
+      <td><%= member.city+", "+member.state %></td>
+    <% else %>
+      <td>---</td>    
+    <% end %>
     <td><%= member.email %></td>
   </tr>
 <% end %>
