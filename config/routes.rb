@@ -63,7 +63,9 @@ DdsApp::Application.routes.draw do
 
   match 'change_password/:id' => 'users#change_password', :as => :change_password
 
-match 'photo_viewer' => 'galleries#photo_viewer', :as => :photo_viewer
+  match 'photo_viewer' => 'galleries#photo_viewer', :as => :photo_viewer
+  
+  match 'pwd_reset' => 'users#pwd_reset', :as => :pwd_reset
   
   get "pages/home"
   get "pages/VMB612"

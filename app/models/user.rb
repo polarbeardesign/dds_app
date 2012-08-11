@@ -25,4 +25,10 @@ class User < ActiveRecord::Base
   has_one :member
   accepts_nested_attributes_for :member
 
+  def create_reset_code
+    @reset = true
+    self.attributes = {:reset_code => Digest::SHA1.hexdigest( Time.now.to_s.split(//).sort_by {rand}.join )}
+    save(false)
+  end
+
 end
