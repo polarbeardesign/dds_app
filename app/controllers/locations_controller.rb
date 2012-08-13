@@ -45,10 +45,10 @@ class LocationsController < ApplicationController
     respond_to do |format|
       if @location.save
         format.html { redirect_to @location, :notice => 'Location was successfully created.' }
-        format.json { render :json => @location, status: :created, location: @location }
+        format.json { render :json => @location, :status => :created, :location => @location }
       else
         format.html { render action: "new" }
-        format.json { render :json => @location.errors, status: :unprocessable_entity }
+        format.json { render :json => @location.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -64,7 +64,7 @@ class LocationsController < ApplicationController
         format.json { head :ok }
       else
         format.html { render action: "edit" }
-        format.json { render :json => @location.errors, status: :unprocessable_entity }
+        format.json { render :json => @location.errors, :status => :unprocessable_entity }
       end
     end
   end
