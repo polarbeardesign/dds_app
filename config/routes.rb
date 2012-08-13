@@ -2,6 +2,8 @@ DdsApp::Application.routes.draw do
 
 
 
+  resources :locations
+
   resources :posts
 
   resources :categories

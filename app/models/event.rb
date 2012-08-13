@@ -1,6 +1,7 @@
 class Event < ActiveRecord::Base
 
   belongs_to :event_type
+  belongs_to :location
 
 scope :published, lambda {
 #  where ("events.start IS NOT NULL AND events.start >= ?", Time.zone.now)

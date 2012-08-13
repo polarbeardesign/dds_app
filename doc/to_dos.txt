@@ -61,11 +61,25 @@ Calendar show page
 	add locations model (to assign location to event - event has one location, location belongs to event)
 
 !!Add user auth/roles
-	admin - can do anything
-	super/user - can administer some of the site (calendar events, maintenance)
+	super/user - can do anything
+	admin - can administer some of the site
+	  - events
+	  - event_types
+	  - locations
+	  - members
+	  - news
+	  - users
+	  
 	members - can view info, post to bulletin board, flight sign up
 	user?
 
+    rights - specifies resource/operation [events/CREATE]
+    grants - connects a role_id to a right_id [admin = role_id 3 can perform right_id 2 (create event)]
+    roles - list of defined roles [admin, superuser, user, etc.]
+    assignments - assigns a user to a role
+
+  to add rights to a role
+    
 
 !!password reset
   - after logged in COMPLETED 120518

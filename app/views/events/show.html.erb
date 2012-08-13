@@ -32,9 +32,9 @@
 
 <p><b>What:</b> <%= @event.event_type.title%></p>
 
-<p><b>Where:</b> <%= @event.location %> 
-  <% if @event.latitude? %>
-    [<%= link_to 'Google Map', "http://maps.google.com/maps?q="+@event.latitude+",+"+@event.longitude, :target => "_blank" %>]
+<p><b>Where:</b> <%= @event.location.short_name %> - <%= @event.location.city %>, <%= @event.location.state %>
+  <% if @event.location.latitude? %>
+    [<%= link_to 'Google Map', "http://maps.google.com/maps?q="+@event.location.latitude+",+"+@event.location.longitude, :target => "_blank" %>]
   <% end %>
 </p>
 

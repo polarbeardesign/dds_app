@@ -1,0 +1,51 @@
+<%= form_for(@location) do |f| %>
+  <% if @location.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@location.errors.count, "error") %> prohibited this location from being saved:</h2>
+
+      <ul>
+      <% @location.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<p>Look up airport details at <%= link_to 'Airnav', "http://www.airnav.com/airports/", :target => "_blank" %>.</p>
+
+  <div class="field">
+    <%= f.label :short_name %> (shows in drop-down)<br />
+    <%= f.text_field :short_name %>
+  </div>
+  <div class="field">
+    <%= f.label :airport_name %><br />
+    <%= f.text_field :airport_name %>
+  </div>
+  <div class="field">
+    <%= f.label :icao_identifier, 'Airport Identifier (ICAO)' %><br />
+    <%= f.text_field :icao_identifier %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :city %><br />
+    <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label :state %><br />
+    <%= f.text_field :state %>
+  </div>
+  <div class="field">
+    <%= f.label :latitude %><br />
+    <%= f.text_field :latitude %>
+  </div>
+  <div class="field">
+    <%= f.label :longitude %><br />
+    <%= f.text_field :longitude %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
