@@ -18,6 +18,7 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:index
   # GET /events/1.xml
   def show
     @event = Event.find(params[:id])
+#    @event_signups = @event.event_signups
 
     respond_to do |format|
       format.html # show.html.erb

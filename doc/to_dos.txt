@@ -31,6 +31,7 @@ DDS to Dos
 ====================================================================
 
 members resources
+=====================
 	!! password reset - see below
 	bulletin board / blog - see below
 	airshow sign up
@@ -48,9 +49,10 @@ Add sidebars to pages w/o any
 		-member stories
 		-pca map / visiting dog
 
-Add events map showing event locations (differentiate from past and present)
 
+==========================================
 Calendar show page
+==========================================
 	add google map?
 	index page
 	  - if no event for category, don't show category
@@ -59,15 +61,19 @@ Calendar show page
 	  - show events that are slightly expired
 	access to past events to recreate as new events
 	add locations model (to assign location to event - event has one location, location belongs to event)
+	Add events map showing event locations (differentiate from past and present)
 
+==========================================
 !!Add user auth/roles
+==========================================
 	admin - can do anything
 	super/user - can administer some of the site (calendar events, maintenance)
 	members - can view info, post to bulletin board, flight sign up
 	user?
 
-
+==========================================
 !!password reset
+==========================================
   - after logged in COMPLETED 120518
     - need to prevent URL hacking (only allow access to record of logged in user)
     - send email after change?
@@ -106,5 +112,17 @@ Add category selection to create/update
 
 
 
+==========================================
+airshow sign up
+==========================================
+created event_signups model
+added code to controller and view to show sign ups
+  - error on association somehow.
+
+Need to 
+  - fix error above
+  - add mecahinism to add your name to the list
+  - means to edit individuals reservation
+  - means to admin reservations
 
 

@@ -51,6 +51,8 @@ DdsApp::Application.routes.draw do
 
   resources :event_types
 
+  resources :event_signups
+
   match 'calendar' => 'events#index', :as => :calendar
   
   match 'px' => 'products#px', :as => :px

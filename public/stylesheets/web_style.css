@@ -539,7 +539,7 @@ img.fr {
 
 .indent_row {
     float: left;
-    margin: 0 10px 20px 20px;
+    margin: 0 10px 10px 20px;
     }
 
 /* Forms Styling */
@@ -675,4 +675,3 @@ img.fr {
   font-family: Verdana, Arial, Helvetica, sans-serif;
   font-size: 12px;
   }
-
