@@ -31,10 +31,6 @@
     <%= f.collection_select :event_type_id, EventType.all, :id, :title, :order => 'title ASC', :prompt => true %>
   </div>
   <div class="field">
-    <%= f.label :latitude, "Latitude" %><br />
-    <%= f.text_field :latitude %>
-  </div>
-  <div class="field">
     <%= f.label :title, "Event Name" %><br />
     <%= f.text_field :title %>
   </div>
@@ -44,14 +40,12 @@
   </div>
   </div>
   <div class="cell">
+
   <div class="field">
     <%= f.label :location %><br />
-    <%= f.text_field :location %>
+    <%= f.collection_select :location_id, Location.all, :id, :short_name, :order => 'short_name ASC', :prompt => true %>
   </div>
-  <div class="field">
-    <%= f.label :longitude, "Longitude" %><br />
-    <%= f.text_field :longitude %>
-  </div>
+
   <div class="field">
     <%= f.label :contact_info %><br />
     <%= f.text_field :contact_info %>
