@@ -45,6 +45,9 @@ Map 'pages' to show w/o 'pages'
 Add sidebars to pages w/o any
 	-sidebar ideas?
 		-factoids
+			 b-25 vs F18 size
+			 50cal facts
+			 
 		-member stories
 		-pca map / visiting dog
 
@@ -120,5 +123,66 @@ Add category selection to create/update
 
 
 
+F-18
+Top speed: 1,181 mph (1,900 km/h)
+Range: 2,069 miles (3,330 km)
+Wingspan: 45 feet (14 m)
+Length: 60 feet (18 m)
+Weight: 32,080 lbs (14,550 kg)
+First flight: November 29, 1995
 
 
+Crew: six (one pilot, one co-pilot, navigator/bombardier, turret gunner/engineer, radio operator/waist gunner, tail gunner)
+Length: 52 ft 11 in (16.13 m)
+Wingspan: 67 ft 7 in (20.60 m)
+Height: 16 ft 4 in (4.98 m)
+Wing area: 610 sq ft (56.7 m²)
+Empty weight: 19,480 lb (8,855 kg)
+Max. takeoff weight: 35,000 lb (15,910 kg)
+Powerplant: 2 × Wright R-2600-92 14-cylinder air-cooled radial engine, 1,700 hp (1,267 kW) each
+Performance
+Maximum speed: 272 mph (237 kn, 438 km/h) at 13,000 ft (3,960 m)
+Cruise speed: 230 mph (200 knots, 370 km/h)
+Range: 1,350 mi (1,174 nmi, 2,174 km)
+Service ceiling: 24,200 ft (7,378 m)
+Armament
+Guns: 12–18 × .50 in (12.7 mm) machine guns
+Hardpoints: 2,000 lb (900 kg) ventral shackles to hold one external Mark 13 torpedo[23]
+Rockets: racks for eight 5 in (130 mm) high velocity aircraft rockets (HVAR)
+Bombs: 3,000 lb (1,360 kg) bombs
+
+
+=========================
+for event signups on event show page
+=========================
+
+<%=  User.find(session[:current_user]).member.last_name %>
+<br />
+<% if session[:current_user] %>
+
+<p>Put me on the List</p>
+  <% if User.find(session[:current_user]).roles.first.name == 'member' %>
+    <%= button_to 'Definite', event_signups_path(:member_id =>User.find(session[:current_user]).member, :event_id => @event.id, :commitment_level => 'Definite') %>
+    <%= button_to 'Maybe', event_signups_path(:member_id =>User.find(session[:current_user]).member, :event_id => @event.id, :commitment_level => 'Maybe') %>
+  <% end %>
+
+<% end %>
+
+<table width="500" class="table_border">
+  <tr>
+    <th>Name</th>
+    <th>Commitment</th>
+    <th>Sign-up Date</th>
+  </tr>
+
+<% @event.event_signups.each do |event_signup| %>
+  <tr class="<%= cycle('odd_row', 'even_row') %>">
+    <td><%= event_signup.member.last_name %>, <%= event_signup.member.first_name %></td>
+    <td><%= event_signup.commitment_level %></td>
+    <td><%= event_signup.created_at.strftime("%b %d, %Y") %></td>
+  </tr>
+<% end %>
+</table>
+
+
+<br /><br />

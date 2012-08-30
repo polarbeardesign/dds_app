@@ -61,36 +61,7 @@
 <% if @event.details? %>
   <p><%= sanitize(@event.details) %></p>
 <% end %>
-<%#=  User.find(session[:current_user]).member.last_name %>
-<br />
-<% if session[:current_user] %>
 
-<p>Put me on the List</p>
-  <% if User.find(session[:current_user]).roles.first.name == 'member' %>
-    <%= button_to 'Definite', event_signups_path(:member_id =>User.find(session[:current_user]).member, :event_id => @event.id, :commitment_level => 'Definite') %>
-    <%= button_to 'Maybe', event_signups_path(:member_id =>User.find(session[:current_user]).member, :event_id => @event.id, :commitment_level => 'Maybe') %>
-  <% end %>
-
-<% end %>
-
-<table width="500" class="table_border">
-  <tr>
-    <th>Name</th>
-    <th>Commitment</th>
-    <th>Sign-up Date</th>
-  </tr>
-
-<% @event.event_signups.each do |event_signup| %>
-  <tr class="<%= cycle('odd_row', 'even_row') %>">
-    <td><%= event_signup.member.last_name %>, <%= event_signup.member.first_name %></td>
-    <td><%= event_signup.commitment_level %></td>
-    <td><%= event_signup.created_at.strftime("%b %d, %Y") %></td>
-  </tr>
-<% end %>
-</table>
-
-
-<br /><br />
 
 <% if session[:current_user] %>
     <% if User.find(session[:current_user]).roles.first.name == 'superuser' %>
