@@ -537,6 +537,19 @@ img.fr {
     margin: 0 10px 0 0;
     }
 
+.sidebar_right {
+    margin: 0 0 10px 10px;
+    padding: 1em;
+    float: right;
+    border: 1px solid #ccc;
+    background: #628134;
+    }
+
+.sidebar_right a {
+    color: #fff;
+    text-decoration: underline;
+    }
+
 .indent_row {
     float: left;
     margin: 0 10px 10px 20px;
