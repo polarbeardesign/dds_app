@@ -41,13 +41,13 @@
         </ul>
     </li>
         <li><%= link_to "Members", pages_member_home_path %>
-        <% if session[:current_user] %>
+        <% if user_signed_in? %>
           <ul>
             <li><%= link_to 'Bulletin Board', posts_path %></li>
             <li><%= link_to 'Members List', members_list_path %></li>
-            <li><%= link_to "Account/Profile", account_path(User.find(session[:current_user]).member.id) %></li>
-            <li><%= link_to 'Password', change_password_path(session[:current_user]) %></li>
-            <li><%= link_to 'Logout', logout_path, :method => :delete %></li>
+            <li><%= link_to "Account/Profile", account_path(User.find(current_user).member.id) %></li>
+            <li><%= link_to 'Password', change_password_path(current_user) %></li>
+            <li><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></li>
           </ul>
         <% end %></li>
 </ul>

@@ -27,7 +27,7 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:home,
   end
 
   def member_home
-   @user = User.find(session[:current_user])
+   @user = current_user
   end
 
 end
