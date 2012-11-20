@@ -1,22 +1,19 @@
 class User < ActiveRecord::Base
 
-  has_secure_password
-  validates_uniqueness_of :username
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :confirmable,
+  # :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :assignments_attributes
+
 
   has_many :assignments
   has_many :roles, :through => :assignments
 
-  def self.authenticate(username, password) 
-    current_user = User.find_by_username(username) 
-    unless current_user && current_user.authenticate(password)
-      raise "Username or password was invalid"
-    end
-    current_user
-  end
 
-#  def self.current_user
-#    session[:current_user]
-#  end
 
   def can?(action, resource)
     roles.includes(:rights).for(action, resource).any?
