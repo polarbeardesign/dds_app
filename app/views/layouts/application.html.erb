@@ -2,9 +2,10 @@
 <html>
 <head>
   <title>Devil Dog Squadron :: </title>
-  <%#= stylesheet_link_tag    "application" %>
   <%= stylesheet_link_tag 'web_style' %>
-  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag "prototype" %>
+  <%= javascript_include_tag "rails" %>
   <%#= csrf_meta_tags %>
 </head>
 <body>
@@ -17,7 +18,13 @@
 
   <div id="content">
 
+
+
     <div class="content-left">
+
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
 
       <%= yield %>
 

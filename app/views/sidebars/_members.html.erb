@@ -7,7 +7,7 @@
   <li><%= link_to "Bulletin Board", posts_path %></li>
   <li><%= link_to "Membership", members_list_path %></li>
   <li><%= link_to "Account/Profile", account_path(@user.member.id) %></li>
-  <li><%#= link_to "Change Password", change_password_path(session[:current_user]) %></li>
+  <li><%= link_to 'Password', change_password_path(current_user) %></li>
 </ul>
 <p>Coming Soon?</p>
 <ul>

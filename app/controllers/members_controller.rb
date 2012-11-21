@@ -13,7 +13,7 @@ class MembersController < ApplicationController
   # members view of membership list
   def members_list
     @members = Member.active.ordered.all
-    @user = User.find(session[:current_user])
+    @user = current_user
     
     respond_to do |format|
       format.html # index.html.erb
@@ -35,7 +35,7 @@ class MembersController < ApplicationController
   # show member account profile
   def account
     @member = Member.find(params[:id])
-    @user = User.find(session[:current_user])
+    @user = current_user
 
     respond_to do |format|
       format.html # show.html.erb
@@ -45,11 +45,11 @@ class MembersController < ApplicationController
 
   def account_edit
     @member = Member.find(params[:id])
-    @user = User.find(session[:current_user])
+    @user = current_user
   end
 
   def update_pwd
-    @user = User.find(session[:current_user])
+    @user = current_user
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
@@ -98,7 +98,7 @@ class MembersController < ApplicationController
   # PUT /members/1.json
   def update
     @member = Member.find(params[:id])
-    @user = User.find(session[:current_user])
+    @user = current_user
 
     respond_to do |format|
       if @member.update_attributes(params[:member])

@@ -4,6 +4,7 @@ DdsApp::Application.routes.draw do
 
   devise_scope :user do
     get "login", :to => "devise/sessions#new"
+    get "update_password", :to => "devise/passwords#edit"
   end
 
   resources :locations

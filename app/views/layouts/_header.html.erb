@@ -46,7 +46,7 @@
             <li><%= link_to 'Bulletin Board', posts_path %></li>
             <li><%= link_to 'Members List', members_list_path %></li>
             <li><%= link_to "Account/Profile", account_path(User.find(current_user).member.id) %></li>
-            <li><%= link_to 'Password', change_password_path(current_user) %></li>
+            <li><%= link_to 'Password', update_password_path %></li>
             <li><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></li>
           </ul>
         <% end %></li>
