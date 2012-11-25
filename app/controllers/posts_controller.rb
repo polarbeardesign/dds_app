@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.ordered.all
-    @user = current_user
+    @user = User.find(session[:current_user])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,7 +16,7 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @post = Post.find(params[:id])
-    @user = current_user
+    @user = User.find(session[:current_user])
     
     respond_to do |format|
       format.html # show.html.erb
@@ -28,7 +28,7 @@ class PostsController < ApplicationController
   # GET /posts/new.json
   def new
     @post = Post.new
-    @user = current_user
+    @user = User.find(session[:current_user])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -39,7 +39,7 @@ class PostsController < ApplicationController
   # GET /posts/1/edit
   def edit
     @post = Post.find(params[:id])
-    @user = current_user
+    @user = User.find(session[:current_user])
   end
 
   # POST /posts

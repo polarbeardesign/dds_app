@@ -39,11 +39,6 @@ GEM
       net-sftp (>= 2.0.0)
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.1.0)
-    devise (2.1.2)
-      bcrypt-ruby (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (~> 3.1)
-      warden (~> 1.2.1)
     erubis (2.7.0)
     highline (1.6.11)
     hike (1.2.1)
@@ -63,7 +58,6 @@ GEM
     net-ssh (2.3.0)
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
-    orm_adapter (0.4.0)
     polyglot (0.3.3)
     rack (1.3.6)
     rack-cache (1.0.3)
@@ -104,15 +98,12 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.33)
-    warden (1.2.1)
-      rack (>= 1.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   capistrano
-  devise
   mysql2 (< 0.3.7)
   rack-google_analytics
   rails (= 3.1.0)

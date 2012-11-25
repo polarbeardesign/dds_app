@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
 
-skip_before_filter :check_authorization, :check_authentication, :only => [:log_in, :home, :VMB612, :PBJs, :squadron, :F1,]
+skip_before_filter :check_authorization, :check_authentication, :only => [:home, :VMB612, :PBJs, :squadron, :F1,]
 
   def home
     @events = Event.published.ordered.tease
@@ -23,11 +23,7 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:log_i
   end
 
   def member_home
-   @user = current_user
-  end
-
-  def log_in
-    @user = User.new
+   @user = User.find(session[:current_user])
   end
 
 end

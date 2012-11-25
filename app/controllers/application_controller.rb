@@ -3,37 +3,28 @@ class ApplicationController < ActionController::Base
 
   before_filter :check_authentication
 
-  def check_authentication
-    unless params[:controller] == 'devise/sessions' or params[:controller] == 'devise/passwords'
-      unless current_user
-        session[:intended_action] = action_name
-        session[:intended_controller] = controller_name
-        redirect_to login_path
-      end
-    end
-  end
+def current_user
+  current_user = session[:current_user]
+end
+
+def check_authentication
+  unless current_user
+  session[:intended_action] = action_name 
+  session[:intended_controller] = controller_name
+  redirect_to login_path
+end
+
+end
 
   before_filter :check_authorization
 
-
-  private
-
+  private 
   def check_authorization
-    unless params[:controller] == 'devise/sessions' or params[:controller] == 'devise/passwords'
-      unless current_user.can?(action_name, controller_name)
-        if !request.env["HTTP_REFERER"].blank? and request.env["HTTP_REFERER"] != request.env["REQUEST_URI"]
-          redirect_to :back, :notice => "You are not authorized to view the page you requested - "+action_name+" "+controller_name
-        else
-          redirect_to root_path, :notice => "You are not authorized to view the page you requested"
-        end
-      end
+    
+    unless User.find(session[:current_user]).can?(action_name, controller_name)
+      redirect_to :back,
+                  :notice => "You are not authorized to do "+action_name+" "+controller_name
     end
   end
-
-#  def after_sign_in_path_for(resource)
-#   @user = current_user
-#        root(resource)
-#  end
-
 
 end

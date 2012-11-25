@@ -1,11 +1,5 @@
 DdsApp::Application.routes.draw do
 
-  devise_for :users
-
-  devise_scope :user do
-    #get "sign_in", :to => "devise/sessions#new"
-    get "login", :to => "pages#log_in"
-  end
 
 
   resources :locations
@@ -30,12 +24,12 @@ DdsApp::Application.routes.draw do
 
   match 'video_gallery' => 'videos#video_gallery', :as => :video_gallery
 
-#  controller :sessions do
-#    get 'login' => :new
-#    post 'login' => :create
-#    delete 'logout' => :destroy
-#    get 'logout' => :destroy
-#  end
+  controller :sessions do
+    get 'login' => :new
+    post 'login' => :create
+    delete 'logout' => :destroy
+    get 'logout' => :destroy
+  end
 
   resource :sessions
   
