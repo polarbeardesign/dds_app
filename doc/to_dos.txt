@@ -156,14 +156,14 @@ Bombs: 3,000 lb (1,360 kg) bombs
 for event signups on event show page
 =========================
 
-<%=  User.find(session[:current_user]).member.last_name %>
+<%=  current_user.member.last_name %>
 <br />
 <% if session[:current_user] %>
 
 <p>Put me on the List</p>
-  <% if User.find(session[:current_user]).roles.first.name == 'member' %>
-    <%= button_to 'Definite', event_signups_path(:member_id =>User.find(session[:current_user]).member, :event_id => @event.id, :commitment_level => 'Definite') %>
-    <%= button_to 'Maybe', event_signups_path(:member_id =>User.find(session[:current_user]).member, :event_id => @event.id, :commitment_level => 'Maybe') %>
+  <% if current_user.roles.first.name == 'member' %>
+    <%= button_to 'Definite', event_signups_path(:member_id =>current_user.member, :event_id => @event.id, :commitment_level => 'Definite') %>
+    <%= button_to 'Maybe', event_signups_path(:member_id =>current_user.member, :event_id => @event.id, :commitment_level => 'Maybe') %>
   <% end %>
 
 <% end %>

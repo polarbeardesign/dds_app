@@ -64,7 +64,7 @@
 
 
 <% if session[:current_user] %>
-    <% if User.find(session[:current_user]).roles.first.name == 'superuser' %>
+    <% if current_user.roles.first.name == 'superuser' %>
       <%= link_to 'Edit', edit_event_path(@event) %> |
       <%= link_to 'Back', events_path %> | 
       <%= link_to 'Logout', logout_path, :method => :delete	%>
