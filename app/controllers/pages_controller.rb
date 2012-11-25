@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
 
-skip_before_filter :check_authorization, :check_authentication, :only => [:home, :VMB612, :PBJs, :squadron, :F1,]
+skip_before_filter :check_authorization, :check_authentication, :only => [:home, :VMB612, :PBJs, :squadron, :map_0,]
 
   def home
     @events = Event.published.ordered.tease
@@ -12,6 +12,10 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:home,
   end
 
   def PBJs
+  end
+
+  def map_0
+    render :layout => "map_layout"
   end
 
   def F1
