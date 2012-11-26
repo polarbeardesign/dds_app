@@ -88,7 +88,14 @@
 	GEvent.addListener(marker16, 'click', function() { marker16.openInfoWindowHtml("<div style='width: 205px; height: 55;'><div style='width: 205px; height: 55px;'><strong>Air Fiesta 2012</strong><br />Brownsville, TX</div></div>"); });
 	map.addOverlay(marker16);
 	
-
+	var marker17 = new GMarker(new GLatLng(30.685441,-97.675667));
+	GEvent.addListener(marker17, 'click', function() { marker17.openInfoWindowHtml("<div style='width: 205px; height: 55;'><div style='width: 205px; height: 55px;'><strong>Easter Egg Drop</strong><br />Georgetown, TX</div></div>"); });
+	map.addOverlay(marker17);
+	
+	var marker18 = new GMarker(new GLatLng(30.531437,-97.570524));
+	GEvent.addListener(marker18, 'click', function() { marker18.openInfoWindowHtml("<div style='width: 205px; height: 55;'><div style='width: 205px; height: 55px;'><strong>Veteran's Day Flyover</strong><br />Hutto, TX</div></div>"); });
+	map.addOverlay(marker18);
+	
       }
     }
 
