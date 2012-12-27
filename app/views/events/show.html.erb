@@ -62,11 +62,8 @@
   <p><%= sanitize(@event.details) %></p>
 <% end %>
 
-
-<% if session[:current_user] %>
-    <% if current_user.roles.first.name == 'superuser' %>
-      <%= link_to 'Edit', edit_event_path(@event) %> |
-      <%= link_to 'Back', events_path %> | 
-      <%= link_to 'Logout', logout_path, :method => :delete	%>
+<% if signed_in?%>
+    <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+      <%= link_to 'Edit', edit_event_path(@event) %> | <%= link_to 'Back', events_path %>
     <% end %>
 <% end %>

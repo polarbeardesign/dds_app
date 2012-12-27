@@ -31,6 +31,12 @@
 
 <br />
 
+<% if signed_in?%>
+    <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "photographer" } %>
+       <%= link_to 'New Gallery', new_gallery_path %>
+    <% end %>
+<% end %>
+
 <% if session[:current_user] %>
 <%= link_to 'New Gallery', new_gallery_path %>
 <% end %>

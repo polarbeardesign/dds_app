@@ -14,8 +14,8 @@
   <%= @video.source %>
 </p>
 
-
-<% if session[:current_user] %>
-<%= link_to 'Edit', edit_video_path(@video) %> |
-<%= link_to 'Back', videos_path %>
+<% if signed_in?%>
+    <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "photographer" } %>
+       <%= link_to 'Edit', edit_video_path(@video) %> | <%= link_to 'Back', videos_path %>
+    <% end %>
 <% end %>

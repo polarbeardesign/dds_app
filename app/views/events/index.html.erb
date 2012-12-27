@@ -29,6 +29,10 @@
 
 <br />
 
-<% if session[:current_user] %>
-<%= link_to 'New Event', new_event_path %>
+<% if signed_in?%>
+    <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+       <%= link_to 'New Event', new_event_path %>
+    <% end %>
 <% end %>
+
+

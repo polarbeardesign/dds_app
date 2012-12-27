@@ -26,8 +26,11 @@
 </div>
 <%= link_to 'Back to ' + @photo.gallery.gallery_name + ' Gallery', gallery_url(@photo.gallery_id) %>
 
-<% if session[:current_user] %>
-<%= link_to 'Edit', edit_photo_path(@photo) %> |
-<%= link_to 'Back', photos_path %>
+<% if signed_in?%>
+    <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "photographer" } %>
+       <%= link_to 'Edit', edit_photo_path(@photo) %> | <%= link_to 'Back', photos_path %>
+    <% end %>
 <% end %>
+
+
 </div>
