@@ -2,7 +2,7 @@
   <%= render "sidebars/members" %>
 <% end %>
 
-<h1>Members List</h1>
+<h1>Members List - [<%= @members.size %>]</h1> 
 
 <table width="500" class="table_border">
   <tr>
@@ -13,7 +13,17 @@
 
 <% @members.each do |member| %>
   <tr class="<%= cycle('odd_row', 'even_row') %>">
-    <td><%= member.last_name+", "+member.first_name %></td>
+    <td>
+    
+    <% if signed_in?%>
+      <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+        <%= link_to member.last_name+", "+member.first_name, edit_member_path(member) %>
+      <% else %>
+        <%= member.last_name+", "+member.first_name %>
+      <% end %>
+    <% end %>
+    
+    </td>
     <% if member.city? %>
       <td><%= member.city+", "+member.state %></td>
     <% else %>
@@ -23,3 +33,10 @@
   </tr>
 <% end %>
 </table>
+
+
+<% if signed_in?%>
+    <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+       <%= link_to 'New Member', new_member_path %>
+    <% end %>
+<% end %>
