@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Devil Dog Squadron :: </title>
+  <%#= stylesheet_link_tag    "application" %>
+  <%= stylesheet_link_tag 'web_style' %>
+  <%= javascript_include_tag "application" %>
+  <%#= csrf_meta_tags %>
+
+
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=AIzaSyA2CUo-V9LEi2YuJvh6F_Sf7NkmpXnC4yE"
+      type="text/javascript"></script>
+    <script type="text/javascript">
+    var map;
+    //<![CDATA[
+
+    function load() {
+      if (GBrowserIsCompatible()) {
+        map = new GMap2(document.getElementById("map"));
+        map.addControl(new GMapTypeControl());
+        map.addControl(new GSmallMapControl());
+        map.addControl(new GScaleControl());
+        map.setCenter(new GLatLng(38.0000, -97.0000), 4, G_NORMAL_MAP);
+
+
+	var marker1 = new GMarker(new GLatLng(25.9068333,-97.4258333));
+	GEvent.addListener(marker1, 'click', function() { marker1.openInfoWindowHtml("<div style='width: 205px; height: 55;'><div style='width: 205px; height: 55px;'><strong>Air Fiesta 2013</strong><br />Brownsville, TX</div></div>"); });
+	map.addOverlay(marker1);
+
+	var marker2 = new GMarker(new GLatLng(30.7389281,-98.2386102));
+	GEvent.addListener(marker2, 'click', function() { marker2.openInfoWindowHtml("<div style='width: 205px; height: 55;'><div style='width: 205px; height: 55px;'><strong>Bluebonnet Air Show</strong><br />Burnet, TX</div></div>"); });
+	map.addOverlay(marker2);
+
+	var marker3 = new GMarker(new GLatLng(31.1519004,-97.4076629));
+	GEvent.addListener(marker3, 'click', function() { marker3.openInfoWindowHtml("<div style='width: 205px; height: 55;'><div style='width: 205px; height: 55px;'><strong>Central Texas Airshow</strong><br />Temple, TX</div></div>"); });
+	map.addOverlay(marker3);
+
+	var marker4 = new GMarker(new GLatLng(32.0280556,-96.4005833));
+	GEvent.addListener(marker4, 'click', function() { marker4.openInfoWindowHtml("<div style='width: 205px; height: 55;'><div style='width: 205px; height: 55px;'><strong>15th Annual Corsicana Airsho</strong><br />Corsicana, TX</div></div>"); });
+	map.addOverlay(marker4);
+
+	var marker5 = new GMarker(new GLatLng(29.3591306,-99.1774917));
+	GEvent.addListener(marker5, 'click', function() { marker5.openInfoWindowHtml("<div style='width: 205px; height: 55;'><div style='width: 205px; height: 55px;'><strong>Hondo Air Field Fly-In</strong><br />Hondo, TX</div></div>"); });
+	map.addOverlay(marker5);
+
+	
+      }
+    }
+
+    //]]>
+    </script>
+
+</head>
+<body  onload="load(); startList();" onunload="GUnload()">
+
+<script language="JavaScript" type="text/JavaScript">
+startList = function() {
+if (document.all&&document.getElementById) {
+navRoot = document.getElementById("nav");
+for (i=0; i<navRoot.childNodes.length; i++) {
+node = navRoot.childNodes[i];
+if (node.nodeName=="LI") {
+node.onmouseover=function() {
+this.className+=" over";
+  }
+  node.onmouseout=function() {
+  this.className=this.className.replace(" over", "");
+   }
+   }
+  }
+ }
+}
+
+</script>
+
+<div id="page">
+
+<%= render 'layouts/header' %>
+
+<div id="main-area">
+
+  <div id="content">
+  
+  <div class="content-wide">
+
+      <%= yield %>
+
+  </div>
+  
+  </div>
+
+  </div>
+
+<%= render 'layouts/footer' %>
+
+<!-- Close main-area -->
+</div>
+
+<!-- Close page -->
+</div>
+
+
+</body>
+</html>
