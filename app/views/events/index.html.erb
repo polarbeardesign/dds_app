@@ -17,7 +17,7 @@
   <tr>
     <td colspan="2"><strong><em><%= event_type.title %></em></strong></td>
   </tr>
-<% event_type.events.published.ordered.each do |event| %>
+<% event_type.events.published.ordered.tease.each do |event| %>
   <tr class="<%= cycle('odd_row', 'even_row') %>">
     <td><%= event.start.strftime("%b %d, %Y") %></td>
     <td><%= link_to event.title, event %></td>
