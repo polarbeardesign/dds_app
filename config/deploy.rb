@@ -13,7 +13,7 @@ set :deploy_to, "/home/#{user}/dds_app"
 set :scm_verbose, true
 set :use_sudo, false
 
-# to overcome the "stdin: is not a tty\n" eror
+# to overcome the "stdin: is not a tty\n" error
 default_run_options[:pty] = true 
 
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
