@@ -63,6 +63,10 @@
 	GEvent.addListener(marker10, 'click', function() { marker10.openInfoWindowHtml("<div style='width: 205px; height: 55;'><div style='width: 205px; height: 55px;'><strong>San Patricio County Fly-In</strong><br />Ingleside, TX</div></div>"); });
 	map.addOverlay(marker10);
 
+	var marker11 = new GMarker(new GLatLng(47.7068611,-104.1925556));
+	GEvent.addListener(marker11, 'click', function() { marker11.openInfoWindowHtml("<div style='width: 205px; height: 55;'><div style='width: 205px; height: 55px;'><strong>Wings of Freedom III</strong><br />Sidney, MT</div></div>"); });
+	map.addOverlay(marker11);
+
 	
       }
     }
