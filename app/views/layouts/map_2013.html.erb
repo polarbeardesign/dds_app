@@ -67,6 +67,14 @@
 	GEvent.addListener(marker11, 'click', function() { marker11.openInfoWindowHtml("<div style='width: 205px; height: 55;'><div style='width: 205px; height: 55px;'><strong>Wings of Freedom III</strong><br />Sidney, MT</div></div>"); });
 	map.addOverlay(marker11);
 
+	var marker12 = new GMarker(new GLatLng(31.6378056,-97.0741389));
+	GEvent.addListener(marker12, 'click', function() { marker12.openInfoWindowHtml("<div style='width: 205px; height: 55;'><div style='width: 205px; height: 55px;'><strong>Heart of Texas Airshow</strong><br />Waco, TX</div></div>"); });
+	map.addOverlay(marker12);
+
+	var marker13 = new GMarker(new GLatLng(33.1770653,-96.5887667));
+	GEvent.addListener(marker13, 'click', function() { marker13.openInfoWindowHtml("<div style='width: 205px; height: 55;'><div style='width: 205px; height: 55px;'><strong>Dallas AirPower Expo</strong><br />McKinney, TX</div></div>"); });
+	map.addOverlay(marker13);
+
 	
       }
     }
