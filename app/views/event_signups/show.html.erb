@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Events:</b>
+  <%= @event_signup.event.title %>
+</p>
+
+<p>
+  <b>Members:</b>
+  <%= @event_signup.member.last_name %>
+</p>
+
+
+<%= link_to 'Edit', edit_event_signup_path(@event_signup) %> |
+<%= link_to 'Back', event_signups_path %>
