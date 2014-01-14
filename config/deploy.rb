@@ -44,14 +44,14 @@ role :db,  domain, :primary => true # This is where Rails migrations will run
 namespace :deploy do
   desc "symlink my db file"
   task :symlink_db_file, :roles => :app do
-    run "ln -s /home/#{user}/mm_app/shared/database.yml /home/#{user}/#{application}/current/config/database.yml"
+    run "ln -s /home/#{user}/#{application}/shared/database.yml /home/#{user}/#{application}/current/config/database.yml"
   end
 end
 
 namespace :deploy do
   desc "symlink my env file"
   task :symlink_env_file, :roles => :app do
-    run "ln -s /home/#{user}/mm_app/shared/production.rb /home/#{user}/#{application}/current/config/environments/production.rb"
+    run "ln -s /home/#{user}/#{application}/shared/production.rb /home/#{user}/#{application}/current/config/environments/production.rb"
   end
 end
 
