@@ -1,0 +1,36 @@
+<h1>Listing officer_positions</h1>
+
+<table>
+  <tr>
+    <th>Position name</th>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @officer_positions.each do |officer_position| %>
+  <tr>
+    <td><%= officer_position.position_name %></td>
+    <td><%= officer_position.description %></td>
+    <td><%= link_to 'Show', officer_position %></td>
+    <td><%= link_to 'Edit', edit_officer_position_path(officer_position) %></td>
+    <td><%= link_to 'Destroy', officer_position, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Officer position', new_officer_position_path %>
+
+<br />
+<br />
+
+<% @officer_positions.each do |officer_position| %>
+  <%= officer_position.position_name %>: 
+    <% officer_position.members.each do |member| %>
+      <%= member.first_name + " " + member.last_name %> 
+    <% end %>
+    <br />
+<% end %>

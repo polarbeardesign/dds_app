@@ -7,6 +7,8 @@ class Member < ActiveRecord::Base
   
 #  has_many :event_signups
   has_many :events, :through => :event_signups
+  has_many :terms
+  has_many :officer_positions, :through => :terms
 
   scope :active, where("members.active = 1")
 

@@ -3,16 +3,33 @@ create videos gallery - COMPLETED
 get picture galleries working - COMPLETED
 added users for each member, set password to 'welcome' - COMPLETED
 Granted each user members role - COMPLETED
-
+airshow signup - COMPLETED 140114
+airshow roster creation 
+  - member level
+  - member seniority
+  - assign position / notes?
+    - crew chief, aft crew, crew
+    - add pilots
+  - trip details
+    - wheels up
+    - notify people who signed up
+  - print out roster
+officers in database 
+  - officers positions table
+    - position_name, description
+  - terms table 
+    - term start, term end, position_id, member_id
+  
+parts reference db 
 
 
   120430:
   in members branch
-    galleries page working - maybe style in a table format
+    galleries page working - maybe style in a table format- COMPLETED
     gallery show page - working for pages with photos in multiples of 3
-      how to get a closing div if that's not the case
-    Need picture viewer mechanism
-      previous / next functionality on gallery sets
+      how to get a closing div if that's not the case- COMPLETED
+    Need picture viewer mechanism - COMPLETED
+      previous / next functionality on gallery sets - COMPLETED
 add members section - COMPLETED
 	members list - added in members branch
 added login and auth for section in members branch - COMPLETED
@@ -61,10 +78,10 @@ Calendar show page
 	  - some other format other than table?
 	  - show events that are slightly expired
 	access to past events to recreate as new events
-	add locations model (to assign location to event - event has one location, location belongs to event)
+COMPLETED add locations model (to assign location to event - event has one location, location belongs to event)
 
 !!Add user auth/roles
-	super/user - can do anything
+COMPLETED super/user - can do anything
 	admin - can administer some of the site
 	  - events
 	  - event_types
@@ -73,7 +90,7 @@ Calendar show page
 	  - news
 	  - users
 	  
-	members - can view info, post to bulletin board, flight sign up
+COMPLETED members - can view info, post to bulletin board, flight sign up
 	user?
 
     rights - specifies resource/operation [events/CREATE]
@@ -150,39 +167,3 @@ Guns: 12–18 × .50 in (12.7 mm) machine guns
 Hardpoints: 2,000 lb (900 kg) ventral shackles to hold one external Mark 13 torpedo[23]
 Rockets: racks for eight 5 in (130 mm) high velocity aircraft rockets (HVAR)
 Bombs: 3,000 lb (1,360 kg) bombs
-
-
-=========================
-for event signups on event show page
-=========================
-
-<%=  current_user.member.last_name %>
-<br />
-<% if session[:current_user] %>
-
-<p>Put me on the List</p>
-  <% if current_user.roles.first.name == 'member' %>
-    <%= button_to 'Definite', event_signups_path(:member_id =>current_user.member, :event_id => @event.id, :commitment_level => 'Definite') %>
-    <%= button_to 'Maybe', event_signups_path(:member_id =>current_user.member, :event_id => @event.id, :commitment_level => 'Maybe') %>
-  <% end %>
-
-<% end %>
-
-<table width="500" class="table_border">
-  <tr>
-    <th>Name</th>
-    <th>Commitment</th>
-    <th>Sign-up Date</th>
-  </tr>
-
-<% @event.event_signups.each do |event_signup| %>
-  <tr class="<%= cycle('odd_row', 'even_row') %>">
-    <td><%= event_signup.member.last_name %>, <%= event_signup.member.first_name %></td>
-    <td><%= event_signup.commitment_level %></td>
-    <td><%= event_signup.created_at.strftime("%b %d, %Y") %></td>
-  </tr>
-<% end %>
-</table>
-
-
-<br /><br />

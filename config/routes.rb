@@ -1,5 +1,7 @@
 DdsApp::Application.routes.draw do
 
+  resources :officer_positions
+
 #  devise_for :users
 
 #  devise_scope :user do

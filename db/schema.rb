@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120813170502) do
+ActiveRecord::Schema.define(:version => 20140114091055) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -41,6 +40,17 @@ ActiveRecord::Schema.define(:version => 20120813170502) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "event_signups", :force => true do |t|
+    t.integer  "event_id"
+    t.integer  "member_id"
+    t.string   "commitment_level"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "event_signups", ["event_id"], :name => "index_event_signups_on_event_id"
+  add_index "event_signups", ["member_id"], :name => "index_event_signups_on_member_id"
 
   create_table "event_types", :force => true do |t|
     t.string   "title"
@@ -139,6 +149,13 @@ ActiveRecord::Schema.define(:version => 20120813170502) do
     t.datetime "updated_at"
   end
 
+  create_table "officer_positions", :force => true do |t|
+    t.string   "position_name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "photographers", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -217,11 +234,33 @@ ActiveRecord::Schema.define(:version => 20120813170502) do
     t.datetime "updated_at"
   end
 
+  create_table "terms", :force => true do |t|
+    t.integer  "officer_position_id"
+    t.integer  "member_id"
+    t.date     "term_start"
+    t.date     "term_end"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "terms", ["member_id"], :name => "index_terms_on_member_id"
+  add_index "terms", ["officer_position_id"], :name => "index_terms_on_officer_position_id"
+
   create_table "users", :force => true do |t|
     t.string   "username"
     t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "email",                                 :null => false
+    t.string   "encrypted_password",                    :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
   end
 
   create_table "videos", :force => true do |t|

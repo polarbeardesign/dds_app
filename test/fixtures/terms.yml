@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  officer_position: 
+  member: 
+  term_start: 2014-01-14
+  term_end: 2014-01-14
+
+two:
+  officer_position: 
+  member: 
+  term_start: 2014-01-14
+  term_end: 2014-01-14

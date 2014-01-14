@@ -1,0 +1,13 @@
+<p>
+  <b>Position name:</b>
+  <%= @officer_position.position_name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @officer_position.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_officer_position_path(@officer_position) %> |
+<%= link_to 'Back', officer_positions_path %>
