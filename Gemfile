@@ -7,6 +7,7 @@ gem 'rails', '3.1.0'
 
 gem 'mysql2', '< 0.3.7'
 gem 'devise'
+gem 'json'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -14,7 +15,18 @@ gem 'devise'
 # Deploy with Capistrano
  gem 'capistrano'
 
+# Gems used only for assets and not required
+# in production environments by default.
+group :assets do
+  gem 'sass-rails',   '~> 3.1.5'
+  gem 'coffee-rails', '~> 3.1.1'
+  gem 'uglifier', '>= 1.0.3'
+end
+
 group :production do
+  gem 'execjs'
+  gem 'libv8', '3.3.10.4'
+  gem 'therubyracer', '0.10.2'
   gem 'rack-google_analytics', :require => "rack/google_analytics"
 end
 
