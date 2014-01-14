@@ -98,7 +98,7 @@ body {
 	margin-right: 4px; /*margin between top nav boxes - my code*/
 	margin-left: 4px; /*margin between top nav boxes - my code*/
 	padding-bottom: 4px; /*padding to display bottom of buttons - tweak to avoid gap*/
-	background: url('/assets/nav_button_1_black_0.gif') no-repeat top left; /*hover styles - my code */
+	background: url("/assets/nav_button_1_black_0.gif") no-repeat top left; /*hover styles - my code */
 }
 
 /* SECOND LEVEL CODE */
@@ -119,7 +119,7 @@ body {
 	margin-top: -1px;
 	padding-bottom: 10px;
 	padding-left: 24px; /* pads text within boxes */
-	background: #b78d03 url('/assets/nav_button_1_black_0.gif') no-repeat top center; /*hover styles - my code */
+	background: #b78d03 url("/assets/nav_button_1_black_0.gif") no-repeat top center; /*hover styles - my code */
 	border-left: 1px solid #666;
 	border-right: 1px solid #666;
 	border-bottom: 1px solid #666;
@@ -133,12 +133,12 @@ body {
 	left: auto;
 }
 #nav li:hover, #nav li.sfhover {/* hover styles - my code */
-	background: #b78d03 url('/assets/nav_button_1_black_1.gif') no-repeat top left;
+	background: #b78d03 url("/assets/nav_button_1_black_1.gif") no-repeat top left;
 
 }
 
 #nav li ul li:hover, #nav li ul li.sfhover {/* hover styles - my code */
-	background: #b78d03 url('/assets/nav_button_1_black_1.gif') no-repeat top center;
+	background: #b78d03 url("/assets/nav_button_1_black_1.gif") no-repeat top center;
 }
 
 
