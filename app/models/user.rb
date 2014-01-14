@@ -6,11 +6,13 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :username, :email, :password, :password_confirmation, :remember_me
 
   validates_uniqueness_of :username
 
   has_many :assignments, :dependent => :destroy
+  accepts_nested_attributes_for :assignments
+
   has_many :roles, :through => :assignments
 
 #  def self.current_user
@@ -21,7 +23,11 @@ class User < ActiveRecord::Base
     roles.includes(:rights).for(action, resource).any?
   end
 
-  has_one :member
-  accepts_nested_attributes_for :member
+#  belongs_to :member
+
+
+  has_one :member, :dependent => :destroy
+#  accepts_nested_attributes_for :member, :allow_destroy => true
+
 
 end

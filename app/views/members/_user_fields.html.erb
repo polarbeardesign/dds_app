@@ -1,0 +1,6 @@
+    <%= f.label :username, "Email" %><br />
+    <%= f.text_field :username %>
+    
+  <%= f.fields_for :assignments do |builder| %>
+    <%= render "assignment_fields", :f => builder %> 
+  <% end %>

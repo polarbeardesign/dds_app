@@ -702,3 +702,12 @@ img.fr {
   background: #ffbbad;
   border: 1px solid #990000;
   }
+
+.signup_buttons {
+  margin: 0 0 0 15em;
+  }
+
+.signup_buttons form, .signup_buttons div {
+    display: inline;
+}
+

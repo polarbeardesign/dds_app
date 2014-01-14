@@ -94,8 +94,9 @@
 <div class="indent_row">
   <div class="cell">
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
+  <%= f.fields_for :user do |builder| %>
+        <%= render "user_fields", :f => builder %> 
+  <% end %>
   </div>
   </div>
 </div>
@@ -115,9 +116,7 @@
     <%= f.date_select :dd_dues_date %>
   </div>
    </div>
-</div> 
-  
-  
+</div>
   
 <div class="clearer"></div>
 

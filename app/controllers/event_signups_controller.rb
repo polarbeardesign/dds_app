@@ -1,6 +1,9 @@
 class EventSignupsController < ApplicationController
   # GET /event_signups
   # GET /event_signups.json
+
+skip_before_filter :check_authorization, :check_authentication
+
   def index
     @event_signups = EventSignup.all
 
@@ -40,16 +43,11 @@ class EventSignupsController < ApplicationController
   # POST /event_signups
   # POST /event_signups.json
   def create
-    @event_signup = EventSignup.new(params[:event_signup])
-
-#      event_id = Event.find(params[:event_id])
-#      member_id = Member.find(params[:member_id])
-    # standard create call
-    #  @line_item = @cart.add_product(product.id)
+    @event_signup = EventSignup.new(params)
 
     respond_to do |format|
       if @event_signup.save
-        format.html { redirect_to @event_signup, :notice => 'Event signup was successfully created.' }
+        format.html { redirect_to event_path(params[:event_id]), :notice => 'Event signup was successfully created.' }
         format.json { render :json => @event_signup, :status => :created, :location => @event_signup }
       else
         format.html { render :action => "new" }
