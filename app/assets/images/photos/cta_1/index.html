@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<meta http-equiv=Content-Type content="text/html;charset=SHIFT_JIS">
+<META http-equiv="Content-Style-Type" content="text/css">
+<head>
+  <title>Central Texas Airshow 2006</title>
+</head>
+<body bgcolor="#000000" text="#333333" link="#333333" vlink="#333333">
+
+
+<center><b>
+<font size="2" face="Verdana, Arial, Helvetica, sans-serif" color="#333333">Central Texas Airshow 2006</font>
+
+<p></p>
+
+
+<script language="JavaScript">
+<!--
+total_images =16; // enter the number of images you have
+suffix = "jpg"; // enter "gif", "jpeg", or "jpg", etc
+graphics_directory = ""; // enter path to graphics directory (or just leave blank)
+show_captions = true; // change to false to hide captions
+
+function initArray() {
+ this.length = initArray.arguments.length;
+ for (n=0; n<initArray.arguments.length; n++)
+  this[n] = initArray.arguments[n];
+ return this;
+}
+
+if (show_captions) {
+ // ****************************************
+ // enter the list of captions here in order
+ captions = new initArray( 
+
+"1 of 23",
+"2 of 23",
+"3 of 23",
+"4 of 23",
+"5 of 23",
+"6 of 23",
+"7 of 23",
+"8 of 23",
+"9 of 23",
+"10 of 23",
+"11 of 23",
+"12 of 23",
+"13 of 23",
+"14 of 23",
+"15 of 23",
+"16 of 23",
+"17 of 23",
+"18 of 23",
+"19 of 23",
+"20 of 23",
+"21 of 23",
+"22 of 23",
+"23 of 23"
+);
+
+ }
+
+x = 1;
+
+function slider(n) {
+ x += n;
+ if (x == total_images + 1)
+  x = 1;
+ else if (x == 0)
+  x = total_images;
+ if (document.images) {
+  document.slideshow.src = graphics_directory + "IMG" + x + "." + suffix;
+  if (show_captions)
+   document.form1.caption.value = captions[x-1];
+ } else {
+  alert("You must have Netscape 3 or greater or MSIE 4 "
+   + "or greater for this script to function.");
+ }
+}
+
+document.write('<table width=500 border=0><tr><td><img src=../../web_images/shim.gif width=1 height=500></td><td align=center><img src="'+graphics_directory+'IMG1.'
+ + suffix+'" name="slideshow" border=2></td><td>&nbsp;</td></tr><tr><td colspan=3 align=center>'
+ + '<form name="form1">'
+ + (show_captions ?'<textarea align=center name="caption" rows=2 cols=60 wrap=virtual>'+captions[x-1]+'</textarea><br>':"")
+ + '<input type=button value="back" onClick = "slider(-1)">'
+ + '<input type=button value="next" onClick = "slider(1)"></form></td></tr></table>');
+
+// -->
+</script>
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-478868-3";
+urchinTracker();
+</script>
+</body>
+</html>
