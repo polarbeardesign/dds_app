@@ -15,7 +15,7 @@ gem 'json'
 # gem 'unicorn'
 
 # Deploy with Capistrano
- gem 'capistrano'
+ gem 'capistrano', '< 2.15.5'
 
 # Gems used only for assets and not required
 # in production environments by default.
