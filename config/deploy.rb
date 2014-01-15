@@ -1,3 +1,6 @@
+# Capistrano (v2.8.0 and above) includes a recipe to handle Precompiling Assets in deployment.
+load 'deploy/assets'
+
 set :user, 'polarbea'
 set :domain, 'dd.polarbeardesign.net'
 #set :user, 'devildog'
@@ -44,7 +47,7 @@ role :db,  domain, :primary => true # This is where Rails migrations will run
 namespace :deploy do
   desc "symlink my db file"
   task :symlink_db_file, :roles => :app do
-    run "ln -s /home/#{user}/#{application}/shared/database.yml /home/#{user}/#{application}/current/config/database.yml"
+    run "ln -s /home/#{user}/#{application}/shared/database.yml /home/#{user}/#{application}/#{latest_release}/config/database.yml"
   end
 end
 
@@ -59,6 +62,4 @@ end
  require "bundler/capistrano"
  set :bundle_flags,    "--deployment --quiet"
  
-# Capistrano (v2.8.0 and above) includes a recipe to handle Precompiling Assets in deployment.
-# load 'deploy/assets'
 
