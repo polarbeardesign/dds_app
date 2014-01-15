@@ -1,9 +1,3 @@
-Add Google analytics - COMPLETED
-create videos gallery - COMPLETED
-get picture galleries working - COMPLETED
-added users for each member, set password to 'welcome' - COMPLETED
-Granted each user members role - COMPLETED
-airshow signup - COMPLETED 140114
 airshow roster creation 
   - member level
   - member seniority
@@ -14,13 +8,37 @@ airshow roster creation
     - wheels up
     - notify people who signed up
   - print out roster
-officers in database 
+
+parts reference db 
+
+Add google map preview where links are
+add datepicker
+add email to add member form
+clean up edit account
+create dues reminder mechanism (CHRON)
+add picture upload capability
+add facebook feed?
+add documentation
+add silhouette quiz
+
+
+
+
+
+Add Google analytics - COMPLETED
+create videos gallery - COMPLETED
+get picture galleries working - COMPLETED
+added users for each member, set password to 'welcome' - COMPLETED
+Granted each user members role - COMPLETED
+airshow signup - COMPLETED 140114
+
+officers in database - COMPLETED 140114
   - officers positions table
     - position_name, description
   - terms table 
     - term start, term end, position_id, member_id
   
-parts reference db 
+
 
 
   120430:
@@ -71,7 +89,7 @@ Add sidebars to pages w/o any
 Add events map showing event locations (differentiate from past and present)
 
 Calendar show page
-	add google map?
+	add google map? - COMPLETED
 	index page
 	  - if no event for category, don't show category
 	    - pluralize category heading

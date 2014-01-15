@@ -84,6 +84,7 @@
 <table width="500" class="table_border">
   <tr>
     <th>Name</th>
+    <th>Col. No.</th>
     <th>Commitment</th>
     <th>Sign-up Date</th>
   </tr>
@@ -91,6 +92,7 @@
 <% @event.event_signups.ordered.each do |event_signup| %>
   <tr class="<%= cycle('odd_row', 'even_row') %>">
     <td><%= event_signup.member.last_name %>, <%= event_signup.member.first_name %></td>
+    <td><%= event_signup.member.caf_col_no %></td>
     <td><%= event_signup.commitment_level %></td>
     <td><%= event_signup.created_at.strftime("%b %d, %Y %H:%M %p") %></td>
   </tr>
