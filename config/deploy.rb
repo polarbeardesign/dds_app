@@ -51,6 +51,8 @@ namespace :deploy do
   end
 end
 
+before "deploy:assets:precompile", "deploy:symlink_db_file"
+
 namespace :deploy do
   desc "symlink my env file"
   task :symlink_env_file, :roles => :app do
