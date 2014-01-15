@@ -30,6 +30,7 @@ role :db,  domain, :primary => true # This is where Rails migrations will run
 #role :db,  "your slave db-server here"
 
 # if you want to clean up old releases on each deploy uncomment this:
+ before "deploy:assets:precompile", "deploy:symlink_db_file"
  after "deploy:restart", "deploy:cleanup", "deploy:symlink_env_file"
 
 # if you're still using the script/reaper helper you will need
@@ -37,28 +38,24 @@ role :db,  domain, :primary => true # This is where Rails migrations will run
 
 # If you are using Passenger mod_rails uncomment this:
  namespace :deploy do
+
    task :start do ; end
    task :stop do ; end
    task :restart, :roles => :app, :except => { :no_release => true } do
      run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
    end
- end
 
-namespace :deploy do
   desc "symlink my db file"
   task :symlink_db_file, :roles => :app do
     run "ln -s /home/#{user}/#{application}/shared/database.yml #{latest_release}/config/database.yml"
   end
-end
 
-before "deploy:assets:precompile", "deploy:symlink_db_file"
 
-namespace :deploy do
   desc "symlink my env file"
   task :symlink_env_file, :roles => :app do
     run "ln -s /home/#{user}/#{application}/shared/production.rb /home/#{user}/#{application}/current/config/environments/production.rb"
   end
-end
+
 
 # causes bundle install to run
  require "bundler/capistrano"
