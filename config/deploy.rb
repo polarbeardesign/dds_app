@@ -32,7 +32,6 @@ role :db,  domain, :primary => true # This is where Rails migrations will run
 
 
 # if you want to clean up old releases on each deploy uncomment this:
-
  after "deploy:restart", "deploy:cleanup", "deploy:symlink_env_file"
 
 # if you're still using the script/reaper helper you will need
@@ -48,7 +47,7 @@ role :db,  domain, :primary => true # This is where Rails migrations will run
      run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
    end
 
-  desc "symlink my db file"
+  desc "symlink the db file"
   task :symlink_db_file do
     run "ln -s /home/#{user}/#{application}/shared/database.yml #{latest_release}/config/database.yml"
   end
