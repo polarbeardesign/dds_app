@@ -60,5 +60,5 @@ end
  set :bundle_flags,    "--deployment --quiet"
  
 # Capistrano (v2.8.0 and above) includes a recipe to handle Precompiling Assets in deployment.
- load 'deploy/assets'
+# load 'deploy/assets'
 
