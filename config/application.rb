@@ -35,6 +35,8 @@ module DdsApp
 
     # JavaScript files you want as :defaults (application.js is always included).
     # config.action_view.javascript_expansions[:defaults] = %w(jquery rails)
+    
+    config.i18n.enforce_available_locales = false
 
     # Enable the asset pipeline
     config.assets.enabled = true
