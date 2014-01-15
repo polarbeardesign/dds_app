@@ -55,7 +55,7 @@ role :db,  domain, :primary => true # This is where Rails migrations will run
   task :symlink_env_file, :roles => :app do
     run "ln -s /home/#{user}/#{application}/shared/production.rb /home/#{user}/#{application}/current/config/environments/production.rb"
   end
-
+end
 
 # causes bundle install to run
  require "bundler/capistrano"
