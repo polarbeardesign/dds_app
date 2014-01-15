@@ -67,6 +67,8 @@
 
 <br />
 
+<% if @event.event_type.title == "Air Show" %>
+
 <% if current_user %>
 
 <p>Put me on the List for this airshow</p>
@@ -95,5 +97,4 @@
 <% end %>
 </table>
 <% end %>
-
-<br /><br />
+<% end %>

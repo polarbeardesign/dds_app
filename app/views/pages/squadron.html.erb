@@ -1,3 +1,4 @@
+<% last_position = "" %>
 <% content_for :sidebar do %>
   <%= render "sidebars/calendar" %>
 <% end %>
@@ -16,7 +17,7 @@
 
 <p>We are always looking for new members. There is a lot of work to do, but we have fun doing it. And it's not all work in the hangar. Members have the opportunity travel with the Dog to airshows. </p>
 
-<p>If you would like to join the squadron, membership is open to all CAF members. If you are not yet a member of the CAF, you can learn more about the benefits of membership, and download an application form, at the <a href="http://www.commemorativeairforce.org/membership/index.html">CAF's membership web page</a>.</p>
+<p>If you would like to join the squadron, membership is open to all CAF members. If you are not yet a member of the CAF, you can learn more about the benefits of membership, and download an application form, at the <a href="http://commemorativeairforce.org/?page=cms/index&cms_page=1253">CAF's membership web page</a>.</p>
 
 <h2>Base of Operations</h2>
 
@@ -28,6 +29,8 @@
 209 Corsair Drive<br />
 Georgetown, TX 78628</p>
 
+<p>[<a href="http://maps.google.com/maps?q=30.685441,+-97.675667">Google Map</a>]</p>
+
 </blockquote>
            
 
@@ -38,34 +41,19 @@ Georgetown, TX 78628</p>
         <th>Position</th>
         <th>Officer</th>
     </tr>
-    <tr> 
-        <td class="white_row">Unit Leader</td>
-        <td class="white_row">Gregg Peterson</td>
+   <% @officer_positions.each do |officer_position| %>
+   <tr class="<%= cycle('white_row', 'yellow_row') %>">
+     <td><%= officer_position.position_name %>: </td>
+     <td><% officer_position.members.each do |member| %>
+      <% if last_position == officer_position.position_name %>
+        /
+       <% end %>
+      <%= member.first_name + " " + member.last_name %>
+      <% last_position = officer_position.position_name %>
+    <% end %>
+    </td>
     </tr>
-    <tr> 
-        <td class="yellow_row">Executive Officer</td>
-        <td class="yellow_row">Kevin Reick</td>
-    </tr>
-    <tr> 
-        <td class="white_row">Finance Officer</td>
-        <td class="white_row">Kevin Reick / Beth Jenkins</td>
-    </tr>
-    <tr> 
-        <td class="yellow_row">Adjutant</td>
-        <td class="yellow_row">Phil Clark</td>
-    </tr>
-    <tr> 
-        <td class="white_row">Operations Officer</td>
-        <td class="white_row">Beth Jenkins</td>
-    </tr>
-    <tr> 
-        <td class="yellow_row">Maintenance Officer</td>
-        <td class="yellow_row">Ira Menin</td>
-    </tr>
-    <tr> 
-        <td class="white_row">Safety Officer</td>
-        <td class="white_row">Daryl Dressler</td>
-    </tr>
+<% end %>
 </table>
             <p>If you have any questions or comments, please send us an email 
               at <a href="mailto:info@devildogsquadron.com">info@devildogsquadron.com</a></p>

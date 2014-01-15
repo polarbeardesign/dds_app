@@ -28,6 +28,7 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:home,
 
   def squadron
     @events = Event.published.ordered.tease
+    @officer_positions = OfficerPosition.all
   end
 
   def member_home

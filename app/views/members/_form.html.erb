@@ -11,34 +11,33 @@
     </div>
   <% end %>
 
-
-
+<div class="indent_row">
+<h3>Login Info</h3>
+  <%= f.fields_for :user do |builder| %>
+        <%= render "user_fields", :f => builder %> 
+  <% end %>
+</div>
 
 <div class="indent_row">
+<h3>Contact Info</h3>
   <div class="cell">
   <div class="field">
-    <%= f.label :active %><br />
-    <%= f.check_box :active %>
-  </div>
-</div>
-<div class="indent_row">
-  <div class="field">
     <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
+    <%= f.text_field :first_name, :size => '20' %>
   </div>
   <div class="field">
     <%= f.label :street_1 %><br />
-    <%= f.text_field :street_1 %>
+    <%= f.text_field :street_1, :size => '20' %>
   </div>
   </div>
   <div class="cell">  
   <div class="field">
     <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
+    <%= f.text_field :last_name, :size => '20' %>
   </div>
   <div class="field">
     <%= f.label :street_2 %><br />
-    <%= f.text_field :street_2 %>
+    <%= f.text_field :street_2, :size => '20' %>
   </div>
   </div>
 </div>
@@ -49,7 +48,7 @@
   <div class="cell">
   <div class="field">
     <%= f.label :city %><br />
-    <%= f.text_field :city %>
+    <%= f.text_field :city, :size => '20' %>
   </div>
   </div>
   <div class="cell">
@@ -92,35 +91,30 @@
 <div class="clearer"></div>
 
 <div class="indent_row">
-  <div class="cell">
-  <div class="field">
-  <%= f.fields_for :user do |builder| %>
-        <%= render "user_fields", :f => builder %> 
-  <% end %>
-  </div>
-  </div>
-</div>
-
-<div class="clearer"></div>
-
-<div class="indent_row">
+<h3>CAF Info</h3>
   <div class="cell">
   <div class="field">
     <%= f.label :caf_col_no, "CAF Col #" %><br />
-    <%= f.number_field :caf_col_no %>
+    <%= f.text_field :caf_col_no, :size => '15' %>
   </div>
   </div>
   <div class="cell">
   <div class="field">
     <%= f.label :dd_dues_date, "Dues Date" %><br />
-    <%= f.date_select :dd_dues_date %>
+    <%= f.text_field :dd_dues_date, :size => '15' %>
   </div>
    </div>
+  <div class="cell">
+  <div class="field">
+    <%= f.label :active %><br />
+    <%= f.check_box :active %>
+  </div>
+</div>
 </div>
   
 <div class="clearer"></div>
 
-  <div class="actions">
+  <div class="actions" style="text-align: center;">
     <%= f.submit %>
   </div>
 <% end %>

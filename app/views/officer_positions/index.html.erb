@@ -1,3 +1,4 @@
+<% last_position = "" %>
 <h1>Listing officer_positions</h1>
 
 <table>
@@ -30,7 +31,11 @@
 <% @officer_positions.each do |officer_position| %>
   <%= officer_position.position_name %>: 
     <% officer_position.members.each do |member| %>
+      <% if last_position == officer_position.position_name %>
+        /
+       <% end %>
       <%= member.first_name + " " + member.last_name %> 
+      <% last_position = officer_position.position_name %>
     <% end %>
     <br />
 <% end %>

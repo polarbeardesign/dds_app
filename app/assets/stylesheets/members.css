@@ -2,3 +2,14 @@
   Place all the styles related to the matching controller here.
   They will automatically be included in application.css.
 */
+
+input, textarea {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 1.25em;
+  padding: 0.25em 0.5em;
+  background: #e2ecee;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  }
