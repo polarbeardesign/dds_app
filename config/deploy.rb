@@ -30,7 +30,7 @@ role :db,  domain, :primary => true # This is where Rails migrations will run
 #role :db,  "your slave db-server here"
 
 # if you want to clean up old releases on each deploy uncomment this:
- after "deploy:restart", "deploy:cleanup" , "deploy:symlink_db_file", "deploy:symlink_env_file"
+ after "deploy:restart", "deploy:cleanup", "deploy:symlink_env_file"
 
 # if you're still using the script/reaper helper you will need
 # these http://github.com/rails/irs_process_scripts
