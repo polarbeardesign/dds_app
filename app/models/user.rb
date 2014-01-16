@@ -25,9 +25,10 @@ class User < ActiveRecord::Base
 
 #  belongs_to :member
 
-
+  
   has_one :member, :dependent => :destroy
 #  accepts_nested_attributes_for :member, :allow_destroy => true
 
+  scope :member_ordered, joins(:member).merge(Member.ordered)
 
 end
