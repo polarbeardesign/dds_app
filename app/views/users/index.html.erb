@@ -1,26 +1,23 @@
-<h1>Listing Users</h1>
+<h1>Users</h1>
 
+<p>Users is the name of login account information. This table displays account creation date, usernames, roles and last login.</p>
 <table width="550" class="table_border">
   <tr>
-    <th>Date</th>
+    <th>Created</th>
     <th>Username</th>
     <th>Roles</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Last Login</th>
   </tr>
 
 <% @users.each do |user| %>
   <tr>
     <td><%= user.created_at.strftime("%b %d, %Y") %></td>
-    <td><%= user.username %></td>
+    <td><%= link_to user.username, edit_user_path(user) %><br /><%= user.member.last_name + ", " + user.member.first_name %></td>
     <td><% user.roles.each do |role| %>
         <%= role.name %> 
       <% end %>
     </td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><% if !user.last_sign_in_at.nil? %><%= user.last_sign_in_at.strftime("%b %d, %Y %H:%M") + " [" + user.sign_in_count.to_s + "]" %><% end %></td>
   </tr>
 <% end %>
 </table>
