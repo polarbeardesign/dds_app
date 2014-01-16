@@ -17,6 +17,15 @@
         <%= render "user_fields", :f => builder %> 
   <% end %>
 </div>
+<div class="clearer"></div>
+<% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+<div class="indent_row">
+<h3>Website Role(s)</h3>
+  <% @member.user.roles.each do |role| %>
+    <%= link_to role.name, role_path(role) %>
+  <% end %>
+</div>
+<% end %>
 
 <div class="indent_row">
 <h3>Contact Info</h3>

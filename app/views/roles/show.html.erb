@@ -1,27 +1,18 @@
-<p id="notice"><%= notice %></p>
 
-<div class="form_row">
+<h1>Role Name:</em> <%= @role.name %></h1>
 
-<div class="form_cell">
-<p><em>ID:</em> <%= @role.id %><br />
-</div>
-<div class="form_cell">
-<p><em>Name:</em> <%= @role.name %><br />
-</div>
-
-</div>
-
+<p><%= @role.name %> has permission to do the following:</p>
 <% @role.rights.unique_resources.ordered.each do |right| %>
   <p><strong><%= right.resource %></strong></p>
     <div class="indent_row">
     <% @role.rights.ordered_ops.each do |operation| %>
       <% if operation.resource == right.resource %>
-        <%= check_box_tag operation, :true %><%= operation.operation %>
+        <%= check_box_tag operation, 1, :checked %><%= operation.operation %>
       <% end %>
     <% end %>
       </div><div class="clearer"></div>
 <% end %>
 </table>
 
-<%= link_to 'Edit', edit_role_path(@role) %> |
-<%= link_to 'Back', roles_path %>
+<%#= link_to 'Edit', edit_role_path(@role) %>
+<%#= link_to 'Back', roles_path %>
