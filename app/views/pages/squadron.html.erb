@@ -41,6 +41,7 @@ Georgetown, TX 78628</p>
         <th>Position</th>
         <th>Officer</th>
     </tr>
+<<<<<<< HEAD
    <% @officer_positions.each do |officer_position| %>
    <tr class="<%= cycle('white_row', 'yellow_row') %>">
      <td><%= officer_position.position_name %>: </td>
@@ -52,6 +53,35 @@ Georgetown, TX 78628</p>
       <% last_position = officer_position.position_name %>
     <% end %>
     </td>
+=======
+    <tr> 
+        <td class="white_row">Unit Leader</td>
+        <td class="white_row">Mark Frederick</td>
+    </tr>
+    <tr> 
+        <td class="yellow_row">Executive Officer</td>
+        <td class="yellow_row">Kevin Reick</td>
+    </tr>
+    <tr> 
+        <td class="white_row">Finance Officer</td>
+        <td class="white_row">Kevin Reick / Beth Jenkins</td>
+    </tr>
+    <tr> 
+        <td class="yellow_row">Adjutant</td>
+        <td class="yellow_row">Phil Clark</td>
+    </tr>
+    <tr> 
+        <td class="white_row">Operations Officer</td>
+        <td class="white_row">Beth Jenkins</td>
+    </tr>
+    <tr> 
+        <td class="yellow_row">Maintenance Officer</td>
+        <td class="yellow_row">Ira Menin</td>
+    </tr>
+    <tr> 
+        <td class="white_row">Safety Officer</td>
+        <td class="white_row">Daryl Dressler</td>
+>>>>>>> 51c669f09cb8b54357954c76f95e3f03b88b98db
     </tr>
 <% end %>
 </table>
