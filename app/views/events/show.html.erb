@@ -64,39 +64,3 @@
     <% end %>
 <% end %>
 
-
-<br />
-
-<% if @event.event_type.title == "Air Show" %>
-
-<% if current_user %>
-
-<p>Put me on the List for this airshow</p>
-  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "member"} %>
-    <div class="signup_buttons">
-      <%= button_to 'Definite', event_signups_path(:member_id => current_user.member, :event_id => @event.id, :commitment_level => "Definite") %>
-      <%= button_to 'Maybe', event_signups_path(:member_id => current_user.member, :event_id => @event.id, :commitment_level => 'Maybe') %>
-    </div>
-  <% end %>
-
-
-
-<table width="500" class="table_border">
-  <tr>
-    <th>Name</th>
-    <th>Col. No.</th>
-    <th>Commitment</th>
-    <th>Sign-up Date</th>
-  </tr>
-
-<% @event.event_signups.ordered.each do |event_signup| %>
-  <tr class="<%= cycle('odd_row', 'even_row') %>">
-    <td><%= event_signup.member.last_name %>, <%= event_signup.member.first_name %></td>
-    <td><%= event_signup.member.caf_col_no %></td>
-    <td><%= event_signup.commitment_level %></td>
-    <td><%= event_signup.created_at.strftime("%b %d, %Y %H:%M %p") %></td>
-  </tr>
-<% end %>
-</table>
-<% end %>
-<% end %>
