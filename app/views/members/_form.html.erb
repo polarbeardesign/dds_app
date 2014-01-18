@@ -21,10 +21,23 @@
 <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
 <div class="indent_row">
 <h3>Website Role(s)</h3>
-  <% @member.user.roles.each do |role| %>
-    <%= link_to role.name, role_path(role) %>
-  <% end %>
+<div class="indent_row">
+    <% @roles.each.each_with_index do |role, i| %>
+    <% if i == 0 %>
+      <div class="cell">
+    <% end %>
+      <%= check_box_tag('role_list[]', role.id, @member.user.roles.collect {|obj| obj.id}.include?(role.id)) %><%= role.name %><br />
+    <% if i == 2 %>
+      </div>
+      <div class="cell">
+    <% end %>
+    <% if i == 5 %>
+      </div>
+      <div class="cell">
+    <% end %>
+    <% end %>
 </div>
+</div></div>
 <% end %>
 
 <div class="indent_row">
@@ -124,6 +137,6 @@
 <div class="clearer"></div>
 
   <div class="actions" style="text-align: center;">
-    <%= f.submit %>
+    <%= submit_tag  "Update Member", :name => "Update Member" %>
   </div>
 <% end %>

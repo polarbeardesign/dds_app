@@ -4,19 +4,11 @@
     <%= f.label :email %><br />
     <%= f.text_field :email, :size => '20'  %>
   </div>
-  <div class="field">
-    <%= f.label :password, 'Password' %><br />
-    <%= f.password_field :password, :size => '20', :title => "We ask for your age only for statistical purposes."  %>
-  </div>
   </div>
   <div class="cell">
   <div class="field">
     <%= f.label :username, "Login Username" %><br />
     <%= f.text_field :username, :size => '20'  %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation, 'Confirm' %><br />
-    <%= f.password_field :password_confirmation, :size => '20'  %>
   </div>
   <%= f.fields_for :assignments do |builder| %>
     <%= render "assignment_fields", :f => builder %> 

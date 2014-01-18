@@ -77,6 +77,7 @@ class MembersController < ApplicationController
   # GET /members/1/edit
   def edit
     @member = Member.find(params[:id])
+    @roles = Role.find(:all)
   end
 
   # POST /members
@@ -99,10 +100,35 @@ class MembersController < ApplicationController
   # PUT /members/1.json
   def update
     @member = Member.find(params[:id])
-    @user = current_user
+#    @user = @member.user.id
+
+    @roles = Role.find(:all)
+
+    checked_roles = []
+    checked_params = params[:role_list] || []
+    for check_box_id in checked_params
+      role = Role.find(check_box_id)
+      if not @member.user.roles.include?(role)
+        @member.user.roles << role
+      end
+      checked_roles << role
+    end
+    missing_roles = @roles - checked_roles
+    for role in missing_roles
+      if @member.user.roles.include?(role)
+        @member.user.roles.delete(role)
+      end
+    end
 
     respond_to do |format|
       if @member.update_attributes(params[:member])
+        format.html { redirect_to @member, :notice => 'Member was successfully updated.' }
+        format.json { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.json { render :json => @member.errors, :status => :unprocessable_entity }
+      end
+      if @member.update_attributes(params[:account])
         format.html { redirect_to account_path(@user.member.id), :notice => 'Member was successfully updated.' }
         format.json { head :ok }
       else
