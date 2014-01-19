@@ -2,6 +2,12 @@
   <%= render "sidebars/newsletter_signup" %>
 <% end %>
 
+<% if signed_in?%>
+    <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+      <%= link_to 'Edit', edit_event_path(@event) %> | <%= link_to 'Back', events_path %>
+    <% end %>
+<% end %>
+
 <div id="calendar">
   <div id="calendar_year">
     <%= @event.start.strftime("%Y") %>
@@ -57,13 +63,8 @@
 <% if @event.details? %>
   <p><%= sanitize(@event.details) %></p>
 <% end %>
-
-<% if signed_in?%>
-    <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
-      <%= link_to 'Edit', edit_event_path(@event) %> | <%= link_to 'Back', events_path %>
-    <% end %>
-<% end %>
-<br />
+<div style="clear: both;"></div>
+<hr />
 
 <% if @event.event_type.title == "Air Show" %>
 
