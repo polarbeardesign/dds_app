@@ -5,8 +5,11 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:index
   # GET /events
   # GET /events.xml
   def index
-    @events = Event.published.ordered.all
-    @event_types = EventType.all
+    @meetings = Event.meeting.ordered.published.tease.all
+    @air_shows = Event.air_show.confirmed.ordered.published.tease.all
+    @special = Event.special.ordered.published.tease.all
+    @maint = Event.maint.ordered.published.tease.all
+
 
     respond_to do |format|
       format.html # index.html.erb

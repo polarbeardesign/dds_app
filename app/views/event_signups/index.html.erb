@@ -9,7 +9,7 @@
     <th></th>
   </tr>
 
-<% @event_signups.events.uniq.title.each do |event_signup| %>
+<% @event_signups.each do |event_signup| %>
   <tr>
     <td><%= event_signup.event.title %></td>
     <td><%= event_signup.member.last_name %></td>

@@ -1,3 +1,5 @@
+<% current_event_type = "" %>
+
 <% content_for :sidebar do %>
   <%= render "sidebars/newsletter_signup" %>
 <% end %>
@@ -13,18 +15,59 @@
     <th>Title</th>
   </tr>
 
-<% @event_types.each do |event_type| %>
+<% @meetings.each do |event| %>
+<% if current_event_type != event.event_type.title %>
   <tr>
-    <td colspan="2"><strong><em><%= event_type.title %></em></strong></td>
+    <td colspan="2"><strong><em><%= event.event_type.title %></em></strong></td>
   </tr>
-<% event_type.events.published.ordered.tease.each do |event| %>
+<% end %>
   <tr class="<%= cycle('odd_row', 'even_row') %>">
     <td><%= event.start.strftime("%b %d, %Y") %></td>
     <td><%= link_to event.title, event %></td>
   </tr>
+<% current_event_type = event.event_type.title %>
 <% end %>
 
+<% @air_shows.each do |event| %>
+<% if current_event_type != event.event_type.title %>
+  <tr>
+    <td colspan="2"><strong><em><%= event.event_type.title %></em></strong></td>
+  </tr>
 <% end %>
+  <tr class="<%= cycle('odd_row', 'even_row') %>">
+    <td><%= event.start.strftime("%b %d, %Y") %></td>
+    <td><%= link_to event.title, event %></td>
+  </tr>
+<% current_event_type = event.event_type.title %>
+<% end %>
+
+<% @special.each do |event| %>
+<% if current_event_type != event.event_type.title %>
+  <tr>
+    <td colspan="2"><strong><em><%= event.event_type.title %></em></strong></td>
+  </tr>
+<% end %>
+  <tr class="<%= cycle('odd_row', 'even_row') %>">
+    <td><%= event.start.strftime("%b %d, %Y") %></td>
+    <td><%= link_to event.title, event %></td>
+  </tr>
+<% current_event_type = event.event_type.title %>
+<% end %>
+
+<% @maint.each do |event| %>
+<% if current_event_type != event.event_type.title %>
+  <tr>
+    <td colspan="2"><strong><em><%= event.event_type.title %></em></strong></td>
+  </tr>
+<% end %>
+  <tr class="<%= cycle('odd_row', 'even_row') %>">
+    <td><%= event.start.strftime("%b %d, %Y") %></td>
+    <td><%= link_to event.title, event %></td>
+  </tr>
+<% current_event_type = event.event_type.title %>
+<% end %>
+
+
 </table>
 
 <br />

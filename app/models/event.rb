@@ -7,12 +7,17 @@ class Event < ActiveRecord::Base
 
 
 scope :published, lambda {
-#  where ("events.start IS NOT NULL AND events.start >= ?", Time.zone.now)
   where ("events.start IS NOT NULL AND events.end > ?"), (Time.zone.now - 2.day)
   }
 
-scope :ordered, order("events.start ASC")
-
+scope :ordered, order("events.event_type_id ASC", "events.start ASC")
+scope :confirmed, where("event_statuses_id = 1")
 scope :tease, :limit => 4
+
+scope :meeting, where("event_type_id = 1")
+scope :air_show, where("event_type_id = 2")
+scope :special, where("event_type_id = 3")
+scope :maint, where("event_type_id = 4")
+
 
 end

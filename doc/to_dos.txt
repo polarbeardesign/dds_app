@@ -1,3 +1,7 @@
+ADD AIRSHOWS (TENTATIVE)
+CHECK PERMISSIONS ON SENSITIVE PAGES
+
+
 airshow roster creation 
   - member level
   - member seniority
