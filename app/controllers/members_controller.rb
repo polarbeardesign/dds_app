@@ -105,6 +105,7 @@ class MembersController < ApplicationController
 
     @roles = Role.find(:all)
 
+if params["Update Member"] 
     checked_roles = []
     checked_params = params[:role_list] || []
     for check_box_id in checked_params
@@ -120,21 +121,25 @@ class MembersController < ApplicationController
         @member.user.roles.delete(role)
       end
     end
+end
 
     respond_to do |format|
       if @member.update_attributes(params[:member])
-        format.html { redirect_to @member, :notice => 'Member was successfully updated.' }
-        format.json { head :ok }
+        if params["Update Member"] 
+          format.html { redirect_to @member, :notice => 'Member was successfully updated.' }
+          format.json { head :ok }
+        elsif params["Update Account"] 
+          format.html { redirect_to account_path(@member), :notice => 'Account was successfully updated.' }
+          format.json { head :ok }
+        end
       else
-        format.html { render :action => "edit" }
-        format.json { render :json => @member.errors, :status => :unprocessable_entity }
-      end
-      if @member.update_attributes(params[:account])
-        format.html { redirect_to account_path(@user.member.id), :notice => 'Member was successfully updated.' }
-        format.json { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.json { render :json => @member.errors, :status => :unprocessable_entity }
+        if params["Update Member"] 
+          format.html { redirect_to account_path(@member) }#render :action => "edit" }
+          format.json { render :json => @member.errors, :status => :unprocessable_entity }
+        elsif params["Update Account"] 
+          format.html { redirect_to account_path(@member) }#render :action => "edit" }
+          format.json { render :json => @member.errors, :status => :unprocessable_entity }
+        end
       end
     end
   end
