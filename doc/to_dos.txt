@@ -1,5 +1,6 @@
 ADD AIRSHOWS (TENTATIVE)
 CHECK PERMISSIONS ON SENSITIVE PAGES
+Fix front page calendar
 
 
 airshow roster creation 

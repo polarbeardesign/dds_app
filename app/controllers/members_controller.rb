@@ -67,6 +67,7 @@ class MembersController < ApplicationController
   def new
     @member = Member.new
     user = @member.build_user
+     @roles = Role.find(:all)
 
     respond_to do |format|
       format.html # new.html.erb

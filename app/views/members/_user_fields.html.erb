@@ -10,7 +10,4 @@
     <%= f.label :username, "Login Username" %><br />
     <%= f.text_field :username, :size => '20'  %>
   </div>
-  <%= f.fields_for :assignments do |builder| %>
-    <%= render "assignment_fields", :f => builder %> 
-  <% end %>
   </div>
