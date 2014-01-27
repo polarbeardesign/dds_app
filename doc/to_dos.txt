@@ -17,9 +17,7 @@ airshow roster creation
 parts reference db 
 
 Add google map preview where links are
-add datepicker
 add email to add member form
-clean up edit account
 create dues reminder mechanism (CHRON)
 add picture upload capability
 add facebook feed?
@@ -28,8 +26,8 @@ add silhouette quiz
 
 
 
-
-
+clean up edit account - COMPLETED 140127
+add datepicker - COMPLETED 140127
 Add Google analytics - COMPLETED
 create videos gallery - COMPLETED
 get picture galleries working - COMPLETED
