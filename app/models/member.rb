@@ -12,7 +12,7 @@ class Member < ActiveRecord::Base
 
   scope :active, where("members.active = 1")
 
-  scope :ordered, order("members.last_name ASC")
+  scope :ordered, order("members.last_name ASC, members.first_name ASC")
 
   def full_name
     self.last_name + ', ' + self.first_name

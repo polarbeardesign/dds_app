@@ -1,27 +1,8 @@
-    <style type="text/css">
-      html { height: 100% }
-      body { height: 100%; margin: 0; padding: 0 }
-      #map-canvas { height: 100% }
-    </style>
-    
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-    <script type="text/javascript">
-    var map;
-    //<![CDATA[
 
-    function load() {
-      if (GBrowserIsCompatible()) {
-        map = new GMap2(document.getElementById("map"));
-        map.addControl(new GMapTypeControl());
-        map.addControl(new GSmallMapControl());
-        map.addControl(new GScaleControl());
-        map.setCenter(new GLatLng(<% @event.location.latitude %>, <% @event.location.latitude %>), 4, G_NORMAL_MAP);
-      }
-    }
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=AIzaSyA2CUo-V9LEi2YuJvh6F_Sf7NkmpXnC4yE"
+      type="text/javascript"></script>
 
-    //]]>
-    </script>
-
+<% map_url = "http://maps.googleapis.com/maps/api/staticmap?zoom=8&size=275x190&maptype=roadmap&markers=color:red%7Clabel:X%7C"+@event.location.latitude+","+@event.location.longitude+"&sensor=false" %>
 <% content_for :sidebar do %>
   <%= render "sidebars/newsletter_signup" %>
 <% end %>
@@ -58,12 +39,11 @@
 
 <p><b>What:</b> <%= @event.event_type.title%></p>
 
-<p><b>Where:</b> <%= @event.location.short_name %> - <%= @event.location.city %>, <%= @event.location.state %>
   <% if @event.location.latitude? %>
-    [<%= link_to 'Google Map', "http://maps.google.com/maps?q="+@event.location.latitude+",+"+@event.location.longitude, :target => "_blank" %>]
+    <div style="float: right; border: 1px solid #ccc; margin: 0 0 1em 1em;"><%= link_to image_tag(map_url), "http://maps.google.com/maps?q="+@event.location.latitude+",+"+@event.location.longitude, :target => "_blank" %></div>
   <% end %>
-</p>
-
+  
+<p><b>Where:</b> <%= @event.location.short_name %> - <%= @event.location.city %>, <%= @event.location.state %></p>
 
 <% if @event.URL? %>
 <p>
@@ -86,6 +66,7 @@
 <% if @event.details? %>
   <p><%= sanitize(@event.details) %></p>
 <% end %>
+  
 <div style="clear: both;"></div>
 <hr />
 
