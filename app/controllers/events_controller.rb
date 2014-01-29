@@ -6,7 +6,8 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:index
   # GET /events.xml
   def index
     @meetings = Event.meeting.ordered.published.tease.all
-    @air_shows = Event.air_show.confirmed.ordered.published.tease.all
+    @air_shows_public = Event.air_show.confirmed.ordered.published.tease.all
+    @air_shows_members = Event.air_show.ordered.published.tease.all
     @special = Event.special.ordered.published.tease.all
     @maint = Event.maint.ordered.published.tease.all
 

@@ -1,7 +1,7 @@
 class RightsController < ApplicationController
 
   def index
-    @rights = Right.all
+    @rights = Right.ordered.all
 
     respond_to do |format|
       format.html # index.html.erb

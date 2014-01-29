@@ -1,3 +1,27 @@
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map-canvas { height: 100% }
+    </style>
+    
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script type="text/javascript">
+    var map;
+    //<![CDATA[
+
+    function load() {
+      if (GBrowserIsCompatible()) {
+        map = new GMap2(document.getElementById("map"));
+        map.addControl(new GMapTypeControl());
+        map.addControl(new GSmallMapControl());
+        map.addControl(new GScaleControl());
+        map.setCenter(new GLatLng(<% @event.location.latitude %>, <% @event.location.latitude %>), 4, G_NORMAL_MAP);
+      }
+    }
+
+    //]]>
+    </script>
+
 <% content_for :sidebar do %>
   <%= render "sidebars/newsletter_signup" %>
 <% end %>
@@ -24,7 +48,7 @@
 </div>
 
 <h1><%= @event.title %></h1>
-
+<% if @event.event_statuses_id == 2 %> <span class="error" style="display: inline;"><strong>--Tentative</strong></span><% end %>
 <p><b>When:</b>
 <% if @event.start.strftime("%b %d, %Y" ) == @event.end.strftime("%b %d, %Y") %>
   <%= @event.start.strftime("%b %d, %Y | %H:%M %p") %> - <%= @event.end.strftime("%H:%M %p") %></p>
@@ -40,7 +64,7 @@
   <% end %>
 </p>
 
-
+<div id="map" style="width: 200px; height: 100px"></div>
 
 <% if @event.URL? %>
 <p>
@@ -73,8 +97,8 @@
 <p>Put me on the List for this airshow</p>
   <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "member"} %>
     <div class="signup_buttons">
-      <%= button_to 'Definite', event_signups_path(:member_id => current_user.member, :event_id => @event.id, :commitment_level => "Definite") %>
-      <%= button_to 'Maybe', event_signups_path(:member_id => current_user.member, :event_id => @event.id, :commitment_level => 'Maybe') %>
+      <%= button_to 'Definite', {:controller => :event_signups, :action => :signup, :member_id => current_user.member, :event_id => @event.id, :commitment_level => 'Definite' } %>
+      <%= button_to 'Maybe',    {:controller => :event_signups, :action => :signup, :member_id => current_user.member, :event_id => @event.id, :commitment_level => 'Maybe' } %>
     </div>
   <% end %>
 

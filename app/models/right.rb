@@ -19,6 +19,7 @@ class Right < ActiveRecord::Base
 }
 
 scope :ordered, order("rights.resource ASC")
+scope :id_ordered, order("rights.id ASC")
 
 scope :ordered_ops, :order => "field(operation,'CREATE','READ','UPDATE','DELETE')"
 

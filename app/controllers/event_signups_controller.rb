@@ -43,6 +43,20 @@ skip_before_filter :check_authorization, :check_authentication
   # POST /event_signups
   # POST /event_signups.json
   def create
+    @event_signup = EventSignup.new(params[:event_signup])
+
+    respond_to do |format|
+      if @event_signup.save
+        format.html { redirect_to(@event_signup, :notice => 'Event type was successfully created.') }
+        format.json { render :json => @event_signup, :status => :created, :location => @event_signup }
+      else
+        format.html { render :action => "new" }
+        format.json { render :json => @event_signup.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  def signup
     @event_signup = EventSignup.new(params)
 
     respond_to do |format|

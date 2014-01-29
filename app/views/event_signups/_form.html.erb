@@ -11,5 +11,30 @@
     </div>
   <% end %>
 
+<div class="indent_row" style="width: 560px;">
+  <div class="cell">
+    <div class="field">
+      <%= f.label :event_id, "Event" %><br />
+      <%= f.collection_select :event_id, Event.air_show.ordered.published.all, :id, :title, options = {:order => 'start ASC', :prompt => true}, html_options = {:class => "styled-select"} %>
+    </div>
+  </div>
+  <div class="cell">
+    <div class="field">
+      <%= f.label :member_id, "Member" %><br />
+      <%= f.collection_select :member_id, Member.all, :id, :full_name, options = {:order => 'last_name ASC', :prompt => true}, html_options = {:class => "styled-select"} %>
+    </div>
+  </div>
+</div>
+<div class="indent_row" style="width: 560px;">
+  <div class="cell">
+    <div class="field">
+      <%= f.label :commitment_level, "Commitment Level" %><br />
+      <%= f.text_field :commitment_level %>
+    </div>
+  </div>
+</div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
 
 <% end %>

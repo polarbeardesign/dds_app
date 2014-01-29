@@ -1,9 +1,12 @@
 class Event < ActiveRecord::Base
 
+  attr_accessible :id
+
   belongs_to :event_type
   belongs_to :location
   has_many :event_signups
   has_many :members, :through => :event_signups
+#  has_one :event_status
 
 
 scope :published, lambda {
