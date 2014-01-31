@@ -1,0 +1,33 @@
+<% lastcategory = "" %>
+<% content_for :sidebar do %>
+  <%= render "sidebars/members" %>
+<% end %>
+<h1>Squadron Documents</h1>
+
+<table width="600">
+  <tr>
+    <th>Title</th>
+    <th>Doc date</th>
+  </tr>
+
+<% @squadron_documents.each do |squadron_document| %>
+  <% if squadron_document.document_category.category_name != lastcategory %>
+  <tr>
+    <td colspan="2"><strong><em><%= squadron_document.document_category.category_name %></em></strong></td>
+  </tr>
+  <% end %>
+  <tr>
+    <td style="padding: .25em 0.5em;"><%= link_to squadron_document.title, squadron_document.file_url %></td>
+    <td><%= squadron_document.doc_date %></td>
+  </tr>
+  <% lastcategory = squadron_document.document_category.category_name %>
+<% end %>
+</table>
+
+<br />
+
+<% if signed_in?%>
+    <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+      <%= link_to 'New Squadron document', new_squadron_document_path %>
+    <% end %>
+<% end %>

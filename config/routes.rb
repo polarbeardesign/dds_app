@@ -1,5 +1,9 @@
 DdsApp::Application.routes.draw do
 
+  resources :squadron_documents
+
+  resources :document_categories
+
   resources :officer_positions
 
 #  devise_for :users

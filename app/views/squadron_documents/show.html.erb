@@ -1,0 +1,33 @@
+<p>
+  <b>Documentcategory:</b>
+  <%= @squadron_document.document_category_id %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @squadron_document.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @squadron_document.description %>
+</p>
+
+<p>
+  <b>File url:</b>
+  <%= @squadron_document.file_url %>
+</p>
+
+<p>
+  <b>Doc date:</b>
+  <%= @squadron_document.doc_date %>
+</p>
+
+<p>
+  <b>Image url:</b>
+  <%= @squadron_document.image_url %>
+</p>
+
+
+<%= link_to 'Edit', edit_squadron_document_path(@squadron_document) %> |
+<%= link_to 'Back', squadron_documents_path %>

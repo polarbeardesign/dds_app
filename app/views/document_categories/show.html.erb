@@ -1,0 +1,13 @@
+<p>
+  <b>Category name:</b>
+  <%= @document_category.category_name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @document_category.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_document_category_path(@document_category) %> |
+<%= link_to 'Back', document_categories_path %>

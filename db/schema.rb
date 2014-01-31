@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140119070225) do
+ActiveRecord::Schema.define(:version => 20140131004149) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -33,6 +33,13 @@ ActiveRecord::Schema.define(:version => 20140119070225) do
 
   add_index "categories_posts", ["category_id", "post_id"], :name => "index_categories_posts_on_category_id_and_post_id"
 
+  create_table "document_categories", :force => true do |t|
+    t.string   "category_name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "email_addresses", :force => true do |t|
     t.string   "address"
     t.boolean  "active"
@@ -52,7 +59,7 @@ ActiveRecord::Schema.define(:version => 20140119070225) do
   add_index "event_signups", ["event_id"], :name => "index_event_signups_on_event_id"
   add_index "event_signups", ["member_id"], :name => "index_event_signups_on_member_id"
 
-  create_table "event_statuses", :force => true do |t|
+  create_table "event_statuses", :primary_key => "ID", :force => true do |t|
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -70,7 +77,7 @@ ActiveRecord::Schema.define(:version => 20140119070225) do
     t.datetime "end"
     t.integer  "event_type_id"
     t.string   "title"
-    t.string   "status",          :limit => 0
+    t.integer  "event_statuses_id"
     t.string   "location"
     t.string   "latitude"
     t.string   "longitude"
@@ -233,6 +240,17 @@ ActiveRecord::Schema.define(:version => 20140119070225) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "display_order"
+  end
+
+  create_table "squadron_documents", :force => true do |t|
+    t.integer  "document_category_id"
+    t.string   "title"
+    t.text     "description"
+    t.string   "file_url"
+    t.date     "doc_date"
+    t.string   "image_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "teasers", :force => true do |t|

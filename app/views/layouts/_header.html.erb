@@ -43,6 +43,7 @@
         <% if user_signed_in? %>
           <ul>
             <li><%= link_to 'Bulletin Board', posts_path %></li>
+            <li><%= link_to 'Documents', squadron_documents_path %></li>
             <li><%= link_to 'Members List', members_list_path %></li>
             <li><%= link_to "Account/Profile", account_path(User.find(current_user).member.id) %></li>
             <li><%= link_to 'Password', edit_user_registration_path %></li>

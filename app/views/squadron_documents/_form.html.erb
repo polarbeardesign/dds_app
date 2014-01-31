@@ -1,0 +1,41 @@
+<%= form_for(@squadron_document) do |f| %>
+  <% if @squadron_document.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@squadron_document.errors.count, "error") %> prohibited this squadron_document from being saved:</h2>
+
+      <ul>
+      <% @squadron_document.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :document_category_id %><br />
+    <%= f.text_field :document_category_id %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :file_url %><br />
+    <%= f.text_field :file_url %>
+  </div>
+  <div class="field">
+    <%= f.label :doc_date %><br />
+    <%= f.date_select :doc_date %>
+  </div>
+  <div class="field">
+    <%= f.label :image_url %><br />
+    <%= f.text_field :image_url %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
