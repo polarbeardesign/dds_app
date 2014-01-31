@@ -60,8 +60,8 @@ role :db,  domain, :primary => true # This is where Rails migrations will run
   end
 
   desc "symlink the pdf directory"
-  task :symlink_db_file do
-    run "ln -s /home/#{user}/#{application}/shared/pdf/ #{latest_release}/assets/pdf/"
+  task :symlink_pdf_directory do
+    run "ln -s /home/#{user}/#{application}/shared/pdf #{latest_release}/app/assets/pdf"
   end
 
 end
