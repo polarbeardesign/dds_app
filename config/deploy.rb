@@ -52,7 +52,7 @@ role :db,  domain, :primary => true # This is where Rails migrations will run
     run "ln -s /home/#{user}/#{application}/shared/database.yml #{latest_release}/config/database.yml"
   end
 
- before "deploy:assets:precompile", "deploy:symlink_db_file"
+ before "deploy:assets:precompile", "deploy:symlink_db_file", "deploy:symlink_pdf_directory"
  
   desc "symlink my env file"
   task :symlink_env_file do
