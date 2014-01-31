@@ -58,6 +58,12 @@ role :db,  domain, :primary => true # This is where Rails migrations will run
   task :symlink_env_file do
     run "ln -s /home/#{user}/#{application}/shared/production.rb /home/#{user}/#{application}/current/config/environments/production.rb"
   end
+
+  desc "symlink the pdf directory"
+  task :symlink_db_file do
+    run "ln -s /home/#{user}/#{application}/shared/pdf/ #{latest_release}/assets/pdf/"
+  end
+
 end
 
 # causes bundle install to run
