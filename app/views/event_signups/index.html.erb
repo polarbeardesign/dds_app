@@ -14,7 +14,7 @@
 <% @event_signups.each do |event_signup| %>
   <% if airshow != event_signup.event.title %>
     <tr>
-      <td colspan=3><strong><em><%= event_signup.event.title %></em></strong></td>
+      <td colspan=3><strong><em><%= event_signup.event.title + " - " + event_signup.event.start.strftime("%b %d, %Y") %></em></strong></td>
     </tr>
   <% end %>
 
