@@ -1,23 +1,31 @@
+<% airshow = "" %>
+
 <h1>Airshow Signups</h1>
 
-<table>
+<table width="500" class="table_border">
   <tr>
-    <th>Events</th>
-    <th>Members</th>
+    <th>Member</th>
+    <th>Signup Date</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
 
 <% @event_signups.each do |event_signup| %>
-  <tr>
-    <td><%= event_signup.event.title %></td>
-    <td><%= event_signup.member.last_name %></td>
-    <td><%= link_to 'Show', event_signup %></td>
-    <td><%= link_to 'Edit', edit_event_signup_path(event_signup) %></td>
-    <td><%= link_to 'Destroy', event_signup, :confirm => 'Are you sure?', :method => :delete %></td>
+  <% if airshow != event_signup.event.title %>
+    <tr>
+      <td colspan=3><strong><em><%= event_signup.event.title %></em></strong></td>
+    </tr>
+  <% end %>
+
+  <tr class="<%= cycle('odd_row', 'even_row') %>">
+    <td><%= link_to event_signup.member.first_name + " " + event_signup.member.last_name, edit_event_signup_path(event_signup)  %></td>
+    <td><%= link_to event_signup.created_at.strftime("%b %d, \'%y %H:%M") %>
+    <td><%= link_to 'Delete', event_signup, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
+<% airshow = event_signup.event.title %>
 <% end %>
+
 </table>
 
 <br />

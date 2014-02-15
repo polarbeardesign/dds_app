@@ -5,7 +5,7 @@ class EventSignupsController < ApplicationController
 skip_before_filter :check_authorization, :check_authentication
 
   def index
-    @event_signups = EventSignup.all
+    @event_signups = EventSignup.airshow_ordered
 
     respond_to do |format|
       format.html # index.html.erb
