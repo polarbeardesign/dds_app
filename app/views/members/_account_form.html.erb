@@ -1,3 +1,11 @@
+<script>
+  $(function() {
+    $( "#tabs" ).tabs();
+  });
+</script>
+
+<%= render "scripts" %>
+
 <%= form_for(@member) do |f| %>
   <% if @member.errors.any? %>
     <div id="error_explanation">
@@ -11,96 +19,98 @@
     </div>
   <% end %>
 
+<div id="tabs">
+    <ul>
+        <li><a href="#tabs-1"><strong>Contact</strong></a></li>
+        <li><a href="#tabs-2"><strong>CAF Info</strong></a></li>
+    </ul>
+
+<div id="tabs-1">
 
 <div class="indent_row">
-  <div class="cell">
-  <div class="field">
+  <div class="cell field"> 
     <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
-
+    <%= f.text_field :first_name, :size => '20' %>
   </div>
-  <div class="field">
+  <div class="cell field">  
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, :size => '20'  %>
+  </div>
+</div>
+
+<div class="indent_row">
+  <div class="cell field"> 
     <%= f.label :street_1 %><br />
     <%= f.text_field :street_1 %>
   </div>
-  </div>
-  <div class="cell">  
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
+  <div class="cell field">  
     <%= f.label :street_2 %><br />
     <%= f.text_field :street_2 %>
   </div>
-  </div>
 </div>
 
-<div class="clearer"></div>
-
 <div class="indent_row">
-  <div class="cell">
-  <div class="field">
+  <div class="cell field">
     <%= f.label :city %><br />
-    <%= f.text_field :city %>
+    <%= f.text_field :city, :size => '15' %>
   </div>
-  </div>
-  <div class="cell">
-  <div class="field">
+  <div class="cell field">
     <%= f.label :state %><br />
     <%= f.text_field :state, :size => '5' %>
   </div>
-  </div>
-  <div class="cell">
-  <div class="field">
+  <div class="cell field">
     <%= f.label :zip %><br />
     <%= f.text_field :zip, :size => '10' %>
   </div>
-  </div>
 </div>
 
-<div class="clearer"></div>
-
 <div class="indent_row">
-  <div class="cell">
-  <div class="field">
+  <div class="cell field">
     <%= f.label :home_phone %><br />
     <%= f.text_field :home_phone, :size => '15' %>
   </div>
-  </div>
-  <div class="cell">
-  <div class="field">
+  <div class="cell field">
     <%= f.label :work_phone %><br />
     <%= f.text_field :work_phone, :size => '15' %>
   </div>
-  </div>
-  <div class="cell">
-  <div class="field">
+  <div class="cell field">
     <%= f.label :cell_phone %><br />
     <%= f.text_field :cell_phone, :size => '15' %>
   </div>
-  </div>
+</div>
+<div class="clearer"></div>
 </div>
 
-<div class="clearer"></div>
 
+
+<div id="tabs-2">
 <div class="indent_row">
-  <div class="cell">
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %><br />
-    <em>this does not effect your login username, which is an email address.</em>
+  <div class="cell field">
+    <%= f.label :caf_col_no, "CAF Col #" %><br />
+    <%= f.text_field :caf_col_no, :size => '15' %>
   </div>
+  <div class="cell field">
+    <%= f.label :dd_dues_date, "Dues Date" %><br />
+    <%= @member.dd_dues_date %>
   </div>
+  <div class="cell field">
+    <%= f.label :active %><br />
+    <%= @member.active %>
+  </div>
+
 </div>
-
-<div class="clearer"></div>
-  
-  
-  
+<p class="form_tip">Dues date may not be accurate - currently updating. Feb 18, 2014.</p>  
 <div class="clearer"></div>
 
+</div>
 <div class="actions" style="margin: 0 20em;">
     <%= submit_tag  "Update Account", :name => "Update Account" %>
   </div>
+</div>
+
+<div class="clearer"></div>
+  
+  
+  
+
 <% end %>
