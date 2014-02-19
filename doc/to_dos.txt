@@ -15,7 +15,7 @@ airshow roster creation
   - print out roster
 add rides sign up page
     where, how many?
-
+add a print style
 
 
 parts reference db 
