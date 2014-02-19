@@ -1,8 +1,8 @@
-ADD AIRSHOWS (TENTATIVE)
 CHECK PERMISSIONS ON SENSITIVE PAGES
-Fix front page calendar
-
-
+Fix front page calendar format (currently boring)
+Fix add members (roles nest messed up)
+  add user, member, role
+  add or delete? email to add member form
 airshow roster creation 
   - member level
   - member seniority
@@ -13,17 +13,27 @@ airshow roster creation
     - wheels up
     - notify people who signed up
   - print out roster
+add rides sign up page
+    where, how many?
+
+
 
 parts reference db 
 
-Add google map preview where links are
-add email to add member form
+Add interactive google map preview where links are (currently static)
+
 create dues reminder mechanism (CHRON)
 add picture upload capability
+  - store photos outside repo
 add facebook feed?
 add documentation
 add silhouette quiz
-
+add fun facts
+add rides sign up page
+    where, how many?
+Marketing ideas
+    photo workshop
+    ads, events
 
 
 clean up edit account - COMPLETED 140127
