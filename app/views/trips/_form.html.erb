@@ -1,0 +1,88 @@
+  <script>
+  $(function() {
+    $( "#trip_crew_arrival" ).datetimepicker({
+     format:'Y-m-d H:i:00',
+     step:15
+    });
+
+    $( "#trip_tug_time" ).datetimepicker({
+     format:'Y-m-d H:i:00',
+     step:15
+    });
+
+    $( "#trip_wheels_up" ).datetimepicker({
+     format:'Y-m-d H:i:00',
+     step:15
+    });
+
+    $( "#trip_destination_eta" ).datetimepicker({
+     format:'Y-m-d H:i:00',
+     step:15
+    });
+
+    $( "#trip_return_eta" ).datetimepicker({
+     format:'Y-m-d H:i:00',
+     step:15
+    });
+  });
+
+  </script>
+
+
+<%= form_for(@trip) do |f| %>
+  <% if @trip.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@trip.errors.count, "error") %> prohibited this trip from being saved:</h2>
+
+      <ul>
+      <% @trip.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="indent_row">
+  <div class="cell field"> 
+    <%= f.label :event %><br />
+          <%= f.collection_select :event_id, Event.air_show.published, :id, :title, options = {:order => 'title ASC', :prompt => true}, html_options = {:class => "styled-select"} %>
+  </div>
+</div>
+
+<div class="indent_row">
+  <div class="cell field"> 
+    <%= f.label :crew_arrival, "Crew Arrival" %>:<br />
+    <%= f.text_field :crew_arrival, :value => f.object.try(:crew_arrival).try(:strftime,'%Y-%m-%d %H:%M:%S'), :size => 20 %>
+  </div>
+  <div class="cell field"> 
+    <%= f.label :tug_time, "Tug Time" %>:<br />
+    <%= f.text_field :tug_time, :value => f.object.try(:tug_time).try(:strftime,'%Y-%m-%d %H:%M:%S'), :size => 20 %>
+  </div>
+</div>
+<div class="indent_row">
+  <div class="cell field"> 
+    <%= f.label :wheels_up %>:<br />
+    <%= f.text_field :wheels_up, :value => f.object.try(:wheels_up).try(:strftime,'%Y-%m-%d %H:%M:%S'), :size => 20 %>
+  </div>
+  <div class="cell field"> 
+    <%= f.label :destination_eta, "Destination ETA" %>:<br />
+    <%= f.text_field :destination_eta, :value => f.object.try(:destination_eta).try(:strftime,'%Y-%m-%d %H:%M:%S'), :size => 20 %>
+  </div>
+</div>
+<div class="indent_row">
+  <div class="cell field">
+    <%= f.label :return_eta, "Return ETA" %>:<br />
+    <%= f.text_field :return_eta, :value => f.object.try(:return_eta).try(:strftime,'%Y-%m-%d %H:%M:%S'), :size => 20 %>
+  </div>
+</div>
+<div class="indent_row">
+  <div class="cell field">
+  <%= f.label :notes %>:<br />
+  <%= f.text_area :notes, :size => "50x5", :placeholder => "Enter other relevant trip details such as fuel stops, lodging details, etc. Also crew member trip responsibilities." %>
+  </div>
+</div>
+<div class="clearer"></div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

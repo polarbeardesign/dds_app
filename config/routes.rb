@@ -1,5 +1,7 @@
 DdsApp::Application.routes.draw do
 
+  resources :trips
+
   resources :squadron_documents
 
   resources :document_categories
@@ -81,6 +83,8 @@ devise_for :users, :skip => [:registrations]
   
   match 'F1' => 'pages#F1', :as => :F1
   match 'f1' => 'pages#F1', :as => :f1
+
+  match 'trips/update_events', :as => 'update_events'
 
   match 'members_list' => 'members#members_list', :as => :members_list
 

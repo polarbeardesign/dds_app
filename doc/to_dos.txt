@@ -1,18 +1,41 @@
 CHECK PERMISSIONS ON SENSITIVE PAGES
+
+Jim: 140310
+Please co-ordinate with Beth re: arrival, tug, wheels up, and return times for each show.
+
 Fix front page calendar format (currently boring)
 Fix add members (roles nest messed up)
   add user, member, role
   add or delete? email to add member form
+
+
 airshow roster creation 
   - member level
   - member seniority
   - assign position / notes?
-    - crew chief, aft crew, crew
+    - crew chief, aft crew, crew1, crew2, 
     - add pilots
   - trip details
-    - wheels up
+    - Times
+      - crew arrival (brief)
+      - tug
+      - wheels up
+      - stop(s) ETA
+      - Destination ETA
+      return ETA
+    
     - notify people who signed up
   - print out roster
+
+event:references crew_arrival:datetime tug_time:datetime wheels_up:datetime
+
+rails generate scaffold Trip event:references crew_arrival:datetime tug_time:datetime wheels_up:datetime destination_eta:datetime return_eta:datetime
+
+manifests
+  member_id, position_id, trip_id
+
+
+
 add rides sign up page
     where, how many?
 add a print style

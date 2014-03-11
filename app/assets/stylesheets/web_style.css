@@ -563,14 +563,12 @@ img.fr {
 
 .form_row {
   float: left;
-  width: 575px;
-
+  width: 100%;
   }
 
 .form_cell {
   float: left;
   padding: 4px;
-
   }
 
 .form_tip {

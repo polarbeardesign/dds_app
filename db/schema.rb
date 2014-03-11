@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140131004149) do
+ActiveRecord::Schema.define(:version => 20140311211541) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -32,6 +32,13 @@ ActiveRecord::Schema.define(:version => 20140131004149) do
   end
 
   add_index "categories_posts", ["category_id", "post_id"], :name => "index_categories_posts_on_category_id_and_post_id"
+
+  create_table "crew_positions", :force => true do |t|
+    t.string   "position_name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "document_categories", :force => true do |t|
     t.string   "category_name"
@@ -128,6 +135,18 @@ ActiveRecord::Schema.define(:version => 20140131004149) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "manifests", :force => true do |t|
+    t.integer  "event_id"
+    t.integer  "member_id"
+    t.integer  "crew_position_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "manifests", ["crew_position_id"], :name => "index_manifests_on_crew_position_id"
+  add_index "manifests", ["event_id"], :name => "index_manifests_on_event_id"
+  add_index "manifests", ["member_id"], :name => "index_manifests_on_member_id"
 
   create_table "members", :force => true do |t|
     t.integer  "user_id"
@@ -270,6 +289,19 @@ ActiveRecord::Schema.define(:version => 20140131004149) do
 
   add_index "terms", ["member_id"], :name => "index_terms_on_member_id"
   add_index "terms", ["officer_position_id"], :name => "index_terms_on_officer_position_id"
+
+  create_table "trips", :force => true do |t|
+    t.integer  "event_id"
+    t.datetime "crew_arrival"
+    t.datetime "tug_time"
+    t.datetime "wheels_up"
+    t.datetime "destination_eta"
+    t.datetime "return_eta"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "trips", ["event_id"], :name => "index_trips_on_event_id"
 
   create_table "users", :force => true do |t|
     t.string   "username"

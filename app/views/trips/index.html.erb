@@ -1,0 +1,27 @@
+<h1>Listing trips</h1>
+
+<table width="500" class="table_border">
+  <tr>
+    <th>Event</th>
+    <th>Crew<br />Arrival</th>
+    <th>Tug<br />Time</th>
+    <th>Wheels<br />Up</th>
+    <th>Dest.<br />ETA</th>
+    <th>Return<br />ETA</th>
+  </tr>
+
+<% @trips.each do |trip| %>
+  <tr class="<%= cycle('odd_row', 'even_row') %>">
+    <td><%= link_to trip.event.title, trip_path(trip) %></td>
+    <td><%= trip.crew_arrival.strftime("%b %d - %H:%M %p") %></td>
+    <td><%= trip.tug_time.strftime("%b %d - %H:%M %p") %></td>
+    <td><%= trip.wheels_up.strftime("%b %d - %H:%M %p") %></td>
+    <td><%= trip.destination_eta.strftime("%b %d - %H:%M %p") %></td>
+    <td><%= trip.return_eta.strftime("%b %d - %H:%M %p") %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Trip', new_trip_path %>

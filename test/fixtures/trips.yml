@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  event: 
+  crew_arrival: 2014-03-11 16:15:41
+  tug_time: 2014-03-11 16:15:41
+  wheels_up: 2014-03-11 16:15:41
+  destination_eta: 2014-03-11 16:15:41
+  return_eta: 2014-03-11 16:15:41
+
+two:
+  event: 
+  crew_arrival: 2014-03-11 16:15:41
+  tug_time: 2014-03-11 16:15:41
+  wheels_up: 2014-03-11 16:15:41
+  destination_eta: 2014-03-11 16:15:41
+  return_eta: 2014-03-11 16:15:41
