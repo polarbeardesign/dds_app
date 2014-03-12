@@ -1,6 +1,6 @@
 class EventSignup < ActiveRecord::Base
 
- attr_accessible :event_id, :member_id, :commitment_level
+ attr_accessible :event_id, :member_id, :commitment_level, :crew_position_id
 
   belongs_to :event
   belongs_to :member

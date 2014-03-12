@@ -25,7 +25,8 @@ class TripsController < ApplicationController
   # GET /trips/new.json
   def new
     @trip = Trip.new
-
+    @event = Event.find(params[:event_id])
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render :json => @trip }

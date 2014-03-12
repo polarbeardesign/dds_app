@@ -2,7 +2,7 @@
   $(function() {
     $( "#trip_crew_arrival" ).datetimepicker({
      format:'Y-m-d H:i:00',
-     step:15
+     step:30
     });
 
     $( "#trip_tug_time" ).datetimepicker({
@@ -44,8 +44,7 @@
 
 <div class="indent_row">
   <div class="cell field"> 
-    <%= f.label :event %><br />
-          <%= f.collection_select :event_id, Event.air_show.published, :id, :title, options = {:order => 'title ASC', :prompt => true}, html_options = {:class => "styled-select"} %>
+    <h1><%= @event.title %></h1>
   </div>
 </div>
 
@@ -82,6 +81,14 @@
   </div>
 </div>
 <div class="clearer"></div>
+
+  <%= f.fields_for :event_signups do |builder| %>
+        <%= render "event_signups", :f => builder %> 
+  <% end %>
+
+
+<div class="clearer"></div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

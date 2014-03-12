@@ -5,6 +5,7 @@ class Event < ActiveRecord::Base
   has_many :event_signups
   has_many :members, :through => :event_signups
   belongs_to :event_status
+  has_one :trip
 
 
 scope :published, lambda {
