@@ -5,8 +5,7 @@ Please co-ordinate with Beth re: arrival, tug, wheels up, and return times for e
 
 Fix front page calendar format (currently boring)
 Fix add members (roles nest messed up)
-  add user, member, role
-  add or delete? email to add member form
+  - role not sticking on create
 
 
 airshow roster creation 
