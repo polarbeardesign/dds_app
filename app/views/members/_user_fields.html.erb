@@ -9,6 +9,8 @@
   <div class="field">
     <%= f.label :username, "Login Username" %><br />
     <%= f.text_field :username, :size => '20'  %>
-    <%= f.hidden_field :password, :value => 'welcome_1'  %>
+    <% if @member.user.username.nil? %>
+      <%= f.hidden_field :password, :value => 'welcome_1'  %>
+    <% end %>
   </div>
   </div>

@@ -67,7 +67,7 @@ class MembersController < ApplicationController
   def new
     @member = Member.new
     user = @member.build_user
-     @roles = Role.find(:all)
+    @roles = Role.find(:all)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -84,7 +84,7 @@ class MembersController < ApplicationController
   # POST /members
   # POST /members.json
   def create
-    @member = Member.new(params[:member])
+    @member = Member.new(params[:member]) 
 
     respond_to do |format|
       if @member.save
@@ -105,7 +105,7 @@ class MembersController < ApplicationController
 
     @roles = Role.find(:all)
 
-if params["Update Member"] 
+if params[:commit] == "Update Member"
     checked_roles = []
     checked_params = params[:role_list] || []
     for check_box_id in checked_params
@@ -125,24 +125,25 @@ end
 
     respond_to do |format|
       if @member.update_attributes(params[:member])
-        if params["Update Member"] 
+        if params[:commit] == "Update Member" 
           format.html { redirect_to @member, :notice => 'Member was successfully updated.' }
           format.json { head :ok }
-        elsif params["Update Account"] 
+        elsif params[:commit] == "Update Account" 
           format.html { redirect_to account_path(@member), :notice => 'Account was successfully updated.' }
           format.json { head :ok }
         end
       else
-        if params["Update Member"] 
+        if params[:commit] == "Update Member" 
           format.html { redirect_to account_path(@member) }#render :action => "edit" }
           format.json { render :json => @member.errors, :status => :unprocessable_entity }
-        elsif params["Update Account"] 
+        elsif params[:commit] == "Update Account" 
           format.html { redirect_to account_path(@member) }#render :action => "edit" }
           format.json { render :json => @member.errors, :status => :unprocessable_entity }
         end
       end
     end
   end
+
 
   # DELETE /members/1
   # DELETE /members/1.json
