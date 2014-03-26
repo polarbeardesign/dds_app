@@ -128,7 +128,7 @@ end
         if params[:commit] == "Update Member" 
           format.html { redirect_to @member, :notice => 'Member was successfully updated.' }
           format.json { head :ok }
-        elsif params[:commit] == "Update Account" 
+        else #params[:commit] == "Update Account" 
           format.html { redirect_to account_path(@member), :notice => 'Account was successfully updated.' }
           format.json { head :ok }
         end
@@ -136,7 +136,7 @@ end
         if params[:commit] == "Update Member" 
           format.html { redirect_to account_path(@member) }#render :action => "edit" }
           format.json { render :json => @member.errors, :status => :unprocessable_entity }
-        elsif params[:commit] == "Update Account" 
+        else #params[:commit] == "Update Account" 
           format.html { redirect_to account_path(@member) }#render :action => "edit" }
           format.json { render :json => @member.errors, :status => :unprocessable_entity }
         end
