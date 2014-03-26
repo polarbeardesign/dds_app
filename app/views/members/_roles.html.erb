@@ -1,0 +1,16 @@
+
+    <% @roles.each.each_with_index do |role, i| %>
+    <% if i == 0 %>
+      <div class="cell">
+    <% end %>
+      <%= check_box_tag('role_list[]', role.id, @member.user.roles.collect {|obj| obj.id}.include?(role.id)) %><%= role.name %><br />
+    <% if i == 2 %>
+      </div>
+      <div class="cell">
+    <% end %>
+    <% if i == 5 %>
+      </div>
+      <div class="cell">
+    <% end %>
+    <% end %>
+      </div>
