@@ -5,7 +5,7 @@ class Member < ActiveRecord::Base
   belongs_to :user
   accepts_nested_attributes_for :user, :allow_destroy => true
   
-#  has_many :event_signups
+  has_many :event_signups
   has_many :events, :through => :event_signups
   has_many :terms
   has_many :officer_positions, :through => :terms

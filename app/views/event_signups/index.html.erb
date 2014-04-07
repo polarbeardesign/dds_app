@@ -14,7 +14,14 @@
 <% @event_signups.each do |event_signup| %>
   <% if airshow != event_signup.event.title %>
     <tr>
-      <td colspan=3><strong><em><%= event_signup.event.title + " - " + event_signup.event.start.strftime("%b %d, %Y") %></em></strong><%= link_to "Create Trip", new_trip_path(:event_id => event_signup.event.id) %></td>
+      <td colspan=2><strong><em><%= event_signup.event.title %></strong></em><br /><%= event_signup.event.start.strftime("%b %d, %Y") %></td>
+      <td>
+        <% if event_signup.event.trip.nil? %>
+          <%= button_to "Create Trip", new_trip_path(:event_id => event_signup.event.id) %>
+        <% else %>
+          <%= button_to "Edit Trip", edit_trip_path(:id => event_signup.event.trip.id), :method => :get %>
+        <% end %>
+      </td>
     </tr>
   <% end %>
 

@@ -43,8 +43,11 @@
   </div>
 </div>
 
+<div class="clearer"></div>
+
+<p style="margin: 3em 0 0 0;"><b>Where:</b> <%= @event.location.short_name %> - <%= @event.location.city %>, <%= @event.location.state %></p>
+
   <% if @event.location.latitude? %>
-    <div style="float: right; border: 1px solid #ccc; margin: 3em 0 1em 1em;"><%= link_to image_tag(map_url), "http://maps.google.com/maps?q="+@event.location.latitude+",+"+@event.location.longitude, :target => "_blank" %></div>
+    <div style="float: right; border: 1px solid #ccc; margin: 1em 0 1em 1em;"><%= link_to image_tag(map_url), "http://maps.google.com/maps?q="+@event.location.latitude+",+"+@event.location.longitude, :target => "_blank" %></div>
   <% end %>
   
-<p><b>Where:</b> <%= @event.location.short_name %> - <%= @event.location.city %>, <%= @event.location.state %></p>

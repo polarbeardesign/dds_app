@@ -2,7 +2,8 @@ CHECK PERMISSIONS ON SENSITIVE PAGES
 
 Jim: 140310
 Please co-ordinate with Beth re: arrival, tug, wheels up, and return times for each show.
-
+   - can't assign roles on trip creation(?)
+   
 Fix front page calendar format (currently boring)
 Fix add members (roles nest messed up)
   - role not sticking on create

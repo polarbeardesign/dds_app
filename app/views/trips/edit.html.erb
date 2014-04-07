@@ -1,4 +1,12 @@
-<h1>Editing trip</h1>
+<% content_for :sidebar do %>
+  <%= render "events/event_details" %>
+<% end %>
+
+<div class="indent_row">
+  <div class="cell field"> 
+    <h1><%= @trip.event.title %></h1>
+  </div>
+</div>
 
 <%= render 'form' %>
 

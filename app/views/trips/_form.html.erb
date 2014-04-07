@@ -42,11 +42,7 @@
     </div>
   <% end %>
 
-<div class="indent_row">
-  <div class="cell field"> 
-    <h1><%= @event.title %></h1>
-  </div>
-</div>
+
 
 <div class="indent_row">
   <div class="cell field"> 
@@ -82,10 +78,9 @@
 </div>
 <div class="clearer"></div>
 
-  <%= f.fields_for :event_signups do |builder| %>
-        <%= render "event_signups", :f => builder %> 
-  <% end %>
-
+<% if @trip.event_id.nil? %>
+  <%= f.hidden_field :event_id, :value => (params[:event_id])%>
+<% end %>
 
 <div class="clearer"></div>
 

@@ -14,6 +14,7 @@ class TripsController < ApplicationController
   # GET /trips/1.json
   def show
     @trip = Trip.find(params[:id])
+    @event = Event.find_by_id(@trip.event_id)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -36,6 +37,7 @@ class TripsController < ApplicationController
   # GET /trips/1/edit
   def edit
     @trip = Trip.find(params[:id])
+    @event = Event.find_by_id(@trip.event_id)
   end
 
   def update_events
