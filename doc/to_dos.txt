@@ -4,6 +4,12 @@ Jim: 140310
 Please co-ordinate with Beth re: arrival, tug, wheels up, and return times for each show.
    - can't assign roles on trip creation(?)
    
+   SIMPLE FORM (no crew roster creation)
+     - need to add other models?
+       - flights (trip_id, ETD, ETA, date, hobbs_start, hobbs_end, fuel_start, fuel_end, oil_start, oil_end,
+       - LFHE (trip_id, flight_id, name, paid,
+       
+   
 Fix front page calendar format (currently boring)
 Fix add members (roles nest messed up)
   - role not sticking on create

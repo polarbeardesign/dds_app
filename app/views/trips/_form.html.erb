@@ -82,6 +82,85 @@
   <%= f.hidden_field :event_id, :value => (params[:event_id])%>
 <% end %>
 
+<div class="indent_row">
+  <div class="cell field"> 
+    <%= f.label :fuel_start %>:<br />
+    <%= f.text_field :fuel_start, :size => 20 %>
+  </div>
+  <div class="cell field"> 
+    <%= f.label :fuel_end %>:<br />
+    <%= f.text_field :fuel_end, :size => 20 %>  </div>
+</div>
+<div class="indent_row">
+  <div class="cell field"> 
+    <%= f.label :oil_start %>:<br />
+    <%= f.text_field :oil_start, :size => 20 %>
+  </div>
+  <div class="cell field"> 
+    <%= f.label :oil_end %>:<br />
+    <%= f.text_field :oil_end, :size => 20 %>  </div>
+</div>
+<div class="indent_row">
+  <div class="cell field"> 
+    <%= f.label :hobbs_start %>:<br />
+    <%= f.text_field :hobbs_start, :size => 20 %>
+  </div>
+  <div class="cell field"> 
+    <%= f.label :hobbs_end %>:<br />
+    <%= f.text_field :hobbs_end, :size => 20 %>  </div>
+</div>
+<div class="clearer"></div>
+<h2>Show</h2>
+<div class="indent_row">
+  <div class="cell field"> 
+    <%= f.label :show_fees %>:<br />
+    <%= f.text_field :show_fees, :size => 20 %>
+  </div>
+  <div class="cell field"> 
+    <%= f.label :show_expenses %>:<br />
+    <%= f.text_field :show_expenses, :size => 20 %>  </div>
+</div>
+<div class="indent_row">
+  <div class="cell field"> 
+    <%= f.label :t_shirt_cost %>:<br />
+    <%= f.text_field :t_shirt_cost, :size => 20 %>
+  </div>
+  <div class="cell field"> 
+    <%= f.label :t_shirt_sales %>:<br />
+    <%= f.text_field :t_shirt_sales, :size => 20 %>  </div>
+</div>
+<div class="clearer"></div>
+<h2>LFHE Rides</h2>
+<div class="indent_row">
+  <div class="cell field"> 
+    <%= f.label :rides_given %>:<br />
+    <%= f.text_field :rides_given, :size => 20 %>
+  </div>
+  <div class="cell field"> 
+    <%= f.label :total_pax %>:<br />
+    <%= f.text_field :total_pax, :size => 20 %>
+  </div>
+</div>
+<div class="indent_row">
+  <div class="cell field"> 
+    <%= f.label :pax_income %>:<br />
+    <%= f.text_field :pax_income, :size => 20 %>
+  </div>
+  <div class="cell field"> 
+    <%= f.label :hq_amount_paid %>:<br />
+    <%= f.text_field :hq_amount_paid, :size => 20 %>
+  </div>
+</div>
+<div class="indent_row">
+  <div class="cell field"> 
+    <%= f.label :rides_fuel %>:<br />
+    <%= f.text_field :rides_fuel, :size => 20 %>
+  </div>
+  <div class="cell field"> 
+    <%= f.label :rides_oil %>:<br />
+    <%= f.text_field :rides_oil, :size => 20 %>  </div>
+</div>
+
 <div class="clearer"></div>
 
   <div class="actions">
