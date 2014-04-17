@@ -11,7 +11,12 @@ Please co-ordinate with Beth re: arrival, tug, wheels up, and return times for e
    140408: fm Mark; The LHFE section does not need fuel/oil, it needs a hobbs start/stop. 
            We can guesstimate the fuel/oil close enough. 
            Show revenue should have a line for fuel rec'd.
-   140417: Added validation to trip creation    
+   140417: Added validation to trip creation, trip financials view (need fuel/oil cost mechanism)  
+   
+   ALTER TABLE `trips` ADD `lfhe_hobbs_start` decimal(8,1);
+   ALTER TABLE `trips` ADD `lfhe_hobbs_end` decimal(8,1);
+   ALTER TABLE `trips` ADD `show_fuel_gallons` int(6);
+   ALTER TABLE `trips` ADD `show_oil_gallons` int(6);  
    
 Fix front page calendar format (currently boring)
 Fix add members (roles nest messed up)

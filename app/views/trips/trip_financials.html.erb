@@ -1,0 +1,77 @@
+<% content_for :sidebar do %>
+  <%= render "events/event_details" %>
+<% end %>
+
+<% total_fuel = @trip.fuel_end - (@trip.fuel_start + @trip.show_fuel_gallons) %>
+<% total_oil = @trip.oil_end - (@trip.oil_start + @trip.show_oil_gallons) %>
+<% total_time = @trip.hobbs_end - (@trip.hobbs_start + @trip.show_oil_gallons) %>
+<% show_income = @trip.show_fees - @trip.show_expenses %>
+<% t_shirts = @trip.t_shirt_sales - @trip.t_shirt_cost %>
+<% lfhe_total = @trip.pax_income - @trip.hq_amount_paid %>
+
+<h1><%= @trip.event.title %></h1>
+<h2>Overview</h2>
+<div class="indent_row">
+<p>Total Income:<strong> <%= number_to_currency(show_income + t_shirts + lfhe_total) %></strong><br />
+Total Flying time: <strong><%= total_time %></strong> hours</p>
+</div>
+<div class="clearer"></div>
+<h2>Airplane</h2>
+<div class="indent_row">
+  <div class="cell field" style="width: 150px;">
+    <strong>Fuel</strong><br /> 
+    Start: <%= @trip.fuel_start %><br />
+    Show: <%= @trip.show_fuel_gallons %><br />
+    End: <%= @trip.fuel_end %><br />
+    <strong>Net: <%= total_fuel %></strong>
+  </div>
+  <div class="cell field" style="width:  150px;">
+    <strong>Oil</strong><br /> 
+    Start: <%= @trip.oil_start %><br />
+    Show: <%= @trip.show_oil_gallons %><br />
+    End: <%= @trip.oil_end %><br />
+    <strong>Net: <%= total_oil %></strong>
+  </div>
+  <div class="cell field" style="width:  150px;">
+    <strong>Hobbs</strong><br /> 
+    Start: <%= @trip.hobbs_start %><br />
+    End: <%= @trip.hobbs_end %><br />
+    <strong>Net: <%= total_time %></strong>
+  </div>
+</div>
+<div class="clearer"></div>
+<h2>Show</h2>
+<div class="indent_row">
+  <div class="cell field" style="width: 150px;">
+    <strong>Show</strong><br /> 
+    Fee recvd: <%= number_to_currency(@trip.show_fees) %><br />
+    Costs: <%= number_to_currency(@trip.show_expenses) %><br />
+    <strong>Net: <%= number_to_currency(show_income) %></strong>
+  </div>
+  <div class="cell field" style="width:  150px;">
+    <strong>T-Shirts</strong><br /> 
+    Cost: <%= number_to_currency(@trip.t_shirt_cost) %><br />
+    Sales: <%= number_to_currency(@trip.t_shirt_sales) %><br />
+    <strong>Net: <%= number_to_currency(t_shirts) %></strong>
+  </div>
+</div>
+<div class="clearer"></div>
+<h2>LHFE Rides</h2>
+<div class="indent_row">
+  <div class="cell field" style="width: 150px;">
+    Rides Given: <%= @trip.rides_given %><br />
+    PAX qty: <%= @trip.total_pax %><br />
+  </div>
+  <div class="cell field" style="width:  150px;">
+    <strong>Financial</strong><br /> 
+    Income: <%= number_to_currency(@trip.pax_income) %><br />
+    HQ Paid: <%= number_to_currency(@trip.hq_amount_paid) %><br />
+    <strong>Net: <%= number_to_currency(lfhe_total) %></strong>
+  </div>
+  <div class="cell field" style="width:  150px;">
+    <strong>Hobbs</strong><br /> 
+    Start: <%= @trip.lfhe_hobbs_start %><br />
+    End: <%= @trip.lfhe_hobbs_end %><br />
+    <strong>Net: <%= @trip.lfhe_hobbs_end - @trip.lfhe_hobbs_start %></strong>
+  </div>
+</div>
