@@ -55,13 +55,14 @@ class TripsController < ApplicationController
   # POST /trips.json
   def create
     @trip = Trip.new(params[:trip])
-
+    @event = Event.find(@trip.event_id)
+    
     respond_to do |format|
       if @trip.save
         format.html { redirect_to @trip, :notice => 'Trip was successfully created.' }
         format.json { render :json => @trip, :status => :created, :location => @trip }
       else
-        format.html { render :action => "new" }
+        format.html { render :action => "new", :event_id => @event.id }#render :action => "new" }
         format.json { render :json => @trip.errors, :status => :unprocessable_entity }
       end
     end

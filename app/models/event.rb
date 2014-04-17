@@ -7,7 +7,6 @@ class Event < ActiveRecord::Base
   belongs_to :event_status
   has_one :trip
 
-
 scope :published, lambda {
   where ("events.start IS NOT NULL AND events.end > ?"), (Time.zone.now - 2.day)
   }

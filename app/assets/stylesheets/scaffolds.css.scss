@@ -41,13 +41,18 @@ div {
 
 .field_with_errors {
   padding: 2px;
-  background-color: red;
-  display: table;
+  /*background-color: #e93648;
+  color: #fff;*/
+  display: inline;
+}
+
+.field_with_errors input {
+  background-color: #ff9ca5;
 }
 
 #error_explanation {
   width: 450px;
-  border: 2px solid red;
+  border: 2px solid #e93648;
   padding: 7px;
   padding-bottom: 0;
   margin-bottom: 20px;
@@ -59,7 +64,7 @@ div {
     font-size: 12px;
     margin: -7px;
     margin-bottom: 0px;
-    background-color: #c00;
+    background-color: #e93648;
     color: #fff;
   }
   ul li {

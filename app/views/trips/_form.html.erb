@@ -78,8 +78,12 @@
 </div>
 <div class="clearer"></div>
 
-<% if @trip.event_id.nil? %>
-  <%= f.hidden_field :event_id, :value => (params[:event_id])%>
+<%# if @trip.event_id.nil? %>
+  <%#= f.hidden_field :event_id, :value => (params[:event_id])%>
+<%# end %>
+
+<% if !@event.nil? %>
+  <%= f.hidden_field :event_id, :value => @event.id %>
 <% end %>
 
 <div class="indent_row">

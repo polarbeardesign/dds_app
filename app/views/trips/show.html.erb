@@ -10,7 +10,9 @@
   </tr>
   <tr>
     <td>Tug time</td>
-    <td><strong><%= @trip.tug_time.strftime("%b %d - %H:%M") %></strong></td>
+    <% if !@trip.tug_time.nil? %>
+      <td><strong><%= @trip.tug_time.strftime("%b %d - %H:%M") %></strong></td>
+    <% end %>
   </tr>
   <tr>
     <td>Wheels up</td>
@@ -18,11 +20,15 @@
   </tr>
   <tr>
     <td>Destination ETA</td>
-    <td><strong><%= @trip.destination_eta.strftime("%b %d - %H:%M") %></strong></td>
+    <% if !@trip.destination_eta.nil? %>
+      <td><strong><%= @trip.destination_eta.strftime("%b %d - %H:%M") %></strong></td>
+    <% end %>
   </tr>
   <tr>
     <td>Return ETA</td>
-    <td><strong><%= @trip.return_eta.strftime("%b %d - %H:%M") %></strong></td>
+    <% if !@trip.return_eta.nil? %>
+      <td><strong><%= @trip.return_eta.strftime("%b %d - %H:%M") %></strong></td>
+    <% end %>
   </tr>
   <tr>
     <td>Notes:</td>

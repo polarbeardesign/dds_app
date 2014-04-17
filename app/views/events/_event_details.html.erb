@@ -18,7 +18,7 @@
     <%= @event.start.strftime("%A") %>
   </div>
   <div id="calendar_date">
-    <%= @event.start.strftime("%-d") %>
+    <%= @event.start.strftime("%d") %>
   </div>
   <div style="margin: 2em 1.5em;">
   <%= @event.start.strftime("%H:%M %p") %>
@@ -36,7 +36,7 @@
     <%= @event.end.strftime("%A") %>
   </div>
   <div id="calendar_date">
-    <%= @event.end.strftime("%-d") %>
+    <%= @event.end.strftime("%d") %>
   </div>
   <div style="margin: 2em 1.5em;">
   <%= @event.end.strftime("%H:%M %p") %>
