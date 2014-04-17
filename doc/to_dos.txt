@@ -8,7 +8,10 @@ Please co-ordinate with Beth re: arrival, tug, wheels up, and return times for e
      - need to add other models?
        - flights (trip_id, ETD, ETA, date, hobbs_start, hobbs_end, fuel_start, fuel_end, oil_start, oil_end,
        - LFHE (trip_id, flight_id, name, paid,
-       
+   140408: fm Mark; The LHFE section does not need fuel/oil, it needs a hobbs start/stop. 
+           We can guesstimate the fuel/oil close enough. 
+           Show revenue should have a line for fuel rec'd.
+   140417: Added validation to trip creation    
    
 Fix front page calendar format (currently boring)
 Fix add members (roles nest messed up)
