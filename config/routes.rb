@@ -1,6 +1,8 @@
 DdsApp::Application.routes.draw do
 
   resources :trips
+  
+  match 'trip_financials/:id' => 'trips#trip_financials', :as => :trip_financials
 
   resources :squadron_documents
 

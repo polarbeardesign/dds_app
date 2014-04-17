@@ -22,6 +22,16 @@ class TripsController < ApplicationController
     end
   end
 
+  def trip_financials
+    @trip = Trip.find(params[:id])
+    @event = Event.find_by_id(@trip.event_id)
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render :json => @trip }
+    end
+  end
+
   # GET /trips/new
   # GET /trips/new.json
   def new

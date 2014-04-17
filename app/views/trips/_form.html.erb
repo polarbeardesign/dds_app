@@ -129,6 +129,16 @@
 </div>
 <div class="indent_row">
   <div class="cell field"> 
+    <%= f.label :show_fuel_gallons %>:<br />
+    <%= f.text_field :show_fuel_gallons, :size => 20, :placeholder => "gallons fuel received" %>
+  </div>
+  <div class="cell field"> 
+    <%= f.label :show_oil_gallons %>:<br />
+    <%= f.text_field :show_oil_gallons, :size => 20, :placeholder => "gallons oil received" %>
+  </div>
+</div>
+<div class="indent_row">
+  <div class="cell field"> 
     <%= f.label :t_shirt_cost %>:<br />
     <%= f.text_field :t_shirt_cost, :size => 20, :placeholder => "cost of shirts sold" %>
   </div>
@@ -161,12 +171,12 @@
 </div>
 <div class="indent_row">
   <div class="cell field"> 
-    <%= f.label :rides_fuel %>:<br />
-    <%= f.text_field :rides_fuel, :size => 20, :placeholder => "LFHE fuel used"  %>
+    <%= f.label :lfhe_hobbs_start, "LFHE Hobbs start" %>:<br />
+    <%= f.text_field :lfhe_hobbs_start, :size => 20, :placeholder => "hobbs time"  %>
   </div>
   <div class="cell field"> 
-    <%= f.label :rides_oil %>:<br />
-    <%= f.text_field :rides_oil, :size => 20, :placeholder => "LFHE oil used"  %>  </div>
+    <%= f.label :lfhe_hobbs_end, "LFHE Hobbs end" %>:<br />
+    <%= f.text_field :lfhe_hobbs_end, :size => 20, :placeholder => "hobbs time"  %>  </div>
 </div>
 
 <div class="clearer"></div>
