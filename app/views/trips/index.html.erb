@@ -13,11 +13,11 @@
 <% @trips.each do |trip| %>
   <tr class="<%= cycle('odd_row', 'even_row') %>">
     <td><%= link_to trip.event.title, trip_path(trip) %></td>
-    <td><%= trip.crew_arrival.strftime("%b %d - %H:%M %p") %></td>
-    <td><%= trip.tug_time.strftime("%b %d - %H:%M %p") %></td>
-    <td><%= trip.wheels_up.strftime("%b %d - %H:%M %p") %></td>
-    <td><%= trip.destination_eta.strftime("%b %d - %H:%M %p") %></td>
-    <td><%= trip.return_eta.strftime("%b %d - %H:%M %p") %></td>
+    <td><% if !trip.crew_arrival.nil? %><%= trip.crew_arrival.strftime("%b %d - %H:%M %p") %><% end %></td>
+    <td><% if !trip.tug_time.nil? %><%= trip.tug_time.strftime("%b %d - %H:%M %p") %><% end %></td>
+    <td><% if !trip.wheels_up.nil? %><%= trip.wheels_up.strftime("%b %d - %H:%M %p") %><% end %></td>
+    <td><% if !trip.destination_eta.nil? %><%= trip.destination_eta.strftime("%b %d - %H:%M %p") %><% end %></td>
+    <td><% if !trip.return_eta.nil? %><%= trip.return_eta.strftime("%b %d - %H:%M %p") %><% end %></td>
   </tr>
 <% end %>
 </table>
