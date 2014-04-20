@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Event:</b>
+  <%= @manifest.event %>
+</p>
+
+<p>
+  <b>Member:</b>
+  <%= @manifest.member %>
+</p>
+
+<p>
+  <b>Crew position:</b>
+  <%= @manifest.crew_position %>
+</p>
+
+
+<%= link_to 'Edit', edit_manifest_path(@manifest) %> |
+<%= link_to 'Back', manifests_path %>

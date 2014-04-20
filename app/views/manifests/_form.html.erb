@@ -1,0 +1,40 @@
+<%= form_for(@manifest) do |f| %>
+  <% if @manifest.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@manifest.errors.count, "error") %> prohibited this manifest from being saved:</h2>
+
+      <ul>
+      <% @manifest.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <style>
+  #sortable1, #sortable2 { list-style-type: none; margin: 0; padding: 0 0 2.5em; float: left; margin-right: 10px; }
+  #sortable1 li, #sortable2 li { margin: 0 5px 5px 5px; padding: 5px; font-size: 1.2em; width: 120px; }
+  </style>
+  <script>
+  $(function() {
+    $( "#sortable1, #sortable2" ).sortable({
+      connectWith: ".connectedSortable"
+    }).disableSelection();
+  });
+  </script>
+
+ <ul id="sortable1" class="connectedSortable">
+<% @event.event_signups.ordered.each do |event_signup| %>
+  <li class="ui-state-default"><%= event_signup.member.last_name %></li>
+<% end %>
+</ul>
+
+<ul id="sortable2" class="connectedSortable">
+<% @crew_positions.each do |crew_position| %>
+  <li class="ui-state-highlight"><%= crew_position.position_name %></li>
+<% end %>
+</ul>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

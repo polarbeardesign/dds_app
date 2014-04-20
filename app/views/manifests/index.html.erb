@@ -1,0 +1,27 @@
+<h1>Listing manifests</h1>
+
+<table>
+  <tr>
+    <th>Event</th>
+    <th>Member</th>
+    <th>Crew position</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @manifests.each do |manifest| %>
+  <tr>
+    <td><%= manifest.event %></td>
+    <td><%= manifest.member %></td>
+    <td><%= manifest.crew_position %></td>
+    <td><%= link_to 'Show', manifest %></td>
+    <td><%= link_to 'Edit', edit_manifest_path(manifest) %></td>
+    <td><%= link_to 'Destroy', manifest, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Manifest', new_manifest_path %>

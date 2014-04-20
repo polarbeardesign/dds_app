@@ -1,0 +1,5 @@
+
+<div class="indent_row">
+  <%= @trip.event.event_signup.member.last_name %>, <%= @trip.event.event_signup.member.first_name %> | <%= @trip.event.event_signup.member.caf_col_no %> | <%= @trip.event.event_signup.commitment_level %> | <td><%= @trip.event.event_signup.created_at.strftime("%b %d, %Y %H:%M %p") %>
+  <%= f.collection_select :crew_position_id, CrewPosition.all, :id, :position_name, options = {:order => 'id ASC', :prompt => true}, html_options = {:class => "styled-select"} %><br />
+</div>

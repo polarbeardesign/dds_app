@@ -1,0 +1,25 @@
+<%= form_for(@crew_position) do |f| %>
+  <% if @crew_position.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@crew_position.errors.count, "error") %> prohibited this crew_position from being saved:</h2>
+
+      <ul>
+      <% @crew_position.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :position_name %><br />
+    <%= f.text_field :position_name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

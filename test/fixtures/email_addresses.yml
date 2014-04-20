@@ -2,10 +2,10 @@
 
 one:
   address: MyString
-  status: false
+  active: false
   source: MyText
 
 two:
   address: MyString
-  status: false
+  active: false
   source: MyText

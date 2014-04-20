@@ -1,0 +1,25 @@
+<h1>Listing crew_positions</h1>
+
+<table>
+  <tr>
+    <th>Position name</th>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @crew_positions.each do |crew_position| %>
+  <tr>
+    <td><%= crew_position.position_name %></td>
+    <td><%= crew_position.description %></td>
+    <td><%= link_to 'Show', crew_position %></td>
+    <td><%= link_to 'Edit', edit_crew_position_path(crew_position) %></td>
+    <td><%= link_to 'Destroy', crew_position, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Crew position', new_crew_position_path %>

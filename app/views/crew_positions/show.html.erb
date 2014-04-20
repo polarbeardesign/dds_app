@@ -1,0 +1,13 @@
+<p>
+  <b>Position name:</b>
+  <%= @crew_position.position_name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @crew_position.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_crew_position_path(@crew_position) %> |
+<%= link_to 'Back', crew_positions_path %>
