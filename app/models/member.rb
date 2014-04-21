@@ -1,6 +1,5 @@
 class Member < ActiveRecord::Base
 
-#  has_one :user, :dependent => :destroy
   attr_accessible :id, :first_name, :last_name, :home_phone, :zip, :city, :dd_dues_date, :work_phone, :state, :user_attributes, :cell_phone, :caf_col_no, :active, :street_2, :street_1
   belongs_to :user
   accepts_nested_attributes_for :user, :allow_destroy => true

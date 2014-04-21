@@ -15,19 +15,11 @@ class User < ActiveRecord::Base
 
   has_many :roles, :through => :assignments
 
-#  def self.current_user
-#    session[:current_user]
-#  end
-
   def can?(action, resource)
     roles.includes(:rights).for(action, resource).any?
   end
 
-#  belongs_to :member
-
-  
   has_one :member, :dependent => :destroy
-#  accepts_nested_attributes_for :member, :allow_destroy => true
 
   scope :member_ordered, joins(:member).merge(Member.ordered)
 

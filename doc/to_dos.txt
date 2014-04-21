@@ -20,7 +20,9 @@ Please co-ordinate with Beth re: arrival, tug, wheels up, and return times for e
    
 Fix front page calendar format (currently boring)
 Fix add members (roles nest messed up)
-  - role not sticking on create
+  - role not sticking on create!!
+
+superuser unable to edit users (edit screen defaults to my login)
 
 
 airshow roster creation 
