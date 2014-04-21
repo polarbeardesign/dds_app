@@ -1,6 +1,10 @@
-<h1>New location</h1>
+<% content_for :sidebar do %>
+  <div align="center">
+  <%= link_to "AirNavLookup", "http://www.airnav.com/airports", :target => "_blank" %>
+  </div>
+<% end %>
 
-<p>Look up airport details at <%= link_to 'Airnav', "http://www.airnav.com/airports/", :target => "_blank" %>.</p>
+<h1>Add New Location</h1>
 
 <%= render 'form' %>
 
