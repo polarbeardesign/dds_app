@@ -6,6 +6,7 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:index
   # GET /galleries.xml
   def index
     @galleries = Gallery.ordered.all
+    @events = Event.published.ordered.tease
 
     respond_to do |format|
       format.html # index.html.erb
