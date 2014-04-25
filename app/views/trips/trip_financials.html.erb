@@ -2,12 +2,24 @@
   <%= render "events/event_details" %>
 <% end %>
 
-<% total_fuel = @trip.fuel_end - (@trip.fuel_start + @trip.show_fuel_gallons) %>
-<% total_oil = @trip.oil_end - (@trip.oil_start + @trip.show_oil_gallons) %>
-<% total_time = @trip.hobbs_end - (@trip.hobbs_start + @trip.show_oil_gallons) %>
-<% show_income = @trip.show_fees - @trip.show_expenses %>
-<% t_shirts = @trip.t_shirt_sales - @trip.t_shirt_cost %>
-<% lfhe_total = @trip.pax_income - @trip.hq_amount_paid %>
+<% if !@trip.fuel_start.blank? and !@trip.fuel_end.blank? and !@trip.show_fuel_gallons.blank? %>
+  <% total_fuel = @trip.fuel_end - (@trip.fuel_start + @trip.show_fuel_gallons) %>
+<% end %>
+<% if !@trip.oil_start.blank? and !@trip.oil_end.blank? and !@trip.show_oil_gallons.blank? %>
+  <% total_oil = @trip.oil_end - (@trip.oil_start + @trip.show_oil_gallons) %>
+<% end %>
+<% if !@trip.hobbs_start.blank? and !@trip.hobbs_end.blank? %>
+  <% total_time = @trip.hobbs_end - @trip.hobbs_start %>
+<% end %>
+<% if !@trip.show_expenses.blank? and !@trip.show_fees.blank? %>
+  <% show_income = @trip.show_fees - @trip.show_expenses %>
+<% end %>
+<% if !@trip.t_shirt_sales.blank? and !@trip.t_shirt_cost.blank? %>
+  <% t_shirts = @trip.t_shirt_sales - @trip.t_shirt_cost %>
+<% end %>
+<% if !@trip.pax_income.blank? and !@trip.hq_amount_paid.blank? %>
+  <% lfhe_total = @trip.pax_income - @trip.hq_amount_paid %>
+<% end %>
 
 <h1><%= @trip.event.title %></h1>
 <h2>Overview</h2>
