@@ -2,6 +2,14 @@
   <%= render "events/event_details" %>
 <% end %>
 
+<% total_fuel  = 0 %>
+<% total_oil   = 0 %>
+<% total_time  = 0 %>
+<% show_income = 0 %>
+<% t_shirts    = 0 %>
+<% lfhe_total  = 0 %>
+
+
 <% if !@trip.fuel_start.blank? and !@trip.fuel_end.blank? and !@trip.show_fuel_gallons.blank? %>
   <% total_fuel = @trip.fuel_end - (@trip.fuel_start + @trip.show_fuel_gallons) %>
 <% end %>
