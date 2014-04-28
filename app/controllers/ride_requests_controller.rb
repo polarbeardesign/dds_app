@@ -1,6 +1,6 @@
 class RideRequestsController < ApplicationController
 
-skip_before_filter :check_authorization, :check_authentication, :only => [:index, :show]
+skip_before_filter :check_authorization, :check_authentication, :only => [:new, :create, :show]
 
   # GET /ride_requests
   # GET /ride_requests.json
