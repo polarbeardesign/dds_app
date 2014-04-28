@@ -1,0 +1,42 @@
+<h1>Living History Flight Experience</h1>
+
+<p>Thank you for your interest in the Living History Flight Experience.</p>
+
+<p>The following information was received.</p>
+<p>
+  <b>First name:</b>
+  <%= @ride_request.first_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%= @ride_request.last_name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @ride_request.email %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @ride_request.phone %>
+</p>
+
+<% if !@ride_request.events.blank? %>
+Indicated interest at the following events:<br />
+<ul>  <% @ride_request.events.each do |event| %>
+    <li><%= event.title %> | 
+      <% if event.start.strftime("%b %d") == event.end.strftime("%b %d") %>
+        <%= event.start.strftime("%b %d, %Y") %>
+      <% else %>
+        <% if event.start.strftime("%b") == event.end.strftime("%b") %>
+          <%= event.start.strftime("%b %d") %>-<%= event.end.strftime("%d, %Y") %>
+        <% else %>
+          <%= event.start.strftime("%b %d") %>-<%= event.end.strftime("%b %d, %Y") %>
+        <% end %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+<% end %>

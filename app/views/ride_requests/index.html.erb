@@ -1,0 +1,61 @@
+<% lastevent = "" %>
+
+<h1>Listing Ride Requests</h1>
+
+<table class="table_border">
+
+
+<% @airshows.each do |airshow| %>
+
+<% if airshow.title != lastevent and !airshow.ride_requests.blank? %>
+  <tr>
+    <th colspan="4"><em><%= airshow.title %></em> | 
+          <% if airshow.start.strftime("%b %d") == airshow.end.strftime("%b %d") %>
+            <%= airshow.start.strftime("%b %d, %Y") %>
+          <% else %>
+            <% if airshow.start.strftime("%b") == airshow.end.strftime("%b") %>
+              <%= airshow.start.strftime("%b %d") %>-<%= airshow.end.strftime("%d, %Y") %>
+            <% else %>
+              <%= airshow.start.strftime("%b %d") %>-<%= airshow.end.strftime("%b %d, %Y") %>
+            <% end %>
+          <% end %></th>
+  </tr>
+  <tr>
+    <td>Name</td>
+    <td>Location</td>
+    <td>Email</td>
+    <td>Phone</td>
+  </tr>
+<% end %>
+<% airshow.ride_requests.each do |ride_request| %>
+  <tr class="<%= cycle('odd_row', 'even_row') %>">
+    <td><%= ride_request.first_name %> <%= ride_request.last_name %></td>
+    <td><%= ride_request.city %>, <%= ride_request.state %></td>
+    <td><%= ride_request.email %></td>
+    <td><%= ride_request.phone %></td>
+  </tr>
+ <% end %>
+
+	<% end %>
+</table>
+
+<h2>Ride Requests not indicating an Air Show</h2>
+
+<table class="table_border">
+  <tr>
+    <td>Name</td>
+    <td>Location</td>
+    <td>Email</td>
+    <td>Phone</td>
+    <td>Created</td>
+  </tr>
+<% @other.each do |ride_request| %>
+  <tr class="<%= cycle('odd_row', 'even_row') %>">
+    <td><%= ride_request.first_name %> <%= ride_request.last_name %></td>
+    <td><%= ride_request.city %>, <%= ride_request.state %></td>
+    <td><%= ride_request.email %></td>
+    <td><%= ride_request.phone %></td>
+    <td><%= ride_request.created_at.strftime("%b %d, %Y") %></td>
+  </tr>
+ <% end %>
+</table>
