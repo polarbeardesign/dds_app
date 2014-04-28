@@ -1,4 +1,10 @@
 <% content_for :sidebar do %>
+<% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+  <div align="center">
+  <%= button_to "Add new member", new_member_path, :method => :get %>
+  </div>
+<% end %>
+
   <%= render "sidebars/members" %>
 <% end %>
 
@@ -34,9 +40,3 @@
 <% end %>
 </table>
 
-
-<% if signed_in?%>
-    <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
-       <%= link_to 'New Member', new_member_path %>
-    <% end %>
-<% end %>

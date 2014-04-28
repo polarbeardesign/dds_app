@@ -13,6 +13,9 @@
     <% end %>
 <% end %>
 
+
+
+<% if @event.start.strftime("%b %d" ) == @event.end.strftime("%b %d") %>
 <div id="calendar">
   <div id="calendar_year">
     <%= @event.start.strftime("%Y") %>
@@ -27,14 +30,51 @@
     <%= @event.start.strftime("%d") %>
   </div>
 </div>
+<% else %>
+<div class="row" style="float: right;">
+<div id="calendar" style="float: left;">
+  <div id="calendar_year">
+    <%= @event.start.strftime("%Y") %>
+  </div>
+  <div id="calendar_month">
+    <%= @event.start.strftime("%b") %>
+  </div>
+  <div id="calendar_day">
+    <%= @event.start.strftime("%A") %>
+  </div>
+  <div id="calendar_date">
+    <%= @event.start.strftime("%d") %>
+  </div>
+</div>
+<span style="float: left; font-size: 3em;margin: 1.25em 0 0 0;">&#8211; </span>
+<div id="calendar">
+  <div id="calendar_year">
+    <%= @event.end.strftime("%Y") %>
+  </div>
+  <div id="calendar_month">
+    <%= @event.end.strftime("%b") %>
+  </div>
+  <div id="calendar_day">
+    <%= @event.end.strftime("%A") %>
+  </div>
+  <div id="calendar_date">
+    <%= @event.end.strftime("%d") %>
+  </div>
+</div>
+</div>
+<% end %>
 
 <h1><%= @event.title %></h1>
 <% if @event.event_statuses_id == 2 %> <span class="error" style="display: inline;"><strong>--Tentative</strong></span><% end %>
 <p><b>When:</b>
-<% if @event.start.strftime("%b %d, %Y" ) == @event.end.strftime("%b %d, %Y") %>
+<% if @event.start.strftime("%b %d" ) == @event.end.strftime("%b %d") %>
   <%= @event.start.strftime("%b %d, %Y | %H:%M %p") %> - <%= @event.end.strftime("%H:%M %p") %></p>
 <% else %>
-  <%= @event.start.strftime("%b %d, %Y") %> - <%= @event.end.strftime("%b %d, %Y") %> | <%= @event.start.strftime("%H:%M %p") %> - <%= @event.end.strftime("%H:%M %p") %></p>
+  <% if @event.start.strftime("%b") == @event.end.strftime("%b") %>
+    <%= @event.start.strftime("%b %d") %>-<%= @event.end.strftime("%d, %Y") %>
+  <% else %>
+    <%= @event.start.strftime("%b %d") %>-<%= @event.end.strftime("%b %d, %Y") %>
+  <% end %>
 <% end %>
 
 <p><b>What:</b> <%= @event.event_type.title%></p>

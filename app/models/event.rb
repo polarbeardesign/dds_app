@@ -15,7 +15,7 @@ scope :published, lambda {
 scope :ordered, order("events.start ASC")
 scope :cat_ordered, order("events.event_type_id ASC", "events.start ASC")
 scope :confirmed, where("event_statuses_id = 1")
-scope :tease, :limit => 4
+scope :tease, :limit => 3
 
 scope :meeting, where("event_type_id = 1")
 scope :air_show, where("event_type_id = 2")

@@ -13,16 +13,7 @@ Please co-ordinate with Beth re: arrival, tug, wheels up, and return times for e
            Show revenue should have a line for fuel rec'd.
    140417: Added validation to trip creation, trip financials view (need fuel/oil cost mechanism)  
    
-   ALTER TABLE `trips` ADD `lfhe_hobbs_start` decimal(8,1);
-   ALTER TABLE `trips` ADD `lfhe_hobbs_end` decimal(8,1);
-   ALTER TABLE `trips` ADD `show_fuel_gallons` int(6);
-   ALTER TABLE `trips` ADD `show_oil_gallons` int(6);  
-   
-Fix front page calendar format (currently boring)
-Fix add members (roles nest messed up)
-  - role not sticking on create!!
 
-superuser unable to edit users (edit screen defaults to my login)
 
 
 airshow roster creation 
@@ -40,7 +31,7 @@ airshow roster creation
       - Destination ETA
       return ETA
     
-    - notify people who signed up
+  - notify people who signed up
   - print out roster
 
 event:references crew_arrival:datetime tug_time:datetime wheels_up:datetime
@@ -50,10 +41,6 @@ rails generate scaffold Trip event:references crew_arrival:datetime tug_time:dat
 manifests
   member_id, position_id, trip_id
 
-
-
-add rides sign up page
-    where, how many?
 add a print style
 
 
@@ -68,13 +55,19 @@ add facebook feed?
 add documentation
 add silhouette quiz
 add fun facts
-add rides sign up page
-    where, how many?
+
 Marketing ideas
     photo workshop
     ads, events
 
+=====================================
+COMPLETED ITEMS
+=====================================
 
+Fix front page calendar format (currently boring)  - COMPLETED 140428
+superuser unable to edit users (edit screen defaults to my login)  - COMPLETED 140428
+Fix add members (roles nest messed up) - role not sticking on create!! - COMPLETED 140428
+add rides sign up page - COMPLETED 140428
 clean up edit account - COMPLETED 140127
 add datepicker - COMPLETED 140127
 Add Google analytics - COMPLETED
