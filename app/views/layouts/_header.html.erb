@@ -49,10 +49,7 @@
             <li><%= link_to 'Password', edit_user_registration_path %></li>
             <li><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></li>
           <% if current_user.roles.any? {|role| role.name == "admin"  or role.name == "superuser" } %>
-            <li><%= link_to "AirShow Signups", event_signups_path %></li>
-          <% end %>
-          <% if current_user.roles.any? {|role| role.name == "superuser" } %>
-            <li><%= link_to "What's Hot", teasers_path %></li>
+            <li><%= link_to "Admin", pages_admin_home_path %></li>
           <% end %>
           </ul>
         <% end %></li>

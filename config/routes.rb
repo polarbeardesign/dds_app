@@ -1,5 +1,7 @@
 DdsApp::Application.routes.draw do
 
+  resources :ride_requests
+
   resources :trips
   
   match 'trip_financials/:id' => 'trips#trip_financials', :as => :trip_financials
@@ -106,7 +108,8 @@ match 'photo_viewer' => 'galleries#photo_viewer', :as => :photo_viewer
   get "pages/squadron"
   get "pages/thank_you"
   get "pages/member_home"
-  
+  get "pages/admin_home"
+
   root :to => 'pages#home'
 
    match ':controller(/:action(/:id(.:format)))'
