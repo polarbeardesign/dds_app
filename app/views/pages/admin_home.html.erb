@@ -1,5 +1,6 @@
 <h1>Admin Section</h1>
 
+<% if current_user.roles.any? {|role| role.name == "admin" } %>
 <br />
 <div class="indent_row">
 <%= button_to "AirShow Signups", event_signups_path, :method => :get %>
@@ -8,6 +9,18 @@
 <br />
 <%= button_to "Trips", trips_path, :method => :get %>
 <br />
+</div>
+<% end %>
+
+<% if current_user.roles.any? {|role| role.name == "superuser" } %>
+<div class="indent_row">
 <%= button_to "What's Hot", teasers_path, :method => :get %>
 <br />
+<%= button_to "Rights", rights_path, :method => :get %>
+<br />
+<%= button_to "Grants", grants_path, :method => :get %>
+<br />
+<%= button_to "Roles", roles_path, :method => :get %>
+<br />
 </div>
+<% end %>
