@@ -11,6 +11,7 @@ class Right < ActiveRecord::Base
     "show" => "READ",
     "index" => "READ",
     "member_home" => "READ",
+    "admin_home" => "READ",
     "members_list" => "READ",
     "photo_viewer" => "READ",
     "account" => "READ",

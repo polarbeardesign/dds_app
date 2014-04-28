@@ -35,4 +35,8 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:home,
    @user = current_user
   end
 
+  def admin_home
+   @user = current_user
+  end
+
 end

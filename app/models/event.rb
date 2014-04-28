@@ -6,6 +6,7 @@ class Event < ActiveRecord::Base
   has_many :members, :through => :event_signups
   belongs_to :event_status
   has_one :trip
+  has_and_belongs_to_many :ride_requests
 
 scope :published, lambda {
   where ("events.start IS NOT NULL AND events.end > ?"), (Time.zone.now - 2.day)
