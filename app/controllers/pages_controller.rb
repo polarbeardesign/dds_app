@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 skip_before_filter :check_authorization, :check_authentication, :only => [:home, :VMB612, :PBJs, :squadron, :map_0, :map_2013]
 
   def home
-    @events = Event.published.ordered.tease
+    @events = Event.published.confirmed.ordered.tease
     @teaser = Teaser.current.limit(1).first
     render :layout => "homepage"
   end
