@@ -30,7 +30,7 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:new, 
   # GET /ride_requests/new.json
   def new
     @ride_request = RideRequest.new
-    @air_shows_public = Event.air_show.confirmed.ordered.published.tease.all
+    @air_shows_public = Event.air_show.confirmed.ordered.published.all
 
     respond_to do |format|
       format.html # new.html.erb
