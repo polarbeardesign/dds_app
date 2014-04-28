@@ -46,7 +46,7 @@
   </div>
 </div>
 
-
+<% if !@air_shows_public.blank? %>
 <div class="indent_row">
   <p>Please indicate if you are available at one of the following airshows:</p>
     <% @air_shows_public.each.each_with_index do |air_show, i| %>
@@ -76,11 +76,13 @@
 
     <% end %>
   </div>
+<div class="clearer"></div>
 <p>If the air shows listed are not convenient for you - we will contact you when we plan an event near your city/state indicated above.</p>
 </div>
+<% end %>
 
 <div class="clearer"></div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Put me on the list"%>
   </div>
 <% end %>
