@@ -10,7 +10,7 @@
 
 <h1>Airshow Signups</h1>
 
-<table width="500" class="table_border">
+<table width="550" class="table_border">
   <tr>
     <th>Member</th>
     <th>Signup Date</th>
@@ -22,8 +22,8 @@
 <% @event_signups.each do |event_signup| %>
   <% if airshow != event_signup.event.title %>
     <tr>
-      <td colspan=3><strong><em><%= event_signup.event.title %></strong></em><br /><%= event_signup.event.start.strftime("%b %d, %Y") %></td>
-      <td>
+      <td colspan=2><strong><em><%= event_signup.event.title %></strong></em><br /><%= event_signup.event.start.strftime("%b %d, %Y") %></td>
+      <td colspan=2>
         <% if event_signup.event.trip.nil? %>
           <%= button_to "Create Trip", new_trip_path(:event_id => event_signup.event.id) %>
         <% else %>
