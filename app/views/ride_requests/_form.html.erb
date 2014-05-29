@@ -1,0 +1,89 @@
+<%= render "phone_scripts" %>
+
+<%= form_for(@ride_request) do |f| %>
+  <% if @ride_request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ride_request.errors.count, "error") %> prohibited this ride_request from being saved:</h2>
+
+      <ul>
+      <% @ride_request.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="indent_row">
+  <div class="cell field">
+    <%= f.label :first_name %>*<br />
+    <%= f.text_field :first_name, :size => '20' %>
+  </div>
+  <div class="cell field">
+    <%= f.label :last_name %>*<br />
+    <%= f.text_field :last_name, :size => '20' %>
+  </div>
+</div>
+
+<div class="indent_row">
+  <div class="cell field">
+    <%= f.label :city %>*<br />
+    <%= f.text_field :city, :size => '20' %>
+  </div>
+  <div class="cell field">
+    <%= f.label :state %>*<br />
+    <%= f.text_field :state, :size => '20' %>
+  </div>
+</div>
+
+<div class="indent_row">
+  <div class="cell field">
+    <%= f.label :email %>*<br />
+    <%= f.text_field :email, :size => '20' %>
+  </div>
+  <div class="cell field">
+    <%= f.label :phone %>*<br />
+    <%= f.text_field :phone, :size => '20' %>
+  </div>
+</div>
+<div class="clearer"></div>
+* = required field
+<% if !@air_shows_public.blank? %>
+<div class="indent_row">
+  <p>Please indicate if you are available at one of the following airshows:</p>
+    <% @air_shows_public.each.each_with_index do |air_show, i| %>
+    <% if i == 0 %>
+      <div class="cell">
+    <% end %>
+      <%= check_box_tag('air_show_list[]', air_show.id, @ride_request.events.collect {|obj| obj.id}.include?(air_show.id)) %><%= air_show.title %>, 
+      <% if air_show.start.strftime("%b %d") == air_show.end.strftime("%b %d") %>
+        <%= air_show.start.strftime("%b %d, %Y") %>
+      <% else %>
+        <% if air_show.start.strftime("%b") == air_show.end.strftime("%b") %>
+          <%= air_show.start.strftime("%b %d") %>-<%= air_show.end.strftime("%d, %Y") %>
+        <% else %>
+          <%= air_show.start.strftime("%b %d") %>-<%= air_show.end.strftime("%b %d, %Y") %>
+        <% end %>
+      <% end %>
+      , <%= air_show.location.city %>, <%= air_show.location.state %><br />
+
+    <% if i == 5 %>
+      </div>
+      <div class="cell">
+    <% end %>
+    <% if i == 11 %>
+      </div>
+      <div class="cell">
+    <% end %>
+
+    <% end %>
+  </div>
+<div class="clearer"></div>
+<p>If the air shows listed are not convenient for you - we will contact you when we plan an event near your city/state indicated above.</p>
+</div>
+<% end %>
+
+<div class="clearer"></div>
+  <div class="actions">
+    <%= f.submit "Put me on the list"%>
+  </div>
+<% end %>

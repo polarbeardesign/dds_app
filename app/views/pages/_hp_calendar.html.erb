@@ -1,25 +1,31 @@
 <div class="home-right-box">
 
 <h1>Calendar</h1>
-
-<table class="table_border" width="400">
-    <tr>
-        <th style="width: 80px;">Date</th>
-        <th>Event</th>
-        <th style="width: 120px;">Type</th>
-    </tr>
-
+<br />
 <% @events.each do |event| %>
-  <tr class="<%= cycle('odd_row', 'even_row') %>">
-    <td><%= event.start.strftime("%b %d, %y") %></td>
-    <td><%= link_to event.title, event %></td>
-    <td><%= event.event_type.title %></td>
-  </tr>
+<div class="calendar_row" style="width: 90%; padding-top: 0.25em">
+  <div class="cell" style="width: 30%;">
+    <% if event.start.strftime("%b %d" ) == event.end.strftime("%b %d") %>
+    <div id="calendar-ii" style="margin: 0 0 0 2.5em;">
+      <div id="calendar_month-ii"><%= event.start.strftime("%b") %></div>
+      <div id="calendar_date-ii"><%= event.start.strftime("%d") %></div>
+    </div>
+    <% else %>
+    <div id="calendar-ii" style="float: left;">
+      <div id="calendar_month-ii"><%= event.start.strftime("%b") %></div>
+      <div id="calendar_date-ii"><%= event.start.strftime("%d") %></div>
+    </div>
+    <span style="float: left; font-size: 1em;margin: 0.5em 0 0 0;">&#8211; </span>
+    <div id="calendar-ii">
+      <div id="calendar_month-ii"><%= event.end.strftime("%b") %></div>
+      <div id="calendar_date-ii"><%= event.end.strftime("%d") %></div>
+    </div>
+    <% end %>
+  </div>
+    <%= link_to event.title, event %>
+</div>
 <% end %>
 
-</table>   
-    
 <div align="right"><p><%= link_to "See all calendar events...", calendar_path %></p></div>
 
-<!-- CLOSE left-column-box CONTAINER -->
 </div>

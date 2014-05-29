@@ -3,7 +3,6 @@
 <p>Users is the name of login account information. This table displays account creation date, usernames, roles and last login.</p>
 <table width="550" class="table_border">
   <tr>
-    <th>Created</th>
     <th>Username</th>
     <th>Roles</th>
     <th>Last Login</th>
@@ -11,8 +10,7 @@
 
 <% @users.each do |user| %>
   <tr>
-    <td><%= user.created_at.strftime("%b %d, %Y") %></td>
-    <td><%= link_to user.username, edit_user_path(user) %><br /><%= user.member.last_name + ", " + user.member.first_name %></td>
+    <td><%= user.member.last_name + ", " + user.member.first_name %><br /><Span style="margin: 0 0 0 1em;"><%= link_to user.username, edit_member_path(user.member.id) %></span></td>
     <td><% user.roles.each do |role| %>
         <%= role.name %> 
       <% end %>

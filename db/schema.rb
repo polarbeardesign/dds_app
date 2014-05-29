@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140311211541) do
+ActiveRecord::Schema.define(:version => 20140428050846) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -32,13 +32,6 @@ ActiveRecord::Schema.define(:version => 20140311211541) do
   end
 
   add_index "categories_posts", ["category_id", "post_id"], :name => "index_categories_posts_on_category_id_and_post_id"
-
-  create_table "crew_positions", :force => true do |t|
-    t.string   "position_name"
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "document_categories", :force => true do |t|
     t.string   "category_name"
@@ -98,6 +91,13 @@ ActiveRecord::Schema.define(:version => 20140311211541) do
     t.integer  "location_id"
   end
 
+  create_table "events_ride_requests", :id => false, :force => true do |t|
+    t.integer "event_id"
+    t.integer "ride_request_id"
+  end
+
+  add_index "events_ride_requests", ["event_id", "ride_request_id"], :name => "index_events_ride_requests_on_event_id_and_ride_request_id"
+
   create_table "galleries", :force => true do |t|
     t.integer  "gallery_category_id"
     t.string   "gallery_name"
@@ -135,18 +135,6 @@ ActiveRecord::Schema.define(:version => 20140311211541) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "manifests", :force => true do |t|
-    t.integer  "event_id"
-    t.integer  "member_id"
-    t.integer  "crew_position_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "manifests", ["crew_position_id"], :name => "index_manifests_on_crew_position_id"
-  add_index "manifests", ["event_id"], :name => "index_manifests_on_event_id"
-  add_index "manifests", ["member_id"], :name => "index_manifests_on_member_id"
 
   create_table "members", :force => true do |t|
     t.integer  "user_id"
@@ -240,6 +228,15 @@ ActiveRecord::Schema.define(:version => 20140311211541) do
 
   add_index "products_sizes", ["product_id", "size_id"], :name => "index_products_sizes_on_product_id_and_size_id"
 
+  create_table "ride_requests", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "phone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "rights", :force => true do |t|
     t.string   "resource"
     t.string   "operation"
@@ -297,8 +294,30 @@ ActiveRecord::Schema.define(:version => 20140311211541) do
     t.datetime "wheels_up"
     t.datetime "destination_eta"
     t.datetime "return_eta"
+    t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "fuel_start"
+    t.integer  "fuel_end"
+    t.integer  "oil_start"
+    t.integer  "oil_end"
+    t.decimal  "hobbs_start",       :precision => 8,  :scale => 1
+    t.decimal  "hobbs_end",         :precision => 8,  :scale => 1
+    t.decimal  "anuac_cost",        :precision => 10, :scale => 2
+    t.integer  "rides_given"
+    t.integer  "total_pax"
+    t.decimal  "pax_income",        :precision => 10, :scale => 2
+    t.decimal  "hq_amount_paid",    :precision => 10, :scale => 2
+    t.decimal  "rides_fuel",        :precision => 10, :scale => 2
+    t.decimal  "rides_oil",         :precision => 10, :scale => 2
+    t.decimal  "t_shirt_cost",      :precision => 10, :scale => 2
+    t.decimal  "t_shirt_sales",     :precision => 10, :scale => 2
+    t.decimal  "show_fees",         :precision => 10, :scale => 2
+    t.decimal  "show_expenses",     :precision => 10, :scale => 2
+    t.decimal  "lfhe_hobbs_start",  :precision => 8,  :scale => 1
+    t.decimal  "lfhe_hobbs_end",    :precision => 8,  :scale => 1
+    t.integer  "show_fuel_gallons"
+    t.integer  "show_oil_gallons"
   end
 
   add_index "trips", ["event_id"], :name => "index_trips_on_event_id"

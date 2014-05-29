@@ -20,8 +20,8 @@ DdsApp::Application.configure do
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
   # Add html tags and attribute to allow from sanitize function 
-  config.action_view.sanitized_allowed_tags = 'table', 'tbody', 'tr', 'td', 'th' 
-  config.action_view.sanitized_allowed_attributes = 'id', 'class', 'style', 'colspan', 'rowspan', 'cellspacing', 'cellpadding', 'cellborder', 'align', 'nowrap', 'bgcolor'
+  config.action_view.sanitized_allowed_tags = 'table', 'tbody', 'tr', 'td', 'th', 'form', 'input'
+  config.action_view.sanitized_allowed_attributes = 'id', 'class', 'style', 'colspan', 'rowspan', 'cellspacing', 'cellpadding', 'cellborder', 'align', 'nowrap', 'bgcolor', 'action', 'method', 'value', 'type'
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log

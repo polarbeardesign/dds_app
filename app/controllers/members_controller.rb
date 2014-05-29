@@ -85,6 +85,17 @@ class MembersController < ApplicationController
   # POST /members.json
   def create
     @member = Member.new(params[:member]) 
+    @roles = Role.find(:all)
+
+    checked_roles = []
+    checked_params = params[:role_list] || []
+    for check_box_id in checked_params
+      role = Role.find(check_box_id)
+      if not @member.user.roles.include?(role)
+        @member.user.roles << role
+      end
+      checked_roles << role
+    end
 
     respond_to do |format|
       if @member.save

@@ -6,6 +6,7 @@ class Event < ActiveRecord::Base
   has_many :members, :through => :event_signups
   belongs_to :event_status
   has_one :trip
+  has_and_belongs_to_many :ride_requests
 
 scope :published, lambda {
   where ("events.start IS NOT NULL AND events.end > ?"), (Time.zone.now - 2.day)
@@ -14,7 +15,7 @@ scope :published, lambda {
 scope :ordered, order("events.start ASC")
 scope :cat_ordered, order("events.event_type_id ASC", "events.start ASC")
 scope :confirmed, where("event_statuses_id = 1")
-scope :tease, :limit => 4
+scope :tease, :limit => 3
 
 scope :meeting, where("event_type_id = 1")
 scope :air_show, where("event_type_id = 2")
