@@ -1,6 +1,12 @@
 <% airshow = "" %>
 
-<%= link_to 'New Event signup', new_event_signup_path %>
+<% content_for :sidebar do %>
+<% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+  <div align="center">
+  <%= button_to "New Event signup", new_event_signup_path, :method => :get %>
+  </div>
+<% end %>
+<% end %>
 
 <h1>Airshow Signups</h1>
 
@@ -16,7 +22,7 @@
 <% @event_signups.each do |event_signup| %>
   <% if airshow != event_signup.event.title %>
     <tr>
-      <td colspan=2><strong><em><%= event_signup.event.title %></strong></em><br /><%= event_signup.event.start.strftime("%b %d, %Y") %></td>
+      <td colspan=3><strong><em><%= event_signup.event.title %></strong></em><br /><%= event_signup.event.start.strftime("%b %d, %Y") %></td>
       <td>
         <% if event_signup.event.trip.nil? %>
           <%= button_to "Create Trip", new_trip_path(:event_id => event_signup.event.id) %>
@@ -29,7 +35,8 @@
 
   <tr class="<%= cycle('odd_row', 'even_row') %>">
     <td><%= link_to event_signup.member.first_name + " " + event_signup.member.last_name, edit_event_signup_path(event_signup)  %></td>
-    <td><%= link_to event_signup.created_at.strftime("%b %d, \'%y %H:%M") %>
+    <td><%= event_signup.commitment_level %></td>
+    <td><%= event_signup.created_at.strftime("%b %d, \'%y %H:%M") %></td>
     <td><%= link_to 'Delete', event_signup, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% airshow = event_signup.event.title %>

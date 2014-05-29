@@ -9,6 +9,8 @@ class EventSignup < ActiveRecord::Base
   scope :ordered, order("commitment_level ASC, created_at ASC")
   
   scope :airshow_ordered, joins(:event).merge(Event.ordered)
+  
+  scope :future, joins(:event).merge(Event.published)
 
   validates_uniqueness_of :member_id, :scope => :event_id
 
