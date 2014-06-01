@@ -1,13 +1,27 @@
 <p>
-  <b>Events:</b>
-  <%= @event_signup.event.title %>
+  Event:
+  <strong><%= @event_signup.event.title %></strong>
 </p>
 
 <p>
-  <b>Members:</b>
-  <%= @event_signup.member.last_name %>
+  Member:
+  <strong><%= @event_signup.member.first_name %> <%= @event_signup.member.last_name %></strong>
+</p>
+
+<p>
+  Commitment Level:
+  <strong><%= @event_signup.commitment_level %></strong>
+</p>
+
+<p>
+  Created:
+  <strong><%= @event_signup.created_at.strftime("%b %d, %Y %H:%M %p") %></strong>
+</p>
+
+<p>
+  Updated:
+  <strong><%= @event_signup.updated_at.strftime("%b %d, %Y %H:%M %p") %></strong>
 </p>
 
 
-<%= link_to 'Edit', edit_event_signup_path(@event_signup) %> |
-<%= link_to 'Back', event_signups_path %>
+<%= link_to "Back to Calendar Page", event_path(@event_signup.event) %>

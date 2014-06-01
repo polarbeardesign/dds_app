@@ -122,8 +122,6 @@
     </div>
   <% end %>
 
-
-
 <table width="500" class="table_border">
   <tr>
     <th>Name</th>
@@ -136,7 +134,11 @@
   <tr class="<%= cycle('odd_row', 'even_row') %>">
     <td><%= event_signup.member.last_name %>, <%= event_signup.member.first_name %></td>
     <td><%= event_signup.member.caf_col_no %></td>
-    <td><%= event_signup.commitment_level %></td>
+    <td><%= event_signup.commitment_level %>
+      <% if event_signup.member.user == current_user %>
+        <span style="font-size: 0.75em;"><%= link_to "[change]", edit_signup_path(event_signup) %></span>     
+      <% end %>
+    </td>
     <td><%= event_signup.created_at.strftime("%b %d, %Y %H:%M %p") %></td>
   </tr>
 <% end %>

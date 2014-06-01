@@ -89,6 +89,8 @@ devise_for :users, :skip => [:registrations]
   match 'f1' => 'pages#F1', :as => :f1
 
   match 'trips/update_events', :as => 'update_events'
+  
+  match 'edit_signup/:id' => 'event_signups#edit_signup', :as => :edit_signup
 
   match 'members_list' => 'members#members_list', :as => :members_list
 

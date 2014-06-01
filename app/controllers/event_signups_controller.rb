@@ -40,6 +40,10 @@ skip_before_filter :check_authorization, :check_authentication
     @event_signup = EventSignup.find(params[:id])
   end
 
+  def edit_signup
+    @event_signup = EventSignup.find(params[:id])
+  end
+
   # POST /event_signups
   # POST /event_signups.json
   def create
@@ -89,11 +93,13 @@ skip_before_filter :check_authorization, :check_authentication
   # DELETE /event_signups/1
   # DELETE /event_signups/1.json
   def destroy
+    
     @event_signup = EventSignup.find(params[:id])
+    event_id = @event_signup.event_id
     @event_signup.destroy
 
     respond_to do |format|
-      format.html { redirect_to event_signups_url }
+      format.html { redirect_to event_url(event_id), :notice => 'Your request has been deleted.' }
       format.json { head :ok }
     end
   end
