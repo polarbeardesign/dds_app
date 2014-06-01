@@ -1,4 +1,13 @@
-<h1>roles List</h1>
+<% content_for :sidebar do %>
+<% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+  <div align="center">
+  <%= button_to 'Add New Role', new_role_path, :method => :get %>
+  </div>
+<% end %>
+
+<% end %>
+
+<h1>Roles</h1>
 
 <table width="500" class="table_border">
   <tr>
@@ -20,7 +29,3 @@
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New role', new_role_path %>

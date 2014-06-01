@@ -27,4 +27,8 @@ scope :ordered_ops, :order => "field(operation,'CREATE','READ','UPDATE','DELETE'
 
 scope :unique_resources, :select => 'DISTINCT resource'
 
+  def oper_resource
+    "#{resource} #{operation}"
+  end
+
 end

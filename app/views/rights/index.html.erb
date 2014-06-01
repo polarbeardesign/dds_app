@@ -1,4 +1,13 @@
-<h1>Rights List</h1>
+<% content_for :sidebar do %>
+<% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+  <div align="center">
+  <%= button_to 'Add New Right', new_right_path, :method => :get %>
+  </div>
+<% end %>
+
+<% end %>
+
+<h1>Rights</h1>
 
 <table width="500" class="table_border">
   <tr>
@@ -21,6 +30,3 @@
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Right', new_right_path %>

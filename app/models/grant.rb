@@ -5,4 +5,6 @@ class Grant < ActiveRecord::Base
 
   scope :right_ordered, joins(:right).merge(Right.id_ordered)
 
+
+
 end

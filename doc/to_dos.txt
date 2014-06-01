@@ -1,5 +1,8 @@
 CHECK PERMISSIONS ON SENSITIVE PAGES
 
+Hide Maybe/Definite buttons if already signed up.
+Check admin flow of event_signup creation/edit delete
+
 Jim: 140310
 Please co-ordinate with Beth re: arrival, tug, wheels up, and return times for each show.
    - can't assign roles on trip creation(?)
@@ -64,6 +67,7 @@ Marketing ideas
 COMPLETED ITEMS
 =====================================
 
+Added ability to self edit trip_signups COMPLETED 140531
 Fix front page calendar format (currently boring)  - COMPLETED 140428
 superuser unable to edit users (edit screen defaults to my login)  - COMPLETED 140428
 Fix add members (roles nest messed up) - role not sticking on create!! - COMPLETED 140428
