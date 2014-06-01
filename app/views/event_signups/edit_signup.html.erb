@@ -1,0 +1,17 @@
+<% content_for :sidebar do %>
+
+<div align="center">
+  <%= button_to 'Remove my Request', @event_signup, :confirm => 'Are you sure?', :method => :delete %>
+<p>If you would like to delete your sign-up click this button.</p>
+</div>
+
+
+
+<% end %>
+
+<h1>Editing Event Signup</h1>
+
+<p>To change your level of commitment select the appropriate button and click the 'Update my Request' button.</p>
+
+<%= render 'member_form' %>
+
