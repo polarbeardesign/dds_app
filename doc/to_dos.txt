@@ -4,7 +4,7 @@ Hide Maybe/Definite buttons if already signed up.
 Check admin flow of event_signup creation/edit delete
 Add list of shows signed up for on login screen
 Show trip details on calendar page
-
+Fix picture for LFHE PX item (asset not precompiled)
 
 Jim: 140310
 Please co-ordinate with Beth re: arrival, tug, wheels up, and return times for each show.
