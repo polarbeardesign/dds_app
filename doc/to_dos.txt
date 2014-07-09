@@ -1,5 +1,27 @@
 CHECK PERMISSIONS ON SENSITIVE PAGES
 
+
+Adding term functionaility to officers Positions
+  - need to be able to display current officers on squadron page
+
+work on adding logic for co-positions
+
+  <% @officer_positions.each do |officer_position| %>
+   <tr class="<%= cycle('white_row', 'yellow_row') %>">
+     <td><%= officer_position.position_name %>: </td>
+     <td><% members.each do |member| %>
+      <% if last_position == term.officer_position.position_name %>
+        /
+       <% end %>
+      <%= member.first_name + " " + member.last_name %>
+      <% last_position = officer_position.position_name %>
+    <% end %>
+    </td>
+    </tr>
+<% end %>
+</table>
+
+
 Hide Maybe/Definite buttons if already signed up.
 Check admin flow of event_signup creation/edit delete
 Add list of shows signed up for on login screen
