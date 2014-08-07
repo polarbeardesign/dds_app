@@ -62,6 +62,7 @@ add facebook feed?
 add documentation
 add silhouette quiz
 add fun facts
+add method to assign sort order to PX items (currently hard coded in Products model products.rb)
 
 Marketing ideas
     photo workshop
