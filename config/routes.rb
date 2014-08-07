@@ -30,6 +30,8 @@ devise_for :users, :skip => [:registrations]
 
   resources :locations
 
+  resources :terms
+
   resources :posts
 
   resources :categories

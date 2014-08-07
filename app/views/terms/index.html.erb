@@ -1,0 +1,34 @@
+<% content_for :sidebar do %>
+<% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+  <div align="center">
+  <%= button_to 'New term', new_term_path, :method => :get %>
+  </div>
+<% end %>
+
+<% end %>
+
+<% last_position = "" %>
+<h1>Listing Officer Positions/terms</h1>
+
+
+
+<br />
+
+<h2>Current Office Holders</h2>
+
+<table width="500" class="table_border">
+    <tr> 
+        <th>Position</th>
+        <th>Office Holder</th>
+        <th>term_start</th>
+        <th>term_end</th>
+    </tr>
+    <% @terms.each do |term| %>
+    <tr class="<%= cycle('odd_row', 'even_row') %>">
+        <td><%= link_to term.officer_position.position_name, edit_term_path(term) %></td>
+        <td><%= term.member.first_name + ' ' + term.member.last_name %></td>
+        <td><%= term.term_start.strftime("%b %d, %Y") %></td>
+        <td><%= term.term_end.strftime("%b %d, %Y") %></td>
+    </tr>
+<% end %>
+</table>

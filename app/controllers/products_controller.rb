@@ -58,6 +58,16 @@ skip_before_filter :check_authorization, :check_authentication, :only => :px
   def create
     @product = Product.new(params[:product])
 
+    checked_sizes = []
+    checked_params = params[:size_list] || []
+    for check_box_id in checked_params
+      size = Size.find(check_box_id)
+      if not @product.sizes.include?(size)
+        @product.sizes << size
+      end
+      checked_sizes << size
+    end
+
     respond_to do |format|
       if @product.save
         format.html { redirect_to(@product, :notice => 'Product was successfully created.') }

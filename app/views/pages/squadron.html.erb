@@ -44,16 +44,19 @@ Georgetown, TX 78628</p>
    <% @officer_positions.each do |officer_position| %>
    <tr class="<%= cycle('white_row', 'yellow_row') %>">
      <td><%= officer_position.position_name %>: </td>
-     <td><% officer_position.members.each do |member| %>
+     <td><% officer_position.terms.current.each do |term| %>
       <% if last_position == officer_position.position_name %>
         /
        <% end %>
-      <%= member.first_name + " " + member.last_name %>
+      <%= term.member.first_name + " " + term.member.last_name %>
       <% last_position = officer_position.position_name %>
     <% end %>
     </td>
     </tr>
 <% end %>
 </table>
+
+
+ 
             <p>If you have any questions or comments, please send us an email 
               at <a href="mailto:info@devildogsquadron.com">info@devildogsquadron.com</a></p>

@@ -1,5 +1,14 @@
+<% content_for :sidebar do %>
+<% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+  <div align="center">
+  <%= button_to 'New Officer position', new_officer_position_path, :method => :get %>
+  </div>
+<% end %>
+
+<% end %>
+
 <% last_position = "" %>
-<h1>Listing officer_positions</h1>
+<h1>Listing Officer Positions</h1>
 
 <table>
   <tr>
@@ -23,10 +32,7 @@
 
 <br />
 
-<%= link_to 'New Officer position', new_officer_position_path %>
-
-<br />
-<br />
+<h2>Current Office Holders</h2>
 
 <% @officer_positions.each do |officer_position| %>
   <%= officer_position.position_name %>: 

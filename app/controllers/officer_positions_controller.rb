@@ -1,7 +1,7 @@
 class OfficerPositionsController < ApplicationController
   # GET /officer_positions
   # GET /officer_positions.json
-skip_before_filter :check_authorization, :check_authentication
+
 
   def index
     @officer_positions = OfficerPosition.all
