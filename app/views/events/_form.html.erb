@@ -11,6 +11,11 @@
     });
   });
   </script>
+  <script>
+
+    $( document ).tooltip();
+
+  </script>
   
 <%= form_for(@event) do |f| %>
   <% if @event.errors.any? %>
@@ -38,6 +43,7 @@
       <%= f.text_field :end, :value => f.object.try(:end).try(:strftime,'%Y-%m-%d %H:%M:%S'), :size => 20 %>
     </div>
   </div>
+  <p class="form_note">Times aren't displayed so not really important to be accurate.</p>
 </div>
 
 
@@ -50,7 +56,7 @@
   </div>
   <div class="cell">
     <div class="field">
-      <%= f.label :event_statuses_id, "Status" %><br />
+      <%= f.label :event_statuses_id, "Status" %><a href="#" title="Only confirmed will show to general public, tentative will show to logged in members">tip</a><br />
       <%= f.collection_select :event_statuses_id, EventStatus.all, :id, :status, options = {:order => 'status ASC', :prompt => true}, html_options = {:class => "styled-select"} %>
     </div>
   </div>

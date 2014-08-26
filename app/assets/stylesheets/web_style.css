@@ -776,3 +776,17 @@ input, textarea {
   padding: 0.1em 0.5em;
    }
 
+.form_note {
+  color: #999;
+  font-style: italic;
+  }
+
+.ui-tooltip {
+  width: 250px;
+  }
+
+.ui-tooltip-content {
+  padding: 1em;
+  background: #ffffe6;
+  }
+
