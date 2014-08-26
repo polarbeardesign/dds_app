@@ -57,9 +57,11 @@
   <div class="cell">
     <div class="field">
       <%= f.label :location %><br />
-      <%= f.collection_select :location_id, Location.ordered.all, :id, :short_name, options = {:order => 'short_name ASC', :prompt => true}, html_options = {:class => "styled-select"} %><br /><p><%= link_to 'Enter a new location', new_location_path %></p><br />
+      <%= f.collection_select :location_id, Location.ordered.all, :id, :short_name, options = {:order => 'short_name ASC', :prompt => true}, html_options = {:class => "styled-select"} %><br />
+      <p><%= link_to 'Enter a new location', new_location_path %></p><br />
     </div>
   </div>
+      <div style="clear: both;"><%= f.check_box :rides_available %>Rides Available at this event (check for yes)</div>
 </div>
 
 <div class="indent_row">

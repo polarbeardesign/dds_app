@@ -1,6 +1,8 @@
 class PagesController < ApplicationController
 
-skip_before_filter :check_authorization, :check_authentication, :only => [:home, :VMB612, :PBJs, :squadron, :map_0, :map_2013]
+skip_before_filter :check_authorization, :check_authentication, :only => [:home, :VMB612, :PBJs, :squadron, :map_0, :map_2013, :living_flight_history_experience]
+
+# page views are hard coded in view files
 
   def home
     @events = Event.published.confirmed.ordered.tease
@@ -12,6 +14,9 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:home,
   end
 
   def PBJs
+  end
+
+  def living_flight_history_experience
   end
 
   def map_0

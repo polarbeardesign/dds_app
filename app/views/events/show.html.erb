@@ -85,6 +85,9 @@
   
 <p><b>Where:</b> <%= @event.location.short_name %> - <%= @event.location.city %>, <%= @event.location.state %></p>
 
+<p><b>Rides?:</b> <% if @event.rides_available? %>Yes - Rides are available! <a href="/living_flight_history_experience">Learn more</a><% else %>Rides not available at this event.<% end %></p>
+
+
 <% if @event.URL? %>
 <p>
   <b>Website:</b>
