@@ -740,8 +740,19 @@ img.fr {
   border: 1px solid #990000;
   }
 
+.signup_box {
+  background: #EDD68A;
+  margin: 0.75em 0.75em;
+  width: 475px;
+  padding: 0.5em 1em;
+  border: 1px solid #b78d03;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+}
+
 .signup_buttons {
-  margin: 0 0 0 15em;
+  margin: 0 0 0 13em;
   }
 
 .signup_buttons form, .signup_buttons div {
@@ -764,3 +775,4 @@ input, textarea {
   font-size: 1.25em;
   padding: 0.1em 0.5em;
    }
+

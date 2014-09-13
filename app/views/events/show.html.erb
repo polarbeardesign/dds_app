@@ -114,13 +114,79 @@
 
 <% if current_user %>
 
-<p>Put me on the List for this airshow</p>
+<h2>Members Info:</h2>
+
+<% if !@event.trip.blank? %>
+
+<table width="500" class="table_border">
+  <tr>
+    <th colspan="2">Trip Details:</th>
+  </tr>
+  <tr class="odd_row">
+    <td width="150">Crew arrival:</td>
+    <% if !@event.trip.crew_arrival.blank? %>
+      <td><strong><%= @event.trip.crew_arrival.strftime("%b %d - %H:%M") %></strong></td>
+    <% else %>
+      <td><strong>n/a</strong></td>
+    <% end %>
+  </tr>
+  <tr class="even_row">
+    <td>Tug time:</td>
+    <% if !@event.trip.tug_time.nil? %>
+      <td><strong><%= @event.trip.tug_time.strftime("%b %d - %H:%M") %></strong></td>
+    <% else %>
+      <td><strong>n/a</strong></td>
+    <% end %>
+  </tr>
+  <tr class="odd_row">
+    <td>Wheels up:</td>
+    <td><strong><%= @event.trip.wheels_up.strftime("%b %d - %H:%M") %></strong></td>
+  </tr>
+  <tr class="even_row">
+    <td>Destination ETA:</td>
+    <% if !@event.trip.destination_eta.nil? %>
+      <td><strong><%= @event.trip.destination_eta.strftime("%b %d - %H:%M") %></strong></td>
+    <% else %>
+      <td><strong>n/a</strong></td>
+    <% end %>
+  </tr>
+  <tr class="odd_row">
+    <td>Return ETA:</td>
+    <% if !@event.trip.return_eta.nil? %>
+      <td><strong><%= @event.trip.return_eta.strftime("%b %d - %H:%M") %></strong></td>
+    <% else %>
+      <td><strong>n/a</strong></td>
+    <% end %>
+  </tr>
+  <tr class="even_row">
+    <td>Notes:</td>
+    <td><%= @event.trip.notes %></td>
+  </tr>
+</table>
+<% else %>
+<p>No trip details yet...</p>
+<% end %>
+
+<% if signed_in?%>
+    <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+<% if !@event.trip.blank? %>
+  <%= link_to 'Edit Trip', edit_trip_path(@event.trip) %>
+<% else %>
+  <%= link_to 'Add Trip Details', new_trip_path(:event_id => @event) %>
+<% end %>
+<% end %>
+<% end %>
+
+<div class="signup_box">
+<strong>Put me on the List for this airshow:</strong>
   <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "member"} %>
     <div class="signup_buttons">
       <%= button_to 'Definite', {:controller => :event_signups, :action => :signup, :member_id => current_user.member, :event_id => @event.id, :commitment_level => 'Definite' } %>
       <%= button_to 'Maybe',    {:controller => :event_signups, :action => :signup, :member_id => current_user.member, :event_id => @event.id, :commitment_level => 'Maybe' } %>
     </div>
   <% end %>
+<span style="font-style: italic;font-size:0.85em;">Your name will be entered on the list below, you can change your commitment or remove yourself at any time. Signing up only indicates your availability and desire to participate. Final roster at discretion of pilots.</em>
+</div>
 
 <table width="500" class="table_border">
   <tr>
