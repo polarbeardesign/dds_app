@@ -87,6 +87,7 @@ body {
 
 #nav a {
 	display: block;
+	text-decoration: none;
     color: #fff;
     font-weight: bold;
 	width: 125px;  /*sets the width of the block, set to background image width to center text*/

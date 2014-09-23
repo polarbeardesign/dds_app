@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
 
-skip_before_filter :check_authorization, :check_authentication, :only => [:home, :VMB612, :PBJs, :squadron, :map_0, :map_2013, :living_flight_history_experience]
+skip_before_filter :check_authorization, :check_authentication, :only => [:home, :VMB612, :PBJs, :squadron, :map_0, :map_2013, :living_flight_history_experience, :refund_policy]
 
 # page views are hard coded in view files
 
@@ -17,6 +17,10 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:home,
   end
 
   def living_flight_history_experience
+    @rides = Event.published.ordered.has_lfhe
+  end
+
+  def refund_policy
   end
 
   def map_0

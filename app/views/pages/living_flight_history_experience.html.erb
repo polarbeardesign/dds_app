@@ -4,6 +4,52 @@
 
 <h1>An Experience Like No Other</h1>
 
+<div style="width: 250px; float:right; border: 1px solid #999; margin: 0 0 2em 2em;">
+<h2 style="background: #cc0000; color: #eee; margin: 0 0 0 0; padding: 0.75em;">Upcoming Flight Opportunities</h2>
+
+<p style="margin: 0.75em;">Rides booked in advance are $395 and at the events $425.
+
+<table class="table_border">
+<% @rides.each do |ride| %>
+  <tr class="<%= cycle('odd_row', 'even_row') %>">
+    <td><strong><%= ride.title %></strong><br />
+    <% if ride.start.strftime("%b %d" ) == ride.end.strftime("%b %d") %>
+      <%= ride.start.strftime("%b %d, %y") %>
+    <% else %>
+      <%= ride.start.strftime("%b %d") %> - <%= ride.end.strftime("%d, %y") %>
+    <% end %>
+    <br />
+  <%= ride.location.city %>, <%= ride.location.state %>
+  <div style="float:right; margin: 0.25em 0 0 0.25em;">
+  <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+
+  <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_SM.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+<input type="hidden" name="add" value="1">
+<input type="hidden" name="cmd" value="_cart">
+<input type="hidden" name="business" value="px_info@devildogsquadron.com">
+<input type="hidden" name="item_name" value="Living History Flight Experience - Prepay | <%= ride.title %>">
+<input type="hidden" name="item_number" value="100">
+<input type="hidden" name="amount" value="395.00">
+<input type="hidden" name="page_style" value="Primary">
+<input type="hidden" name="shipping" value="0">
+<input type="hidden" name="no_shipping" value="2">
+<input type="hidden" name="no_note" value="1">
+<input type="hidden" name="currency_code" value="USD">
+<input type="hidden" name="lc" value="US">
+<input type="hidden" name="bn" value="PP-ShopCartBF">
+
+</form></div></td>
+</tr>
+<% end %>
+</table>
+
+<p style="margin: 0.75em;"><%= link_to "Refund Policy", refund_policy_path %>.</p>
+
+<p style="margin: 0.75em;">Not ready to make a reservation, but would like more information? Enter a <%= link_to "Ride Request", new_ride_request_path %>.</p>
+
+</div>
+
 <p>Strapping in, donning your headset, you realize this is nothing like a flight on an airliner. You've been briefed on what to expect, there may be some smoke in the plane on start up(!?), you can hear the pilots go through their before-start checklist.</p>
 
 <p>An engine starts turning - the pilot waits for "9 blades" to rotate by - and then the engine comes to life. The procedure is repeated on the other side. This is getting real.</p>
