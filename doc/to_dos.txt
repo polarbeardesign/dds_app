@@ -9,12 +9,13 @@ Add LFHE page
 
 Check admin flow of event_signup creation/edit delete
   - add tooltips to fields
+  - Show trip details on calendar page if logged in
+
 
 Add officer positions held to members
 Hide Maybe/Definite buttons if already signed up.
 
 Add list of shows signed up for on login screen
-Show trip details on calendar page
 
 
 Jim: 140310
