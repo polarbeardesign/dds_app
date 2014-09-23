@@ -1,13 +1,8 @@
 <% content_for :sidebar do %>
-  <%= render "sidebars/lfhe" %>
-<% end %>
-
-<h1>An Experience Like No Other</h1>
-
-<div style="width: 250px; float:right; border: 1px solid #999; margin: 0 0 2em 2em;">
+<div style="width: 220px; background: #fff; border: 1px solid #999;">
 <h2 style="background: #cc0000; color: #eee; margin: 0 0 0 0; padding: 0.75em;">Upcoming Flight Opportunities</h2>
 
-<p style="margin: 0.75em;">Rides booked in advance are $395 and at the events $425.
+<p style="margin: 0.75em;">Rides booked in advance are $395, and $425 at the events.
 
 <table class="table_border">
 <% @rides.each do |ride| %>
@@ -50,18 +45,42 @@
 
 </div>
 
+<% end %>
+
+<h1>An Experience Like No Other</h1>
+
+<div style="float:right; margin: 0 0 0.5em 0.5em;border: 1px solid #999; text-align: center; padding: 0.5em;">
+<%= image_tag "lhfe_brief.jpg", :width => '250px', :border => '1px solid #000' %><br />
+<span class="caption_text">Preflight Briefing</span>
+</div>
+
 <p>Strapping in, donning your headset, you realize this is nothing like a flight on an airliner. You've been briefed on what to expect, there may be some smoke in the plane on start up(!?), you can hear the pilots go through their before-start checklist.</p>
 
 <p>An engine starts turning - the pilot waits for "9 blades" to rotate by - and then the engine comes to life. The procedure is repeated on the other side. This is getting real.</p>
 
+<div style="float:right; margin: 0 0 0.5em 0.5em;border: 1px solid #999; text-align: center; padding: 0.5em;">
+<%= image_tag "lhfe5.jpg", :width => '250px', :border => '1px solid #000' %><br />
+<span class="caption_text">'Selfie' in the prop spinner?</span>
+</div>
+
 <p>After the "runup" - checking all the aircraft systems for proper operation - you taxi out to the runway and position for takeoff. And then your definition of loud gets reset as both engines are set to takeoff power and you sink into your seat - this old dog still has some muscle - and you are soon airborne. Cue the grins and maybe some goosebumps.</p>
 
 <p>Soon after you are airborne, the crew will signal you can unbuckle your seat belts and are 'free to move about the cabin'. Looking out the front window and to the side at that huge spinning propeller - you can't help but wonder what it was like for our veterans who flew these planes and others like them.</p>
+
+<div style="float:right; margin: 0 0 0.5em 0.5em;border: 1px solid #999; text-align: center; padding: 0.5em; clear: both;">
+<%= image_tag "lhfe4.jpg", :width => '250px', :border => '1px solid #000' %><br />
+<span class="caption_text">Take aim at imaginary bad guys</span>
+</div>
 
 <p>In the back, at the waist gun positions, or the tail gun position, imagine what it must have been like defending your airplane from enemy aircraft.</p>
 
 <p>Of course you can't know what it was really like but you'll have a much greater appreciation of the working conditions and sacrifices made by our veterans to defend our country and freedoms.</p>
 
 <p>No matter how long the flight, it'll be over before you are ready so be sure to keep moving and get a look out of each of the windows. Or feel free to stay seated and enjoy the ride.</p>
+
+<div style="float:right; margin: 0 0 0.5em 0.5em;border: 1px solid #999; text-align: center; padding: 0.5em;">
+<%= image_tag "lhfe2.jpg", :width => '250px', :border => '1px solid #000' %><br />
+<span class="caption_text">Turning in for landing</span>
+</div>
 
 <p>The crew will signal when it's time to find a seat and buckle up for landing. After landing and taxi back it will be time to leave the airplane. Your feet will be back on the ground but your spirit will still be up in the air. You've just completed a Living History Flight Experience on the Devil Dog - an experience like no other.</p>
