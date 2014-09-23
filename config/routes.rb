@@ -104,6 +104,8 @@ devise_for :users, :skip => [:registrations]
 
 match 'photo_viewer' => 'galleries#photo_viewer', :as => :photo_viewer
   
+  match 'refund_policy' => 'pages#refund_policy', :as => :refund_policy
+  
   get "pages/home"
   get "pages/VMB612"
   get "pages/PBJs"
