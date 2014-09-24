@@ -626,7 +626,7 @@ img.fr {
   float: right;
   }
 
-#calendar-ii {
+.calendar-ii {
   float: left;width: 40px;
   height: 40px;
   margin: 0 0.25em;
@@ -635,7 +635,7 @@ img.fr {
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   }
-#calendar_month-ii {
+.calendar_month-ii {
   text-align: center;
   font-size: 10px;
   font-weight: bold;
@@ -646,7 +646,7 @@ img.fr {
   -moz-border-radius: 0px;
   -webkit-border-radius: 5px 5px 0px 0px;
   }
-#calendar_date-ii {
+.calendar_date-ii {
   text-align: center;
   font-size: 16px;
   font-weight: bold;
@@ -658,7 +658,7 @@ img.fr {
 .calendar_row {
   float: left;
   margin: 0 10px 10px 20px;
-  border: 1px solid #eee;
+  border: 1px solid #ccc;
   border-bottom: none;
   border-radius: 5px 5px 0px 0px;
   -moz-border-radius: 0px;

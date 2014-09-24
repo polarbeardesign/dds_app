@@ -12,66 +12,146 @@
 
 <h1>Devil Dog Calendar:</h1>
 
-<table width="500" class="table_border">
-  <tr>
-    <th>Date</th>
-    <th>Title</th>
-  </tr>
-
-<% @meetings.each do |event| %>
-<% if current_event_type != event.event_type.title %>
-  <tr>
-    <td colspan="2"><strong><em><%= event.event_type.title %></em></strong></td>
-  </tr>
-<% end %>
-  <tr class="<%= cycle('odd_row', 'even_row') %>">
-    <td><%= event.start.strftime("%b %d, %Y") %></td>
-    <td><%= link_to event.title, event %></td>
-  </tr>
-<% current_event_type = event.event_type.title %>
-<% end %>
-
+<h2>Air Shows</h2>
+<% if !airshows.blank? %>
 <% airshows.each do |event| %>
-<% if current_event_type != event.event_type.title %>
-  <tr>
-    <td colspan="2"><strong><em><%= event.event_type.title %></em></strong></td>
-  </tr>
-<% end %>
-  <tr class="<%= cycle('odd_row', 'even_row') %>">
-    <td><%= event.start.strftime("%b %d, %Y") %></td>
-    <td><%= link_to event.title, event %><% if event.event_statuses_id == 2 %> <span class="error" style="display: inline;"><strong>--Tentative</strong></span> <% end %></td>
-  </tr>
+<div class="calendar_row" style="width: 90%; padding-top: 0.25em">
+  <div class="cell" style="width: 30%;">
+    <% if event.start.strftime("%b %d" ) == event.end.strftime("%b %d") %>
+    <div class="calendar-ii" style="margin: 0 0 0 2.5em;">
+      <div class="calendar_month-ii"><%= event.start.strftime("%b") %></div>
+      <div class="calendar_date-ii"><%= event.start.strftime("%d") %></div>
+    </div>
+    <% else %>
+    <div class="calendar-ii" style="float: left;">
+      <div class="calendar_month-ii"><%= event.start.strftime("%b") %></div>
+      <div class="calendar_date-ii"><%= event.start.strftime("%d") %></div>
+    </div>
+    <span style="float: left; font-size: 1em;margin: 0.5em 0 0 0;">&#8211; </span>
+    <div class="calendar-ii">
+      <div class="calendar_month-ii"><%= event.end.strftime("%b") %></div>
+      <div class="calendar_date-ii"><%= event.end.strftime("%d") %></div>
+    </div>
+    <% end %>
+  </div>
+  <div class="cell" style="width: 65%;">
+    <strong><em><%= link_to event.title, event %></em></strong><br /><%= sanitize(event.details) %>
+  </div>
+  </div>
 <% current_event_type = event.event_type.title %>
 <% end %>
+<% else %>
+   <div class="calendar_row" style="width: 90%; padding-top: 0.25em">
+     <div class="cell" style="width: 30%;">&nbsp;</div>
+       No scheduled air shows events at this time.
+   </div>
+<% end %>
 
+
+<h2>Special Events</h2>
+<% if !@special.blank? %>
 <% @special.each do |event| %>
-<% if current_event_type != event.event_type.title %>
-  <tr>
-    <td colspan="2"><strong><em><%= event.event_type.title %></em></strong></td>
-  </tr>
-<% end %>
-  <tr class="<%= cycle('odd_row', 'even_row') %>">
-    <td><%= event.start.strftime("%b %d, %Y") %></td>
-    <td><%= link_to event.title, event %></td>
-  </tr>
+<div class="calendar_row" style="width: 90%; padding-top: 0.25em">
+  <div class="cell" style="width: 30%;">
+    <% if event.start.strftime("%b %d" ) == event.end.strftime("%b %d") %>
+    <div class="calendar-ii" style="margin: 0 0 0 2.5em;">
+      <div class="calendar_month-ii"><%= event.start.strftime("%b") %></div>
+      <div class="calendar_date-ii"><%= event.start.strftime("%d") %></div>
+    </div>
+    <% else %>
+    <div class="calendar-ii" style="float: left;">
+      <div class="calendar_month-ii"><%= event.start.strftime("%b") %></div>
+      <div class="calendar_date-ii"><%= event.start.strftime("%d") %></div>
+    </div>
+    <span style="float: left; font-size: 1em;margin: 0.5em 0 0 0;">&#8211; </span>
+    <div class="calendar-ii">
+      <div class="calendar_month-ii"><%= event.end.strftime("%b") %></div>
+      <div class="calendar_date-ii"><%= event.end.strftime("%d") %></div>
+    </div>
+    <% end %>
+  </div>
+  <div class="cell" style="width: 65%;">
+    <strong><em><%= link_to event.title, event %></em></strong><br /><%= sanitize(event.details) %>
+  </div>
+</div>
 <% current_event_type = event.event_type.title %>
 <% end %>
+<% else %>
+   <div class="calendar_row" style="width: 90%; padding-top: 0.25em">
+     <div class="cell" style="width: 30%;">&nbsp;</div>
+       No scheduled special events events at this time.
+   </div>
+<% end %>
 
+<h2>Squadron Meetings</h2>
+<% if !@meetings.blank? %>
+<% @meetings.each do |event| %>
+<div class="calendar_row" style="width: 90%; padding-top: 0.25em">
+  <div class="cell" style="width: 30%;">
+    <% if event.start.strftime("%b %d" ) == event.end.strftime("%b %d") %>
+    <div class="calendar-ii" style="margin: 0 0 0 2.5em;">
+      <div class="calendar_month-ii"><%= event.start.strftime("%b") %></div>
+      <div class="calendar_date-ii"><%= event.start.strftime("%d") %></div>
+    </div>
+    <% else %>
+    <div class="calendar-ii" style="float: left;">
+      <div class="calendar_month-ii"><%= event.start.strftime("%b") %></div>
+      <div class="calendar_date-ii"><%= event.start.strftime("%d") %></div>
+    </div>
+    <span style="float: left; font-size: 1em;margin: 0.5em 0 0 0;">&#8211; </span>
+    <div class="calendar-ii">
+      <div class="calendar_month-ii"><%= event.end.strftime("%b") %></div>
+      <div class="calendar_date-ii"><%= event.end.strftime("%d") %></div>
+    </div>
+    <% end %>
+  </div>
+  <div class="cell" style="width: 65%;">
+    <strong><em><%= link_to event.title, event %></em></strong><br /><%= sanitize(event.details) %>
+  </div>
+</div>
+<% current_event_type = event.event_type.title %>
+<% end %>
+<% else %>
+   <div class="calendar_row" style="width: 90%; padding-top: 0.25em">
+     <div class="cell" style="width: 30%;">&nbsp;</div>
+       No scheduled squadron meetings events at this time.
+   </div>
+<% end %>
+
+<h2>Maintenance</h2>
+<% if !@maint.blank? %>
 <% @maint.each do |event| %>
-<% if current_event_type != event.event_type.title %>
-  <tr>
-    <td colspan="2"><strong><em><%= event.event_type.title %></em></strong></td>
-  </tr>
-<% end %>
-  <tr class="<%= cycle('odd_row', 'even_row') %>">
-    <td><%= event.start.strftime("%b %d, %Y") %></td>
-    <td><%= link_to event.title, event %></td>
-  </tr>
+<div class="calendar_row" style="width: 90%; padding-top: 0.25em">
+  <div class="cell" style="width: 30%;">
+    <% if event.start.strftime("%b %d" ) == event.end.strftime("%b %d") %>
+    <div class="calendar-ii" style="margin: 0 0 0 2.5em;">
+      <div class="calendar_month-ii"><%= event.start.strftime("%b") %></div>
+      <div class="calendar_date-ii"><%= event.start.strftime("%d") %></div>
+    </div>
+    <% else %>
+    <div class="calendar-ii" style="float: left;">
+      <div class="calendar_month-ii"><%= event.start.strftime("%b") %></div>
+      <div class="calendar_date-ii"><%= event.start.strftime("%d") %></div>
+    </div>
+    <span style="float: left; font-size: 1em;margin: 0.5em 0 0 0;">&#8211; </span>
+    <div class="calendar-ii">
+      <div class="calendar_month-ii"><%= event.end.strftime("%b") %></div>
+      <div class="calendar_date-ii"><%= event.end.strftime("%d") %></div>
+    </div>
+    <% end %>
+  </div>
+  <div class="cell" style="width: 65%;">
+    <strong><em><%= link_to event.title, event %></em></strong><br /><%= sanitize(event.details) %>
+  </div>
+</div>
 <% current_event_type = event.event_type.title %>
 <% end %>
-
-
-</table>
+<% else %>
+   <div class="calendar_row" style="width: 90%; padding-top: 0.25em">
+     <div class="cell" style="width: 30%;">&nbsp;</div>
+       No scheduled maintenance events at this time.
+   </div>
+<% end %>
 
 <br />
 
