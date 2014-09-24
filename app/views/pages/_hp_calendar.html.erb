@@ -6,19 +6,19 @@
 <div class="calendar_row" style="width: 90%; padding-top: 0.25em">
   <div class="cell" style="width: 30%;">
     <% if event.start.strftime("%b %d" ) == event.end.strftime("%b %d") %>
-    <div id="calendar-ii" style="margin: 0 0 0 2.5em;">
-      <div id="calendar_month-ii"><%= event.start.strftime("%b") %></div>
-      <div id="calendar_date-ii"><%= event.start.strftime("%d") %></div>
+    <div class="calendar-ii" style="margin: 0 0 0 2.5em;">
+      <div class="calendar_month-ii"><%= event.start.strftime("%b") %></div>
+      <div class="calendar_date-ii"><%= event.start.strftime("%d") %></div>
     </div>
     <% else %>
-    <div id="calendar-ii" style="float: left;">
-      <div id="calendar_month-ii"><%= event.start.strftime("%b") %></div>
-      <div id="calendar_date-ii"><%= event.start.strftime("%d") %></div>
+    <div class="calendar-ii" style="float: left;">
+      <div class="calendar_month-ii"><%= event.start.strftime("%b") %></div>
+      <div class="calendar_date-ii"><%= event.start.strftime("%d") %></div>
     </div>
     <span style="float: left; font-size: 1em;margin: 0.5em 0 0 0;">&#8211; </span>
-    <div id="calendar-ii">
-      <div id="calendar_month-ii"><%= event.end.strftime("%b") %></div>
-      <div id="calendar_date-ii"><%= event.end.strftime("%d") %></div>
+    <div class="calendar-ii">
+      <div class="calendar_month-ii"><%= event.end.strftime("%b") %></div>
+      <div class="calendar_date-ii"><%= event.end.strftime("%d") %></div>
     </div>
     <% end %>
   </div>
