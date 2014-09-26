@@ -6,9 +6,11 @@ LFHE page
    - expire presales at 48 hours prior?
    - make dates multi-month spannable (ie Enthought)
 
+Add mailer for sending trip details to roster members (c/o, etc)
+
 Check admin flow of event_signup creation/edit delete
   - add tooltips to fields
-  - Show trip details on calendar page if logged in
+  X Show trip details on calendar page if logged in
 
 
 Add officer positions held to members
@@ -85,6 +87,9 @@ Marketing ideas
 COMPLETED ITEMS
 =====================================
 
+
+Added mailers to event signup creation/change
+Added mailer for ride request creation
 Adding term functionaility to officers Positions COMPLETED 140710
   - need to be able to display current officers on squadron page
 Added ability to self edit trip_signups COMPLETED 140531
