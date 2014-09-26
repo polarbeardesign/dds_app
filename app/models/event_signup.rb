@@ -5,8 +5,10 @@ class EventSignup < ActiveRecord::Base
   belongs_to :event
   belongs_to :member
   belongs_to :trip
+  
 
-  scope :ordered, order("commitment_level ASC, created_at ASC")
+
+  scope :ordered, order("FIELD(commitment_level, 'Definite','Maybe','Canceled')")
   
   scope :airshow_ordered, joins(:event).merge(Event.ordered)
   

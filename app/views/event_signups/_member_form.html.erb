@@ -26,13 +26,16 @@
   </div>
 </div>
 <div class="indent_row" style="width: 560px;">
-  <div class="cell" style="padding: 0 0 5em 10em;">
+  <div class="cell" style="padding: 0 0 5em 6em;">
     <div class="field">
       <div class="cell radio_button_selection">
         <label><%= f.radio_button 'commitment_level', 'Definite' %><br /><%= f.label :commitment_level, "Definite" %></label>
       </div>
-      <div class="cell radio_button_selection" style="border: none;">
+      <div class="cell radio_button_selection">
         <label><%= f.radio_button 'commitment_level', 'Maybe' %><br /><%= f.label :commitment_level, "Maybe" %></label>
+      </div>
+      <div class="cell radio_button_selection" style="border: none;">
+        <label><%= f.radio_button 'commitment_level', 'Canceled' %><br /><%= f.label :commitment_level, "Canceled" %></label>
       </div>
     </div>
   </div>

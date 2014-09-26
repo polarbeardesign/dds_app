@@ -61,6 +61,7 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:new, 
     
     respond_to do |format|
       if @ride_request.save
+        RidesRequestNotifier.created(@ride_request).deliver
         format.html { redirect_to @ride_request, :notice => 'Ride request was successfully created.' }
         format.json { render :json => @ride_request, :status => :created, :location => @ride_request }
       else

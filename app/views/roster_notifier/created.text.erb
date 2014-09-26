@@ -1,0 +1,19 @@
+RosterNotifier#created
+
+<%= @event_signup.member.first_name %>, 
+
+
+Your Event Sign Up has been recorded on the website.
+
+<%= @event_signup.event.name %>
+<%= @event_signup.event.title %>
+<% if @event_signup.event.start.strftime("%b %d" ) == @event_signup.event.end.strftime("%b %d") %>
+    <%= @event_signup.event.start.strftime("%b. %d, %Y") %>,
+<% else %>
+    <%= @event_signup.event.start.strftime("%b. %d") %> - <%= @event_signup.event.end.strftime("%b. %d, %Y") %>, 
+<% end %>
+Commitment Level: <%= @event_signup.commitment_level %>
+
+If you need to make a change to your commitment level or cancel, return to the <%= 'http://www.devildogsquadron.com' + event_path(@event_signup.event) %> and make your change.
+
+Devil Dog Squadron

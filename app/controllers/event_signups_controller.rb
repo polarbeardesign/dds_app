@@ -51,6 +51,7 @@ skip_before_filter :check_authorization, :check_authentication
 
     respond_to do |format|
       if @event_signup.save
+        RosterNotifier.created(@event_signup).deliver
         format.html { redirect_to(@event_signup, :notice => 'Event type was successfully created.') }
         format.json { render :json => @event_signup, :status => :created, :location => @event_signup }
       else
@@ -65,6 +66,7 @@ skip_before_filter :check_authorization, :check_authentication
 
     respond_to do |format|
       if @event_signup.save
+        RosterNotifier.created(@event_signup).deliver
         format.html { redirect_to event_path(params[:event_id]), :notice => 'Event signup was successfully created.' }
         format.json { render :json => @event_signup, :status => :created, :location => @event_signup }
       else
@@ -81,6 +83,7 @@ skip_before_filter :check_authorization, :check_authentication
 
     respond_to do |format|
       if @event_signup.update_attributes(params[:event_signup])
+        RosterNotifier.change(@event_signup).deliver
         format.html { redirect_to @event_signup, :notice => 'Event signup was successfully updated.' }
         format.json { head :ok }
       else
