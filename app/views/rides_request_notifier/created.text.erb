@@ -1,5 +1,3 @@
-RidesRequestNotifier#created
-
 <%= @ride_request.first_name %>, 
 
 Thank you for your interest in the Living History Flight Experience.
@@ -14,19 +12,21 @@ Phone:  <%= @ride_request.phone %>
 <% if !@ride_request.events.blank? %>
 Indicated interest at the following events:
 <% @ride_request.events.each do |event| %>
-<%= event.title %> | <% if event.start.strftime("%b %d") == event.end.strftime("%b %d") %>
-        <%= event.start.strftime("%b. %d, %Y") %>
-      <% else %>
-        <% if event.start.strftime("%b") == event.end.strftime("%b") %>
-          <%= event.start.strftime("%b. %d") %>-<%= event.end.strftime("%d, %Y") %>
-        <% else %>
-          <%= event.start.strftime("%b. %d") %>-<%= event.end.strftime("%b. %d, %Y") %>
-        <% end %>
-      <% end %>
-  <% end %>
+<%= event.title %> <% if event.start.strftime("%b %d") == event.end.strftime("%b %d") %>
+<%= event.start.strftime("%b. %d, %Y") %>
+<% else %>
+<% if event.start.strftime("%b") == event.end.strftime("%b") %>
+<%= event.start.strftime("%b. %d") %>-<%= event.end.strftime("%d, %Y") %>
+<% else %>
+<%= event.start.strftime("%b. %d") %>-<%= event.end.strftime("%b. %d, %Y") %>
+<% end %>
+<% end %>
+<% end %>
 <% end %>
 
 Living History Flight Experience PrePay is $395, if you would like to prepay for your ride please use this link.
+
+<%= "http://www.devildogsquadron.com" + px_path %>
 
 Best regards,
 

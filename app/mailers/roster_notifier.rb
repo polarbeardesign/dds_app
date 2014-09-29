@@ -1,5 +1,5 @@
 class RosterNotifier < ActionMailer::Base
-  default :from => "from@example.com"
+  default :from => "info@devildogsquadron.com"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
@@ -9,7 +9,7 @@ class RosterNotifier < ActionMailer::Base
   def created(event_signup)
     @event_signup = event_signup
 
-    mail :to => event_signup.member.user.email, :cc => 'shanghaibiker@gmail.com', :subject => 'Sign Up Receieved'
+    mail :to => event_signup.member.user.email, :cc => 'info@devildogsquadron.com', :subject => event_signup.event.title + ' Sign Up Received'
 
   end
 
@@ -21,7 +21,7 @@ class RosterNotifier < ActionMailer::Base
   def change(event_signup)
     @event_signup = event_signup
 
-    mail :to => event_signup.member.user.email, :cc => 'shanghaibiker@gmail.com', :subject => 'Sign Up Change Receieved'
+    mail :to => event_signup.member.user.email, :cc => 'info@devildogsquadron.com', :subject => event_signup.event.title + ' Sign Up Change Received'
 
   end
 end

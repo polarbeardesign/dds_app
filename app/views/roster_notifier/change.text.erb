@@ -1,8 +1,6 @@
-RosterNotifier#change
-
 <%= @event_signup.member.first_name %>, 
 
-Your change to Event Sign Up has been recorded on the website.
+Your change to <%= @event_signup.event.title %> Sign Up has been recorded on the website.
 
 <%= @event_signup.event.title %>
 <% if @event_signup.event.start.strftime("%b %d" ) == @event_signup.event.end.strftime("%b %d") %>
