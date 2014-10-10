@@ -82,13 +82,13 @@ table {
     margin: 10px;
     border: solid #000;
 	border-width: thin;
-	border-collapse: separate ;
-    border-spacing: 0px ;
+	border-collapse: separate;
+    border-spacing: 0px;
     }
 
 .table_border td { 
     border: solid #000;
 	border-width: thin;
-	border-collapse: separate ;
-    border-spacing: 0px ;
+	border-collapse: separate;
+    border-spacing: 0px;
     }
