@@ -17,7 +17,7 @@ class Right < ActiveRecord::Base
     "account" => "READ",
     "account_edit" => "UPDATE",
     "change_password" => "UPDATE",
-    "trip_financials" => "READ"
+    "trip_financials" => "READ",
     "hold_harmless" => "READ"
 }
 
