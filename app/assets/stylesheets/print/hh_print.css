@@ -78,6 +78,10 @@ table {
   line-height: 2em;
 }
 
+.underline {
+  text-decoration: underline
+  }
+
 .table_border { 
     margin: 10px;
     border: solid #000;
