@@ -110,6 +110,8 @@ match 'photo_viewer' => 'galleries#photo_viewer', :as => :photo_viewer
   get "pages/VMB612"
   get "pages/PBJs"
   match 'living_flight_history_experience' => 'pages#living_flight_history_experience', :as => :living_flight_history_experience
+  match 'hold_harmless/:event_id' => 'event_signups#hold_harmless', :as => :hold_harmless
+
   get "pages/map_0"
   get "pages/map_2103"
   get "pages/squadron"

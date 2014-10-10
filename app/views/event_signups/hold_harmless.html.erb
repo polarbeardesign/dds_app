@@ -1,0 +1,37 @@
+
+
+<article id="hold-harmless">
+<p class="hh-rev">RV.3/19/14 8:52 AM</p>
+
+<h1>COMMEMORATIVE AIR FORCE PASSENGER MANIFEST with RELEASE AND HOLD HARMLESS<br />AGREEMENT HH - 3</h1>
+
+<p>This form must be completed in full prior to flight in any CAF aircraft with <em><strong>multiple crewmembers, or when carrying passengers</strong></em>. The pilot-in-command will insure one copy is left with a responsible CAF member or responsible person (FBO or Host) at the point of departure. It is the responsibility of the pilot-in-command to see that these important details are properly completed. <em><strong>For paid rides, a copy of the manifest should be given to the unit finance officer and a copy sent to HQ finance; include membership applications if applicable</strong></em>.</p>
+
+<p class="hh-form">PAID RIDES ON THIS FLIGHT? YES ___ NO ___ Pilot in Command (PRINT) _________________________________________Col. #_________________ <br />
+DATE ____________________ AIRCRAFT TYPE _________________ N _________________￼ AC Category (circle one): Experimental/Limited/Standard<br />
+DEPARTURE POINT ______________________ DESTINATION_______________________ Unit contact/ phone number___________________________ <br />
+UNIT NOTES ________________________________________________________________________________________________________________</p>
+<hr />
+<p>KNOW ALL MEN BY THESE PRESENT: WHEREAS, THE UNDERSIGNED desire to participate in Commemorative Air Force air show activities and/or fly or take a flight as pilot, co- pilot or crew member or passenger in Commemorative Air Force aircraft; and whereas I will be doing so entirely upon my own initiative, risk and responsibility; now, therefore, in consideration of the permission extended to me by the Commemorative Air Force, through its officers and agents to participate in Commemorative Air Force air show activities and/or fly or take said flight or flights in Commemorative Air Force aircraft as pilot, co-pilot, crewmember or passenger, I do hereby, for myself, my heirs, executors, and administrators remise, release and forever discharge and hold harmless the Commemorative Air Force, its administrators, and all its officers, agents, servants and employees, acting officially or otherwise, from any and all claims, demands, actions or causes of action including fault or negligence on the part of the Commemorative Air Force, its administrators, officers, agents, servants or employees, during such participation flying or flight or continuation thereof, as well as all ground and flight operations incident thereto. I am fully cognizant that no/or only limited passenger liability insurance exists on behalf of the CAF for this flight. <strong>I SPECIFICALLY AGREE TO INDEMNIFY, DEFEND AND HOLD HARMLESS THE CAF FROM ANY LIABILITY WHATSOEVER ARISING OUT OF CAF’S SOLE AND/OR COMPARATIVE NEGLIGENCE.</strong></p>
+<p><strong>NOTE: Some life insurance policies do not cover you if you fly in a non-standard category aircraft. If you are concerned please check with your insurance company.</strong></p>
+
+<table class="table_border">
+  <tr>
+    <td colspan="2">First and last Name (Print)<br />Check block if crewmember</td>
+    <td>Colonel Number</td>
+    <td>Phone Number</td>
+    <td>Emergency contact name and phone number (Print)</td>
+    <td>I have read, agree with and fully understand this document. Signature</td>
+  </tr>
+<% @event_signups.each do |event_signup| %>
+  <tr class="<%= cycle('odd_row', 'even_row') %>">
+    <td width="180px"><%= event_signup.member.first_name %> <%= event_signup.member.last_name %></td>
+    <td>&nbsp;</td>
+    <td style="text-align: center;"><%= event_signup.member.caf_col_no %></td>
+    <td style="text-align: center; width: 120px;"><%= event_signup.member.home_phone %>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+<% end %>
+</table>
+</article>

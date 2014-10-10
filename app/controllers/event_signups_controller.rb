@@ -24,6 +24,12 @@ skip_before_filter :check_authorization, :check_authentication
     end
   end
 
+  def hold_harmless
+    @event_signups = EventSignup.find_all_by_event_id(params[:event_id])
+
+    render :layout => "hh"
+  end
+
   # GET /event_signups/new
   # GET /event_signups/new.json
   def new

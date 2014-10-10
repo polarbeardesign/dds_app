@@ -17,6 +17,11 @@ a:hover {
 body {
         background: #1d2644; /*#0b2040;#2C3337*/
         }
+
+#hh {
+        background: #fff;
+        }
+
         
 #page {
         text-align: left;
@@ -795,3 +800,37 @@ input, textarea {
   font-style: italic;
   color: #333;
 }
+
+/*-----------------------------------------------------
+  Hold Harmless
+--------------------------------------------------------*/
+
+#hold-harmless {
+  width: 100%;
+  font-size: 12pt;
+}
+
+#hold-harmless > h1 {
+  text-align: center;
+  font-size: 1.1em;
+  line-height: 1.3em;
+  }
+#hold-harmless > p {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 0.85em;
+  }
+
+.hh-rev {
+  font-size: 0.5rem;
+  text-align: right;
+  margin: 0 0 3em 0;
+}
+
+.hh-form {
+  font-weight: bold;
+  font-size: 1.1em;
+  line-height: 2em;
+}
+
+
+
