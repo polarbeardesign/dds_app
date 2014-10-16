@@ -9,6 +9,10 @@
     <td><strong><%= @trip.crew_arrival.strftime("%b %d - %H:%M") %></strong></td>
   </tr>
   <tr>
+    <td width="150">Distance (nm)</td>
+    <td><strong><%= @trip.event.location.one_way_distance %> | ~<%= (@trip.event.location.one_way_distance.to_f/185).round(2) %> hours</strong></td>
+  </tr>
+  <tr>
     <td>Tug time</td>
     <% if !@trip.tug_time.nil? %>
       <td><strong><%= @trip.tug_time.strftime("%b %d - %H:%M") %></strong></td>

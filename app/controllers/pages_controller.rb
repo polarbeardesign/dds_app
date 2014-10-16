@@ -43,6 +43,7 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:home,
 
   def member_home
    @user = current_user
+   @member = Member.find(@user.member)
   end
 
   def admin_home

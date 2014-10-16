@@ -1,3 +1,5 @@
+<% total_traveled = 0 %>
+
 <% content_for :sidebar do %>
   <%= render "sidebars/members" %>
 <% end %>
@@ -5,3 +7,24 @@
 <h1>Members Section</h1>
 
 <p>Members only section provides access to information...</p>
+
+<h2>Upcoming Trips:</h2>
+
+<% @member.event_signups.ordered.each do |sign_up| %>
+    <% if sign_up.event.start > Time.zone.now %>
+        <%= link_to sign_up.event.title, event_path(sign_up.event) %> | <%= sign_up.event.start.strftime("%b %d, %Y") %><br />
+    <% end %>
+<% end %>
+
+<h2>Trip History:</h2>
+
+<% @member.event_signups.reverse.each do |sign_up| %>
+    <% if sign_up.event.start < Time.zone.now %>
+        <% if !sign_up.event.location.one_way_distance.blank? %>
+            <% total_traveled = (sign_up.event.location.one_way_distance * 2) + total_traveled %>
+        <% end %>
+        <%= link_to sign_up.event.title, event_path(sign_up.event) %> | <%= sign_up.event.start.strftime("%b %d, %Y") %><br />
+    <% end %>
+<% end %>
+
+<p>Total Traveled: <strong><%= number_with_delimiter(total_traveled) %> nm</strong></p>

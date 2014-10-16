@@ -13,6 +13,7 @@ scope :published, lambda {
   }
 
 scope :ordered, order("events.start ASC")
+scope :reverse, order("events.start DESC")
 scope :cat_ordered, order("events.event_type_id ASC", "events.start ASC")
 scope :confirmed, where("event_statuses_id = 1")
 scope :tease, :limit => 3
