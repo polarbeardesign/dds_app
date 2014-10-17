@@ -47,7 +47,7 @@ namespace :deploy do
 
   desc "symlink my db file"
   task :symlink_db_file do
-    run "ln -s /home/#{user}/ncce_app_1/shared/database.yml #{latest_release}/config/database.yml"
+    run "ln -s /home/#{user}/#{application}/shared/database.yml #{latest_release}/config/database.yml"
   end
 
   desc "symlink my db file again"
