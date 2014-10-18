@@ -10,20 +10,25 @@
 
 <h2>Upcoming Trips:</h2>
 
-<% @member.event_signups.ordered.each do |sign_up| %>
-    <% if sign_up.event.start > Time.zone.now %>
-        <%= link_to sign_up.event.title, event_path(sign_up.event) %> | <%= sign_up.event.start.strftime("%b %d, %Y") %><br />
-    <% end %>
+<% if @member.event_signups.future.empty? %>
+No upcoming trips currently scheduled.
+<% else %>
+
+<% @member.event_signups.future.each do |sign_up| %>
+    <%= link_to sign_up.event.title, event_path(sign_up.event) %> | <%= sign_up.event.start.strftime("%b %d, %Y") %> | Your Commitment Level: <strong><%= sign_up.commitment_level %></strong><br />
+<% end %>
 <% end %>
 
 <h2>Trip History:</h2>
 
 <% @member.event_signups.reverse.each do |sign_up| %>
+    <% if sign_up.commitment_level == "Definite" %>
     <% if sign_up.event.start < Time.zone.now %>
         <% if !sign_up.event.location.one_way_distance.blank? %>
             <% total_traveled = (sign_up.event.location.one_way_distance * 2) + total_traveled %>
         <% end %>
         <%= link_to sign_up.event.title, event_path(sign_up.event) %> | <%= sign_up.event.start.strftime("%b %d, %Y") %><br />
+    <% end %>
     <% end %>
 <% end %>
 

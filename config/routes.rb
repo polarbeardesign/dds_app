@@ -95,6 +95,10 @@ devise_for :users, :skip => [:registrations]
   match 'edit_signup/:id' => 'event_signups#edit_signup', :as => :edit_signup
 
   match 'members_list' => 'members#members_list', :as => :members_list
+  
+  match 'frequent_flyers' => 'event_signups#frequent_flyers', :as => :frequent_flyers
+
+  match 'frequent_flyer_detail/:member_id' => 'event_signups#frequent_flyer_detail', :as => :frequent_flyer_detail
 
   match 'account/:id' => 'members#account', :as => :account
   

@@ -10,6 +10,11 @@ class EventSignup < ActiveRecord::Base
 
   scope :ordered, order("FIELD(commitment_level, 'Definite','Maybe','Canceled')")
   
+  scope :member_ordered, joins(:member).merge(Member.ordered)
+  
+  scope :definite, lambda { where ("commitment_level = ?"), ("Definite") }
+
+
   scope :airshow_ordered, joins(:event).merge(Event.ordered)
   
   scope :future, joins(:event).merge(Event.published)
