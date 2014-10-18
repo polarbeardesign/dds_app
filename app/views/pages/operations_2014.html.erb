@@ -1,0 +1,11 @@
+<% content_for :sidebar do %>
+  <%= render "sidebars/f_18" %>
+<% end %>
+
+<h1>Operations Map</h1>
+
+<p>A summary of the locations and events for Devil Dog in 2014. (click on markers for more information)</p>
+
+ <span class="footer" style="cursor: pointer;" onclick="map.setCenter(new GLatLng(40.0000, -97.0000), 4);">[ <u>reset map</u> ]</span>
+<br /><br />
+<div id="map" style="width: 800px; height: 533px"></div>

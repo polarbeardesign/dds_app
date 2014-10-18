@@ -118,6 +118,7 @@ match 'photo_viewer' => 'galleries#photo_viewer', :as => :photo_viewer
 
   get "pages/map_0"
   get "pages/map_2103"
+  get "pages/operations_2014"
   get "pages/squadron"
   get "pages/thank_you"
   get "pages/member_home"

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Devil Dog Squadron :: </title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+
+
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=AIzaSyA2CUo-V9LEi2YuJvh6F_Sf7NkmpXnC4yE"
+      type="text/javascript"></script>
+    <script type="text/javascript">
+    var map;
+    //<![CDATA[
+
+    function load() {
+      if (GBrowserIsCompatible()) {
+        map = new GMap2(document.getElementById("map"));
+        map.addControl(new GMapTypeControl());
+        map.addControl(new GSmallMapControl());
+        map.addControl(new GScaleControl());
+        map.setCenter(new GLatLng(38.0000, -97.0000), 4, G_NORMAL_MAP);
+
+
+	var marker1 = new GMarker(new GLatLng(30.8856944,-94.0349444));
+	GEvent.addListener(marker1, 'click', function() { marker1.openInfoWindowHtml("<div style='width: 205px; height: 55;'><div style='width: 205px; height: 55px;'><strong>10th Annual Jasper Air Show & Fly-In</strong><br />Jasper, TX</div></div>"); });
+	map.addOverlay(marker1);
+
+	var marker2 = new GMarker(new GLatLng(27.5045147,-97.8082889));
+	GEvent.addListener(marker2, 'click', function() { marker2.openInfoWindowHtml("<div style='width: 205px; height: 55;'><div style='width: 205px; height: 55px;'><strong>Wings Over South Texas 2014 Air Show</strong><br />Kingsville, TX</div></div>"); });
+	map.addOverlay(marker2);
+
+	var marker3 = new GMarker(new GLatLng(30.7389281,-98.2386102));
+	GEvent.addListener(marker3, 'click', function() { marker3.openInfoWindowHtml("<div style='width: 205px; height: 55;'><div style='width: 205px; height: 55px;'><strong>2014 Bluebonnet Air Show</strong><br />Burnet, TX</div></div>"); });
+	map.addOverlay(marker3);
+
+	var marker4 = new GMarker(new GLatLng(31.1519004,-97.4076629));
+	GEvent.addListener(marker4, 'click', function() { marker4.openInfoWindowHtml("<div style='width: 205px; height: 55;'><div style='width: 205px; height: 55px;'><strong>Central Texas Air Show 2014</strong><br />Temple, TX</div></div>"); });
+	map.addOverlay(marker4);
+
+	var marker5 = new GMarker(new GLatLng(32.0280556,-96.4005833));
+	GEvent.addListener(marker5, 'click', function() { marker5.openInfoWindowHtml("<div style='width: 205px; height: 55;'><div style='width: 205px; height: 55px;'><strong>16th Annual Corsicana Airsho</strong><br />Corsicana, TX</div></div>"); });
+	map.addOverlay(marker5);
+
+	var marker6 = new GMarker(new GLatLng(29.3591306,-99.1774917));
+	GEvent.addListener(marker6, 'click', function() { marker6.openInfoWindowHtml("<div style='width: 205px; height: 55;'><div style='width: 205px; height: 55px;'><strong>Hondo Army Air Field Fly-In</strong><br />Hondo, TX</div></div>"); });
+	map.addOverlay(marker6);
+
+	var marker7 = new GMarker(new GLatLng(35.6018333,-97.7061667));
+	GEvent.addListener(marker7, 'click', function() { marker7.openInfoWindowHtml("<div style='width: 205px; height: 55;'><div style='width: 205px; height: 55px;'><strong>Discover Aviation & Airshow Spectacular</strong><br />Oklahoma City, OK</div></div>"); });
+	map.addOverlay(marker7);
+
+	var marker8 = new GMarker(new GLatLng(32.1417222,-94.8517222));
+	GEvent.addListener(marker8, 'click', function() { marker8.openInfoWindowHtml("<div style='width: 205px; height: 55;'><div style='width: 205px; height: 55px;'><strong>Rusk County Airport Air Show & Fly-IN</strong><br />Henderson, TX</div></div>"); });
+	map.addOverlay(marker8);
+
+	var marker9 = new GMarker(new GLatLng(38.2899478,-104.4980284));
+	GEvent.addListener(marker9, 'click', function() { marker9.openInfoWindowHtml("<div style='width: 205px; height: 55;'><div style='width: 205px; height: 55px;'><strong>Pueblo Air Blitz - Fly-In And Drive-In</strong><br />Pueblo, CO</div></div>"); });
+	map.addOverlay(marker9);
+
+	var marker10 = new GMarker(new GLatLng(32.218891,-96.079217));
+	GEvent.addListener(marker10, 'click', function() { marker10.openInfoWindowHtml("<div style='width: 205px; height: 55;'><div style='width: 205px; height: 55px;'><strong>Thunder over Cedar Creek</strong><br />Cedar Creek, TX</div></div>"); });
+	map.addOverlay(marker10);
+
+	var marker11 = new GMarker(new GLatLng(40.4459444,-95.3673056));
+	GEvent.addListener(marker11, 'click', function() { marker11.openInfoWindowHtml("<div style='width: 205px; height: 55;'><div style='width: 205px; height: 55px;'><strong>Wing Nuts Flying Circus</strong><br />Tarkio, MO</div></div>"); });
+	map.addOverlay(marker11);
+
+	var marker12 = new GMarker(new GLatLng(43.995821,-88.551082));
+	GEvent.addListener(marker12, 'click', function() { marker12.openInfoWindowHtml("<div style='width: 205px; height: 55;'><div style='width: 205px; height: 55px;'><strong>Airventure 2014</strong><br />Oshkosh, WI</div></div>"); });
+	map.addOverlay(marker12);
+
+	var marker13 = new GMarker(new GLatLng(32.5776042,-96.7175028));
+	GEvent.addListener(marker13, 'click', function() { marker13.openInfoWindowHtml("<div style='width: 205px; height: 55;'><div style='width: 205px; height: 55px;'><strong>DFW Warbirds On Parade</strong><br />Lancaster, TX</div></div>"); });
+	map.addOverlay(marker13);
+
+	var marker14 = new GMarker(new GLatLng(33.1461944,-89.0625));
+	GEvent.addListener(marker14, 'click', function() { marker14.openInfoWindowHtml("<div style='width: 205px; height: 55;'><div style='width: 205px; height: 55px;'><strong>Louisville, MS</strong><br />Louisville, MS</div></div>"); });
+	map.addOverlay(marker14);
+
+	var marker15 = new GMarker(new GLatLng(32.6808611,-96.8681944));
+	GEvent.addListener(marker15, 'click', function() { marker15.openInfoWindowHtml("<div style='width: 205px; height: 55;'><div style='width: 205px; height: 55px;'><strong>Air Expo</strong><br />Dallas, TX</div></div>"); });
+	map.addOverlay(marker15);
+
+	var marker16 = new GMarker(new GLatLng(31.9425278,-102.2019167));
+	GEvent.addListener(marker16, 'click', function() { marker16.openInfoWindowHtml("<div style='width: 205px; height: 55;'><div style='width: 205px; height: 55px;'><strong>AirSho</strong><br />Midland, TX</div></div>"); });
+	map.addOverlay(marker16);
+
+	var marker17 = new GMarker(new GLatLng(31.9203056,-98.5991944));
+	GEvent.addListener(marker17, 'click', function() { marker17.openInfoWindowHtml("<div style='width: 205px; height: 55;'><div style='width: 205px; height: 55px;'><strong>Comanche</strong><br />Commanche, TX</div></div>"); });
+	map.addOverlay(marker17);
+
+	var marker18 = new GMarker(new GLatLng(30.6788056,-97.6793889));
+	GEvent.addListener(marker18, 'click', function() { marker18.openInfoWindowHtml("<div style='width: 205px; height: 55;'><div style='width: 205px; height: 55px;'><strong>Georgetown Airfest</strong><br />Georgetown, TX</div></div>"); });
+	map.addOverlay(marker18);
+	
+      }
+    }
+
+    //]]>
+    </script>
+
+</head>
+<body  onload="load(); startList();" onunload="GUnload()">
+
+<script language="JavaScript" type="text/JavaScript">
+startList = function() {
+if (document.all&&document.getElementById) {
+navRoot = document.getElementById("nav");
+for (i=0; i<navRoot.childNodes.length; i++) {
+node = navRoot.childNodes[i];
+if (node.nodeName=="LI") {
+node.onmouseover=function() {
+this.className+=" over";
+  }
+  node.onmouseout=function() {
+  this.className=this.className.replace(" over", "");
+   }
+   }
+  }
+ }
+}
+
+</script>
+
+<div id="page">
+
+<%= render 'layouts/header' %>
+
+<div id="main-area">
+
+  <div id="content">
+  
+  <div class="content-wide">
+
+      <%= yield %>
+
+  </div>
+  
+  </div>
+
+  </div>
+
+<%= render 'layouts/footer' %>
+
+<!-- Close main-area -->
+</div>
+
+<!-- Close page -->
+</div>
+
+
+</body>
+</html>

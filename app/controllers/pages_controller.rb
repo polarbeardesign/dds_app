@@ -31,6 +31,10 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:home,
     render :layout => "map_2013"
   end
 
+  def operations_2014
+    render :layout => "map_2014"
+  end
+
   def F1
     @events = Event.published.ordered.tease
   end
