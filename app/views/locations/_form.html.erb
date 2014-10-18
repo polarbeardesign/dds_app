@@ -13,53 +13,46 @@
 
 
 <div class="indent_row">
-  <div class="cell">
-    <div class="field">
+  <div class="cell field">
       <%= f.label :short_name %> (shows in drop-down)<br />
       <%= f.text_field :short_name, :size => 20 %>
-    </div>
   </div>
-  <div class="cell">
-    <div class="field">
+  <div class="cell field">
       <%= f.label :airport_name %><br />
       <%= f.text_field :airport_name, :size => 25 %>
-    </div>
   </div>
 </div>
 
 <div class="indent_row">
-  <div class="cell">
-    <div class="field">
+  <div class="cell field">
       <%= f.label :icao_identifier, 'ICAO Identifier' %><br />
       <%= f.text_field :icao_identifier, :size => 10 %>
-    </div>
   </div>
-  <div class="cell">
-    <div class="field">
+  <div class="cell field">
       <%= f.label :city %><br />
       <%= f.text_field :city, :size => 10 %>
     </div>
-    </div>
-  <div class="cell">
-    <div class="field">
+  <div class="cell field">
       <%= f.label :state %><br />
       <%= f.text_field :state, :size => 10 %>
-    </div>
   </div>
 </div>
 
 <div class="indent_row">
-  <div class="cell">
-    <div class="field">
+  <div class="cell field">
       <%= f.label :latitude %><br />
       <%= f.text_field :latitude, :size => 20 %>
-    </div>
   </div>
-  <div class="cell">
-    <div class="field">
+  <div class="cell field">
       <%= f.label :longitude %><br />
       <%= f.text_field :longitude, :size => 20 %>
-    </div>
+  </div>
+</div>
+
+<div class="indent_row">
+  <div class="cell field">
+    <%= f.label :one_way_distance, "Distance from KGTU (nm)" %><br />
+    <%= f.text_field :one_way_distance, :size => 20 %>
   </div>
 </div>
 
