@@ -5,7 +5,7 @@ load 'deploy/assets'
 set :user, 'devildog'
 set :domain, 'devildogsquadron.com'
 
-set :application, "n"
+set :application, "dds_app"
 set :repository,  "git@github.com:polarbeardesign/dds_app.git"
 set :scm, 'git'
 set :branch, "master"
