@@ -17,8 +17,12 @@ class Right < ActiveRecord::Base
     "account" => "READ",
     "account_edit" => "UPDATE",
     "change_password" => "UPDATE",
+    "signup" => "CREATE",
+    "edit_signup" => "UPDATE",
     "trip_financials" => "READ",
-    "hold_harmless" => "READ"
+    "hold_harmless" => "READ",
+    "frequent_flyers" => "READ",
+    "frequent_flyer_detail" => "READ"
 }
 
 scope :ordered, order("rights.resource ASC")

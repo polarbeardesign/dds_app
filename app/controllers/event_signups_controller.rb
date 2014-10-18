@@ -2,7 +2,7 @@ class EventSignupsController < ApplicationController
   # GET /event_signups
   # GET /event_signups.json
 
-skip_before_filter :check_authorization, :check_authentication
+#skip_before_filter :check_authorization, :check_authentication
 
   def index
     @event_signups = EventSignup.airshow_ordered.future.ordered
