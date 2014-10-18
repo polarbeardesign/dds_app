@@ -1,0 +1,14 @@
+<% last_member = 0 %>
+<% total_traveled = 0 %>
+
+<h1>Frequent Flyers</h1>
+
+<table>
+<% @ff.each do |ff| %>
+<tr>
+  <td><%#= link_to ff.first_name + ' ' + ff.last_name, frequent_flyer_detail_path(ff.member_id) %>
+  <%= ff.first_name + ' ' + ff.last_name %></td>
+  <td><%= number_with_delimiter(ff.total.to_i) %></td>
+</tr>
+<% end %>
+</table>
