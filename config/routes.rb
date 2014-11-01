@@ -89,6 +89,8 @@ devise_for :users, :skip => [:registrations]
   
   match 'F1' => 'pages#F1', :as => :F1
   match 'f1' => 'pages#F1', :as => :f1
+  
+  match 'seventieth_birthday_party' => 'pages#seventieth_birthday_party', :as => :seventieth_birthday_party
 
   match 'trips/update_events', :as => 'update_events'
   

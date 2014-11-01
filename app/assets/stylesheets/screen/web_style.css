@@ -542,6 +542,11 @@ img.fr {
     border: 1px solid #993401;
     }
 
+.row {
+    float: left;
+    width: 100%;
+    }
+
 .cell {
     float: left;
     margin: 0 10px 0 0;

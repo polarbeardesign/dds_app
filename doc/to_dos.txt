@@ -36,7 +36,8 @@ Please co-ordinate with Beth re: arrival, tug, wheels up, and return times for e
    140417: Added validation to trip creation, trip financials view (need fuel/oil cost mechanism)  
    
 
-
+SQL for maps
+SELECT title, start, city, state, locations.latitude, locations.longitude FROM `events` LEFT JOIN locations ON location_id = locations.id WHERE `start` > "2014-01-01" AND event_type_id = 2 ORDER BY start
 
 airshow roster creation 
   - member level
