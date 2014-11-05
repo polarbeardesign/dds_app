@@ -31,7 +31,7 @@
   </div>
 </div>
 <% else %>
-<div class="row" style="float: right;">
+<div class="row" style="width: 220px; float: right;">
 <div id="calendar" style="float: left;">
   <div id="calendar_year">
     <%= @event.start.strftime("%Y") %>
@@ -46,7 +46,7 @@
     <%= @event.start.strftime("%d") %>
   </div>
 </div>
-<span style="float: left; font-size: 3em;margin: 1.25em 0 0 0;">&#8211; </span>
+<span style="float: left; font-size: 3em; margin: 1.25em 0 0 0;">&#8211; </span>
 <div id="calendar">
   <div id="calendar_year">
     <%= @event.end.strftime("%Y") %>
