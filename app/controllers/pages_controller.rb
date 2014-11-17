@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
 
-skip_before_filter :check_authorization, :check_authentication, :only => [:home, :VMB612, :PBJs, :squadron, :map_0, :map_2013, :living_flight_history_experience, :refund_policy]
+skip_before_filter :check_authorization, :check_authentication, :only => [:home, :VMB612, :PBJs, :squadron, :map_0, :map_2013, :living_flight_history_experience, :refund_policy, :operations_2014]
 
 # page views are hard coded in view files
 
