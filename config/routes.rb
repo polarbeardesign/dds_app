@@ -111,6 +111,11 @@ devise_for :users, :skip => [:registrations]
 match 'photo_viewer' => 'galleries#photo_viewer', :as => :photo_viewer
   
   match 'refund_policy' => 'pages#refund_policy', :as => :refund_policy
+
+#match '/time_off_feed/:id/time_off_feed', to: 'day_offs#time_off_feed', :as => 'time_off_feed_path'
+
+match 'member_feed' => 'events#member_feed', :as => :member_feed
+
   
   get "pages/home"
   get "pages/VMB612"

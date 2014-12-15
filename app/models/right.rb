@@ -24,7 +24,8 @@ class Right < ActiveRecord::Base
     "frequent_flyers" => "READ",
     "frequent_flyer_detail" => "READ",
     "operations_2014" => "READ",
-    "seventieth_birthday_party" => "READ"
+    "seventieth_birthday_party" => "READ",
+    "member_feed" => "READ"
 }
 
 scope :ordered, order("rights.resource ASC")
