@@ -74,10 +74,11 @@ Add interactive google map preview where links are (currently static)
 create dues reminder mechanism (CHRON)
 add picture upload capability
   - store photos outside repo
-add facebook feed?
+add facebook feed
+add calendar feed
 add documentation
-add silhouette quiz
-add fun facts
+add quizes
+add fun facts to sidebars
 add method to assign sort order to PX items (currently hard coded in Products model products.rb)
 
 Marketing ideas
