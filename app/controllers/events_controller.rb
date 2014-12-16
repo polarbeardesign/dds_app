@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
 
-skip_before_filter :check_authorization, :check_authentication, :only => [:index, :show]
+skip_before_filter :check_authorization, :check_authentication, :only => [:index, :show, :member_feed]
 
   # GET /events
   # GET /events.xml
@@ -97,6 +97,7 @@ def member_feed
   @events = Event.ordered.published.tease.all
 #  render :layout => 'false'
   respond_to do |format|
+    # added { render :ics => @events } to see if can avoid layout call
     format.ics { render :ics => @events }
   end
 end
