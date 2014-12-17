@@ -8,8 +8,8 @@ CALSCALE:GERGORIAN
 BEGIN:VEVENT
 UID:<%= event.id %>
 DTSTAMP:<%= Time.now.strftime("%Y%m%dT%H%M%SZ") %>
-DTSTART;TZID=US-Central:<%= event.start.strftime("%Y%m%dT%H%M%S") %>
-DTEND;TZID=US-Central:<%= event.end.strftime("%Y%m%dT%H%M%S") %>
+DTSTART;TZID=US/Central:<%= event.start.strftime("%Y%m%dT%H%M%S") %>
+DTEND;TZID=US/Central:<%= event.end.strftime("%Y%m%dT%H%M%S") %>
 SUMMARY:<%= event.title.titleize %> | <%= event.event_type.title %>
 LOCATION:<%= event.location.short_name %>
 END:VEVENT
