@@ -96,7 +96,8 @@ def member_feed
 #  @users=User.where("current_branch=?", params[:id])
   @events = Event.ordered.published.all
   respond_to do |format|
-    format.ics
+    # added { render :ics => @events } to see if can avoid layout call
+    format.ics  { render :ics => @events }
   end
 end
 
