@@ -2,16 +2,17 @@ BEGIN:VCALENDAR
 METHOD:PUBLISH
 VERSION:2.0
 PRODID:http://www.devildogsquadron.com
-X-WR-CALNAME:Devil Dog Squadron Members
+X-WR-CALNAME:Devil Dog Squadron
 CALSCALE:GERGORIAN
 <% @events.each do |event| %>
 BEGIN:VEVENT
 UID:<%= event.id %>
 DTSTAMP:<%= Time.now.strftime("%Y%m%dT%H%M%SZ") %>
-DTSTART:<%= event.start.strftime("%Y%m%dT%H%M%SZ") %>
-DTEND:<%= event.end.strftime("%Y%m%dT%H%M%SZ") %>
+DTSTART;TZID=US/Central:<%= event.start.strftime("%Y%m%dT%H%M%S") %>
+DTEND;TZID=US/Central:<%= event.end.strftime("%Y%m%dT%H%M%S") %>
 SUMMARY:<%= event.title.titleize %> | <%= event.event_statuses.status %>
 LOCATION:<%= event.location.short_name %>
+DESCRIPTION: More Info: http://devildogsquadron.com/events/<%= event.id %>
 END:VEVENT
 <% end %>
 END:VCALENDAR
