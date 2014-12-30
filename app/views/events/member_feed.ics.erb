@@ -10,7 +10,7 @@ UID:<%= event.id %>
 DTSTAMP:<%= Time.now.strftime("%Y%m%dT%H%M%SZ") %>
 DTSTART:<%= event.start.strftime("%Y%m%dT%H%M%SZ") %>
 DTEND:<%= event.end.strftime("%Y%m%dT%H%M%SZ") %>
-SUMMARY:<%= event.title.titleize %> | <%= event.event_type.title %>
+SUMMARY:<%= event.title.titleize %> | <%= event.event_statuses.status %>
 LOCATION:<%= event.location.short_name %>
 END:VEVENT
 <% end %>
