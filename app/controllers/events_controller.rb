@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
 
-skip_before_filter :check_authorization, :check_authentication, :only => [:index, :show]
+skip_before_filter :check_authorization, :check_authentication, :only => [:index, :show, :member_feed]
 
   # GET /events
   # GET /events.xml
