@@ -10,7 +10,7 @@ UID:<%= event.id %>
 DTSTAMP:<%= Time.now.strftime("%Y%m%dT%H%M%SZ") %>
 DTSTART;TZID=US/Central:<%= event.start.strftime("%Y%m%dT%H%M%S") %>
 DTEND;TZID=US/Central:<%= event.end.strftime("%Y%m%dT%H%M%S") %>
-SUMMARY:<%= event.title.titleize %> | <%= event.event_statuses.status %>
+SUMMARY:<%= event.title.titleize %> | 
 LOCATION:<%= event.location.short_name %>
 DESCRIPTION: More Info: http://devildogsquadron.com/events/<%= event.id %>
 END:VEVENT
