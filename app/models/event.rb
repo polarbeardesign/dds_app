@@ -2,9 +2,9 @@ class Event < ActiveRecord::Base
 
   belongs_to :event_type
   belongs_to :location
+  belongs_to :event_status
   has_many :event_signups
   has_many :members, :through => :event_signups
-  belongs_to :event_status
   has_one :trip
   has_and_belongs_to_many :ride_requests
 

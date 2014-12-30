@@ -35,7 +35,13 @@
     <% end %>
   </div>
   <div class="cell" style="width: 65%;">
-    <strong><em><%= link_to event.title, event %></em></strong><br /><%= sanitize(event.details) %>
+    <strong><em><%= link_to event.title, event %></em></strong>
+    <% if event.event_statuses_id == 2 %>
+      <span class="error" style="display: inline;"> -- Tentative</span>
+    <% elsif event.event_statuses_id == 3 %>
+      <span class="error" style="display: inline;"> -- Canceled</span>
+    <% end %>
+<br /><%= sanitize(event.details) %>
   </div>
   </div>
 <% current_event_type = event.event_type.title %>
