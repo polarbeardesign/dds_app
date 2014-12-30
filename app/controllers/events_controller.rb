@@ -93,11 +93,12 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:index
 
 
 def member_feed
-#  @users=User.where("current_branch=?", params[:id])
-  @events = Event.ordered.published.all
+
+  @events = Event.ordered.published.tease.all
+
   respond_to do |format|
     # added { render :ics => @events } to see if can avoid layout call
-    format.ics  { render :ics => @events }
+    format.ics { render :ics => @events }
   end
 end
 
