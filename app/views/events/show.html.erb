@@ -16,48 +16,48 @@
 
 
 <% if @event.start.strftime("%b %d" ) == @event.end.strftime("%b %d") %>
-<div id="calendar">
-  <div id="calendar_year">
+<div class="calendar-css" style="float: right;">
+  <div class="calendar_year">
     <%= @event.start.strftime("%Y") %>
   </div>
-  <div id="calendar_month">
+  <div class="calendar_month">
     <%= @event.start.strftime("%b") %>
   </div>
-  <div id="calendar_day">
+  <div class="calendar_day">
     <%= @event.start.strftime("%A") %>
   </div>
-  <div id="calendar_date">
+  <div class="calendar_date">
     <%= @event.start.strftime("%d") %>
   </div>
 </div>
 <% else %>
-<div class="row" style="width: 220px; float: right;">
-<div id="calendar" style="float: left;">
-  <div id="calendar_year">
+<div class="row" style="width: 225px; float: right;">
+<div class="calendar-css" style="float: left;">
+  <div class="calendar_year">
     <%= @event.start.strftime("%Y") %>
   </div>
-  <div id="calendar_month">
+  <div class="calendar_month">
     <%= @event.start.strftime("%b") %>
   </div>
-  <div id="calendar_day">
+  <div class="calendar_day">
     <%= @event.start.strftime("%A") %>
   </div>
-  <div id="calendar_date">
+  <div class="calendar_date">
     <%= @event.start.strftime("%d") %>
   </div>
 </div>
 <span style="float: left; font-size: 3em; margin: 1.25em 0 0 0;">&#8211; </span>
-<div id="calendar">
-  <div id="calendar_year">
+<div class="calendar-css">
+  <div class="calendar_year">
     <%= @event.end.strftime("%Y") %>
   </div>
-  <div id="calendar_month">
+  <div class="calendar_month">
     <%= @event.end.strftime("%b") %>
   </div>
-  <div id="calendar_day">
+  <div class="calendar_day">
     <%= @event.end.strftime("%A") %>
   </div>
-  <div id="calendar_date">
+  <div class="calendar_date">
     <%= @event.end.strftime("%d") %>
   </div>
 </div>
