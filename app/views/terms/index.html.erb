@@ -4,7 +4,7 @@
   <%= button_to 'New term', new_term_path, :method => :get %>
   </div>
 <% end %>
-
+<p>To create a new term (assign a member to a position and start and end dates).</p>
 <% end %>
 
 <% last_position = "" %>
@@ -25,10 +25,21 @@
     </tr>
     <% @terms.each do |term| %>
     <tr class="<%= cycle('odd_row', 'even_row') %>">
-        <td><%= link_to term.officer_position.position_name, edit_term_path(term) %></td>
+        <td><%= link_to term.officer_position.position_name, term_path(term) %></td>
         <td><%= term.member.first_name + ' ' + term.member.last_name %></td>
         <td><%= term.term_start.strftime("%b %d, %Y") %></td>
         <td><%= term.term_end.strftime("%b %d, %Y") %></td>
     </tr>
 <% end %>
 </table>
+
+<h2>Past Office Holders</h2>
+
+    <% @officer_positions.each do |officer_position| %>
+      <h3><%= officer_position.position_name %></h3>
+      <ul>
+      <% officer_position.terms.past.each do |term| %>
+      <li><%= term.member.first_name + ' ' + term.member.last_name %> | Term: <%= term.term_start.strftime("%b %d, %Y") %> - <%= term.term_end.strftime("%b %d, %Y") %></li>
+      <% end %>
+      </ul>
+    <% end %>

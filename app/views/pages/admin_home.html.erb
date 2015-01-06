@@ -6,24 +6,32 @@
 <%= button_to "AirShow Signups", event_signups_path, :method => :get %>
 <br />
 <%= button_to "Ride Requests", ride_requests_path, :method => :get %>
-<br />
+List of signups for LFHE Rides
+<br /><br />
 <%= button_to "Trips", trips_path, :method => :get %>
 <br />
 <%= button_to "PX Items", products_path, :method => :get %>
-<br />
+Edit/Admin PX items
+<br /><br />
+<%= button_to "Officers", terms_path, :method => :get %>
+Record Officer positions
+<br /><br />
+<%= button_to "What's New", teasers_path, :method => :get %>
+Edit/Admin What's New section on homepage
 </div>
 <% end %>
 
 <% if current_user.roles.any? {|role| role.name == "superuser" } %>
 <div class="indent_row">
-<%= button_to "What's Hot", teasers_path, :method => :get %>
-<br />
 <%= button_to "Rights", rights_path, :method => :get %>
-<br />
+Create model/operation rights
+<br /><br />
 <%= button_to "Grants", grants_path, :method => :get %>
-<br />
+Grant rights to roles
+<br /><br />
 <%= button_to "Roles", roles_path, :method => :get %>
-<br />
+Website roles
+<br /><br />
 <%= button_to "Users", users_path, :method => :get %>
 <br />
 </div>

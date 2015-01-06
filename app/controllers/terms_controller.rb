@@ -5,6 +5,8 @@ class TermsController < ApplicationController
   # GET /terms.xml
   def index
     @terms = Term.current.all
+    @terms_past = Term.past.all
+    @officer_positions = OfficerPosition.all
 
     respond_to do |format|
       format.html # index.html.erb

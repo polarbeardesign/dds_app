@@ -163,7 +163,7 @@
 
 <% if signed_in?%>
     <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
-       <%= link_to 'New Event', new_event_path %>
+       <%= link_to 'New Event', new_event_path %> | <%= link_to 'Past Events', all_events_path %>
     <% end %>
 <% end %>
 

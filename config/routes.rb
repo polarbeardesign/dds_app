@@ -84,6 +84,8 @@ devise_for :users, :skip => [:registrations]
   resources :event_signups
 
   match 'calendar' => 'events#index', :as => :calendar
+  match 'all_events' => 'events#all_events', :as => :all_events
+
   
   match 'px' => 'products#px', :as => :px
   

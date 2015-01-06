@@ -18,6 +18,15 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:index
     end
   end
 
+  def all_events
+    @events = Event.ordered.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @events }
+    end
+  end
+
   # GET /events/1
   # GET /events/1.xml
   def show

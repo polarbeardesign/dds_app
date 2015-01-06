@@ -20,7 +20,7 @@
 <div class="row" style="width: 100%;">
   <div class="cell field">
     <%= f.label :member_id, "member" %><br />
-    <%= f.collection_select :member_id, Member.all, :id, :full_name, options = {:order => 'last_name ASC', :prompt => true}, html_options = {:class => "styled-select"} %>
+    <%= f.collection_select :member_id, Member.ordered.all, :id, :full_name, options = {:order => 'last_name ASC', :prompt => true}, html_options = {:class => "styled-select"} %>
   </div>
 </div>
 <div class="row" style="width: 100%;">
