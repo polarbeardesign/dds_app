@@ -107,7 +107,7 @@
 <% end %>
 
 <% if @event.details? %>
-  <p><%= sanitize(@event.details) %></p>
+  <p><%= simple_format(@event.details) %></p>
 <% end %>
   
 <div style="clear: both;"></div>
