@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Knowledge test:</b>
+  <%= @test_question.knowledge_test %>
+</p>
+
+<p>
+  <b>Question no:</b>
+  <%= @test_question.question_no %>
+</p>
+
+<p>
+  <b>Question:</b>
+  <%= @test_question.question %>
+</p>
+
+
+<%= link_to 'Edit', edit_test_question_path(@test_question) %> |
+<%= link_to 'Back', test_questions_path %>

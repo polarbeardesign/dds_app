@@ -1,0 +1,35 @@
+<p>
+  <b>Title:</b>
+  <%= @knowledge_test.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @knowledge_test.description %>
+</p>
+
+<p>
+  <b>Active:</b>
+  <%= @knowledge_test.active %>
+</p>
+
+<ol>
+<% for test_question in @knowledge_test.test_questions.ordered %>
+  <li><%=h test_question.question %>
+    <ol>
+    <% for test_answer in test_question.test_answers.ordered %>
+         <% if test_answer.correct == true %>
+           <span class="correct">
+         <% end %>
+           <%=h test_answer.answer_letter %>. <%=h test_answer.answer %>
+         <% if test_answer.correct == true  %>
+           </span> <%= image_tag("check_mark.png") %>
+         <% end %> <br />
+    <% end %>
+    </ol>
+  </li>
+<%end %>
+</ol>
+
+<%= link_to 'Edit', edit_knowledge_test_path(@knowledge_test) %> |
+<%= link_to 'Back', knowledge_tests_path %>

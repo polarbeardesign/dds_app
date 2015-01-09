@@ -1,5 +1,6 @@
 class CreateTrips < ActiveRecord::Migration
-  def change
+
+#  def change
 #    create_table :trips do |t|
 #      t.references :event
 #      t.datetime :crew_arrival
@@ -11,5 +12,5 @@ class CreateTrips < ActiveRecord::Migration
 #      t.timestamps
 #    end
 #    add_index :trips, :event_id
-  end
+#  end
 end

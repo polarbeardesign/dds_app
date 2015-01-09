@@ -1,0 +1,27 @@
+<h1>Listing test_questions</h1>
+
+<table>
+  <tr>
+    <th>Knowledge test</th>
+    <th>Question no</th>
+    <th>Question</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @test_questions.each do |test_question| %>
+  <tr>
+    <td><%= test_question.knowledge_test %></td>
+    <td><%= test_question.question_no %></td>
+    <td><%= test_question.question %></td>
+    <td><%= link_to 'Show', test_question %></td>
+    <td><%= link_to 'Edit', edit_test_question_path(test_question) %></td>
+    <td><%= link_to 'Destroy', test_question, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Test question', new_test_question_path %>

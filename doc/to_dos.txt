@@ -1,8 +1,13 @@
 CHECK PERMISSIONS ON SENSITIVE PAGES
 
+
 Add file upload capability (pdf, MSOffice, photos)
 Add testing capability
 Split up manuals (pdfs) for smaller file sizes
+
+ADDING KNOWLEDGE TESTS
+  test questions/answers not being inserted into database
+
 
 LFHE page
    - expire presales at 48 hours prior?
@@ -12,7 +17,13 @@ LFHE page
 Add mailer for sending trip details to roster members (c/o, etc)
 
 Check admin flow of event_signup creation/edit delete
+
   Hide Maybe/Definite buttons if already signed up.
+
+  X add tooltips to fields
+  X Show trip details on calendar page if logged in
+  X Added validation to required fields
+
 
 Add officer positions held to members
 

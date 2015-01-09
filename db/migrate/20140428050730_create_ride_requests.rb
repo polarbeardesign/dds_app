@@ -1,5 +1,6 @@
 class CreateRideRequests < ActiveRecord::Migration
-  def change
+
+#  def change
 #    create_table :ride_requests do |t|
 #      t.string :first_name
 #      t.string :last_name
@@ -10,5 +11,5 @@ class CreateRideRequests < ActiveRecord::Migration
 #
 #      t.timestamps
 #    end
-  end
+#  end
 end

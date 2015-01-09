@@ -2,6 +2,18 @@ DdsApp::Application.routes.draw do
 
   resources :attendances
 
+  resources :test_answers
+
+  resources :test_questions
+
+  resources :knowledge_tests
+
+  resources :testanswers
+
+  resources :testquestions
+
+  resources :knowledgetests
+
   resources :ride_requests
 
   resources :trips

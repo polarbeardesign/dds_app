@@ -1,0 +1,7 @@
+<p class="fields answer_fields">
+  <%= f.label :answer %>
+  <%= f.text_field :answer_letter, :size => "2" %>
+  <%= f.text_area :answer, :cols => "30", :rows => 2 %>
+  <%= f.label :correct %><%= f.check_box(:correct, {}) %>
+  <%= link_to_remove_fields "remove", f %>
+</p>
