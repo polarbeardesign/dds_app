@@ -8,6 +8,8 @@ class Event < ActiveRecord::Base
   has_one :trip
   has_and_belongs_to_many :ride_requests
 
+  validates :start, :end, :event_type_id, :event_statuses_id, :location_id, :presence => true, :on => :create
+
 scope :published, lambda {
   where ("events.start IS NOT NULL AND events.end > ?"), (Time.zone.now - 2.day)
   }
