@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150109051802) do
+ActiveRecord::Schema.define(:version => 20150111061920) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -352,7 +352,6 @@ ActiveRecord::Schema.define(:version => 20150109051802) do
 
   add_index "test_submissions", ["knowledge_test_id"], :name => "index_test_submissions_on_knowledge_test_id"
   add_index "test_submissions", ["member_id"], :name => "index_test_submissions_on_member_id"
-
 
   create_table "trips", :force => true do |t|
     t.integer  "event_id"

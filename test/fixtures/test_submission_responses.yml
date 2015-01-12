@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  test_submission: 
+  test_question: 
+  test_answer: 
+
+two:
+  test_submission: 
+  test_question: 
+  test_answer: 

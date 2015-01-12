@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Knowledge test:</b>
+  <%= @test_submission.knowledge_test %>
+</p>
+
+<p>
+  <b>Member:</b>
+  <%= @test_submission.member %>
+</p>
+
+
+<%= link_to 'Edit', edit_test_submission_path(@test_submission) %> |
+<%= link_to 'Back', test_submissions_path %>

@@ -1,0 +1,2 @@
+module TestSubmissionResponsesHelper
+end

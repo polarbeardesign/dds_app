@@ -1,0 +1,27 @@
+<h1>Listing test_submission_responses</h1>
+
+<table>
+  <tr>
+    <th>Test submission</th>
+    <th>Test question</th>
+    <th>Test answer</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @test_submission_responses.each do |test_submission_response| %>
+  <tr>
+    <td><%= test_submission_response.test_submission %></td>
+    <td><%= test_submission_response.test_question %></td>
+    <td><%= test_submission_response.test_answer %></td>
+    <td><%= link_to 'Show', test_submission_response %></td>
+    <td><%= link_to 'Edit', edit_test_submission_response_path(test_submission_response) %></td>
+    <td><%= link_to 'Destroy', test_submission_response, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Test submission response', new_test_submission_response_path %>

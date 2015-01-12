@@ -1,6 +1,9 @@
 DdsApp::Application.routes.draw do
 
-  resources :attendances
+  resources :test_submission_responses
+
+  resources :test_submissions
+  match 'knowledge_exam' => 'test_submissions#knowledge_exam', :as => :knowledge_exam
 
   resources :test_answers
 

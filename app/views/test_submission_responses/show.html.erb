@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Test submission:</b>
+  <%= @test_submission_response.test_submission %>
+</p>
+
+<p>
+  <b>Test question:</b>
+  <%= @test_submission_response.test_question %>
+</p>
+
+<p>
+  <b>Test answer:</b>
+  <%= @test_submission_response.test_answer %>
+</p>
+
+
+<%= link_to 'Edit', edit_test_submission_response_path(@test_submission_response) %> |
+<%= link_to 'Back', test_submission_responses_path %>

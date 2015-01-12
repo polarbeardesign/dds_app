@@ -15,7 +15,7 @@
 
 <ol>
 <% for test_question in @knowledge_test.test_questions.ordered %>
-  <li><%=h test_question.question %>
+  <li><%= sanitize(test_question.question) %>
     <ol>
     <% for test_answer in test_question.test_answers.ordered %>
          <% if test_answer.correct == true %>
@@ -30,6 +30,9 @@
   </li>
 <%end %>
 </ol>
+
+<%= link_to 'Take test', knowledge_exam_path(:knowledge_test => @knowledge_test.id) %> |
+
 
 <%= link_to 'Edit', edit_knowledge_test_path(@knowledge_test) %> |
 <%= link_to 'Back', knowledge_tests_path %>
