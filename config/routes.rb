@@ -1,5 +1,7 @@
 DdsApp::Application.routes.draw do
 
+  resources :attendances
+
   resources :ride_requests
 
   resources :trips
