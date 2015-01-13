@@ -50,7 +50,7 @@ class AttendancesController < ApplicationController
     respond_to do |format|
       if @attendance.save
         RsvpNotifier.created(@attendance).deliver
-        format.html { redirect_to @attendance, :notice => 'Attendance was successfully created.' }
+        format.html { redirect_to @attendance, :notice => 'RSVP was successfully created.' }
         format.json { render :json => @attendance, :status => :created, :location => @attendance }
       else
         format.html { render :action => "new" }
@@ -66,7 +66,8 @@ class AttendancesController < ApplicationController
 
     respond_to do |format|
       if @attendance.update_attributes(params[:attendance])
-        format.html { redirect_to @attendance, :notice => 'Attendance was successfully updated.' }
+        RsvpNotifier.change(@attendance).deliver
+        format.html { redirect_to @attendance, :notice => 'RSVP was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render :action => "edit" }
@@ -92,7 +93,7 @@ class AttendancesController < ApplicationController
 
     respond_to do |format|
       if @attendance.save
-       # RosterNotifier.created(@event_signup).deliver
+        RsvpNotifier.created(@attendance).deliver
         format.html { redirect_to event_path(params[:event_id]), :notice => 'Event signup was successfully created.' }
         format.json { render :json => @attendance, :status => :created, :location => @attendance }
       else
