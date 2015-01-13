@@ -37,6 +37,11 @@ class AttendancesController < ApplicationController
     @attendance = Attendance.find(params[:id])
   end
 
+  def edit_rsvp
+    @attendance = Attendance.find(params[:id])
+  end
+
+
   # POST /attendances
   # POST /attendances.json
   def create
@@ -80,4 +85,21 @@ class AttendancesController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  def signup
+    @attendance = Attendance.new(params)
+
+    respond_to do |format|
+      if @attendance.save
+       # RosterNotifier.created(@event_signup).deliver
+        format.html { redirect_to event_path(params[:event_id]), :notice => 'Event signup was successfully created.' }
+        format.json { render :json => @attendance, :status => :created, :location => @attendance }
+      else
+        format.html { render :action => "new" }
+        format.json { render :json => @attendance.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+
 end

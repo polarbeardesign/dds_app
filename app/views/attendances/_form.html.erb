@@ -12,12 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :member %><br />
-    <%= f.text_field :member %>
+    <%= f.label :member_id %><br />
+      <%= f.collection_select :member_id, Member.ordered.all, :id, :full_name, options = {:prompt => true}, html_options = {:class => "styled-select"} %>
   </div>
   <div class="field">
-    <%= f.label :event %><br />
-    <%= f.text_field :event %>
+    <%= f.label :event_id %><br />
+      <%= f.collection_select :event_id, Event.ordered.published.all, :id, :title, options = {:order => 'start ASC', :prompt => true}, html_options = {:class => "styled-select"} %>
   </div>
   <div class="actions">
     <%= f.submit %>

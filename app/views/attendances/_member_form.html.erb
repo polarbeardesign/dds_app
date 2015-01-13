@@ -1,0 +1,48 @@
+<%= form_for(@attendance) do |f| %>
+  <% if @attendance.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@attendance.errors.count, "error") %> prohibited this attendance from being saved:</h2>
+
+      <ul>
+      <% @attendance.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="indent_row" style="width: 560px;">
+  <div class="cell">
+    <div class="field">
+      <%= f.label :event_id, "Event" %><br />
+      <strong><%= @attendance.event.title %></strong>
+    </div>
+  </div>
+  <div class="cell">
+    <div class="field">
+      <%= f.label :member_id, "Member" %><br />
+      <strong><%= @attendance.member.first_name %> <%= @attendance.member.last_name %></strong>
+    </div>
+  </div>
+</div>
+<div class="indent_row" style="width: 560px;">
+  <div class="cell" style="padding: 0 0 5em 6em;">
+    <div class="field">
+      <div class="cell radio_button_selection">
+        <label><%= f.radio_button 'commitment_level', 'Definite' %><br /><%= f.label :commitment_level, "Definite" %></label>
+      </div>
+      <div class="cell radio_button_selection">
+        <label><%= f.radio_button 'commitment_level', 'Maybe' %><br /><%= f.label :commitment_level, "Maybe" %></label>
+      </div>
+      <div class="cell radio_button_selection" style="border: none;">
+        <label><%= f.radio_button 'commitment_level', 'Canceled' %><br /><%= f.label :commitment_level, "Canceled" %></label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="actions">
+ <%= f.submit "Update my Request" %>
+</div>
+
+<% end %>

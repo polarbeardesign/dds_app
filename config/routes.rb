@@ -98,6 +98,8 @@ devise_for :users, :skip => [:registrations]
   
   match 'edit_signup/:id' => 'event_signups#edit_signup', :as => :edit_signup
 
+  match 'edit_rsvp/:id' => 'attendances#edit_rsvp', :as => :edit_rsvp
+
   match 'members_list' => 'members#members_list', :as => :members_list
   
   match 'frequent_flyers' => 'event_signups#frequent_flyers', :as => :frequent_flyers

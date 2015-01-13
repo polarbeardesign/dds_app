@@ -63,6 +63,7 @@
       <p><%= link_to 'Enter a new location', new_location_path %></p><br />
     </div>
   </div>
+      <div style="clear: both;"><%= f.check_box :rsvp %>Create RSVP list for this event (check for yes)</div>
       <div style="clear: both;"><%= f.check_box :flight_roster %>Create flight roster for this event i.e. flight crew (check for yes)</div>
       <div style="clear: both;"><%= f.check_box :rides_available %>LHFE Rides Available at this event (check for yes)</div>
 </div>

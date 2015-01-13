@@ -1,15 +1,27 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <b>Member:</b>
-  <%= @attendance.member %>
+  Event:
+  <strong><%= @attendance.event.title %></strong>
 </p>
 
 <p>
-  <b>Event:</b>
-  <%= @attendance.event %>
+  Member:
+  <strong><%= @attendance.member.first_name %> <%= @attendance.member.last_name %></strong>
+</p>
+
+<p>
+  Commitment Level:
+  <strong><%= @attendance.commitment_level %></strong>
+</p>
+
+<p>
+  Created:
+  <strong><%= @attendance.created_at.strftime("%b %d, %Y %H:%M %p") %></strong>
+</p>
+
+<p>
+  Updated:
+  <strong><%= @attendance.updated_at.strftime("%b %d, %Y %H:%M %p") %></strong>
 </p>
 
 
-<%= link_to 'Edit', edit_attendance_path(@attendance) %> |
-<%= link_to 'Back', attendances_path %>
+<%= link_to "Back to Calendar Page", event_path(@attendance.event) %>
