@@ -49,6 +49,7 @@ class AttendancesController < ApplicationController
 
     respond_to do |format|
       if @attendance.save
+        RsvpNotifier.created(@attendance).deliver
         format.html { redirect_to @attendance, :notice => 'Attendance was successfully created.' }
         format.json { render :json => @attendance, :status => :created, :location => @attendance }
       else
