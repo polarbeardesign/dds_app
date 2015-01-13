@@ -1,0 +1,15 @@
+<%= @attendance.member.first_name %>, 
+
+Your change to <%= @attendance.event.title %> RSVP has been recorded on the website.
+
+<%= @attendance.event.title %>
+<% if @attendance.event.start.strftime("%b %d" ) == @attendance.event.end.strftime("%b %d") %>
+    <%= @attendance.event.start.strftime("%b. %d, %Y") %>,
+<% else %>
+    <%= @attendance.event.start.strftime("%b. %d") %> - <%= @attendance.event.end.strftime("%b. %d, %Y") %>, 
+<% end %>
+Commitment Level: <%= @attendance.commitment_level %>
+
+If you need to make a change to your commitment level or cancel, return to the <%= 'http://www.devildogsquadron.com' + event_path(@attendance.event) %> and make your change.
+
+Devil Dog Squadron
