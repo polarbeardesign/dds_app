@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140428050846) do
+ActiveRecord::Schema.define(:version => 20150112033031) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -18,6 +18,16 @@ ActiveRecord::Schema.define(:version => 20140428050846) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "attendances", :force => true do |t|
+    t.integer  "member_id"
+    t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "attendances", ["event_id"], :name => "index_attendances_on_event_id"
+  add_index "attendances", ["member_id"], :name => "index_attendances_on_member_id"
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -84,6 +94,8 @@ ActiveRecord::Schema.define(:version => 20140428050846) do
     t.string   "URL"
     t.string   "contact_info"
     t.text     "details"
+    t.boolean  "flight_roster",     :null => false
+    t.boolean  "rides_available",   :null => false
     t.string   "entered_by"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -123,6 +135,14 @@ ActiveRecord::Schema.define(:version => 20140428050846) do
     t.datetime "updated_at"
   end
 
+  create_table "knowledge_tests", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "locations", :force => true do |t|
     t.string   "short_name"
     t.string   "airport_name"
@@ -134,6 +154,7 @@ ActiveRecord::Schema.define(:version => 20140428050846) do
     t.string   "longitude"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "one_way_distance"
   end
 
   create_table "members", :force => true do |t|
@@ -231,6 +252,8 @@ ActiveRecord::Schema.define(:version => 20140428050846) do
   create_table "ride_requests", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "city"
+    t.string   "state"
     t.string   "email"
     t.string   "phone"
     t.datetime "created_at"
@@ -286,6 +309,49 @@ ActiveRecord::Schema.define(:version => 20140428050846) do
 
   add_index "terms", ["member_id"], :name => "index_terms_on_member_id"
   add_index "terms", ["officer_position_id"], :name => "index_terms_on_officer_position_id"
+
+  create_table "test_answers", :force => true do |t|
+    t.integer  "test_question_id"
+    t.string   "answer_letter"
+    t.text     "answer"
+    t.boolean  "correct"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "test_answers", ["test_question_id"], :name => "index_test_answers_on_test_question_id"
+
+  create_table "test_questions", :force => true do |t|
+    t.integer  "knowledge_test_id"
+    t.integer  "question_no"
+    t.text     "question"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "test_questions", ["knowledge_test_id"], :name => "index_test_questions_on_knowledge_test_id"
+
+  create_table "test_submission_responses", :force => true do |t|
+    t.integer  "test_submission_id"
+    t.integer  "test_question_id"
+    t.integer  "test_answer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "test_submission_responses", ["test_answer_id"], :name => "index_test_submission_responses_on_test_answer_id"
+  add_index "test_submission_responses", ["test_question_id"], :name => "index_test_submission_responses_on_test_question_id"
+  add_index "test_submission_responses", ["test_submission_id"], :name => "index_test_submission_responses_on_test_submission_id"
+
+  create_table "test_submissions", :force => true do |t|
+    t.integer  "knowledge_test_id"
+    t.integer  "member_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "test_submissions", ["knowledge_test_id"], :name => "index_test_submissions_on_knowledge_test_id"
+  add_index "test_submissions", ["member_id"], :name => "index_test_submissions_on_member_id"
 
   create_table "trips", :force => true do |t|
     t.integer  "event_id"

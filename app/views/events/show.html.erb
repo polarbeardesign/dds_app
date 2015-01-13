@@ -214,3 +214,42 @@
 </table>
 <% end %>
 <% end %>
+
+<% if @event.rsvp == true  %>
+<% if current_user %>
+
+<div class="signup_box">
+<strong>RSVP for this event:</strong>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "member"} %>
+    <div class="signup_buttons">
+      <%= button_to 'Yes', {:controller => :attendances, :action => :signup, :member_id => current_user.member, :event_id => @event.id, :commitment_level => 'Definite'  } %>
+      <%= button_to 'Maybe', {:controller => :attendances, :action => :signup, :member_id => current_user.member, :event_id => @event.id, :commitment_level => 'Maybe'  } %>
+    </div>
+  <% end %>
+<span style="font-style: italic;font-size:0.85em;">Your name will be entered on the list below, you can remove yourself at any time.</em>
+</div>
+
+<table width="500" class="table_border">
+  <tr>
+    <th>Name</th>
+    <th>Col. No.</th>
+    <th>Commitment</th>
+    <th>Sign-up Date</th>
+  </tr>
+
+<% @event.attendances.ordered.each do |attendance| %>
+  <tr class="<%= cycle('odd_row', 'even_row') %>">
+    <td><%= attendance.member.last_name %>, <%= attendance.member.first_name %></td>
+    <td><%= attendance.member.caf_col_no %></td>
+    <td><%= attendance.commitment_level %>
+      <% if attendance.member.user == current_user %>
+        <span style="font-size: 0.75em;"><%= link_to "[change]", edit_rsvp_path(attendance) %></span>     
+      <% end %>
+    </td>
+    <td><%= attendance.created_at.strftime("%b %d, %Y %H:%M %p") %></td>
+  </tr>
+<% end %>
+</table>
+
+<% end %>
+<% end %>

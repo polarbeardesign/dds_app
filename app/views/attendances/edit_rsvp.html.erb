@@ -1,0 +1,18 @@
+<% content_for :sidebar do %>
+
+<% end %>
+
+<h1>Editing RSVP</h1>
+
+<p>To change your level of commitment for <strong><%= @attendance.event.title %>, 
+
+<% if @attendance.event.start.strftime("%b %d" ) == @attendance.event.end.strftime("%b %d") %>
+    <%= @attendance.event.start.strftime("%b. %d, %Y") %>,
+<% else %>
+    <%= @attendance.event.start.strftime("%b. %d") %> - <%= @attendance.event.end.strftime("%b. %d, %Y") %>, 
+<% end %>
+
+</strong> select the appropriate button and click the 'Update my Request' button.</p>
+
+<%= render 'member_form' %>
+

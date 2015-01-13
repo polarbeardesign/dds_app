@@ -1,0 +1,27 @@
+<p>
+  Event:
+  <strong><%= @attendance.event.title %></strong>
+</p>
+
+<p>
+  Member:
+  <strong><%= @attendance.member.first_name %> <%= @attendance.member.last_name %></strong>
+</p>
+
+<p>
+  Commitment Level:
+  <strong><%= @attendance.commitment_level %></strong>
+</p>
+
+<p>
+  Created:
+  <strong><%= @attendance.created_at.strftime("%b %d, %Y %H:%M %p") %></strong>
+</p>
+
+<p>
+  Updated:
+  <strong><%= @attendance.updated_at.strftime("%b %d, %Y %H:%M %p") %></strong>
+</p>
+
+
+<%= link_to "Back to Calendar Page", event_path(@attendance.event) %>

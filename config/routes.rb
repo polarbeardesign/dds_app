@@ -1,5 +1,7 @@
 DdsApp::Application.routes.draw do
 
+  resources :attendances
+
   resources :ride_requests
 
   resources :trips
@@ -97,6 +99,8 @@ devise_for :users, :skip => [:registrations]
   match 'trips/update_events', :as => 'update_events'
   
   match 'edit_signup/:id' => 'event_signups#edit_signup', :as => :edit_signup
+
+  match 'edit_rsvp/:id' => 'attendances#edit_rsvp', :as => :edit_rsvp
 
   match 'members_list' => 'members#members_list', :as => :members_list
   

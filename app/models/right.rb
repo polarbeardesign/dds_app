@@ -19,6 +19,7 @@ class Right < ActiveRecord::Base
     "change_password" => "UPDATE",
     "signup" => "CREATE",
     "edit_signup" => "UPDATE",
+    "edit_rsvp" => "UPDATE",
     "trip_financials" => "READ",
     "hold_harmless" => "READ",
     "frequent_flyers" => "READ",
