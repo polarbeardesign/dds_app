@@ -13,6 +13,8 @@ class EventSignup < ActiveRecord::Base
   scope :member_ordered, joins(:member).merge(Member.ordered)
   
   scope :definite, lambda { where ("commitment_level = ?"), ("Definite") }
+  scope :maybe, lambda { where ("commitment_level = ?"), ("Maybe") }
+  scope :canceled, lambda { where ("commitment_level = ?"), ("Canceled") }
 
 
   scope :airshow_ordered, joins(:event).merge(Event.ordered)

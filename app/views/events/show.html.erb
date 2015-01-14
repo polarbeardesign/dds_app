@@ -196,7 +196,7 @@
     <th>Name</th>
     <th>Col. No.</th>
     <th>Commitment</th>
-    <th>Sign-up Date</th>
+    <th>Sign-up Date (UTC)</th>
   </tr>
 
 <% @event.event_signups.ordered.each do |event_signup| %>
@@ -229,12 +229,21 @@
 <span style="font-style: italic;font-size:0.85em;">Your name will be entered on the list below, you can remove yourself at any time.</em>
 </div>
 
+<p>Total RSVPs: <%= @event.attendances.size %> - Definite: <%= @event.attendances.definite.size %>
+<% if @event.attendances.maybe.size.to_i > 0 %>
+  , Maybe: <%= @event.attendances.maybe.size %>
+<% end %>
+<% if @event.attendances.canceled.size.to_i > 0 %>
+  , Cancelations: <%= @event.attendances.canceled.size %>
+<% end %>
+</p>
+
 <table width="500" class="table_border">
   <tr>
     <th>Name</th>
     <th>Col. No.</th>
     <th>Commitment</th>
-    <th>Sign-up Date</th>
+    <th>Sign-up Date (UTC)</th>
   </tr>
 
 <% @event.attendances.ordered.each do |attendance| %>

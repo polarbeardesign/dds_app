@@ -9,4 +9,8 @@ class Attendance < ActiveRecord::Base
 
   scope :ordered, order("FIELD(commitment_level, 'Definite','Maybe','Canceled')")
 
+  scope :definite, lambda { where ("commitment_level = ?"), ("Definite") }
+  scope :maybe, lambda { where ("commitment_level = ?"), ("Maybe") }
+  scope :canceled, lambda { where ("commitment_level = ?"), ("Canceled") }
+
 end
