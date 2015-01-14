@@ -1,26 +1,20 @@
 CHECK PERMISSIONS ON SENSITIVE PAGES
 
+Add file upload capability (pdf, MSOffice, photos)
+Add testing capability
+Split up manuals (pdfs) for smaller file sizes
+
 LFHE page
-   X description
-   X links to sign up page
    - expire presales at 48 hours prior?
    - make dates multi-month spannable (ie Enthought)
+   - Add seating chart
 
 Add mailer for sending trip details to roster members (c/o, etc)
 
 Check admin flow of event_signup creation/edit delete
-  - add tooltips to fields
-  X Show trip details on calendar page if logged in
-
+  Hide Maybe/Definite buttons if already signed up.
 
 Add officer positions held to members
-Hide Maybe/Definite buttons if already signed up.
-
-Add list of shows signed up for on login screen
-
-Fix picture for LFHE PX item (asset not precompiled)
-  - working on PX page, not on products index
-
 
 Jim: 140310
 Please co-ordinate with Beth re: arrival, tug, wheels up, and return times for each show.
@@ -90,6 +84,16 @@ COMPLETED ITEMS
 =====================================
 
 
+X Fix picture for LFHE PX item (asset not precompiled)
+  X working on PX page, not on products index
+LFHE
+   X description
+   X links to sign up page
+Events
+  X add tooltips to fields
+  X Show trip details on calendar page if logged in
+  X Add list of shows signed up for on login screen
+  X add RSVP option for other events
 Added mailers to event signup creation/change
 Added mailer for ride request creation
 Adding term functionaility to officers Positions COMPLETED 140710
