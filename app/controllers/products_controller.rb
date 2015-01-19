@@ -57,6 +57,7 @@ skip_before_filter :check_authorization, :check_authentication, :only => :px
   # POST /products.xml
   def create
     @product = Product.new(params[:product])
+        @sizes = Size.by_size.all
 
     checked_sizes = []
     checked_params = params[:size_list] || []
