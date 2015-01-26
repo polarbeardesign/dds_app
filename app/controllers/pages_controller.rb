@@ -14,6 +14,7 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:home,
   end
 
   def PBJs
+
   end
 
   def living_flight_history_experience

@@ -96,6 +96,8 @@ devise_for :users, :skip => [:registrations]
   
   match 'seventieth_birthday_party' => 'pages#seventieth_birthday_party', :as => :seventieth_birthday_party
 
+  match 'arsenal_of_democracy' => 'pages#arsenal_of_democracy', :as => :arsenal_of_democracy
+
   match 'trips/update_events', :as => 'update_events'
   
   match 'edit_signup/:id' => 'event_signups#edit_signup', :as => :edit_signup
