@@ -47,11 +47,11 @@ skip_before_filter :check_authorization, :check_authentication
 
     respond_to do |format|
       if @test_submission.save
-        format.html { redirect_to @test_submission, :notice => 'Test submission was successfully created.' }
-        format.json { render :json => @test_submission, :status => :created, :location => @test_submission }
+        format.html { redirect_to(@test_submission, :notice => 'If you are satisfied with your score click on the "Submit my Test" button. If you would like to make changes use your back button.') }
+        format.xml  { render :xml => @test_submission, :status => :created, :location => @test_submission }
       else
         format.html { render :action => "new" }
-        format.json { render :json => @test_submission.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @test_submission.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -83,20 +83,14 @@ skip_before_filter :check_authorization, :check_authentication
       format.json { head :ok }
     end
   end
-end
+
 
   def knowledge_exam
-    @test_submission = TestSubmission.new
+     @test_submission = TestSubmission.new
 
-#    @customer = Customer.find(params[:customer])
-#    @lineitem = LineItem.find(params[:liid])
-#    @course_info = Course.find(params[:course])
-#    @remote_ip = request.remote_ip
-#    @test_submission_licenses = @test_submission.test_submission_licenses.build
-
-#    @member = Member.find(params[:member])
     @knowledge_test = KnowledgeTest.find(params[:knowledge_test])
     @test_submission_responses = @test_submission.test_submission_responses.build
+
 
 
     respond_to do |format|
@@ -104,3 +98,4 @@ end
       format.xml  { render :xml => @test_submission }
     end
   end
+end

@@ -1,15 +1,48 @@
-<p id="notice"><%= notice %></p>
+<% x = 0 %>
+<% @test_submission.test_submission_responses.each_with_index do |grade, i| %>
+  <% if grade.test_answer.correct == true then  x = x+1  end %>
+<% end %>
+<% score = number_to_percentage(x.to_f / @test_submission.knowledge_test.test_questions.count.to_f * 100, :precision => 0) %>
 
-<p>
-  <b>Knowledge test:</b>
-  <%= @test_submission.knowledge_test %>
-</p>
-
-<p>
-  <b>Member:</b>
-  <%= @test_submission.member %>
-</p>
+<p <% if score.to_f < 70.to_f %>class="failed"><% else %>class="passed"><% end %>Results: <%= x %> correct out of <%= @test_submission.knowledge_test.test_questions.count %> = <%= score %></p>
 
 
-<%= link_to 'Edit', edit_test_submission_path(@test_submission) %> |
-<%= link_to 'Back', test_submissions_path %>
+
+<p>Your answers are highlighted below, <span class="correct">green for correct</span>, <span class="incorrect">red for incorrect</span>, no highlight means no answer was selected for that question.</p>
+
+<% @test_submission.knowledge_test.test_questions.each do |test_questions| %>
+<p class="question"><%= sanitize(test_questions.question_no.to_s + '. ' + test_questions.question) %></p>
+
+<% test_questions.test_answers.ordered.each_with_index do |test_answer, i| %>
+<% if i == 0 || i % 2 == 0 %>
+<div class="answer_row">
+<% end %>
+  <p class="answers">
+    <%#= builder.radio_button :test_answer_id, test_answer.id %>
+    <% if test_answer.correct == true && !test_answer.test_submission_responses.this_test(@test_submission).blank? %>
+    <span class="correct">
+    <% elsif test_answer.correct != true && !test_answer.test_submission_responses.this_test(@test_submission).blank? %>
+    <span class="incorrect">
+    <% else %>
+    <span>
+    <% end %>  
+    <%= test_answer.answer_letter + ". " + test_answer.answer %>
+    </span>
+
+    <%#= test_answer.test_submission_responses.first.test_answer_id %>
+    
+
+
+  </p>
+<% if i > 0 && i % 2 != 0 %>
+<!-- close answer_row div -->
+</div>
+ <% end %>
+ <% end %>
+<div class="clearer"></div>
+<!-- close questions do -->
+<% end %>
+
+
+
+

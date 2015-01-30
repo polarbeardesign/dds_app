@@ -13,12 +13,12 @@
 
 <hr />
 
-<p><em>Answer each of the following <%= @course_info.course_test.test_questions.count %> questions (there is only one correct answer to each question).</em></p>
+<p><em>Answer each of the following <%= @knowledge_test.test_questions.count %> questions (there is only one correct answer to each question).</em></p>
 
 
-<% @course_info.course_test.test_questions.ordered.each do |test_question| %>
+<% @knowledge_test.test_questions.ordered.each do |test_question| %>
 
-    <p class="question"><%= test_question.question_no %>.) <%= sanitize(test_question.content) %></p>
+    <p class="question"><%= test_question.question_no %>.) <%= sanitize(test_question.question) %></p>
 
 <%= f.fields_for :test_submission_responses do |builder| %>
   <% test_question.test_answers.ordered.each_with_index do |test_answer, i| %>
@@ -28,7 +28,7 @@
   <p class="answers">
     <label>
     <%= builder.radio_button :test_answer_id, test_answer.id %>
-    <%= builder.label :test_answer_id, test_answer.answer_letter + ".  " + test_answer.content %>
+    <%= builder.label :test_answer_id, test_answer.answer_letter + ".  " + test_answer.answer %>
     </label>
   </p>
 <% if i > 0 && i % 2 != 0 %>
@@ -44,86 +44,19 @@
 
 <hr />
 
-<%= f.hidden_field :course_test_id, :value => @course_info.course_test.id %>
-<%= f.hidden_field :line_item_id, :value => @lineitem.id %>
-<%= f.hidden_field :course_id, :value => @course_info.id %>
-
-<%= f.hidden_field :customer_id, :value => @customer.id %>
-
-<table class="table_border" align="center" width="600">
-    <tr>
-        <th colspan="4">License Information</td>
-    </tr>
-    <tr>
-      <td style="text-align: center;"><span class="form_tips">state</span></td>
-      <td style="text-align: center;"><span class="form_tips">type</span></td>
-      <td style="text-align: center;"><span class="form_tips">number</span></td>
-      <td style="text-align: center;"><span class="form_tips">renewal date</span></td>
-    </tr>
+<%= f.hidden_field :knowledge_test_id, :value => @knowledge_test.id %>
 
 
-<% @customer.licenses.each do |license| %>
-<%# @eval_submission_licenses.each do |eval_submission_licenses| %>
-
-<%= f.fields_for :test_submission_licenses do |builder|%>
-
-  <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-    <td><%= license.state %></td>
-    <td><% if license.license_type == "Other" %>
-        <%= license.license_type_other %>
-      <% else %>
-        <%= license.license_type %>
-      <% end %></td>
-    <td><%= license.license_num %>
-    <%= builder.hidden_field :license_no, :value => license.license_num %>
-    </td>
-    <td><%= license.renewal_date.strftime("%b %d, %Y") %>
-    <%= builder.hidden_field :renewal_date, :value => license.renewal_date %>
-    <%= builder.hidden_field :license_state, :value => license.state %>
-    <%= builder.hidden_field :license_type, :value => license.license_type %>
-    </td>
-  </tr>
-<% end %>
-<%# end %>
-<% end %>
-</table>
-
-<table class="table_border" align="center" width="600">
-    <tr>
-        <th colspan="6">Certificate Information</th>
-    </tr>
-    <tr>
-        <td colspan="6"><em>The following information will be printed on your certificate</em></td>
-    </tr>
-    <tr>
-        <td colspan="3" class="odd_row">Name - 
-        *First<%= f.text_field :first_name, :size => 20, :value => @customer.first_name %> 
-        MI<%= f.text_field :mi, :size => 3, :value => @customer.mi %>
-        *Last<%= f.text_field :last_name, :size => 20, :value => @customer.last_name %></td>
-    </tr>
-    <tr>
-        <td class="even_row"><%= f.hidden_field :job_title, :size => 20, :value =>@customer.job_title %>
-          *City: <%= f.text_field :city, :size => 20, :value => @customer.city %></td>
-        <td class="even_row">*State: <%= f.collection_select :state, State.where(:active => true), :abbreviation, :abbreviation, :order => 'full_name ASC', :selected => @customer.state %></td>
-    </tr>
-    <tr>
-        <td class="odd_row"><%= f.hidden_field :phone, :size => 20, :value => @customer.daytime_phone %></td>
-        <%# @customer.client.each do |client| %>
-        <td colspan="2" class="odd_row"><%= f.hidden_field :email, :size => 20, :value => @customer.client.email %></td>
-        <%# end %>
-    </tr>
-</table>
+<%#= f.hidden_field :customer_id, :value => @customer.id %>
 
 
-<div class="row" style="width: 100%; margin: 0 auto; text-align: center;">
 
-<%= f.hidden_field :customer_id, :value => @customer.id %>
   <div class="actions">
     <%#= f.submit %>
    <%= submit_tag "Grade Test", :class => 'big_button' %>
   </div>
 To grade the test and check your answers click the Grade Test button.
-</div>
+
 
 
 

@@ -11,6 +11,10 @@ DdsApp::Application.routes.draw do
 
   resources :knowledge_tests
 
+  get "test_submissions/knowledge_exam"
+  match 'knowledge_exam' => 'test_submissions#knowledge_exam', :as => :knowledge_exam
+  match 'grade_course_test/:id' => 'test_submissions#grade_course_test', :as => :grade_course_test
+
   resources :testanswers
 
   resources :testquestions
