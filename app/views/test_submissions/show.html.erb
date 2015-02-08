@@ -1,3 +1,4 @@
+<div id="content-hp">
 <% x = 0 %>
 <% @test_submission.test_submission_responses.each_with_index do |grade, i| %>
   <% if grade.test_answer.correct == true then  x = x+1  end %>
@@ -43,6 +44,6 @@
 <!-- close questions do -->
 <% end %>
 
-
+</div>
 
 

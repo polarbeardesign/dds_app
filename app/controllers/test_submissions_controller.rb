@@ -17,11 +17,12 @@ skip_before_filter :check_authorization, :check_authentication
   # GET /test_submissions/1.json
   def show
     @test_submission = TestSubmission.find(params[:id])
+     render :layout => "homepage"
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render :json => @test_submission }
-    end
+#    respond_to do |format|
+#      format.html # new.html.erb
+#      format.xml  { render :xml => @test_submission }
+#    end
   end
 
   # GET /test_submissions/new
@@ -88,14 +89,15 @@ skip_before_filter :check_authorization, :check_authentication
   def knowledge_exam
      @test_submission = TestSubmission.new
 
+
     @knowledge_test = KnowledgeTest.find(params[:knowledge_test])
     @test_submission_responses = @test_submission.test_submission_responses.build
+     render :layout => "homepage"
 
 
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @test_submission }
-    end
+#    respond_to do |format|
+#      format.html # new.html.erb
+#      format.xml  { render :xml => @test_submission }
+#    end
   end
 end
