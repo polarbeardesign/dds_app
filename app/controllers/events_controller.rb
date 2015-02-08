@@ -5,17 +5,24 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:index
   # GET /events
   # GET /events.xml
   def index
-    @meetings = Event.meeting.ordered.published.tease.all
-    @air_shows_public = Event.air_show.confirmed.ordered.published.all
-    @air_shows_members = Event.air_show.ordered.published.all
-    @special = Event.special.ordered.published.tease.all
-    @maint = Event.maint.ordered.published.tease.all
+    if user_signed_in?
+      # for signed in members
+      @meetings = Event.meeting.ordered.published.tease.all
+      @air_shows_members = Event.air_show.ordered.published.all
+      @special = Event.special.ordered.published.tease.all
+      @maint = Event.maint.ordered.published.tease.all
+   else
+      # for general public
+      @meetings = Event.meeting.confirmed.ordered.published.tease.all
+      @air_shows = Event.air_show.confirmed.ordered.published.all
+      @special = Event.special.confirmed.ordered.published.tease.all
+      @maint = Event.maint.confirmed.ordered.published.tease.all
+   end
 
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @events }
-    end
+        respond_to do |format|
+          format.html # index.html.erb
+          format.xml  { render :xml => @events }
+        end
   end
 
   def all_events

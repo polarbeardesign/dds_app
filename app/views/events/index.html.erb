@@ -1,10 +1,5 @@
 <% current_event_type = "" %>
-<% airshows = "" %>
-<% if signed_in? %>
-  <% airshows = @air_shows_members %>
-<% else %>
-  <% airshows = @air_shows_public %>
-<% end %>
+
 
 <% content_for :sidebar do %>
   <%= render "sidebars/newsletter_signup" %>
@@ -13,8 +8,8 @@
 <h1>Devil Dog Calendar:</h1>
 
 <h2>Air Shows</h2>
-<% if !airshows.blank? %>
-<% airshows.each do |event| %>
+<% if !@airshows.blank? %>
+<% @airshows.each do |event| %>
 <div class="calendar_row" style="width: 90%; padding-top: 0.25em">
   <div class="cell" style="width: 30%;">
     <% if event.start.strftime("%b %d" ) == event.end.strftime("%b %d") %>
