@@ -8,8 +8,8 @@
 <h1>Devil Dog Calendar:</h1>
 
 <h2>Air Shows</h2>
-<% if !@airshows.blank? %>
-<% @airshows.each do |event| %>
+<% if !@air_shows.blank? %>
+<% @air_shows.each do |event| %>
 <div class="calendar_row" style="width: 90%; padding-top: 0.25em">
   <div class="cell" style="width: 30%;">
     <% if event.start.strftime("%b %d" ) == event.end.strftime("%b %d") %>
