@@ -103,7 +103,7 @@
 <% end %>
 
 <% if @event.graphic_address? %>
-  <div class="event_graphic"><%= image_tag(@event.graphic_address, :width => '500px') %></div>
+  <div class="event_graphic"><%= image_tag(@event.graphic_address) %></div>
 <% end %>
 
 <% if @event.details? %>
