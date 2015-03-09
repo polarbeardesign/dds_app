@@ -1,3 +1,260 @@
+/* =Reset default browser CSS. Based on work by Eric Meyer: http://meyerweb.com/eric/tools/css/reset/index.html
+-------------------------------------------------------------- */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  background: transparent;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+body {
+  line-height: 1;
+}
+h1, h2, h3, h4, h5, h6 {
+  clear: both;
+  font-weight: normal;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote {
+  quotes: none;
+}
+blockquote:before, blockquote:after {
+  content: '';
+  content: none;
+}
+del {
+  text-decoration: line-through;
+}
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+a img {
+  border: none;
+}
+
+/* -----------------------------------------------------------
+--- Small Screen styling
+-------------------------------------------------------------- */
+
+#container {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: column;
+  -ms-flex-flow: column;
+  flex-flow: column;
+  padding: 1em;
+  }
+
+nav#top-nav ul {
+  width: 70%;
+  float: right;
+  margin-top: -60px;
+  }
+
+header {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: column;
+  -ms-flex-flow: column;
+  flex-flow: column;
+  -webkit-flex: 3;
+  -ms-flex: 3;
+  flex: 3; 
+  padding: 1em;
+  }
+
+header.logo {
+  -webkit-flex: 3;
+  -ms-flex: 3;
+  flex: 3; 
+  -webkit-order: 1;
+  -ms-flex-order: 1;
+  order: 1;
+  }
+
+#main {
+  -webkit-order: 4;
+  -ms-order: 4;
+  order: 4;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: column;
+  -ms-flex-flow: column;
+  flex-flow: column;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 1em 0;
+  margin-bottom: 1em;
+  }
+
+/*----------------------------------------------------
+   Navigation
+-------------------------------------------------------*/
+
+nav {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+
+nav ul {
+  list-style: none;
+  margin: 0 0 1em 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: column;
+  -ms-flex-flow: column;
+  flex-flow: column;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  }
+
+nav a, nav a:visited {
+  display: block;
+  padding: 16px;
+  cursor: pointer;
+  border: 1px solid #88ddf7;
+  color: #666;
+  }
+
+nav li { /* all list items */
+  margin: -1px 10px 0; /*margin between top nav boxes - my code*/
+
+ }
+nav a:hover, nav a.sfhover {/* hover styles - my code */
+  text-decoration: none;
+  background: #0574ab;
+  color: #fff;
+  }
+
+/*--------------------------------------------------------*/
+
+/*----------------------------------------------------
+Wide Style
+-------------------------------------------------------*/
+@media only screen and (min-width: 800px) {
+
+#container {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: column;
+  -ms-flex-flow: column;
+  flex-flow: column;
+  width: 80%;
+  margin: 2% auto 8%;
+  text-align: left;
+  background: #fff;
+  min-height: 100%;
+  border: 1px solid #b78d03;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  padding: 0;
+  }
+
+header {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row;
+  -ms-flex-flow: row;
+  flex-flow: row;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  padding: 0;
+  width: 100%;
+  }
+
+header.logo {
+
+  }
+
+.header-image {
+  
+  }
+
+nav#top-nav {
+  -webkit-order: 2;
+  -ms-order: 2;
+  order: 2;
+  }
+
+#main {
+  -webkit-order: 5;
+  -ms-order: 5;
+  order: 5;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row;
+  -ms-flex-flow: row;
+  flex-flow: row;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 1em 0 3em 0;
+  }
+
+nav {
+  
+  }
+
+nav#top-nav ul {
+  width: 70%;
+  float: right;
+  margin-top: 60px;
+  }
+
+nav#hp-nav ul, nav#top-nav ul  {
+  font-weight: 200;
+  font-size: 1.1em;
+  list-style: none;
+  /*text-shadow: 0 0 3px #999, 4px 4px 4px #ccc;*/
+  -webkit-flex-flow: row;
+  -ms-flex-flow: row;
+  flex-flow: row;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: justify;
+  justify-content: space-around;
+  }
+
+nav#hp-nav li, nav#top-nav li {
+  min-width: min-content;
+  display: block;
+  }
+
+nav#hp-nav a, nav#top-nav a  {
+  color: #333;
+  border: none;
+  }
+
+nav#hp-nav a:hover, nav#top-nav a:hover {
+  text-decoration: none;
+  text-shadow: 0 0 3px #68a5d2, 4px 4px 4px #b1dcf2;
+  background: none;
+  }
+
+/*=================================================
+LEGACY
+====================================================*/
+
 a:link {
         color: #003399;
         /*text-decoration: none;*/
@@ -22,36 +279,7 @@ body {
         background: #fff;
         }
 
-        
-#page {
-        text-align: left;
-        background: #ffffff;
-        width: 900px;
-        position: relative;
-        margin: 30px auto; /*Top margin of 10px*/
-        border: 2px solid #b78d03;
-        }
 
-#header {
-        float: left;
-        background: #fff;
-        padding: 0px 0px 0px 0px;
-        width: 900px;
-        }
-
-
-/* LOGO / HEADER CONTAINER */
-
-#header_logo {
-        background: green;
-        display: inline;
-        }
-
-#header img {
-       float: left;
-       border: none;
-       z-index: 0;
-       }
 
 .teaser_img {
        float: right;
@@ -59,93 +287,7 @@ body {
   margin: 5px;
        }
 
-#navbox {
-	position: absolute;
-	width: 860px;
-	top: 140px;
-	left: -1px;
-	padding-top: 10px; /*padding from top of container*/
-	padding-left: 40px; /*padding from left edge*/
-	padding-bottom: 5px;
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-size: 12px;
-	text-align: center;  /*centers the text in the box */
-	z-index: +3; /*makes the subnav appear over content*/
-	background: #b78d03;
-	border-top: 1px solid #666666;
-	border-right: 1px solid #b78d03;
-	border-bottom: 1px solid #666666;
-	border-left: 1px solid #b78d03;
-	}
 
-
-/* ------------------ */
-/* NAVIGATION STYLING */
-/* ------------------ */
-
-#nav, #nav ul { /* all lists */
-	padding: 0px;
-	margin: 0px;
-	list-style: none;
-	line-height: 2.5em;
-    }
-
-#nav a {
-	display: block;
-	text-decoration: none;
-    color: #fff;
-    font-weight: bold;
-	width: 125px;  /*sets the width of the block, set to background image width to center text*/
-}
-
-#nav li { /* all list items */
-	float: left;
-	width: 130px; /* sets top level box width - width needed or else Opera goes nuts */
-	margin-right: 4px; /*margin between top nav boxes - my code*/
-	margin-left: 4px; /*margin between top nav boxes - my code*/
-	padding-bottom: 4px; /*padding to display bottom of buttons - tweak to avoid gap*/
-	background: url("/assets/nav_button_1_black_0.gif") no-repeat top left; /*hover styles - my code */
-}
-
-/* SECOND LEVEL CODE */
-
-#nav li ul { /* second-level lists */
-	position: absolute;
-	top: 40px; /*positions the drop down box vertically relative to its container, so padding + button height to get to align at bottom - my code*/
-    padding-top: 10px; /*moves nav boxes down but preserves the block element so the hover is not lost*/
-	margin-left: -5px; /*offset margin between top nav boxes and second level boxes - my code*/
-	width: 130px; /* sets second/third level box width - my code */
-	left: -999em; /* using left instead of display to hide menus because display: none isn't read by screen readers */
-	text-align: left;  /*left justifies the text in the boxes - my code  */
-	/*lborder-top: 1px solid #cccccc;*/
-}
-
-#nav li ul li { /* format second level boxes */
-	margin-left: 0px;
-	margin-top: -1px;
-	padding-bottom: 10px;
-	padding-left: 24px; /* pads text within boxes */
-	background: #b78d03 url("/assets/nav_button_1_black_0.gif") no-repeat top center; /*hover styles - my code */
-	border-left: 1px solid #666;
-	border-right: 1px solid #666;
-	border-bottom: 1px solid #666;
-}
-
-#nav li:hover ul ul, #nav li.sfhover ul ul { /* hides third-and-above-level lists when parent not hovered */
-	left: -999em;
-}
-
-#nav li:hover ul, #nav li li:hover ul, #nav li.sfhover ul, #nav li li.sfhover ul { /* lists nested under hovered list items */
-	left: auto;
-}
-#nav li:hover, #nav li.sfhover {/* hover styles - my code */
-	background: #b78d03 url("/assets/nav_button_1_black_1.gif") no-repeat top left;
-
-}
-
-#nav li ul li:hover, #nav li ul li.sfhover {/* hover styles - my code */
-	background: #b78d03 url("/assets/nav_button_1_black_1.gif") no-repeat top center;
-}
 
 
 div.clearer {
