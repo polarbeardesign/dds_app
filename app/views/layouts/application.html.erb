@@ -5,47 +5,53 @@
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 </head>
 <body>
 
-<div id="page">
+<div id="container">
 
-<%= render 'layouts/header' %>
-
-<div id="main-area">
-
-  <div id="content">
-
-
-
-<div class="content-left">
-
-<% if notice %>
-<p id="notice"><%= notice %></p>
-<% end %>
-
-      <%= yield %>
-
-    <!-- Close content-left -->
-    </div>
-
-    <div id="right-column">
-
-      <%= yield :sidebar %>
-
-    <!-- Close right-column -->
-    </div>
-
+<header>
+  <div class="logo">
+    <%= link_to image_tag("logo.png", :alt => "Devil Dog Squadron"), "/" %>
   </div>
+  <div class="header-image">
+    <%= image_tag("headers/" + random_image) %>
+  </div>
+</header>
 
-<%= render 'layouts/footer' %>
+<nav id="top-nav">
+    <%#= render 'layouts/nav' %>
+</nav>
 
-<!-- Close main-area -->
+
+<div id="main">
+  <div class="content">
+
+  <% if notice %>
+    <p id="notice"><%= notice %></p>
+  <% end %>
+  <article>
+  
+  <%= yield %>
+
+  </article>
+
+  <aside>
+
+    <%= yield :sidebar %>
+
+  </aside>
+
 </div>
 
-<!-- Close page -->
 </div>
 
+<footer>
+    <%= render 'layouts/footer' %>
+</footer>
+
+</div>
 
 </body>
 </html>
