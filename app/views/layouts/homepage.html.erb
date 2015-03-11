@@ -21,21 +21,19 @@
 </header>
 
 <nav id="top-nav">
-    <%= render 'layouts/nav' %>
+    <%#= render 'layouts/nav' %>
 </nav>
 
 
-<div id="main">
-
-
-<%= yield %>
-
-
-<%= render 'layouts/footer' %>
-
-
-<!-- Close main-area -->
+<div id="main-home">
+  <%= yield %>
 </div>
+
+<footer>
+    <%= render 'layouts/footer' %>
+</footer>
+
+
 
 <!-- Close page -->
 </div>
