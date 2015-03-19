@@ -1,6 +1,6 @@
 <% last_position = "" %>
 <% content_for :sidebar do %>
-  <%= render "sidebars/calendar" %>
+  <%#= render "sidebars/calendar" %>
 <% end %>
 
 <h1>Devil Dog Squadron</h1>
@@ -36,13 +36,13 @@ Georgetown, TX 78628</p>
 
 <h2>Squadron Officers</h2>
 
-<table width="440" border="0" align="center" class="table_border">
+<table>
     <tr> 
         <th>Position</th>
         <th>Officer</th>
     </tr>
    <% @officer_positions.each do |officer_position| %>
-   <tr class="<%= cycle('white_row', 'yellow_row') %>">
+   <tr class="<%= cycle('odd-row', 'even-row') %>">
      <td><%= officer_position.position_name %>: </td>
      <td><% officer_position.terms.current.each do |term| %>
       <% if last_position == officer_position.position_name %>
