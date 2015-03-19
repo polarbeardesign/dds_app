@@ -46,6 +46,70 @@ a img {
 }
 
 /* -----------------------------------------------------------
+ Global styling
+-------------------------------------------------------------- */
+
+body {
+  font-family: Verdana, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.4em;
+  color: #333;
+  }
+
+h1, h2, h3, h4 {
+  margin: 0.5em 0 1em 0;
+  line-height: 1.4em;
+  }
+
+h1 {
+  font-size: 1.75em;
+  }
+
+p {
+  margin: 1em 0;
+  text-align: justify;
+  }
+
+a:link, a:hover {
+  color: #003399;
+  }
+
+a:visited {
+  color: #1a2b54;
+  }
+
+.image-right {
+  float: right;
+  }
+
+footer, footer p {
+  text-align: center;
+  }
+
+table {
+  border: 1px solid #d6d68b;
+  border-collapse: collapse;
+  }
+
+th, td {
+  padding: 0.25em;
+  }
+
+.odd-row, .even-row {
+  border: 1px solid #d6d68b;
+  border-collapse: collapse;
+  vertical-align: top;
+  }
+
+.odd-row {
+  background: #fff;
+  }
+
+.even-row {
+  background: #feffea;
+  }
+
+/* -----------------------------------------------------------
 --- Small Screen styling
 -------------------------------------------------------------- */
 
@@ -56,12 +120,10 @@ a img {
   -webkit-flex-flow: column;
   -ms-flex-flow: column;
   flex-flow: column;
-  padding: 1em;
   }
 
 nav#top-nav ul {
   margin-top: -60px;
-
   list-style: none;
   margin: 0 0 1em 0;
   display: -webkit-flex;
@@ -83,36 +145,65 @@ header {
   -webkit-flex-flow: column;
   -ms-flex-flow: column;
   flex-flow: column;
-  -webkit-flex: 3;
-  -ms-flex: 3;
-  flex: 3; 
-  padding: 1em;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1; 
   }
 
 header.logo {
-  -webkit-flex: 3;
-  -ms-flex: 3;
-  flex: 3; 
   -webkit-order: 1;
   -ms-flex-order: 1;
   order: 1;
   }
 
+.header-image {
+  width: 100%;
+  -webkit-order: 2;
+  -ms-flex-order: 2;
+  order: 2;
+  }
+
+
 #main {
-  -webkit-order: 4;
-  -ms-order: 4;
-  order: 4;
+  -webkit-order: 2;
+  -ms-order: 2;
+  order: 2;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-flex-flow: column;
   -ms-flex-flow: column;
   flex-flow: column;
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-  padding: 1em 0;
   margin-bottom: 1em;
   }
+
+.home-box {
+  padding: 0.5em;
+  border-bottom: 1px solid #1d2644;
+  }
+
+.home-box h1 {
+  text-align: center;
+  }
+
+.image-right {
+  width: 50%;
+  }
+
+.image-right img {
+  width: 100%;
+  }
+
+.content {
+  padding: 0.5em;
+  }
+
+footer {
+  -webkit-order: 3;
+  -ms-order: 3;
+  order: 3;
+  }
+
 
 /*----------------------------------------------------
    Navigation
@@ -1078,3 +1169,4 @@ input, textarea {
   text-decoration: underline
   }
 
+}
