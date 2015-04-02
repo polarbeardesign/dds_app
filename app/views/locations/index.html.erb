@@ -7,7 +7,7 @@
 
 <h1>Locations</h1>
 
-<table width="500" class="table_border">
+<table>
   <tr>
     <th>Name</th>
     <th>Airport</th>
@@ -16,7 +16,7 @@
   </tr>
 
 <% @locations.each do |location| %>
-  <tr class="<%= cycle('odd_row', 'even_row') %>">
+  <tr class="<%= cycle('odd-row', 'even-row') %>">
     <td><%= link_to location.short_name, location %></td>
     <td><%= location.icao_identifier %></td>
     <td><%= location.latitude %></td>

@@ -10,15 +10,15 @@
 <h2>Air Shows</h2>
 <% if !@air_shows.blank? %>
 <% @air_shows.each do |event| %>
-<div class="calendar_row" style="width: 90%; padding-top: 0.25em">
-  <div class="cell" style="width: 30%;">
+<div class="calendar_row">
+    <div class="date-graphic">
     <% if event.start.strftime("%b %d" ) == event.end.strftime("%b %d") %>
-    <div class="calendar-ii" style="margin: 0 0 0 2.5em;">
+    <div class="calendar-ii">
       <div class="calendar_month-ii"><%= event.start.strftime("%b") %></div>
       <div class="calendar_date-ii"><%= event.start.strftime("%d") %></div>
     </div>
     <% else %>
-    <div class="calendar-ii" style="float: left;">
+    <div class="calendar-ii">
       <div class="calendar_month-ii"><%= event.start.strftime("%b") %></div>
       <div class="calendar_date-ii"><%= event.start.strftime("%d") %></div>
     </div>
@@ -29,43 +29,42 @@
     </div>
     <% end %>
   </div>
-  <div class="cell" style="width: 65%;">
-    <strong><em><%= link_to event.title, event %></em></strong>
-    <% if event.event_statuses_id == 2 %>
-      <span class="error" style="display: inline;"> -- Tentative</span>
-    <% elsif event.event_statuses_id == 3 %>
-      <span class="error" style="display: inline;"> -- Canceled</span>
-    <% end %>
-    <br />
-      <% if event.details.length > 220 %>
-        <%= truncate(event.details, :length => 220, :separator => ' ') %> <em><%= link_to "Go to event", event %></em>
+  <div class="event-info">
+    <%= link_to event.title, event %>
+      <% if event.event_statuses_id == 2 %>
+        <span class="error" style="display: inline;"> -- Tentative</span>
+      <% elsif event.event_statuses_id == 3 %>
+        <span class="error" style="display: inline;"> -- Canceled</span>
+      <% end %>
+      <br />
+      <% if event.details.length > 100 %>
+        <p class="event-details"><%= truncate(event.details, :length => 100, :separator => ' ') %> <em><%= link_to "Go to event", event %></em></p>
       <% else %>
-        <%= event.details %>
+        <p class="event-details"><%= event.details %></p>
       <% end %>
   </div>
-  </div>
+</div>
 <% current_event_type = event.event_type.title %>
 <% end %>
 <% else %>
-   <div class="calendar_row" style="width: 90%; padding-top: 0.25em">
-     <div class="cell" style="width: 30%;">&nbsp;</div>
-       No scheduled air shows events at this time.
-   </div>
+   <div class="calendar_row">
+     <p>No scheduled air shows at this time.</p>
+  </div>
 <% end %>
 
 
 <h2>Special Events</h2>
 <% if !@special.blank? %>
 <% @special.each do |event| %>
-<div class="calendar_row" style="width: 90%; padding-top: 0.25em">
-  <div class="cell" style="width: 30%;">
+<div class="calendar_row">
+    <div class="date-graphic">
     <% if event.start.strftime("%b %d" ) == event.end.strftime("%b %d") %>
-    <div class="calendar-ii" style="margin: 0 0 0 2.5em;">
+    <div class="calendar-ii">
       <div class="calendar_month-ii"><%= event.start.strftime("%b") %></div>
       <div class="calendar_date-ii"><%= event.start.strftime("%d") %></div>
     </div>
     <% else %>
-    <div class="calendar-ii" style="float: left;">
+    <div class="calendar-ii">
       <div class="calendar_month-ii"><%= event.start.strftime("%b") %></div>
       <div class="calendar_date-ii"><%= event.start.strftime("%d") %></div>
     </div>
@@ -76,37 +75,41 @@
     </div>
     <% end %>
   </div>
-  <div class="cell" style="width: 65%;">
-    <strong><em><%= link_to event.title, event %></em></strong>
-    <br />
-      <% if event.details.length > 220 %>
-        <%= truncate(event.details, :length => 220, :separator => ' ') %> <em><%= link_to "Go to event", event %></em>
+  <div class="event-info">
+    <%= link_to event.title, event %>
+      <% if event.event_statuses_id == 2 %>
+        <span class="error" style="display: inline;"> -- Tentative</span>
+      <% elsif event.event_statuses_id == 3 %>
+        <span class="error" style="display: inline;"> -- Canceled</span>
+      <% end %>
+      <br />
+      <% if event.details.length > 100 %>
+        <p class="event-details"><%= truncate(event.details, :length => 100, :separator => ' ') %> <em><%= link_to "Go to event", event %></em></p>
       <% else %>
-        <%= event.details %>
+        <p class="event-details"><%= event.details %></p>
       <% end %>
   </div>
 </div>
 <% current_event_type = event.event_type.title %>
 <% end %>
 <% else %>
-   <div class="calendar_row" style="width: 90%; padding-top: 0.25em">
-     <div class="cell" style="width: 30%;">&nbsp;</div>
-       No scheduled special events events at this time.
-   </div>
+   <div class="calendar_row">
+     <p>No scheduled special events at this time.</p>
+  </div>
 <% end %>
 
 <h2>Squadron Meetings</h2>
 <% if !@meetings.blank? %>
 <% @meetings.each do |event| %>
-<div class="calendar_row" style="width: 90%; padding-top: 0.25em">
-  <div class="cell" style="width: 30%;">
+<div class="calendar_row">
+    <div class="date-graphic">
     <% if event.start.strftime("%b %d" ) == event.end.strftime("%b %d") %>
-    <div class="calendar-ii" style="margin: 0 0 0 2.5em;">
+    <div class="calendar-ii">
       <div class="calendar_month-ii"><%= event.start.strftime("%b") %></div>
       <div class="calendar_date-ii"><%= event.start.strftime("%d") %></div>
     </div>
     <% else %>
-    <div class="calendar-ii" style="float: left;">
+    <div class="calendar-ii">
       <div class="calendar_month-ii"><%= event.start.strftime("%b") %></div>
       <div class="calendar_date-ii"><%= event.start.strftime("%d") %></div>
     </div>
@@ -117,37 +120,41 @@
     </div>
     <% end %>
   </div>
-  <div class="cell" style="width: 65%;">
-    <strong><em><%= link_to event.title, event %></em></strong>
-    <br />
-      <% if event.details.length > 220 %>
-        <%= truncate(event.details, :length => 220, :separator => ' ') %> <em><%= link_to "Go to event", event %></em>
+  <div class="event-info">
+    <%= link_to event.title, event %>
+      <% if event.event_statuses_id == 2 %>
+        <span class="error" style="display: inline;"> -- Tentative</span>
+      <% elsif event.event_statuses_id == 3 %>
+        <span class="error" style="display: inline;"> -- Canceled</span>
+      <% end %>
+      <br />
+      <% if event.details.length > 100 %>
+        <p class="event-details"><%= truncate(event.details, :length => 100, :separator => ' ') %> <em><%= link_to "Go to event", event %></em></p>
       <% else %>
-        <%= event.details %>
+        <p class="event-details"><%= event.details %></p>
       <% end %>
   </div>
 </div>
 <% current_event_type = event.event_type.title %>
 <% end %>
 <% else %>
-   <div class="calendar_row" style="width: 90%; padding-top: 0.25em">
-     <div class="cell" style="width: 30%;">&nbsp;</div>
-       No scheduled squadron meetings events at this time.
-   </div>
+   <div class="calendar_row">
+     <p>No scheduled squadron meetings at this time.</p>
+  </div>
 <% end %>
 
 <h2>Maintenance</h2>
 <% if !@maint.blank? %>
 <% @maint.each do |event| %>
-<div class="calendar_row" style="width: 90%; padding-top: 0.25em">
-  <div class="cell" style="width: 30%;">
+<div class="calendar_row">
+    <div class="date-graphic">
     <% if event.start.strftime("%b %d" ) == event.end.strftime("%b %d") %>
-    <div class="calendar-ii" style="margin: 0 0 0 2.5em;">
+    <div class="calendar-ii">
       <div class="calendar_month-ii"><%= event.start.strftime("%b") %></div>
       <div class="calendar_date-ii"><%= event.start.strftime("%d") %></div>
     </div>
     <% else %>
-    <div class="calendar-ii" style="float: left;">
+    <div class="calendar-ii">
       <div class="calendar_month-ii"><%= event.start.strftime("%b") %></div>
       <div class="calendar_date-ii"><%= event.start.strftime("%d") %></div>
     </div>
@@ -158,23 +165,27 @@
     </div>
     <% end %>
   </div>
-  <div class="cell" style="width: 65%;">
-    <strong><em><%= link_to event.title, event %></em></strong>
-    <br />
-      <% if event.details.length > 220 %>
-        <%= truncate(event.details, :length => 220, :separator => ' ') %> <em><%= link_to "Go to event", event %></em>
+  <div class="event-info">
+    <%= link_to event.title, event %>
+      <% if event.event_statuses_id == 2 %>
+        <span class="error" style="display: inline;"> -- Tentative</span>
+      <% elsif event.event_statuses_id == 3 %>
+        <span class="error" style="display: inline;"> -- Canceled</span>
+      <% end %>
+      <br />
+      <% if event.details.length > 100 %>
+        <p class="event-details"><%= truncate(event.details, :length => 100, :separator => ' ') %> <em><%= link_to "Go to event", event %></em></p>
       <% else %>
-        <%= event.details %>
+        <p class="event-details"><%= event.details %></p>
       <% end %>
   </div>
 </div>
 <% current_event_type = event.event_type.title %>
 <% end %>
 <% else %>
-   <div class="calendar_row" style="width: 90%; padding-top: 0.25em">
-     <div class="cell" style="width: 30%;">&nbsp;</div>
-       No scheduled maintenance events at this time.
-   </div>
+   <div class="calendar_row">
+     <p>No scheduled maintenance at this time.</p>
+  </div>
 <% end %>
 
 <br />

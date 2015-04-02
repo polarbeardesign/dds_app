@@ -20,7 +20,7 @@
   </tr>
 
 <% @officer_positions.each do |officer_position| %>
-  <tr>
+   <tr class="<%= cycle('odd-row', 'even-row') %>">
     <td><%= officer_position.position_name %></td>
     <td><%= officer_position.description %></td>
     <td><%= link_to 'Show', officer_position %></td>
@@ -32,16 +32,24 @@
 
 <br />
 
-<h2>Current Office Holders</h2>
+<h2>Current Office Holders</h2> 
 
-<% @officer_positions.each do |officer_position| %>
-  <%= officer_position.position_name %>: 
-    <% officer_position.members.each do |member| %>
+<table>
+    <tr> 
+        <th>Position</th>
+        <th>Officer</th>
+    </tr>
+   <% @officer_positions.each do |officer_position| %>
+   <tr class="<%= cycle('odd-row', 'even-row') %>">
+     <td><%= officer_position.position_name %>: </td>
+     <td><% officer_position.terms.current.each do |term| %>
       <% if last_position == officer_position.position_name %>
         /
        <% end %>
-      <%= member.first_name + " " + member.last_name %> 
+      <%= term.member.first_name + " " + term.member.last_name %>
       <% last_position = officer_position.position_name %>
     <% end %>
-    <br />
+    </td>
+    </tr>
 <% end %>
+</table>

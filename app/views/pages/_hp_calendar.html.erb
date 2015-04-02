@@ -1,17 +1,17 @@
-<div class="home-box">
+<div class="home-box calendar">
 
 <h1>Calendar</h1>
 <br />
 <% @events.each do |event| %>
-<div class="calendar_row" style="width: 90%; padding-top: 0.25em">
-  <div class="cell" style="width: 30%;">
+<div class="calendar_row">
+  <div class="date-graphic">
     <% if event.start.strftime("%b %d" ) == event.end.strftime("%b %d") %>
-    <div class="calendar-ii" style="margin: 0 0 0 2.5em;">
+    <div class="calendar-ii">
       <div class="calendar_month-ii"><%= event.start.strftime("%b") %></div>
       <div class="calendar_date-ii"><%= event.start.strftime("%d") %></div>
     </div>
     <% else %>
-    <div class="calendar-ii" style="float: left;">
+    <div class="calendar-ii">
       <div class="calendar_month-ii"><%= event.start.strftime("%b") %></div>
       <div class="calendar_date-ii"><%= event.start.strftime("%d") %></div>
     </div>
@@ -22,14 +22,14 @@
     </div>
     <% end %>
   </div>
-    <%= link_to event.title, event %><br />
-    
+  <div class="event-info">
+    <%= link_to event.title, event %>
       <% if event.details.length > 100 %>
-        <%= truncate(event.details, :length => 30, :separator => ' ') %> <em><%= link_to "more", event %></em>
+        <p class="event-details"><%= truncate(event.details, :length => 100, :separator => ' ') %> <em><%= link_to "Go to event", event %></em></p>
       <% else %>
-        <%= event.details %>
+        <p class="event-details"><%= event.details %></p>
       <% end %>
-    
+  </div>
 </div>
 <% end %>
 

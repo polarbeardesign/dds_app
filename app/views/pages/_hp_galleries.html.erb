@@ -1,10 +1,13 @@
-<div class="home-box">
+<div class="home-box galleries">
 
 <h1>Galleries</h1>
 
-<%= image_tag("photos/080605_maint_update/thumbs/maint_0806_1.jpg", :width =>"150", :height => "99", :class => "fl") %><p>We like taking pictures and videos of the Devil Dog - it's such a fine looking airplane. </p>
+  <div class="teaser-image">
+    <%= image_tag("photos/080605_maint_update/thumbs/maint_0806_1.jpg") %>
+  </div>
 
-<div align="right"><p><%= link_to "Visit our gallaries to view...", galleries_path %></p></div>
+  <p>We like taking pictures and videos of the Devil Dog - it's such a fine looking airplane.</p>
 
+  <p><%= link_to "Visit our gallaries to view...", galleries_path %></p>
 
 </div>

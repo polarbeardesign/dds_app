@@ -10,7 +10,7 @@
 
 <h1>Members List - [<%= @members.size %>]</h1> 
 
-<table width="500" class="table_border">
+<table width="100%">
   <tr>
     <th>Name</th>
     <th>Location</th>
@@ -18,7 +18,7 @@
   </tr>
 
 <% @members.each do |member| %>
-  <tr class="<%= cycle('odd_row', 'even_row') %>">
+   <tr class="<%= cycle('odd-row', 'even-row') %>">
     <td>
     
     <% if signed_in?%>
