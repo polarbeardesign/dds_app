@@ -50,15 +50,18 @@ a img {
 -------------------------------------------------------------- */
 
 body {
-  font-family: Verdana, Helvetica, sans-serif;
+  /*font-family: Verdana, Helvetica, sans-serif;*/
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 200;
   font-size: 16px;
   line-height: 1.4em;
   color: #333;
   }
 
 h1, h2, h3, h4 {
-  margin: 0.5em 0 1em 0;
+  margin: 0.5em 0;
   line-height: 1.4em;
+  font-weight: 400;
   }
 
 h1 {
@@ -78,9 +81,48 @@ a:visited {
   color: #1a2b54;
   }
 
+ul {
+  list-style: disc;
+  margin: 0 0 1em 1.5em;
+}
+
+ol {
+  list-style: decimal;
+  margin: 0 0 1em 1.5em;
+}
+
 .image-right {
   float: right;
+  margin: 1em 2em 0 1em;
+  width: 40%;
   }
+
+.image-box-right, .image-box-left {
+  padding: 0.25em;
+  width: 98%;
+  border: 1px solid #ccc;
+  border-radius: 2px 2px 0px 0px;
+  -moz-border-radius: 2px 2px 0px 0px;
+  -webkit-border-radius: 2px 2px 0px 0px;
+  }
+
+.image-box-right img, .image-box-left img {
+  width: 100%;
+  border: 1px solid #000;
+  }
+
+.caption_text {
+  font-size: 0.75em;
+  }
+
+.teaser-image {
+  margin: 0;
+  }
+
+.image-right img, .teaser-image img {
+  width: 100%;
+  }
+
 
 footer, footer p {
   text-align: center;
@@ -142,27 +184,30 @@ header {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-flow: column;
-  -ms-flex-flow: column;
-  flex-flow: column;
+  -webkit-flex-flow: row;
+  -ms-flex-flow: row;
+  flex-flow: row;
   -webkit-flex: 1;
   -ms-flex: 1;
-  flex: 1; 
+  flex: 1;
   }
 
-header.logo {
-  -webkit-order: 1;
-  -ms-flex-order: 1;
-  order: 1;
-  }
-
-.header-image {
-  width: 100%;
+header .logo {
   -webkit-order: 2;
   -ms-flex-order: 2;
   order: 2;
   }
 
+header .header-image {
+  -webkit-order: 1;
+  -ms-flex-order: 1;
+  order: 1;
+  width: 100%;
+  }
+
+header .header-image img {
+  width: 100%
+  }
 
 #main {
   -webkit-order: 2;
@@ -177,22 +222,85 @@ header.logo {
   margin-bottom: 1em;
   }
 
+
+/*----------------------------------------------------
+   Homepage boxes styles
+-------------------------------------------------------*/
+
 .home-box {
   padding: 0.5em;
   border-bottom: 1px solid #1d2644;
   }
 
-.home-box h1 {
-  text-align: center;
+.updates {
+  -webkit-order: 1;
+  -ms-order: 1;
+  order: 1;
   }
 
-.image-right {
-  width: 50%;
+.calendar {
+  -webkit-order: 2;
+  -ms-order: 2;
+  order: 2;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: column;
+  -ms-flex-flow: column;
+  flex-flow: column;
   }
 
-.image-right img {
-  width: 100%;
+.updates {
+  -webkit-order: 2;
+  -ms-order: 2;
+  order: 2;
   }
+
+.about {
+  -webkit-order: 3;
+  -ms-order: 3;
+  order: 3;
+  }
+
+.feed {
+  -webkit-order: 4;
+  -ms-order: 4;
+  order: 4;
+  }
+
+.sponsors {
+  -webkit-order: 5;
+  -ms-order: 5;
+  order: 5;
+  }
+
+.galleries {
+  -webkit-order: 6;
+  -ms-order: 6;
+  order: 6;
+  }
+
+.sponsors-board {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: justify;
+  justify-content: space-around;
+  }
+
+.ftd_row {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: column;
+  -ms-flex-flow: column;
+  flex-flow: column;
+  }
+
 
 .content {
   padding: 0.5em;
@@ -203,6 +311,78 @@ footer {
   -ms-order: 3;
   order: 3;
   }
+
+/*----------------------------------------------------
+   Calendar graphics styles
+-------------------------------------------------------*/
+
+.calendar_row {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row;
+  -ms-flex-flow: row;
+  flex-flow: row;
+  margin: 0 0.7em 0.8em 0.8em;
+  width: 90%; 
+  padding-top: 0.25em;
+  border: 1px solid #ccc;
+  border-bottom: none;
+  border-radius: 5px 5px 0px 0px;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 5px 5px 0px 0px;
+  box-shadow: 4px -3px 8px rgba(0,0,0,.15);
+  }
+
+.calendar_row p {
+  padding: 0.5em;
+  }
+
+.event-info {
+  margin: 0 0.5em;
+  width: 70%;
+  }
+
+.event-details {
+  font-size: 0.85em;
+  margin: 0.25em 0;
+  }
+
+.date-graphic {
+  width: 25%;
+  }
+
+.calendar-ii {
+  width: 50px;
+  height: 50px;
+  margin: 0 0.25em;
+  border: 1px solid #333;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  }
+
+.calendar_month-ii {
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0 0 0 0;
+  color: #fff;
+  background: #cc0000;
+  border-radius: 5px 5px 0px 0px;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 5px 5px 0px 0px;
+  }
+
+.calendar_date-ii {
+  text-align: center;
+  font-size: 1em;
+  font-weight: bold;
+  margin: 3px 0 0 0;
+  padding-top: 0px;
+  color: #000;
+  }
+
 
 
 /*----------------------------------------------------

@@ -9,6 +9,7 @@ class EventSignup < ActiveRecord::Base
 
 
   scope :ordered, order("FIELD(commitment_level, 'Definite','Maybe','Canceled')")
+  # add created_at as order parameter
   
   scope :member_ordered, joins(:member).merge(Member.ordered)
   
