@@ -1,57 +1,96 @@
-/* =Reset default browser CSS. Based on work by Eric Meyer: http://meyerweb.com/eric/tools/css/reset/index.html
--------------------------------------------------------------- */
+/* http://meyerweb.com/eric/tools/css/reset/ 
+ v2.0b1 | 201101 */
+
+/* COLORS
+green #52782a;
+navy  #1d2644;
+gold  #b78d03;
+*/
+
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
-del, dfn, em, font, img, ins, kbd, q, s, samp,
+del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
 b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td {
-  background: transparent;
-  border: 0;
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
   margin: 0;
   padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  font: inherit;
   vertical-align: baseline;
-}
+  }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+  }
+
 body {
   line-height: 1;
-}
-h1, h2, h3, h4, h5, h6 {
-  clear: both;
-  font-weight: normal;
-}
+  }
+
 ol, ul {
   list-style: none;
-}
-blockquote {
+  }
+
+blockquote, q {
   quotes: none;
-}
-blockquote:before, blockquote:after {
+  }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
   content: '';
   content: none;
-}
+  }
+
+/* remember to define visible focus styles! 
+:focus {
+  outline: ?????;
+} */
+
+/* remember to highlight inserts somehow! */
+ins {
+  text-decoration: none;
+  }
+
 del {
   text-decoration: line-through;
-}
-/* tables still need 'cellspacing="0"' in the markup */
+  }
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-a img {
-  border: none;
-}
 
-/* -----------------------------------------------------------
- Global styling
--------------------------------------------------------------- */
+td {
+  border: 1px solid #ccc;
+  padding: 0.45em;
+  }
+
+strong {
+  font-weight: bold;
+  }
+
+em {
+  font-style: italic;
+  }
+
+/*----------------------------------------------------
+Global Style
+-------------------------------------------------------*/
 
 body {
-  /*font-family: Verdana, Helvetica, sans-serif;*/
-  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-family: Verdana, Arial, sans-serif;
   font-weight: 200;
   font-size: 16px;
   line-height: 1.4em;
@@ -66,6 +105,10 @@ h1, h2, h3, h4 {
 
 h1 {
   font-size: 1.75em;
+  }
+
+h2 {
+  font-size: 1.5em;
   }
 
 p {
@@ -115,6 +158,14 @@ ol {
   font-size: 0.75em;
   }
 
+.text-center, .text-center p {
+  text-align: center;
+  }
+
+.text-center img {
+  width: 100%;
+  }
+
 .teaser-image {
   margin: 0;
   }
@@ -123,10 +174,23 @@ ol {
   width: 100%;
   }
 
+.image-center img {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  }
+
+iframe {
+  width: 100%;
+  }
 
 footer, footer p {
   text-align: center;
   }
+
+/*----------------------------------------------------
+   table styles
+-------------------------------------------------------*/
 
 table {
   border: 1px solid #d6d68b;
@@ -135,6 +199,12 @@ table {
 
 th, td {
   padding: 0.25em;
+  }
+
+th {
+  background: #52782a;
+  font-weight: bold;
+  color: #fff;
   }
 
 .odd-row, .even-row {
@@ -151,17 +221,188 @@ th, td {
   background: #feffea;
   }
 
-/* -----------------------------------------------------------
---- Small Screen styling
--------------------------------------------------------------- */
+/*----------------------------------------------------
+   form styles
+-------------------------------------------------------*/
+input, textarea {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 1.5em;
+  padding: 0.25em 0.5em;
+  background: #e2ecee;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+}
 
-#container {
+/*----------------------------------------------------
+   Calendar graphics styles
+-------------------------------------------------------*/
+
+.calendar_row {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-flow: column;
-  -ms-flex-flow: column;
-  flex-flow: column;
+  -webkit-flex-flow: row;
+  -ms-flex-flow: row;
+  flex-flow: row;
+  margin: 0 0 0.8em 0;
+  width: 100%; 
+  padding-top: 0.25em;
+  border: 1px solid #ccc;
+  border-bottom: none;
+  border-radius: 5px 5px 0px 0px;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 5px 5px 0px 0px;
+  box-shadow: 4px -3px 8px rgba(0,0,0,.15);
+  }
+
+.calendar_row p {
+  padding: 0.5em;
+  }
+
+.event-info {
+  margin: 0 0.5em;
+  width: 70%;
+  }
+
+.event-details {
+  font-size: 0.85em;
+  margin: 0.25em 0;
+  }
+
+.date-graphic {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row;
+  -ms-flex-flow: row;
+  flex-flow: row;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 50%;
+  }
+
+.date-graphic.large {
+  width: 100%;
+  }
+
+.calendar-ii {
+  width: 50px;
+  height: 50px;
+  margin: 0 0.25em;
+  border: 1px solid #333;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  }
+
+.calendar-ii.large {
+  width: 125px;
+  height: 125px;
+  margin: 1em 0;
+}
+
+.calendar_year-ii {
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0 0 0 0;
+  color: #fff;
+  background: #cc0000;
+  border-radius: 5px 5px 0px 0px;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 5px 5px 0px 0px;
+  }
+
+.calendar_month-ii {
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0 0 0 0;
+  color: #fff;
+  background: #cc0000;
+  }
+
+.calendar_month-ii.large {
+  font-size: 2em;
+}
+
+.calendar_day-ii {
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0 0 0 0;
+  padding: 0.25em 0 0;
+  color: #fff;
+  background: #cc0000;
+  }
+
+.calendar_date-ii {
+  text-align: center;
+  font-size: 1em;
+  font-weight: bold;
+  margin: 3px 0 0 0;
+  padding-top: 0px;
+  color: #000;
+  }
+
+.calendar_date-ii.large {
+  font-size: 4em;
+  margin: 0.25em 0 0 0;
+}
+/*----------------------------------------------------
+Set first level order small
+-------------------------------------------------------*/
+header {
+  -webkit-box-ordinal-group: 1;   /* OLD - iOS 6-, Safari 3.1-6 */
+  -moz-box-ordinal-group: 1;      /* OLD - Firefox 19- */
+  -ms-flex-order: 1;              /* TWEENER - IE 10 */
+  -webkit-order: 1;               /* NEW - Chrome */
+  order: 1;                       /* NEW, Spec - Opera 12.1, Firefox 20+ */
+  }
+
+.main {
+  -webkit-box-ordinal-group: 2;
+  -moz-box-ordinal-group: 2;
+  -ms-flex-order: 2;
+  -webkit-order: 2;
+  order: 2;
+  }
+
+nav {
+  -webkit-box-ordinal-group: 3;
+  -moz-box-ordinal-group: 3;
+  -ms-flex-order: 3;
+  -webkit-order: 3;
+  order: 3;
+  }
+
+footer {
+  -webkit-box-ordinal-group: 4;
+  -moz-box-ordinal-group: 4;
+  -ms-flex-order: 4;
+  -webkit-order: 4;
+  order: 4;
+  }
+
+/*----------------------------------------------------
+Formatting Small Screen
+-------------------------------------------------------*/
+
+#container {
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 100%;
+  background: #fff;
   }
 
 nav#top-nav ul {
@@ -177,25 +418,20 @@ nav#top-nav ul {
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-
   }
 
 header {
-  display: -webkit-flex;
   display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
-  -webkit-flex-flow: row;
-  -ms-flex-flow: row;
-  flex-flow: row;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  padding-top: 4.4em;
   }
 
 header .logo {
-  -webkit-order: 2;
-  -ms-flex-order: 2;
-  order: 2;
+  display: none;
   }
 
 header .header-image {
@@ -209,7 +445,7 @@ header .header-image img {
   width: 100%
   }
 
-#main {
+.main {
   -webkit-order: 2;
   -ms-order: 2;
   order: 2;
@@ -220,8 +456,61 @@ header .header-image img {
   -ms-flex-flow: column;
   flex-flow: column;
   margin-bottom: 1em;
+  padding: 0 1em;
   }
 
+.menu-link {
+  position: fixed;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row;
+  -ms-flex-flow: row;
+  flex-flow: row;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: flex-start;
+  justify-content: flex-start;
+  z-index: 1;
+  width: 100%;
+  padding: 0.5em 0 0.5em 0em;
+  top: 0;
+  left: 0;
+  background: #1d2644;
+  margin: 0 0 0 0;
+  }
+
+.menu-link a {
+  display: block;
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+  width: 55px;
+  margin: 0 1em;
+  }
+
+.menu-link img {
+  width: 100%;
+  vertical-align: middle;
+  }
+
+.signup_box {
+  background: #EDD68A;
+  margin: 0.75em 0.75em;
+  padding: 0.5em 1em;
+  border: 1px solid #b78d03;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+}
+
+.signup_buttons {
+  display: block;
+  margin: 0 auto;
+  }
+
+.signup_buttons form, .signup_buttons div {
+  display: inline;
+  }
 
 /*----------------------------------------------------
    Homepage boxes styles
@@ -301,89 +590,89 @@ header .header-image img {
   flex-flow: column;
   }
 
+.px-item {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: column;
+  -ms-flex-flow: column;
+  flex-flow: column;
+  border: 1px solid #ccc;
+  padding: 1em;
+  margin: 1em auto;
+  border-radius: 2px;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 5px 5px 0px 0px;
+  box-shadow: 4px -3px 8px rgba(0,0,0,.15);
+  }
+
+.px-item > img {
+  width: 100%;
+  }
+
+.item-info {
+
+  }
+
+.payment-info {
+  margin: 1em 0 0;
+  text-align: right;
+  }
+
+.gallery-row {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: column;
+  -ms-flex-flow: column;
+  flex-flow: column;
+  border: 1px solid #ccc;
+  padding: 1em;
+  margin: 1em auto;
+  border-radius: 2px;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 5px 5px 0px 0px;
+  box-shadow: 4px -3px 8px rgba(0,0,0,.15);
+  }
+
+.photo-cell {
+  text-align: center;
+  }
+
+.photo-cell > a > img {
+  width: 100%;
+  }
 
 .content {
   padding: 0.5em;
   }
 
 footer {
-  -webkit-order: 3;
-  -ms-order: 3;
-  order: 3;
-  }
-
-/*----------------------------------------------------
-   Calendar graphics styles
--------------------------------------------------------*/
-
-.calendar_row {
-  display: -webkit-flex;
   display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
-  -webkit-flex-flow: row;
-  -ms-flex-flow: row;
-  flex-flow: row;
-  margin: 0 0.7em 0.8em 0.8em;
-  width: 90%; 
-  padding-top: 0.25em;
-  border: 1px solid #ccc;
-  border-bottom: none;
-  border-radius: 5px 5px 0px 0px;
-  -moz-border-radius: 0px;
-  -webkit-border-radius: 5px 5px 0px 0px;
-  box-shadow: 4px -3px 8px rgba(0,0,0,.15);
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  padding: 1em;
+  background: #fff;
+  border-bottom: 1px solid #ccc;
+  color: #b78d03;
+  margin: 0;
+  padding: 1em;
+  background: #1d2644;
   }
 
-.calendar_row p {
-  padding: 0.5em;
+footer a:link, footer a:visited {
+  color: #b78d03;
   }
 
-.event-info {
-  margin: 0 0.5em;
-  width: 70%;
-  }
-
-.event-details {
-  font-size: 0.85em;
-  margin: 0.25em 0;
-  }
-
-.date-graphic {
-  width: 25%;
-  }
-
-.calendar-ii {
-  width: 50px;
-  height: 50px;
-  margin: 0 0.25em;
-  border: 1px solid #333;
-  border-radius: 6px;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  }
-
-.calendar_month-ii {
+.copyright {
   text-align: center;
-  font-size: 14px;
-  font-weight: bold;
-  margin: 0 0 0 0;
-  color: #fff;
-  background: #cc0000;
-  border-radius: 5px 5px 0px 0px;
-  -moz-border-radius: 0px;
-  -webkit-border-radius: 5px 5px 0px 0px;
   }
-
-.calendar_date-ii {
-  text-align: center;
-  font-size: 1em;
-  font-weight: bold;
-  margin: 3px 0 0 0;
-  padding-top: 0px;
-  color: #000;
-  }
-
-
 
 /*----------------------------------------------------
    Navigation
@@ -393,38 +682,131 @@ nav {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
 
-nav ul {
-  list-style: none;
-  margin: 0 0 1em 0;
-  display: -webkit-flex;
+nav > ul {
   display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
-  -webkit-flex-flow: column;
-  -ms-flex-flow: column;
-  flex-flow: column;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  list-style: none;
+  margin: 2em 0 0;
+  padding-top: 0;
+background: #666666; /* Old browsers */
+background: -moz-linear-gradient(top,  #666666 0%, #4f4f4f 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#666666), color-stop(100%,#4f4f4f)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #666666 0%,#4f4f4f 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #666666 0%,#4f4f4f 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #666666 0%,#4f4f4f 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #666666 0%,#4f4f4f 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#666666', endColorstr='#4f4f4f',GradientType=0 ); /* IE6-9 */
   }
 
-nav a, nav a:visited {
+nav > ul > li {
+  flex: 0 1 auto;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  transition: all linear 0.1s;
+  border-bottom: 1px solid #000;
+  }
+
+nav > ul > li > a {
   display: block;
-  padding: 16px;
+  padding: 0.5em 1em;
   cursor: pointer;
-  border: 1px solid #88ddf7;
-  color: #666;
+  color: #fff;
+  font-size: 1.25em;
+  text-decoration: none;
+  z-index: 2;
   }
 
-nav li { /* all list items */
-  margin: -1px 10px 0; /*margin between top nav boxes - my code*/
-
- }
-nav a:hover, nav a.sfhover {/* hover styles - my code */
-  text-decoration: none;
-  background: #0574ab;
+nav > ul > li > a:visited {
   color: #fff;
   }
 
-/*--------------------------------------------------------*/
+nav > ul > li > a:hover {
+  background: #3f3f3f; /* Old browsers */
+  background: -moz-linear-gradient(top,  #3f3f3f 0%, #202020 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#3f3f3f), color-stop(100%,#202020)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #3f3f3f 0%,#202020 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #3f3f3f 0%,#202020 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #3f3f3f 0%,#202020 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #3f3f3f 0%,#202020 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3f3f3f', endColorstr='#202020',GradientType=0 ); /* IE6-9 */
+  color: #fff;
+      }
+
+nav > ul > li > ul {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  list-style: none;
+  margin: 0 0 0 1em;
+  display: none;
+  width: 200px;
+  position: absolute;
+background: #666666; /* Old browsers */
+background: -moz-linear-gradient(top,  #666666 0%, #4f4f4f 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#666666), color-stop(100%,#4f4f4f)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #666666 0%,#4f4f4f 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #666666 0%,#4f4f4f 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #666666 0%,#4f4f4f 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #666666 0%,#4f4f4f 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#666666', endColorstr='#4f4f4f',GradientType=0 ); /* IE6-9 */
+ 
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+  box-shadow: 5px 5px 2px #000;
+  -moz-box-shadow: 15px 15px 7px #000;
+  -webkit-box-shadow: 2px 5px 8px 5px #000;
+  }
+
+nav > ul > li > ul > li {
+  margin: 0;
+  }
+
+nav > ul > li > ul > li > a {
+  flex: 0 1 auto;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  }
+
+nav > ul > li > ul > li > a:visited {
+  color: #fff;
+  }
+
+nav > ul > li > ul > li > a:hover {
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  background: #3f3f3f; /* Old browsers */
+  background: -moz-linear-gradient(top,  #3f3f3f 0%, #202020 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#3f3f3f), color-stop(100%,#202020)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #3f3f3f 0%,#202020 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #3f3f3f 0%,#202020 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #3f3f3f 0%,#202020 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #3f3f3f 0%,#202020 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3f3f3f', endColorstr='#202020',GradientType=0 ); /* IE6-9 */
+  color: #fff;
+  }
+
+nav > ul > li:hover ul {
+  display: inline-block;
+  z-index: 2;
+  }
+
+/*----------------------------------------------------
+Wide Style
+-------------------------------------------------------*/
+
 
 

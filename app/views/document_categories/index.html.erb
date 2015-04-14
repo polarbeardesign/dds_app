@@ -10,7 +10,7 @@
   </tr>
 
 <% @document_categories.each do |document_category| %>
-  <tr>
+  <tr class="<%= cycle('odd-row', 'even-row') %>">
     <td><%= document_category.category_name %></td>
     <td><%= document_category.description %></td>
     <td><%= link_to 'Show', document_category %></td>

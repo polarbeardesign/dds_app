@@ -1,10 +1,10 @@
 <% content_for :sidebar do %>
-<div style="width: 220px; background: #fff; border: 1px solid #999;">
+<div style="background: #fff; border: 1px solid #999;">
 <h2 style="background: #cc0000; color: #eee; margin: 0 0 0 0; padding: 0.75em;">Upcoming Flight Opportunities</h2>
 
 <p style="margin: 0.75em;">Rides booked in advance are $395, and $425 at the events.
 
-<table class="table_border">
+<table>
 <% @rides.each do |ride| %>
   <tr class="<%= cycle('odd_row', 'even_row') %>">
     <td><strong><%= ride.title %></strong><br />

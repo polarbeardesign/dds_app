@@ -13,60 +13,33 @@
     <% end %>
 <% end %>
 
-
-
-<% if @event.start.strftime("%b %d" ) == @event.end.strftime("%b %d") %>
-<div class="calendar-css" style="float: right;">
-  <div class="calendar_year">
-    <%= @event.start.strftime("%Y") %>
-  </div>
-  <div class="calendar_month">
-    <%= @event.start.strftime("%b") %>
-  </div>
-  <div class="calendar_day">
-    <%= @event.start.strftime("%A") %>
-  </div>
-  <div class="calendar_date">
-    <%= @event.start.strftime("%d") %>
-  </div>
+<div class="date-graphic large">
+    <% if @event.start.strftime("%b %d" ) == @event.end.strftime("%b %d") %>
+    <div class="calendar-ii large">
+       <div class="calendar_year-ii"><%= @event.start.strftime("%Y") %></div>
+      <div class="calendar_month-ii large"><%= @event.start.strftime("%b") %></div>
+      <div class="calendar_day-ii"><%= @event.start.strftime("%A") %></div>
+      <div class="calendar_date-ii large"><%= @event.start.strftime("%d") %></div>
+    </div>
+    <% else %>
+    <div class="calendar-ii large">
+      <div class="calendar_year-ii"><%= @event.start.strftime("%Y") %></div>
+      <div class="calendar_month-ii large"><%= @event.start.strftime("%b") %></div>
+      <div class="calendar_day-ii"><%= @event.start.strftime("%A") %></div>
+      <div class="calendar_date-ii large"><%= @event.start.strftime("%d") %></div>
+    </div>
+    <span style="float: left; font-size: 1em;margin: 4em 1em;">&#8211; </span>
+    <div class="calendar-ii large">
+      <div class="calendar_year-ii"><%= @event.end.strftime("%Y") %></div>
+      <div class="calendar_month-ii large"><%= @event.end.strftime("%b") %></div>
+      <div class="calendar_day-ii"><%= @event.end.strftime("%A") %></div>
+      <div class="calendar_date-ii large"><%= @event.end.strftime("%d") %></div>
+    </div>
+    <% end %>
 </div>
-<% else %>
-<div class="row" style="width: 225px; float: right;">
-<div class="calendar-css" style="float: left;">
-  <div class="calendar_year">
-    <%= @event.start.strftime("%Y") %>
-  </div>
-  <div class="calendar_month">
-    <%= @event.start.strftime("%b") %>
-  </div>
-  <div class="calendar_day">
-    <%= @event.start.strftime("%A") %>
-  </div>
-  <div class="calendar_date">
-    <%= @event.start.strftime("%d") %>
-  </div>
-</div>
-<span style="float: left; font-size: 3em; margin: 1.25em 0 0 0;">&#8211; </span>
-<div class="calendar-css">
-  <div class="calendar_year">
-    <%= @event.end.strftime("%Y") %>
-  </div>
-  <div class="calendar_month">
-    <%= @event.end.strftime("%b") %>
-  </div>
-  <div class="calendar_day">
-    <%= @event.end.strftime("%A") %>
-  </div>
-  <div class="calendar_date">
-    <%= @event.end.strftime("%d") %>
-  </div>
-</div>
-</div>
-<% end %>
-
 <h1><%= @event.title %></h1>
 <% if @event.event_statuses_id == 2 %> <span class="error" style="display: inline;"><strong>--Tentative</strong></span><% end %>
-<p><b>When:</b>
+<p><strong>When:</strong>
 <% if @event.start.strftime("%b %d" ) == @event.end.strftime("%b %d") %>
   <%= @event.start.strftime("%b %d, %Y | %H:%M %p") %> - <%= @event.end.strftime("%H:%M %p") %></p>
 <% else %>
@@ -77,27 +50,27 @@
   <% end %>
 <% end %>
 
-<p><b>What:</b> <%= @event.event_type.title%></p>
+<p><strong>What:</strong> <%= @event.event_type.title%></p>
 
   <% if @event.location.latitude? %>
     <div style="float: right; border: 1px solid #ccc; margin: 0 0 1em 1em;"><%= link_to image_tag(map_url), "http://maps.google.com/maps?q="+@event.location.latitude+",+"+@event.location.longitude, :target => "_blank" %></div>
   <% end %>
   
-<p><b>Where:</b> <%= @event.location.short_name %> - <%= @event.location.city %>, <%= @event.location.state %></p>
+<p><strong>Where:</strong> <%= @event.location.short_name %> - <%= @event.location.city %>, <%= @event.location.state %></p>
 
-<p><b>Rides?:</b> <% if @event.rides_available? %>Yes - Rides are available! <a href="/living_flight_history_experience">Learn more</a><% else %>Rides not available at this event.<% end %></p>
+<p><strong>Rides?:</strong> <% if @event.rides_available? %>Yes - Rides are available! <a href="/living_flight_history_experience">Learn more</a><% else %>Rides not available at this event.<% end %></p>
 
 
 <% if @event.URL? %>
 <p>
-  <b>Website:</b>
+  <strong>Website:</strong>
   <%= link_to @event.URL, @event.URL, :target => "_blank" %>
 </p>
 <% end %>
 
 <% if @event.contact_info? %>
 <p>
-  <b>Contact info:</b>
+  <strong>Contact info:</strong>
   <%= @event.contact_info %>
 </p>
 <% end %>
@@ -121,11 +94,11 @@
 
 <% if !@event.trip.blank? %>
 
-<table width="500" class="table_border">
+<table>
   <tr>
     <th colspan="2">Trip Details:</th>
   </tr>
-  <tr class="odd_row">
+  <tr class="odd-row">
     <td width="150">Crew arrival:</td>
     <% if !@event.trip.crew_arrival.blank? %>
       <td><strong><%= @event.trip.crew_arrival.strftime("%b %d - %H:%M") %></strong></td>
@@ -133,7 +106,7 @@
       <td><strong>n/a</strong></td>
     <% end %>
   </tr>
-  <tr class="even_row">
+  <tr class="even-row">
     <td>Tug time:</td>
     <% if !@event.trip.tug_time.nil? %>
       <td><strong><%= @event.trip.tug_time.strftime("%b %d - %H:%M") %></strong></td>
@@ -141,11 +114,11 @@
       <td><strong>n/a</strong></td>
     <% end %>
   </tr>
-  <tr class="odd_row">
+  <tr class="odd-row">
     <td>Wheels up:</td>
     <td><strong><%= @event.trip.wheels_up.strftime("%b %d - %H:%M") %></strong></td>
   </tr>
-  <tr class="even_row">
+  <tr class="even-row">
     <td>Destination ETA:</td>
     <% if !@event.trip.destination_eta.nil? %>
       <td><strong><%= @event.trip.destination_eta.strftime("%b %d - %H:%M") %></strong></td>
@@ -153,7 +126,7 @@
       <td><strong>n/a</strong></td>
     <% end %>
   </tr>
-  <tr class="odd_row">
+  <tr class="odd-row">
     <td>Return ETA:</td>
     <% if !@event.trip.return_eta.nil? %>
       <td><strong><%= @event.trip.return_eta.strftime("%b %d - %H:%M") %></strong></td>
@@ -161,7 +134,7 @@
       <td><strong>n/a</strong></td>
     <% end %>
   </tr>
-  <tr class="even_row">
+  <tr class="even-row">
     <td>Notes:</td>
     <td><%= @event.trip.notes %></td>
   </tr>
@@ -191,18 +164,17 @@
 <span style="font-style: italic;font-size:0.85em;">Your name will be entered on the list below, you can change your commitment or remove yourself at any time. Signing up only indicates your availability and desire to participate. Final roster at discretion of pilots.</em>
 </div>
 
-<table width="500" class="table_border">
+<table>
   <tr>
-    <th>Name</th>
-    <th>Col. No.</th>
+    <th>Name<br />Col. No.</th>
     <th>Commitment</th>
     <th>Sign-up Date (UTC)</th>
   </tr>
 
 <% @event.event_signups.ordered.each do |event_signup| %>
-  <tr class="<%= cycle('odd_row', 'even_row') %>">
-    <td><%= event_signup.member.last_name %>, <%= event_signup.member.first_name %></td>
-    <td><%= event_signup.member.caf_col_no %></td>
+  <tr class="<%= cycle('odd-row', 'even-row') %>">
+    <td><%= event_signup.member.last_name %>, <%= event_signup.member.first_name %><br/>
+    <%= event_signup.member.caf_col_no %></td>
     <td><%= event_signup.commitment_level %>
       <% if event_signup.member.user == current_user %>
         <span style="font-size: 0.75em;"><%= link_to "[change]", edit_signup_path(event_signup) %></span>     
@@ -238,18 +210,17 @@
 <% end %>
 </p>
 
-<table width="500" class="table_border">
+<table>
   <tr>
-    <th>Name</th>
-    <th>Col. No.</th>
+    <th>Name<br />Col. No.</th>
     <th>Commitment</th>
     <th>Sign-up Date (UTC)</th>
   </tr>
 
 <% @event.attendances.ordered.each do |attendance| %>
-  <tr class="<%= cycle('odd_row', 'even_row') %>">
-    <td><%= attendance.member.last_name %>, <%= attendance.member.first_name %></td>
-    <td><%= attendance.member.caf_col_no %></td>
+  <tr class="<%= cycle('odd-row', 'even-row') %>">
+    <td><%= attendance.member.last_name %>, <%= attendance.member.first_name %><br />
+    <%= attendance.member.caf_col_no %></td>
     <td><%= attendance.commitment_level %>
       <% if attendance.member.user == current_user %>
         <span style="font-size: 0.75em;"><%= link_to "[change]", edit_rsvp_path(attendance) %></span>     

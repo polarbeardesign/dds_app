@@ -1,20 +1,38 @@
 <div class="right-column-box">
 
 <h1>Calendar</h1>
-
-<table width="180" class="table_border">
-  <tr>
-    <th>Date</th>
-    <th>Title</th>
-  </tr>
-
+<br />
 <% @events.each do |event| %>
-  <tr class="<%= cycle('odd_row', 'even_row') %>">
-    <td><%= event.start.strftime("%b %d, %y") %></td>
-    <td><%= link_to event.title, event %></td>
-  </tr>
+<div class="calendar_row">
+  <div class="date-graphic">
+    <% if event.start.strftime("%b %d" ) == event.end.strftime("%b %d") %>
+    <div class="calendar-ii">
+      <div class="calendar_month-ii"><%= event.start.strftime("%b") %></div>
+      <div class="calendar_date-ii"><%= event.start.strftime("%d") %></div>
+    </div>
+    <% else %>
+    <div class="calendar-ii">
+      <div class="calendar_month-ii"><%= event.start.strftime("%b") %></div>
+      <div class="calendar_date-ii"><%= event.start.strftime("%d") %></div>
+    </div>
+    <span style="float: left; font-size: 1em;margin: 0.5em 0 0 0;">&#8211; </span>
+    <div class="calendar-ii">
+      <div class="calendar_month-ii"><%= event.end.strftime("%b") %></div>
+      <div class="calendar_date-ii"><%= event.end.strftime("%d") %></div>
+    </div>
+    <% end %>
+  </div>
+  <div class="event-info">
+    <%= link_to event.title, event %>
+      <% if event.details.length > 100 %>
+        <p class="event-details"><%= truncate(event.details, :length => 100, :separator => ' ') %> <em><%= link_to "Go to event", event %></em></p>
+      <% else %>
+        <p class="event-details"><%= event.details %></p>
+      <% end %>
+  </div>
+</div>
 <% end %>
-</table>
+
 <div align="right"><%= link_to "See all calendar events...", calendar_path %></div>
 <!-- Close right-column-box -->
 </div>

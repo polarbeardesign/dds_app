@@ -1,29 +1,28 @@
-<br />
-<br />
 <div class="photo_viewer">
 
 <p id="notice"><%= notice %></p>
 
-<div align="center">
-<p>
-<% if @photo.id - 1 >= @photo.gallery.photos.first.id %>
-  <%= link_to 'Previous', photo_path(@photo.id - 1) %> 
-<% else %>
-  <em>beginning -></em>
-<% end %>
+  <div class="text-center">
+    <p>
+    <% if @photo.id - 1 >= @photo.gallery.photos.first.id %>
+      <%= link_to 'Previous', photo_path(@photo.id - 1) %> 
+    <% else %>
+      <em>beginning -></em>
+    <% end %>
 
-| 
-<% if @photo.id + 1 <= @photo.gallery.photos.last.id %>
-  <%= link_to 'Next', photo_path(@photo.id + 1) %> 
-<% else %>
-  <em> <- end</em>
-<% end %>
-</p>
+    | 
+    <% if @photo.id + 1 <= @photo.gallery.photos.last.id %>
+      <%= link_to 'Next', photo_path(@photo.id + 1) %> 
+    <% else %>
+      <em> <- end</em>
+    <% end %>
+    </p>
+<div class="gallery-row">
+    <%= image_tag 'photos/'+ @photo.path + '/' + @photo.filename %>
 
-  <%= image_tag 'photos/'+ @photo.path + '/' + @photo.filename %>
-
-<p><%= @photo.description %></p>
+  <p><%= @photo.description %></p>
 </div>
+  </div>
 <%= link_to 'Back to ' + @photo.gallery.gallery_name + ' Gallery', gallery_url(@photo.gallery_id) %>
 
 <% if signed_in?%>

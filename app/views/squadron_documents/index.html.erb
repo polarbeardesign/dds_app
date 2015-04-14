@@ -4,7 +4,7 @@
 <% end %>
 <h1>Squadron Documents</h1>
 
-<table width="600">
+<table>
   <tr>
     <th>Title</th>
     <th>Doc date</th>
@@ -13,10 +13,10 @@
 <% @squadron_documents.each do |squadron_document| %>
   <% if squadron_document.document_category.category_name != lastcategory %>
   <tr>
-    <td colspan="2"><strong><em><%= squadron_document.document_category.category_name %></em></strong></td>
+    <th align="left" colspan="2"><strong><em><%= squadron_document.document_category.category_name %></em></strong></td>
   </tr>
   <% end %>
-  <tr>
+  <tr class="<%= cycle('odd-row', 'even-row') %>">
     <td style="padding: .25em 0.5em;"><%= link_to squadron_document.title, squadron_document.file_url %></td>
     <td><%= squadron_document.doc_date %></td>
   </tr>
