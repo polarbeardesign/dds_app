@@ -21,21 +21,17 @@
 
 
 <div class="main">
-  <div class="content">
 
   <% if notice %>
     <p id="notice"><%= notice %></p>
   <% end %>
-  <article>
   
-  <%= yield %>
-
+  <article>
+    <%= yield %>
   </article>
 
   <aside>
-
     <%= yield :sidebar %>
-
   </aside>
 
 </div>
