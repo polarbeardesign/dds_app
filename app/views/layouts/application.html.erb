@@ -12,22 +12,15 @@
 <div id="container">
 
 <header>
-<!--
-  <div class="logo">
-    <%= link_to image_tag("logo.png", :alt => "Devil Dog Squadron"), "/" %>
-  </div>
--->
-  <div class="header-image">
-    <%= image_tag("headers/" + random_image) %>
-  </div>
+  <%= render 'layouts/header' %>
 </header>
 
-<nav id="top-nav">
-    <%#= render 'layouts/nav' %>
+<nav>
+  <%= render 'layouts/nav' %>
 </nav>
 
 
-<div id="main">
+<div class="main">
   <div class="content">
 
   <% if notice %>

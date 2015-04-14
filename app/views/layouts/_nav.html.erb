@@ -1,0 +1,43 @@
+<a name="nav"></a>
+<ul>
+    <li><%= link_to 'Home', "/" %></li>
+    <li><%= link_to "Calendar", calendar_path %>
+        <ul>
+        <li><%= link_to "News Items", news_index_path %></li>
+        </ul>
+    </li>
+    <li><%= link_to "History", pages_PBJs_path %></a>
+        <ul>
+        <li><%= link_to "PBJs", pages_PBJs_path %></li>
+        <li><%= link_to "VMB 612", pages_VMB612_path %></li>
+        </ul>
+    </li>
+    <li><%= link_to "Support", px_path %></a>
+        <ul>
+        <li><%= link_to "PX", px_path %></li>
+        <li><%= link_to "Rides", living_flight_history_experience_path %></li>
+        <li><%= link_to "Squadron", pages_squadron_path %></li>
+        </ul>
+    </li>
+    <li><%= link_to "Photos & Videos", galleries_path %>
+        <ul>
+        <li><%= link_to "Photo Galleries", galleries_path %></li>
+        <li><%= link_to "Video Gallery", video_gallery_path %></li>
+        </ul>
+    </li>
+    <li><%= link_to "Members", pages_member_home_path %>
+    <% if user_signed_in? %>
+      <ul>
+        <li><%= link_to 'Bulletin Board', posts_path %></li>
+        <li><%= link_to 'Documents', squadron_documents_path %></li>
+        <li><%= link_to 'Members List', members_list_path %></li>
+        <li><%= link_to "Account/Profile", account_path(User.find(current_user).member.id) %></li>
+        <li><%= link_to 'Password', edit_user_registration_path %></li>
+        <li><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></li>
+          <% if current_user.roles.any? {|role| role.name == "admin"  or role.name == "superuser" } %>
+            <li><%= link_to "Admin", pages_admin_home_path %></li>
+          <% end %>
+        </ul>
+  <% end %>
+  </li>
+</ul>

@@ -1,13 +1,13 @@
 <h1>Devil Dog News:</h1>
  
-<table width="500" class="table_border">
+<table>
     <tr> 
         <th>Date</th>
         <th>Headline</th>
         <th>Source</th>
     </tr>
     <% @news.each do |news| %>
-    <tr class="<%= cycle('odd_row', 'even_row') %>"> 
+       <tr class="<%= cycle('odd-row', 'even-row') %>">
         <td><%= news.date.strftime("%b %d, %Y") %></td>
         <td><%= link_to news.title, if !news.content.empty? then news else news.ext_url end %></td>
         <td><%= news.source %></td>
