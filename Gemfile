@@ -10,6 +10,7 @@ gem 'jquery-ui-rails'
 gem 'mysql2', '< 0.3.7'
 gem 'devise'
 gem 'json'
+gem 'fastercsv'
 
 # Use unicorn as the web server
 # gem 'unicorn'

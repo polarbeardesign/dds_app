@@ -1,34 +1,32 @@
 <h1>Members List</h1>
-
+<%= link_to 'New Member', new_member_path %> | <%= link_to 'Export to CSV', members_path(:format => "csv")  %>
 <table width="500" class="table_border">
   <tr>
     <th>Active</th>
-    <th>Name</th>
-    <th>Location</th>
+    <th style="min-width: 50px;">Col No.</th>
+    <th style="min-width: 150px;">Name</th>
+    <th style="min-width: 150px;">Location</th>
     <th>Email</th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Join Date</th>
   </tr>
 
 <% @members.each do |member| %>
   <tr class="<%= cycle('odd_row', 'even_row') %>">
     <td><%= member.active %></td>
-    <td><%= member.last_name+", "+member.first_name %></td>
+    <td><%= member.caf_col_no %></td>
+    <td><%= link_to member.last_name+", "+member.first_name, member %></td>
     <% if member.city? %>
       <td><%= member.city+", "+member.state %></td>
     <% else %>
       <td>---</td>    
     <% end %>
     <td><%= member.email %></td>
-    <td><%= link_to 'Show', member %></td>
-    <td><%= link_to 'Edit', edit_member_path(member) %></td>
-    <td><%= link_to 'Destroy', member, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= member.join_date %></td>
+
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Member', new_member_path %>
+

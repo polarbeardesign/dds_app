@@ -11,10 +11,19 @@ class Member < ActiveRecord::Base
 
   scope :active, where("members.active = 1")
 
-  scope :ordered, order("members.last_name ASC, members.first_name ASC")
+  scope :ordered, order("active DESC, members.last_name ASC, members.first_name ASC")
 
   def full_name
     self.last_name + ', ' + self.first_name
   end
+
+	def self.to_csv
+		FasterCSV.generate do |csv|
+			csv << ["id","CAF Col No","First Name","Last Name","Address 1","Address 2","City","State","Zip","Phone -home","Phone -work","Phone -mobile","Email","active","Join Date","Dues Date"] 
+			all.each do |member|
+				csv << [member.id,member.caf_col_no,member.first_name,member.last_name,member.street_1,member.street_2,member.city,member.state,member.zip,member.home_phone,member.work_phone,member.cell_phone,member.email,member.active,member.join_date,member.dd_dues_date]
+			end
+		end
+	end    
 
 end

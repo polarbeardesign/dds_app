@@ -1,5 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
+require 'faster_csv'
+
 require 'rails/all'
 
 if defined?(Bundler)
