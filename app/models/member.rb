@@ -10,6 +10,7 @@ class Member < ActiveRecord::Base
   has_many :officer_positions, :through => :terms
 
   scope :active, where("members.active = 1")
+  scope :inactive, where("members.active = 0")
 
   scope :ordered, order("active DESC, members.last_name ASC, members.first_name ASC")
 

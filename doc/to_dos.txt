@@ -1,9 +1,18 @@
 CHECK PERMISSIONS ON SENSITIVE PAGES
 
 
+manifests
+  member_id, position_id, trip_id
+
+add a print style
+
 Add file upload capability (pdf, MSOffice, photos)
 Add testing capability
 Split up manuals (pdfs) for smaller file sizes
+
+update mail lists
+  (members-only?)
+  Everyone
 
 ADDING KNOWLEDGE TESTS
   test questions/answers not being inserted into database
@@ -65,11 +74,6 @@ airshow roster creation
 event:references crew_arrival:datetime tug_time:datetime wheels_up:datetime
 
 rails generate scaffold Trip event:references crew_arrival:datetime tug_time:datetime wheels_up:datetime destination_eta:datetime return_eta:datetime
-
-manifests
-  member_id, position_id, trip_id
-
-add a print style
 
 
 parts reference db 

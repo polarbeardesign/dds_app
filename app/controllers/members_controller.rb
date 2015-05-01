@@ -2,7 +2,8 @@ class MembersController < ApplicationController
   # GET /members
   # GET /members.json
   def index
-    @members = Member.ordered.all
+    @active_members = Member.active.ordered.all
+    @inactive_members = Member.inactive.ordered.all
 
     respond_to do |format|
       format.html # index.html.erb
