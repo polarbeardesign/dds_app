@@ -12,7 +12,7 @@
     <th>Join Date</th>
   </tr>
 
-<% @active_members.active.each do |member| %>
+<% @active_members.each do |member| %>
   <tr class="<%= cycle('odd_row', 'even_row') %>">
     <td><%= member.caf_col_no %></td>
     <td><%= link_to member.last_name+", "+member.first_name, edit_member_path(member) %></td>
@@ -41,7 +41,7 @@
     <th>Join Date</th>
   </tr>
 
-<% @inactive_members.inactive.each do |member| %>
+<% @inactive_members.each do |member| %>
   <tr class="<%= cycle('odd_row', 'even_row') %>">
     <td><%= member.caf_col_no %></td>
     <td><%= link_to member.last_name+", "+member.first_name, edit_member_path(member) %></td>
