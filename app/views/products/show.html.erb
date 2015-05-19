@@ -1,41 +1,53 @@
 
-<div class="form_row">
-  <div class="form_cell">
-    <p><b>Name:</b> <%= @product.name %></p>
-  </div>
-  <div class="form_cell">
-    <p><b>Item no:</b> <%= @product.item_no %></p>
-  </div>
-</div>
+<table class="table2">
+  <tr>
+    <th>&nbsp;</th>
+    <th>&nbsp;</th>
+    <th>&nbsp;</th>
+    <th width="100">&nbsp;</th>
+  </tr>
+  <tr class=""> 
+    <td> <% if @product.photo_path? %>
+           <%= image_tag 'sm_' + @product.photo_path %>
+         <% end %>
+    </td>
+    <td><strong><%= @product.name %></strong><br /><%= simple_format(@product.description) %></td>
+    <td>&nbsp;</td>
+    <td align="right"><%= number_to_currency(@product.value) %><br />
+    S&amp;H:<%= number_to_currency(@product.ship_handling) %><br /><strong>Total: <%= number_to_currency(@product.total_value) %></strong>
 
-<div class="form_row">
-  <div class="form_cell">
-    <p><b>Description:</b> <%= @product.description %></p>
-  </div>
-</div>
+<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
 
-<div class="form_row">
-  <div class="form_cell">
-    <p><b>Value:</b> <%= @product.value %></p>
-  </div>
-  <div class="form_cell">
-    <p><b>Ship handling:</b> <%= @product.ship_handling %></p>
-  </div>
-  <div class="form_cell">
-    <p><b>Available:</b> <%= @product.available %></p>
-  </div>
-</div>
+<input type="image" src="https://www.paypal.com//en_US/i/btn/sc-but-03.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+<input type="hidden" name="add" value="1">
+<input type="hidden" name="cmd" value="_cart">
+<input type="hidden" name="business" value="px_info@devildogsquadron.com">
+<input type="hidden" name="item_name" value="<%= @product.name %>">
+<input type="hidden" name="item_number" value="<%= @product.item_no %>">
+<input type="hidden" name="amount" value="<%= @product.value %>">
+<input type="hidden" name="page_style" value="Primary">
+<input type="hidden" name="shipping" value="<%= @product.ship_handling %>">
+<input type="hidden" name="no_shipping" value="2">
+<input type="hidden" name="no_note" value="1">
+<input type="hidden" name="currency_code" value="USD">
+<input type="hidden" name="lc" value="US">
+<input type="hidden" name="bn" value="PP-ShopCartBF">
 
-<div class="form_row">
-  <div class="form_cell">
-    <p><b>Photo path:</b> <% if @product.photo_path? %><%= @product.photo_path %><% end %></p>
-  </div>
-  <div class="form_cell">
-    <% if @product.photo_path? %><%= image_tag  @product.photo_path, :width => "320", :height => "213", :border => "0" %><% end %>
-  </div>
-</div>
+</form>
+</td>
+
+  </tr>
+  <tr>
+    <td colspan="4"><hr /></td>
+  </tr>
+</table>	
 
 <div class="clearer"></div>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<% if signed_in?%>
+    <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+			<%= link_to 'Edit', edit_product_path(@product) %> |
+			<%= link_to 'Back', products_path %>
+		<% end %>
+<% end %>

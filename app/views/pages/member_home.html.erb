@@ -2,6 +2,54 @@
 
 <% content_for :sidebar do %>
   <%= render "sidebars/members" %>
+
+<table class="table2">
+  <tr>
+    <th>&nbsp;</th>
+    <th>&nbsp;</th>
+    <th>&nbsp;</th>
+    <th width="100">&nbsp;</th>
+  </tr>
+<% @products.each do |product| %>
+  <tr class=""> 
+    <td> <% if product.photo_path? %>
+           <%= image_tag 'sm_' + product.photo_path %>
+         <% end %>
+    </td>
+    <td><strong><%= product.name %></strong><br /><%= product.description %></td>
+    <td>&nbsp;</td>
+    <td align="right"><%= number_to_currency(product.value) %><br />
+    S&amp;H:<%= number_to_currency(product.ship_handling) %><br /><strong>Total: <%= number_to_currency(product.total_value) %></strong>
+
+<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+
+<input type="image" src="https://www.paypal.com//en_US/i/btn/sc-but-03.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+<input type="hidden" name="add" value="1">
+<input type="hidden" name="cmd" value="_cart">
+<input type="hidden" name="business" value="px_info@devildogsquadron.com">
+<input type="hidden" name="item_name" value="<%= product.name %>">
+<input type="hidden" name="item_number" value="<%= product.item_no %>">
+<input type="hidden" name="amount" value="<%= product.value %>">
+<input type="hidden" name="page_style" value="Primary">
+<input type="hidden" name="shipping" value="<%= product.ship_handling %>">
+<input type="hidden" name="no_shipping" value="2">
+<input type="hidden" name="no_note" value="1">
+<input type="hidden" name="currency_code" value="USD">
+<input type="hidden" name="lc" value="US">
+<input type="hidden" name="bn" value="PP-ShopCartBF">
+
+</form>
+</td>
+
+  </tr>
+  <tr>
+    <td colspan="4"><hr /></td>
+  </tr>
+<% end %>
+</table>	
+
+
 <% end %>
 
 <h1>Members Section</h1>
