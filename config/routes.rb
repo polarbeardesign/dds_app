@@ -156,6 +156,7 @@ match 'member_feed' => 'events#member_feed', :as => :member_feed
   get "pages/home"
   get "pages/VMB612"
   get "pages/PBJs"
+  match 'membership' => 'pages#membership', :as => :membership
   match 'living_flight_history_experience' => 'pages#living_flight_history_experience', :as => :living_flight_history_experience
   match 'hold_harmless/:event_id' => 'event_signups#hold_harmless', :as => :hold_harmless
 

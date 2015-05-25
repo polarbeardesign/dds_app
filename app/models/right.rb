@@ -30,6 +30,7 @@ class Right < ActiveRecord::Base
     "member_feed" => "READ",
     "diff" => "READ",
     "rollback" => "UPDATE",
+    "membership" => "READ",
     "all_events" => "READ"
 }
 
