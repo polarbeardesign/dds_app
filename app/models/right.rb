@@ -28,6 +28,8 @@ class Right < ActiveRecord::Base
     "seventieth_birthday_party" => "READ",
     "arsenal_of_democracy" => "READ",
     "member_feed" => "READ",
+    "diff" => "READ",
+    "rollback" => "UPDATE",
     "all_events" => "READ"
 }
 

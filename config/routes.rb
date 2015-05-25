@@ -47,7 +47,7 @@ devise_for :users, :skip => [:registrations]
       put 'users' => 'devise/registrations#update', :as => 'user_registration'            
     end
 
-
+  post "versions/:id/revert" => "versions#revert", :as => "revert_version"
 
   resources :locations
 
@@ -59,7 +59,16 @@ devise_for :users, :skip => [:registrations]
 
   resources :email_addresses
 
-  resources :members
+#  resources :members
+
+  resources :members do
+    resources :versions, :only => [:destroy] do
+      member do
+        get 'diff', :to => 'versions#diff'
+        put 'rollback', :to => 'versions#rollback'
+      end
+    end
+  end
   
   resources :rights
   

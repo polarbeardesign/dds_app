@@ -1,5 +1,7 @@
 class News < ActiveRecord::Base
 
-scope :ordered, order("news.date DESC")
+  has_paper_trail
+
+  scope :ordered, order("news.date DESC")
 
 end

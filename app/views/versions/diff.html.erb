@@ -1,0 +1,81 @@
+
+<div class='row mt'>
+  <div class='col-sm-12'>
+    <h2><%= "Diff between Version #{@version.id} and Current Version" %></h2>
+    <style><%= Diffy::CSS %></style>
+    <div class='well diff'>
+      <p>
+        <strong>First Name:</strong>
+        <%= diff(@version.reify.first_name, @member.first_name) %>
+      </p>
+      <p>
+        <strong>Last Name:</strong>
+        <%= diff(@version.reify.last_name, @member.last_name) %>
+      </p>
+      <p>
+        <strong>Address:</strong>
+        <%= diff(@version.reify.street_1, @member.street_1) %>
+      </p>
+      <p>
+        <strong>Address2:</strong>
+        <%= diff(@version.reify.street_2, @member.street_2) %>
+      </p>
+      <p>
+        <strong>City:</strong>
+        <%= diff(@version.reify.city, @member.city) %>
+      </p>
+      <p>
+        <strong>State:</strong>
+        <%= diff(@version.reify.state, @member.state) %>
+      </p>
+      <p>
+        <strong>Zip:</strong>
+        <%= diff(@version.reify.zip, @member.zip) %>
+      </p>
+      <p>
+        <strong>Home Tel:</strong>
+        <%= diff(@version.reify.home_phone, @member.home_phone) %>
+      </p>
+      <p>
+        <strong>Work Tel:</strong>
+        <%= diff(@version.reify.work_phone, @member.work_phone) %>
+      </p>
+      <p>
+        <strong>Cell:</strong>
+        <%= diff(@version.reify.cell_phone, @member.cell_phone) %>
+      </p>
+      <p>
+        <strong>email:</strong>
+        <%= diff(@version.reify.email, @member.email) %>
+      </p>
+      <p>
+        <strong>Active:</strong>
+        <%= diff(@version.reify.active, @member.active) %>
+      </p>
+      <p>
+        <strong>CAF Col No:</strong>
+        <%= diff(@version.reify.caf_col_no, @member.caf_col_no) %>
+      </p>
+      <p>
+        <strong>dd_dues_date:</strong>
+        <%= diff(@version.reify.dd_dues_date, @member.dd_dues_date) %>
+      </p>
+      <p>
+        <strong>Join Date:</strong>
+        <%= diff(@version.reify.join_date, @member.join_date) %>
+      </p>
+      <p>
+        <strong>Level:</strong>
+        <%= diff(@version.reify.level, @member.level) %>
+      </p>
+    </div>
+
+    <p>
+    <%= "Version authored by #{find_version_author_name(@version)} on #{@version.created_at} by '#{@version.event.humanize}'." %>
+    </p>
+  </div>
+</div>
+<div class='fr'>
+  <%= link_to 'Back', edit_member_path(@member), :class => 'btn btn-danger' %>
+  <%= link_to 'Rollback', rollback_member_version_path(@member, @version), :class => 'btn btn-primary', :method => 'put' %>
+</div>

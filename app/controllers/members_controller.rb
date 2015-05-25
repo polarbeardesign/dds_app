@@ -137,9 +137,9 @@ if params[:commit] == "Update Member"
 end
 
     respond_to do |format|
-      if @member.update_attributes(params[:member])
+      if @member.update_attributes(params[:member])        
         if params[:commit] == "Update Member" 
-          format.html { redirect_to @member, :notice => 'Member was successfully updated.' }
+          format.html { redirect_to @member, :notice => 'Member was successfully updated. #{undo_link}' }
           format.json { head :ok }
         else #params[:commit] == "Update Account" 
           format.html { redirect_to account_path(@member), :notice => 'Account was successfully updated.' }
@@ -169,4 +169,10 @@ end
       format.json { head :ok }
     end
   end
+
+private
+  def undo_link
+    view_context.link_to("undo", revert_version_path(@product.versions.scoped.last), :method => :post)
+  end
+
 end

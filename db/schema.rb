@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150111061920) do
+ActiveRecord::Schema.define(:version => 20150524035539) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20150111061920) do
   create_table "attendances", :force => true do |t|
     t.integer  "member_id"
     t.integer  "event_id"
+    t.string   "commitment_level"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -42,6 +43,9 @@ ActiveRecord::Schema.define(:version => 20150111061920) do
   end
 
   add_index "categories_posts", ["category_id", "post_id"], :name => "index_categories_posts_on_category_id_and_post_id"
+
+  create_table "crew_positions", :force => true do |t|
+  end
 
   create_table "document_categories", :force => true do |t|
     t.string   "category_name"
@@ -94,8 +98,9 @@ ActiveRecord::Schema.define(:version => 20150111061920) do
     t.string   "URL"
     t.string   "contact_info"
     t.text     "details"
-    t.boolean  "flight_roster",     :null => false
-    t.boolean  "rides_available",   :null => false
+    t.boolean  "flight_roster",                        :null => false
+    t.boolean  "rsvp",              :default => false, :null => false
+    t.boolean  "rides_available",                      :null => false
     t.string   "entered_by"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -155,6 +160,9 @@ ActiveRecord::Schema.define(:version => 20150111061920) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "one_way_distance"
+  end
+
+  create_table "manifests", :force => true do |t|
   end
 
   create_table "members", :force => true do |t|
@@ -233,11 +241,10 @@ ActiveRecord::Schema.define(:version => 20150111061920) do
     t.integer  "display_order"
     t.string   "name"
     t.text     "description"
-    t.text     "size"
-    t.decimal  "value",         :precision => 10, :scale => 0
+    t.decimal  "value",         :precision => 8, :scale => 2
     t.string   "photo_path"
     t.boolean  "available"
-    t.decimal  "ship_handling", :precision => 10, :scale => 0
+    t.decimal  "ship_handling", :precision => 8, :scale => 2
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -346,6 +353,7 @@ ActiveRecord::Schema.define(:version => 20150111061920) do
   create_table "test_submissions", :force => true do |t|
     t.integer  "knowledge_test_id"
     t.integer  "member_id"
+    t.integer  "score"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -404,6 +412,17 @@ ActiveRecord::Schema.define(:version => 20150111061920) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
   end
+
+  create_table "versions", :force => true do |t|
+    t.string   "item_type",  :null => false
+    t.integer  "item_id",    :null => false
+    t.string   "event",      :null => false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.datetime "created_at"
+  end
+
+  add_index "versions", ["item_type", "item_id"], :name => "index_versions_on_item_type_and_item_id"
 
   create_table "videos", :force => true do |t|
     t.string   "title"

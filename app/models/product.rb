@@ -8,6 +8,8 @@ class Product < ActiveRecord::Base
 
   validates :name, :item_no, :description, :value, :ship_handling, :sizes, :presence => true, :on => :create
 
+  has_paper_trail
+
 #display_order
 
 
