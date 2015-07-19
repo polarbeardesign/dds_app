@@ -111,7 +111,9 @@ devise_for :users, :skip => [:registrations]
 
   resources :event_types
 
-  resources :event_signups
+  resources :event_signups do
+    collection { post :sort}
+  end
 
   match 'calendar' => 'events#index', :as => :calendar
   match 'all_events' => 'events#all_events', :as => :all_events
@@ -158,6 +160,7 @@ match 'member_feed' => 'events#member_feed', :as => :member_feed
   get "pages/PBJs"
   match 'membership' => 'pages#membership', :as => :membership
   match 'living_flight_history_experience' => 'pages#living_flight_history_experience', :as => :living_flight_history_experience
+  match 'manifest/:event_id' => 'event_signups#manifest', :as => :manifest
   match 'hold_harmless/:event_id' => 'event_signups#hold_harmless', :as => :hold_harmless
 
   get "pages/map_0"

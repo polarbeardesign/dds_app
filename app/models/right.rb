@@ -21,6 +21,7 @@ class Right < ActiveRecord::Base
     "edit_signup" => "UPDATE",
     "edit_rsvp" => "UPDATE",
     "trip_financials" => "READ",
+    "manifest" => "READ",
     "hold_harmless" => "READ",
     "frequent_flyers" => "READ",
     "frequent_flyer_detail" => "READ",
@@ -31,7 +32,8 @@ class Right < ActiveRecord::Base
     "diff" => "READ",
     "rollback" => "UPDATE",
     "membership" => "READ",
-    "all_events" => "READ"
+    "all_events" => "READ",
+    "sort" => "UPDATE"
 }
 
 scope :ordered, order("rights.resource ASC")

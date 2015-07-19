@@ -1,4 +1,4 @@
-
+<% empty_rows = 10 - @event_signups.size %>
 
 <article id="hold-harmless">
 <p class="hh-rev">RV.3/19/14 8:52 AM</p>
@@ -23,15 +23,41 @@ UNIT NOTES _____________________________________________________________________
     <td>Emergency contact name and phone number <div style="text-align: center;">(Print)</div></td>
     <td>I have read, agree with and fully understand this document.<div style="text-align: center; font-weight: bold;">Signature</div></td>
   </tr>
-<% @event_signups.each do |event_signup| %>
+<% @event_signups.each_with_index do |event_signup, i| %>
   <tr class="<%= cycle('odd_row', 'even_row') %>">
     <td width="180px"><%= event_signup.member.first_name %> <%= event_signup.member.last_name %></td>
-    <td>&nbsp;</td>
+    <td style="text-align: center;">
+      <% if event_signup.position == 1 %>
+        PIC
+      <% elsif event_signup.position == 2 %>
+        SIC
+      <% elsif event_signup.position == 3 %>
+        Crew Chief
+      <% end %>
+    </td>
     <td style="text-align: center;"><%= event_signup.member.caf_col_no %></td>
-    <td style="text-align: center; width: 120px;"><%= event_signup.member.home_phone %>
+    <td style="text-align: center; width: 120px;"><%= event_signup.member.home_phone %></td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
   </tr>
+
 <% end %>
+<% if empty_rows > 0 %>
+
+<% empty_rows.to_i.times do %>
+  <tr class="<%= cycle('odd_row', 'even_row') %>">
+    <td width="180px">&nbsp;</td>
+    <td style="text-align: center;">&nbsp;</td>
+    <td style="text-align: center;">&nbsp;</td>
+    <td style="text-align: center; width: 120px;">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+
+<% end %>
+  
+<% end %>
+
+
 </table>
 </article>

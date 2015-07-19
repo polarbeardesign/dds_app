@@ -1,0 +1,43 @@
+<% airshow = "" %>
+
+<% content_for :sidebar do %>
+<% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+  <div align="center">
+  <%= button_to "New Event signup", new_event_signup_path, :method => :get %>
+  </div>
+<% end %>
+<% end %>
+
+<h1>Create Manifest - <%= @event.title %></h1>
+
+<p>The list below is people signed up for this event. To create a manifest/hold harmless drag the rows to the position you would like them to appear on the manifest. Once you have the order you like, click on the Create Hold Harmless/Manifest button.</p>
+
+<p>Only the top 10 will be on the manifest.</p>
+<table width="550" class="table_border">
+<thead>
+  <tr>
+    <th></th>
+    <th>Member</th>
+    <th>Commitment</th>
+    <th>Signup Date</th>
+    <th></th>
+    <th></th>
+  </tr>
+</thead>
+<tbody id="event_signups" data-update-url="<%= sort_event_signups_url %>">
+<% @event_signups.each do |event_signup| %>
+  <%= content_tag_for :tr, event_signup do %>
+    <td><%= event_signup.position %></td>
+    <td><%= link_to event_signup.member.first_name + " " + event_signup.member.last_name, edit_event_signup_path(event_signup)  %></td>
+    <td><%= event_signup.commitment_level %></td>
+    <td><%= event_signup.created_at.strftime("%b %d, \'%y %H:%M") %></td>
+    <td><%= link_to 'Delete', event_signup, :confirm => 'Are you sure?', :method => :delete %></td>
+  <% end %>
+
+<% end %>
+</tbody>
+</table>
+
+<div style="text-align: center;">
+<%= button_to "Create Hold Harmless / Manifest", hold_harmless_path(params[:id]) %>
+</div>

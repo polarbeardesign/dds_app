@@ -177,6 +177,7 @@
 <% else %>
   <%= link_to 'Add Trip Details', new_trip_path(:event_id => @event) %>
 <% end %>
+  | <%= link_to 'Create Manifest', manifest_path(:event_id => @event) %>
 <% end %>
 <% end %>
 
@@ -191,7 +192,7 @@
 <span style="font-style: italic;font-size:0.85em;">Your name will be entered on the list below, you can change your commitment or remove yourself at any time. Signing up only indicates your availability and desire to participate. Final roster at discretion of pilots.</em>
 </div>
 
-<table width="500" class="table_border">
+<table  id="manifest_list" width="500" class="table_border">
   <tr>
     <th>Name</th>
     <th>Col. No.</th>
@@ -200,7 +201,7 @@
   </tr>
 
 <% @event.event_signups.ordered.each do |event_signup| %>
-  <tr class="<%= cycle('odd_row', 'even_row') %>">
+  <tr id="item_<%= event_signup.id %>" class="<%= cycle('odd_row', 'even_row') %>">
     <td><%= event_signup.member.last_name %>, <%= event_signup.member.first_name %></td>
     <td><%= event_signup.member.caf_col_no %></td>
     <td><%= event_signup.commitment_level %>
@@ -238,7 +239,7 @@
 <% end %>
 </p>
 
-<table width="500" class="table_border">
+<table width="500" class="table_border" >
   <tr>
     <th>Name</th>
     <th>Col. No.</th>

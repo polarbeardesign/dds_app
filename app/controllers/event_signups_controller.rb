@@ -28,6 +28,16 @@ class EventSignupsController < ApplicationController
 
   end
 
+  def manifest
+    @event_signups = EventSignup.order("position").find_all_by_event_id(params[:event_id])
+    @event = Event.find(params[:event_id])
+    
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render :json => @event_signups }
+    end
+  end
+
 
   # GET /event_signups/1
   # GET /event_signups/1.json
@@ -41,7 +51,7 @@ class EventSignupsController < ApplicationController
   end
 
   def hold_harmless
-    @event_signups = EventSignup.find_all_by_event_id(params[:event_id])
+    @event_signups = EventSignup.order("position").manifest.find_all_by_event_id(params[:event_id])
 
     render :layout => "hh"
   end
@@ -128,4 +138,15 @@ class EventSignupsController < ApplicationController
       format.json { head :ok }
     end
   end
+
+def sort
+  params[:event_signup].each_with_index do |id, index|
+    EventSignup.update_all({:position => index+1}, {:id => id})
+  end
+
+  render :nothing => true 
+end
+
+
+
 end
