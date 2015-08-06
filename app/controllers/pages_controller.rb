@@ -52,7 +52,18 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:home,
   def member_home
    @user = current_user
    @member = Member.find(@user.member)
-   @products = Product.membership
+   @products = Product.membership.all
+  end
+
+  def membership
+   @user = current_user
+   @member = Member.find(@user.member)
+   @products = Product.membership.all
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @product }
+    end
   end
 
   def admin_home

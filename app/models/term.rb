@@ -1,6 +1,7 @@
 class Term < ActiveRecord::Base
   belongs_to :officer_position
   belongs_to :member
+  has_paper_trail
 
 scope :ordered, order("terms.officer_position_id ASC") 
 scope :current, lambda {

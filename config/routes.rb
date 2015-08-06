@@ -47,7 +47,7 @@ devise_for :users, :skip => [:registrations]
       put 'users' => 'devise/registrations#update', :as => 'user_registration'            
     end
 
-
+  post "versions/:id/revert" => "versions#revert", :as => "revert_version"
 
   resources :locations
 
@@ -59,7 +59,16 @@ devise_for :users, :skip => [:registrations]
 
   resources :email_addresses
 
-  resources :members
+#  resources :members
+
+  resources :members do
+    resources :versions, :only => [:destroy] do
+      member do
+        get 'diff', :to => 'versions#diff'
+        put 'rollback', :to => 'versions#rollback'
+      end
+    end
+  end
   
   resources :rights
   
@@ -102,7 +111,9 @@ devise_for :users, :skip => [:registrations]
 
   resources :event_types
 
-  resources :event_signups
+  resources :event_signups do
+    collection { post :sort}
+  end
 
   match 'calendar' => 'events#index', :as => :calendar
   match 'all_events' => 'events#all_events', :as => :all_events
@@ -147,7 +158,9 @@ match 'member_feed' => 'events#member_feed', :as => :member_feed
   get "pages/home"
   get "pages/VMB612"
   get "pages/PBJs"
+  match 'membership' => 'pages#membership', :as => :membership
   match 'living_flight_history_experience' => 'pages#living_flight_history_experience', :as => :living_flight_history_experience
+  match 'manifest/:event_id' => 'event_signups#manifest', :as => :manifest
   match 'hold_harmless/:event_id' => 'event_signups#hold_harmless', :as => :hold_harmless
 
   get "pages/map_0"

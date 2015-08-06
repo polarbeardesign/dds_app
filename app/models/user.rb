@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
 
   has_many :roles, :through => :assignments
 
+  has_paper_trail
+
   def can?(action, resource)
     roles.includes(:rights).for(action, resource).any?
   end
@@ -22,5 +24,9 @@ class User < ActiveRecord::Base
   has_one :member, :dependent => :destroy
 
   scope :member_ordered, joins(:member).merge(Member.ordered)
+
+  def self.find_version_author(version)
+    find(version.terminator)   
+  end
 
 end

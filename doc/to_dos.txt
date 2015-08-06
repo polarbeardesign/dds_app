@@ -1,41 +1,84 @@
-CHECK PERMISSIONS ON SENSITIVE PAGES
 
 Show detail images on PX items. Add detail pages
 
-manifests
-  member_id, position_id, trip_id
+TRIPS ROSTER CREATION
+---------------------
 
-add a print style
+- Add mailer(s) for sending trip details to roster members (c/o, etc)
+- Hide Maybe/Definite buttons if already signed up.
+- printable manifests
+  - member level
+  - member seniority
+  - assign position / notes?
+    - crew chief, aft crew, crew1, crew2, 
+    - add pilots
 
-Add file upload capability (pdf, MSOffice, photos)
-Add testing capability
-Split up manuals (pdfs) for smaller file sizes
+
+SITE FUNCTIONALITY
+------------------
+
+- add notes and/or papertrail functionality
+- check permissions on sensitive pages
+- Check admin flow of event_signup creation/edit delete
+- add a print style
+- Add file upload capability (pdf, MSOffice, photos)
+- Add testing capability
+- Split up manuals (pdfs) for smaller file sizes
+- Add interactive google map preview where links are (currently static)
+- create dues reminder mechanism (CHRON)
+- add picture upload capability
+  - store photos outside repo
+- add facebook feed
+- Add officer positions held to members
+- add fun facts to sidebars
+- XXX add calendar feed
+- XXX add documentation
+- XXX add quizes
+  - test questions/answers not being inserted into database
+- XXX add method to assign sort order to PX items (currently hard coded in Products model products.rb)
+
+
+MAIL LISTS
+----------
 
 update mail lists
-  (members-only?)
-  Everyone
-
-ADDING KNOWLEDGE TESTS
-  test questions/answers not being inserted into database
+- members-only?
+- XXX Everyone = members + friends
 
 
-LFHE page
-   - expire presales at 48 hours prior?
-   - make dates multi-month spannable (ie Enthought)
-   - Add seating chart
+LFHE FUNCTIONALITY
+------------------
 
-Add mailer for sending trip details to roster members (c/o, etc)
+- expire presales at 48 hours prior?
+- make dates multi-month spannable (ie Enthought)
+- Add seating chart
+- add LFHE model
+  - time slots
+  - seat limit
 
-Check admin flow of event_signup creation/edit delete
+B-17 notes
+ gathers day, time seat(variable pricing), name, cell phone, email, physically fit?, over 18?, lead source,
+ std billing info
+ not SSL
+ 
 
-  Hide Maybe/Definite buttons if already signed up.
+SQL for maps
+SELECT title, start, city, state, locations.latitude, locations.longitude FROM `events` LEFT JOIN locations ON location_id = locations.id WHERE `start` > "2014-01-01" AND event_type_id = 2 ORDER BY start
+
+parts reference db 
+
+
+Marketing ideas
+    photo workshop
+    ads, events
+
+=====================================
+COMPLETED ITEMS
+=====================================
 
   X add tooltips to fields
   X Show trip details on calendar page if logged in
   X Added validation to required fields
-
-
-Add officer positions held to members
 
 Jim: 140310
 Please co-ordinate with Beth re: arrival, tug, wheels up, and return times for each show.
@@ -49,56 +92,7 @@ Please co-ordinate with Beth re: arrival, tug, wheels up, and return times for e
            We can guesstimate the fuel/oil close enough. 
            Show revenue should have a line for fuel rec'd.
    140417: Added validation to trip creation, trip financials view (need fuel/oil cost mechanism)  
-   
-
-SQL for maps
-SELECT title, start, city, state, locations.latitude, locations.longitude FROM `events` LEFT JOIN locations ON location_id = locations.id WHERE `start` > "2014-01-01" AND event_type_id = 2 ORDER BY start
-
-airshow roster creation 
-  - member level
-  - member seniority
-  - assign position / notes?
-    - crew chief, aft crew, crew1, crew2, 
-    - add pilots
-  - trip details
-    - Times
-      - crew arrival (brief)
-      - tug
-      - wheels up
-      - stop(s) ETA
-      - Destination ETA
-      return ETA
-    
-  - notify people who signed up
-  - print out roster
-
-event:references crew_arrival:datetime tug_time:datetime wheels_up:datetime
-
-rails generate scaffold Trip event:references crew_arrival:datetime tug_time:datetime wheels_up:datetime destination_eta:datetime return_eta:datetime
-
-
-parts reference db 
-
-Add interactive google map preview where links are (currently static)
-
-create dues reminder mechanism (CHRON)
-add picture upload capability
-  - store photos outside repo
-add facebook feed
-add calendar feed
-add documentation
-add quizes
-add fun facts to sidebars
-add method to assign sort order to PX items (currently hard coded in Products model products.rb)
-
-Marketing ideas
-    photo workshop
-    ads, events
-
-=====================================
-COMPLETED ITEMS
-=====================================
-
+ 
 
 X Fix picture for LFHE PX item (asset not precompiled)
   X working on PX page, not on products index

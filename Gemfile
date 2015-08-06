@@ -11,6 +11,9 @@ gem 'mysql2', '< 0.3.7'
 gem 'devise'
 gem 'json'
 gem 'fastercsv'
+gem 'paper_trail', '~> 4.0.0.rc'
+gem 'diffy'
+gem 'acts_as_list', '< 0.3.0'
 
 # Use unicorn as the web server
 # gem 'unicorn'

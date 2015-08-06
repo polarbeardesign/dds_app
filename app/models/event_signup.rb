@@ -5,8 +5,7 @@ class EventSignup < ActiveRecord::Base
   belongs_to :event
   belongs_to :member
   belongs_to :trip
-  
-
+  has_paper_trail
 
   scope :ordered, order("FIELD(commitment_level, 'Definite','Maybe','Canceled')")
   
@@ -16,11 +15,15 @@ class EventSignup < ActiveRecord::Base
   scope :maybe, lambda { where ("commitment_level = ?"), ("Maybe") }
   scope :canceled, lambda { where ("commitment_level = ?"), ("Canceled") }
 
+  scope :manifest, lambda { where ("commitment_level = ? OR commitment_level = ?"), ("Definite"), ("Maybe") }
 
   scope :airshow_ordered, joins(:event).merge(Event.ordered)
   
   scope :future, joins(:event).merge(Event.published)
 
   validates_uniqueness_of :member_id, :scope => :event_id
+
+  acts_as_list :scope => :manifest_list, :column => :manifest_position
+
 
 end
