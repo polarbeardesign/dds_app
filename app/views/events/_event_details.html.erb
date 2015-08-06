@@ -7,40 +7,42 @@
 
 <h3><%= @event.title %></h3>
 <div class="clearer"></div>
-<div id="calendar" style="float: left;">
-  <div id="calendar_year">
+<div class="row" style="width: 100%;">
+<div class="calendar-css" style="float: left;">
+  <div class="calendar_year">
     <%= @event.start.strftime("%Y") %>
   </div>
-  <div id="calendar_month">
+  <div class="calendar_month">
     <%= @event.start.strftime("%b") %>
   </div>
-  <div id="calendar_day">
+  <div class="calendar_day">
     <%= @event.start.strftime("%A") %>
   </div>
-  <div id="calendar_date">
+  <div class="calendar_date">
     <%= @event.start.strftime("%d") %>
   </div>
-  <div style="margin: 2em 1.5em;">
-  <%= @event.start.strftime("%H:%M %p") %>
+  <div style="margin: 2em 1em;">
+  <strong><%= @event.start.strftime("%H:%M %p") %></strong>
   </div>
 </div>
-
-<div id="calendar"">
-  <div id="calendar_year">
+<span style="float: left; font-size: 2em; margin: 1.4em 0.1em;">&#8211; </span>
+<div class="calendar-css" style="float: left;">
+  <div class="calendar_year">
     <%= @event.end.strftime("%Y") %>
   </div>
-  <div id="calendar_month">
+  <div class="calendar_month">
     <%= @event.end.strftime("%b") %>
   </div>
-  <div id="calendar_day">
+  <div class="calendar_day">
     <%= @event.end.strftime("%A") %>
   </div>
-  <div id="calendar_date">
+  <div class="calendar_date">
     <%= @event.end.strftime("%d") %>
   </div>
-  <div style="margin: 2em 1.5em;">
-  <%= @event.end.strftime("%H:%M %p") %>
+  <div style="margin: 2em 1em;">
+  <strong><%= @event.end.strftime("%H:%M %p") %></strong>
   </div>
+</div>
 </div>
 
 <div class="clearer"></div>

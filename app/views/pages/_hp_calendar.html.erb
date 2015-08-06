@@ -22,7 +22,14 @@
     </div>
     <% end %>
   </div>
-    <%= link_to event.title, event %>
+    <%= link_to event.title, event %><br />
+    
+      <% if event.details.length > 100 %>
+        <%= truncate(event.details, :length => 30, :separator => ' ') %> <em><%= link_to "more", event %></em>
+      <% else %>
+        <%= event.details %>
+      <% end %>
+    
 </div>
 <% end %>
 
