@@ -1,5 +1,6 @@
 CHECK PERMISSIONS ON SENSITIVE PAGES
 
+Show detail images on PX items. Add detail pages
 
 manifests
   member_id, position_id, trip_id
