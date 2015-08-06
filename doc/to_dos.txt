@@ -1,6 +1,12 @@
 
 Show detail images on PX items. Add detail pages
 
+- added lightbox2 resources
+- added link to lightbox larger images
+  - link opens image, not lightbox
+
+
+
 TRIPS ROSTER CREATION
 ---------------------
 
