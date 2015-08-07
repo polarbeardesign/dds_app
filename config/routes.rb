@@ -1,5 +1,7 @@
 DdsApp::Application.routes.draw do
 
+  resources :product_photos
+
   resources :test_submission_responses
 
   resources :test_submissions

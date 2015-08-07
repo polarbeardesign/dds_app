@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150524035539) do
+ActiveRecord::Schema.define(:version => 20150807161703) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -44,9 +44,6 @@ ActiveRecord::Schema.define(:version => 20150524035539) do
 
   add_index "categories_posts", ["category_id", "post_id"], :name => "index_categories_posts_on_category_id_and_post_id"
 
-  create_table "crew_positions", :force => true do |t|
-  end
-
   create_table "document_categories", :force => true do |t|
     t.string   "category_name"
     t.text     "description"
@@ -66,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20150524035539) do
     t.integer  "event_id"
     t.integer  "member_id"
     t.string   "commitment_level"
+    t.integer  "position",         :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -162,9 +160,6 @@ ActiveRecord::Schema.define(:version => 20150524035539) do
     t.integer  "one_way_distance"
   end
 
-  create_table "manifests", :force => true do |t|
-  end
-
   create_table "members", :force => true do |t|
     t.integer  "user_id"
     t.integer  "caf_col_no"
@@ -235,6 +230,16 @@ ActiveRecord::Schema.define(:version => 20150524035539) do
   end
 
   add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
+
+  create_table "product_photos", :force => true do |t|
+    t.integer  "product_id"
+    t.string   "caption"
+    t.string   "image_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "product_photos", ["product_id"], :name => "index_product_photos_on_product_id"
 
   create_table "products", :force => true do |t|
     t.integer  "item_no"

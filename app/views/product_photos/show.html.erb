@@ -1,0 +1,22 @@
+<% if signed_in?%>
+    <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+      <%= link_to 'Edit', edit_product_photo_path(@product_photo) %> | <%= link_to 'Back', product_photos_path %>
+    <% end %>
+<% end %>
+
+<p>
+  <b>Product:</b>
+  <%= @product_photo.product.name %> [id: <%= @product_photo.product.id %>]
+</p>
+
+<p>
+  <b>Caption:</b>
+  <%= @product_photo.caption %>
+</p>
+
+<p>
+  <b>Image url:</b>
+  <%= @product_photo.image_url %>
+</p>
+
+<%= image_tag @product_photo.image_url, :width => '200px' %>

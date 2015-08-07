@@ -1,10 +1,13 @@
 class Product < ActiveRecord::Base
 
   has_and_belongs_to_many :sizes
+  has_many :product_photos
+  accepts_nested_attributes_for :product_photos, :allow_destroy => true
+
 
   scope :available, where(:available => true)
   scope :membership, where(:id => 15)
-  default_scope :order => "field(item_no,'100','500','501','600','601','400','401')"
+  default_scope :order => "field(item_no,'100','300','500','501','510','600','601','400','401')"
 
   validates :name, :item_no, :description, :value, :ship_handling, :sizes, :presence => true, :on => :create
 

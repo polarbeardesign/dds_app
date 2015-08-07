@@ -25,7 +25,11 @@
     <td> <% if product.photo_path? %>
            <%= image_tag 'sm_' + product.photo_path %>
 
-<%= link_to image_tag(product.photo_path, :size => "25x25", :class => 'thumb'),'assets/' + product.photo_path, :data => {:lightbox, 'image-' + product.id.to_s} %>
+<% product.product_photos.each do |product_photo| %>
+	<%= link_to image_tag(product_photo.image_url, :size => "25x25", :class => 'thumb'),'assets/' + product_photo.image_url, :data => {:lightbox, 'image-' + product.id.to_s} %>
+<% end %>
+
+
 
          <% end %>
     </td>

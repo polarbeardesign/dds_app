@@ -1,0 +1,30 @@
+<% content_for :sidebar do %>
+<% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+  <div align="center">
+  <%= button_to 'Add New Product Photo', new_product_photo_path, :method => :get %>
+  </div>
+<% end %>
+
+<% end %>
+
+<h1>Listing product_photos</h1>
+
+<table class="table_border">
+  <tr>
+  <tr>
+    <th>Product</th>
+    <th>Caption</th>
+    <th>Image url</th>
+    <th></th>
+  </tr>
+
+<% @product_photos.each do |product_photo| %>
+  <tr class="<%= cycle('odd_row', 'even_row') %>">
+    <td><%= link_to product_photo.product.name, product_photo %></td>
+    <td><%= product_photo.caption %></td>
+    <td><%= product_photo.image_url %></td>
+    <td><%= link_to 'Edit', edit_product_photo_path(product_photo) %></td>
+  </tr>
+<% end %>
+</table>
+
