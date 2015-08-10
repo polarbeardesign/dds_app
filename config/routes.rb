@@ -162,6 +162,8 @@ match 'member_feed' => 'events#member_feed', :as => :member_feed
   get "pages/PBJs"
   match 'membership' => 'pages#membership', :as => :membership
   match 'living_flight_history_experience' => 'pages#living_flight_history_experience', :as => :living_flight_history_experience
+  match 'rides' => redirect('/living_flight_history_experience')
+
   match 'manifest/:event_id' => 'event_signups#manifest', :as => :manifest
   match 'hold_harmless/:event_id' => 'event_signups#hold_harmless', :as => :hold_harmless
 
@@ -172,6 +174,9 @@ match 'member_feed' => 'events#member_feed', :as => :member_feed
   get "pages/thank_you"
   get "pages/member_home"
   get "pages/admin_home"
+
+# match "/posts/github" => redirect("http://github.com/rails.atom")
+
 
   root :to => 'pages#home'
 
