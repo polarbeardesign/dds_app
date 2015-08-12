@@ -8,7 +8,7 @@ set :domain, 'polarbeardesign.net'
 set :application, "dds_app"
 set :repository,  "git@github.com:polarbeardesign/dds_app.git"
 set :scm, 'git'
-set :branch, "add_papertrail"
+set :branch, "staging"
 set :repository_cache, "git_cache"
 set :deploy_via, :remote_cache  #In most cases you want to use this option, otherwise each deploy will do a full repository clone every time.
 set :ssh_options, { :forward_agent => true }

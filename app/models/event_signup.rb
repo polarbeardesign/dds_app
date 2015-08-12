@@ -1,6 +1,6 @@
 class EventSignup < ActiveRecord::Base
 
- attr_accessible :event_id, :member_id, :commitment_level, :crew_position_id
+ attr_accessible :event_id, :member_id, :commitment_level, :position
 
   belongs_to :event
   belongs_to :member
@@ -23,7 +23,7 @@ class EventSignup < ActiveRecord::Base
 
   validates_uniqueness_of :member_id, :scope => :event_id
 
-  acts_as_list :scope => :manifest_list, :column => :manifest_position
+#  acts_as_list :scope => :manifest_list, :column => :position
 
 
 end
