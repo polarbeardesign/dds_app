@@ -33,7 +33,7 @@ role :db,  domain, :primary => true # This is where Rails migrations will run
 
 before "deploy:assets:precompile", "deploy:symlink_db_file"
 
-after "deploy:restart", "deploy:cleanup", "deploy:symlink_env_file", "deploy:symlink_htaccess_file"
+after "deploy:restart", "deploy:cleanup", "deploy:symlink_env_file", "deploy:symlink_htaccess_file", "deploy:precompile_other"
 
 namespace :deploy do
 
