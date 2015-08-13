@@ -65,4 +65,9 @@ namespace :deploy do
     run "ln -s /home/#{user}/#{application}/shared/.htaccess /home/#{user}/#{application}/current/public/.htaccess"
   end
 
+  desc "precompile other"
+  task :precompile_other do
+    run "cd /home/#{user}/#{application}/current && bundle exec rake RAILS_ENV=production RAILS_GROUPS=assets assets:precompile"
+  end
+
 end
