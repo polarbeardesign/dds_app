@@ -9,7 +9,9 @@ class RidesRequestNotifier < ActionMailer::Base
   def created(ride_request)
     @ride_request = ride_request
 
-    mail :to => @ride_request.email, :cc => 'info@devildogsquadron.com', :subject => 'Ride Request Received'
+    mail :to => @ride_request.email, 
+         :cc => 'info@devildogsquadron.com', 
+         :subject => 'Ride Request Received'
     
   end
 end

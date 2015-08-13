@@ -185,8 +185,8 @@
 <strong>Put me on the List for this airshow:</strong>
   <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "member"} %>
     <div class="signup_buttons">
-      <%= button_to 'Definite', {:controller => :event_signups, :action => :signup, :member_id => current_user.member, :event_id => @event.id, :commitment_level => 'Definite' } %>
-      <%= button_to 'Maybe',    {:controller => :event_signups, :action => :signup, :member_id => current_user.member, :event_id => @event.id, :commitment_level => 'Maybe' } %>
+      <%= button_to 'Definite', {:controller => :event_signups, :action => :signup, :member_id => current_user.member, :event_id => @event.id, :commitment_level => 'Definite', :position => 0 } %>
+      <%= button_to 'Maybe',    {:controller => :event_signups, :action => :signup, :member_id => current_user.member, :event_id => @event.id, :commitment_level => 'Maybe', :position => 0  } %>
     </div>
   <% end %>
 <span style="font-style: italic;font-size:0.85em;">Your name will be entered on the list below, you can change your commitment or remove yourself at any time. Signing up only indicates your availability and desire to participate. Final roster at discretion of pilots.</em>

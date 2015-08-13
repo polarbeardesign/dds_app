@@ -9,7 +9,9 @@ class RosterNotifier < ActionMailer::Base
   def created(event_signup)
     @event_signup = event_signup
 
-    mail :to => event_signup.member.user.email, :cc => 'info@devildogsquadron.com', :subject => event_signup.event.title + ' Sign Up Received'
+    mail :to => event_signup.member.user.email, 
+         :cc => 'info@devildogsquadron.com', 
+         :subject => event_signup.event.title + ' Sign Up Received'
 
   end
 
@@ -21,7 +23,9 @@ class RosterNotifier < ActionMailer::Base
   def change(event_signup)
     @event_signup = event_signup
 
-    mail :to => event_signup.member.user.email, :cc => 'info@devildogsquadron.com', :subject => event_signup.event.title + ' Sign Up Change Received'
+    mail :to => event_signup.member.user.email, 
+         :cc => 'info@devildogsquadron.com', 
+         :subject => event_signup.event.title + ' Sign Up Change Received'
 
   end
 end

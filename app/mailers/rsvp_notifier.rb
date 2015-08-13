@@ -9,7 +9,9 @@ class RsvpNotifier < ActionMailer::Base
   def created(attendance)
     @attendance = attendance
 
-    mail :to => attendance.member.user.email, :cc => 'info@devildogsquadron.com', :subject => attendance.event.title + ' RSVP Received'
+    mail :to => attendance.member.user.email, 
+         :cc => 'info@devildogsquadron.com', 
+         :subject => attendance.event.title + ' RSVP Received'
 
   end
 
@@ -21,7 +23,9 @@ class RsvpNotifier < ActionMailer::Base
   def change(attendance)
     @attendance = attendance
 
-    mail :to => attendance.member.user.email, :cc => 'info@devildogsquadron.com', :subject => attendance.event.title + ' RSVP Change Received'
+    mail :to => attendance.member.user.email, 
+         :cc => 'info@devildogsquadron.com', 
+         :subject => attendance.event.title + ' RSVP Change Received'
 
   end
 end
