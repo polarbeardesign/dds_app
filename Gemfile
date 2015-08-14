@@ -15,6 +15,8 @@ gem 'paper_trail', '~> 4.0.0.rc'
 gem 'diffy'
 gem 'acts_as_list', '< 0.3.0'
 
+gem 'exception_notification', '~> 3.0.1'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
