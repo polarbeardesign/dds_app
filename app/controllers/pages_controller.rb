@@ -19,6 +19,7 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:home,
 
   def living_flight_history_experience
     @rides = Event.published.ordered.has_lfhe
+    @price = Product.find_by_id(11)
   end
 
   def refund_policy
