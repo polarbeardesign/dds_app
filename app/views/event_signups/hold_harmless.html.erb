@@ -36,8 +36,18 @@ UNIT NOTES _____________________________________________________________________
       <% end %>
     </td>
     <td style="text-align: center;"><%= event_signup.member.caf_col_no %></td>
-    <td style="text-align: center; width: 120px;"><%= event_signup.member.home_phone %></td>
-    <td>&nbsp;</td>
+    <td style="text-align: center; width: 130px;">
+      <% if event_signup.member.cell_phone? %>
+        <%= event_signup.member.cell_phone %> (c)
+      <% else %>
+        <%= event_signup.member.home_phone %> (h)
+      <% end %>
+    </td>
+    <td style="text-align: center;">
+      <% if event_signup.member.ec_name? %>
+        <%= event_signup.member.ec_name %> | <%= event_signup.member.ec_phone %>
+      <% end %>
+    </td>
     <td>&nbsp;</td>
   </tr>
 

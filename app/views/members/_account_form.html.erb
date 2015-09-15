@@ -23,6 +23,7 @@
     <ul>
         <li><a href="#tabs-1"><strong>Contact</strong></a></li>
         <li><a href="#tabs-2"><strong>CAF Info</strong></a></li>
+        <li><a href="#tabs-3"><strong>Emergency Contact</strong></a></li>
     </ul>
 
 <div id="tabs-1">
@@ -97,20 +98,35 @@
     <%= f.label :active %><br />
     <%= @member.active %>
   </div>
-
 </div>
 <p class="form_tip">Dues date may not be accurate - currently updating. Feb 18, 2014.</p>  
 <div class="clearer"></div>
 
+</div>
+
+<div class="clearer"></div>
+  
+<div id="tabs-3">
+<div class="indent_row">
+  <div class="cell field">
+    <%= f.label :ec_name, "Emergency Contact Name" %><br />
+    <%= f.text_field :ec_name, :size => '20', :placeholder => "First Last" %>
+  </div>
+  <div class="cell field">
+    <%= f.label :ec_phone, "Emergency Contact Phone" %><br />
+    <%= f.text_field :ec_phone, :size => '20' %>
+  </div>
+ 
+<div class="clearer"></div>
+
+</div>
 </div>
 <div class="actions" style="margin: 0 20em;">
     <%= submit_tag  "Update Account", :name => "Update Account" %>
   </div>
 </div>
 
-<div class="clearer"></div>
-  
-  
-  
+<div class="clearer"></div>  
+
 
 <% end %>

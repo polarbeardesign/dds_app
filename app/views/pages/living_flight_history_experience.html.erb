@@ -2,7 +2,7 @@
 <div style="width: 220px; background: #fff; border: 1px solid #999;">
 <h2 style="background: #cc0000; color: #eee; margin: 0 0 0 0; padding: 0.75em;">Upcoming Flight Opportunities</h2>
 
-<p style="margin: 0.75em;">Rides booked in advance are $395, and $425 at the events.
+<p style="margin: 0.75em;">Rides booked in advance are <%= number_to_currency(@price.value, :precision => 0) %>, and <%= number_to_currency(@price.alt_value, :precision => 0) %> at the events.
 
 <table class="table_border">
 <% @rides.each do |ride| %>
@@ -25,7 +25,7 @@
 <input type="hidden" name="business" value="px_info@devildogsquadron.com">
 <input type="hidden" name="item_name" value="Living History Flight Experience - Prepay | <%= ride.title %>">
 <input type="hidden" name="item_number" value="100">
-<input type="hidden" name="amount" value="395.00">
+<input type="hidden" name="amount" value="<%= @price.value %>">
 <input type="hidden" name="page_style" value="Primary">
 <input type="hidden" name="shipping" value="0">
 <input type="hidden" name="no_shipping" value="2">

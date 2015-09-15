@@ -14,8 +14,7 @@
  <% end %>
 <br /><%= @member.city %>, <%= @member.state %> <%= @member.zip %>
 </p>
-</div>
-<div class="form_cell">
+
 <p>
   <% if @member.home_phone? %>
     <em>Home:</em> <%= @member.home_phone %><br />
@@ -27,6 +26,12 @@
     <em>Cell:</em> <%= @member.cell_phone %><br />
   <% end %>
 </p>
+
+</div>
+<div class="form_cell">
+<p><strong>Emergency Contact:</strong><br />
+<%= @member.ec_name %><br />
+<%= @member.ec_phone %></p>
 
 <p>
   <em>Username:</em>
