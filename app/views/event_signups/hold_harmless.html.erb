@@ -26,15 +26,7 @@ UNIT NOTES _____________________________________________________________________
 <% @event_signups.each_with_index do |event_signup, i| %>
   <tr class="<%= cycle('odd_row', 'even_row') %>">
     <td width="180px"><%= event_signup.member.first_name %> <%= event_signup.member.last_name %></td>
-    <td style="text-align: center;">
-      <% if event_signup.position == 1 %>
-        PIC
-      <% elsif event_signup.position == 2 %>
-        SIC
-      <% elsif event_signup.position == 3 %>
-        Crew Chief
-      <% end %>
-    </td>
+    <td  width="80px" style="text-align: center;">&nbsp;</td>
     <td style="text-align: center;"><%= event_signup.member.caf_col_no %></td>
     <td style="text-align: center; width: 130px;">
       <% if event_signup.member.cell_phone? %>
