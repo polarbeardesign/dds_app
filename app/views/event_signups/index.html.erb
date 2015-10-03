@@ -22,7 +22,7 @@
 <% @event_signups.each do |event_signup| %>
   <% if airshow != event_signup.event.title %>
     <tr>
-      <td colspan=2><strong><em><%= event_signup.event.title %></strong></em><br /><%= event_signup.event.start.strftime("%b %d, %Y") %></td>
+      <td colspan=2><strong><em><%= event_signup.event.title %></strong></em><br /><%= event_signup.event.start.strftime("%b %d, %Y") %> <%= link_to "Add member", new_event_signup_path %></td>
       <td colspan=2>
         <% if event_signup.event.trip.nil? %>
           <%= button_to "Create Trip", new_trip_path(:event_id => event_signup.event.id) %>
