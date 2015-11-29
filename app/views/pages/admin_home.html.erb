@@ -3,13 +3,18 @@
 <% if current_user.roles.any? {|role| role.name == "admin" } %>
 <br />
 <div class="indent_row">
+<%= button_to "Member Admin", members_path, :method => :get %>
+Add, update squadron members
+<br /><br />
 <%= button_to "AirShow Signups", event_signups_path, :method => :get %>
-<br />
+Edit Upcoming Airshow sign up lists
+<br /><br />
 <%= button_to "Ride Requests", ride_requests_path, :method => :get %>
 List of signups for LFHE Rides
 <br /><br />
 <%= button_to "Trips", trips_path, :method => :get %>
-<br />
+Edit trip info such as trip times, financials and notes
+<br /><br />
 <%= button_to "PX Items", products_path, :method => :get %>
 Edit/Admin PX items
 <br /><br />
@@ -33,6 +38,7 @@ Grant rights to roles
 Website roles
 <br /><br />
 <%= button_to "Users", users_path, :method => :get %>
-<br />
+see members website permissions and last login
+<br /><br />
 </div>
 <% end %>
