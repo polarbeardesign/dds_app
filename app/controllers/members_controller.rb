@@ -4,9 +4,10 @@ class MembersController < ApplicationController
   def index
     @active_members = Member.active.ordered.all
     @inactive_members = Member.inactive.ordered.all
-
+    
+    
     respond_to do |format|
-      format.html # index.html.erb
+      format.html {render :layout => "homepage" }
       format.csv { render :text => Member.to_csv }
       format.json { render :json => @members }
     end

@@ -1,15 +1,31 @@
-<h1>Members List</h1>
-<%= link_to 'New Member', new_member_path %> | <%= link_to 'Export to CSV', members_path(:format => "csv")  %>
+<script>
+  $(function() {
+    $( "#tabs" ).tabs();
+  });
+</script>
 
-<h2>Active: <%= @active_members.count %></h2>
+<div class="members-list">
+<h1>Members List Admin</h1>
+<p><%= link_to 'New Member', new_member_path %> | <%= link_to 'Export to CSV', members_path(:format => "csv")  %></p>
+
+<div id="tabs">
+    <ul>
+        <li><a href="#tabs-1"><strong>Active [<%= @active_members.count %>]</strong></a></li>
+        <li><a href="#tabs-2"><strong>Inactive [<%= @inactive_members.count %>]</strong></a></li>
+    </ul>
+
+<div id="tabs-1">
+
+<h2>Active Members</h2>
 
 <table class="table_border">
   <tr>
-    <th style="min-width: 50px;">Col No.</th>
+    <th style="min-width: 60px;">Col No.</th>
     <th style="min-width: 150px;">Name</th>
     <th style="min-width: 150px;">Location</th>
-    <th>Email</th>
-    <th>Join Date</th>
+    <th style="max-width: 150px;">Email</th>
+    <th style="min-width: 90px;">Join Date</th>
+    <th style="min-width: 90px;">Last Dues Paid</th>
   </tr>
 
 <% @active_members.each do |member| %>
@@ -23,14 +39,16 @@
     <% end %>
     <td><%= member.user.email %></td>
     <td><%= member.join_date %></td>
+    <td><%= member.dd_dues_date %></td>
 
   </tr>
 <% end %>
 </table>
 
-<br />
+</div>
+<div id="tabs-2">
 
-<h2>Inactive: <%= @inactive_members.count %></h2>
+<h2>Inactive Members</h2>
 
 <table class="table_border">
   <tr>
@@ -56,3 +74,6 @@
   </tr>
 <% end %>
 </table>
+</div>
+</div>
+</div>

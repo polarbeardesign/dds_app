@@ -476,6 +476,11 @@ img.fr {
  	border-style: solid solid solid solid;
  	}
 
+.members-list {
+display: block;
+margin: 18em 1em 1em 1em;
+}
+
 /* test styles */
 
 .test {
