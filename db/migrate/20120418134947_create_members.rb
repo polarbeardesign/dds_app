@@ -17,7 +17,7 @@ class CreateMembers < ActiveRecord::Migration
       t.string :cell_phone
       t.string :email
       t.boolean :active
-      t.date :join_date
+      t.date :caf_join_date
       t.string :level
 
       t.timestamps

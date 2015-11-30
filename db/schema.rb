@@ -176,7 +176,7 @@ ActiveRecord::Schema.define(:version => 20150807161703) do
     t.string   "cell_phone"
     t.string   "email"
     t.boolean  "active"
-    t.date     "join_date"
+    t.date     "caf_join_date"
     t.string   "level"
     t.datetime "created_at"
     t.datetime "updated_at"
