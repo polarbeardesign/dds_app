@@ -33,6 +33,7 @@ class Right < ActiveRecord::Base
     "rollback" => "UPDATE",
     "membership" => "READ",
     "all_events" => "READ",
+    "supportcaf" => "READ",
     "sort" => "UPDATE"
 }
 

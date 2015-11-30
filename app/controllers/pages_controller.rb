@@ -71,4 +71,9 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:home,
    @user = current_user
   end
 
+  def supportcaf
+    # For CAF 12 planes of christmas drive - using our short URL to redirect to more complex one
+    redirect_to "https://supportcaf.org/#npo/b-25-devil-dog-squadron-9643c"
+  end
+
 end
