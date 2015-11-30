@@ -24,7 +24,7 @@
     <th style="min-width: 150px;">Name</th>
     <th style="min-width: 150px;">Location</th>
     <th style="max-width: 150px;">Email</th>
-    <th style="min-width: 90px;">Join Date</th>
+    <th style="min-width: 90px;">CAF Join Date</th>
     <th style="min-width: 90px;">Last Dues Paid</th>
   </tr>
 
@@ -38,7 +38,7 @@
       <td>---</td>    
     <% end %>
     <td><%= member.user.email %></td>
-    <td><%= member.join_date %></td>
+    <td><%= member.caf_join_date %></td>
     <td><%= member.dd_dues_date %></td>
 
   </tr>
@@ -69,7 +69,7 @@
       <td>---</td>    
     <% end %>
     <td><%= member.user.email %></td>
-    <td><%= member.join_date %></td>
+    <td><%= member.caf_join_date %></td>
 
   </tr>
 <% end %>
