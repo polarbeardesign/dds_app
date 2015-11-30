@@ -1,3 +1,8 @@
+<%= render "scripts" %>
+
+
+
+
 <%= form_for(@member) do |f| %>
   <% if @member.errors.any? %>
     <div id="error_explanation">
@@ -17,17 +22,19 @@
         <%= render "user_fields", :f => builder %> 
   <% end %>
 </div>
+
 <div class="clearer"></div>
 
 <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
-<h3>Website Role(s)</h3>
-<div class="indent_row">
-  <%= f.fields_for :roles do |builder| %>
-    <%= render "roles", :f => builder %>
-  <% end %>
+  <h3>Website Role(s)</h3>
+  <div class="indent_row">
+    <%= f.fields_for :roles do |builder| %>
+      <%= render "roles", :f => builder %>
+    <% end %>
 
-</div>
+  </div>
 <% end %>
+
 <div class="clearer"></div>
 <h3>Contact Info</h3>
 <div class="indent_row">
@@ -88,19 +95,25 @@
 <div class="indent_row">
   <div class="cell field">
     <%= f.label :caf_col_no, "CAF Col #" %><br />
-    <%= f.text_field :caf_col_no, :size => '15' %>
+    <%= f.text_field :caf_col_no, :size => '8' %>
   </div>
   <div class="cell field">
-    <%= f.label :dd_dues_date, "Last Dues Paid Date" %><br />
-    <%= f.text_field :dd_dues_date, :size => '15' %>
+    <%= f.label :join_date, "CAF Join Date" %><br />
+    <%= f.text_field :join_date, :size => '10' %>
   </div>
   <div class="cell field">
-    <%= f.label :active %><br />
+    <%= f.label :dd_dues_date, "Sqdn Dues Last Paid" %><br />
+    <%= f.text_field :dd_dues_date, :size => '10' %>
+  </div>
+  <div class="cell field" style="text-align: center;">
+    <%= f.label :active, "Squadron Active" %><br />
     <%= f.check_box :active %>
   </div>
 </div>
   
 <div class="clearer"></div>
+
+<hr />
 
   <div class="actions" style="text-align: center;">
     <%= f.submit %>

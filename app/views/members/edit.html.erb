@@ -1,4 +1,21 @@
-<h1>Editing member</h1>
+<% content_for :sidebar do %>
+<% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+  <h3>Record Info</h3>
+  <div class="indent_row">
+    <div class="cell field">
+       Created: <strong><%= @member.created_at.strftime("%b %d, %Y") %></strong>
+     </div>
+     <div class="cell field">
+       Last Updated: <strong><%= @member.updated_at.strftime("%b %d, %Y") %></strong>
+    </div>
+  </div>
+  <div class="clearer"></div>
+<% end %>
+
+<% end %>
+
+
+<h1>Editing Member</h1>
 
 <%= render 'form' %>
 
