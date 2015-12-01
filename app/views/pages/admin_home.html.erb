@@ -1,48 +1,84 @@
 <h1>Admin Section</h1>
 
 <% if current_user.roles.any? {|role| role.name == "admin" } %>
-<br />
-<div class="indent_row">
-<%= button_to "Member Admin", members_path, :method => :get %>
-Add, update squadron members
-<br /><br />
-<%= button_to "AirShow Signups", event_signups_path, :method => :get %>
-Edit Upcoming Airshow sign up lists
-<br /><br />
-<%= button_to "Ride Requests", ride_requests_path, :method => :get %>
-List of signups for LFHE Rides
-<br /><br />
-<%= button_to "Trips", trips_path, :method => :get %>
-Edit trip info such as trip times, financials and notes
-<br /><br />
-<%= button_to "PX Items", products_path, :method => :get %>
-Edit/Admin PX items
-<br /><br />
-<%= button_to "Officers", terms_path, :method => :get %>
-Record Officer positions
-<br /><br />
-<%= button_to "What's New", teasers_path, :method => :get %>
-Edit/Admin What's New section on homepage
-<br /><br />
-<%= button_to "News", news_index_path, :method => :get %>
-Admin News items
+<h2>People</h2>
+<div class="row padded">
+  <div class="cell" style="width: 30%;">
+    <%= button_to "Member Admin", members_path, :method => :get %>
+    Edit/Admin squadron members
+  </div>
+  <div class="cell" style="width: 30%;">
+    <%= button_to "Officers", terms_path, :method => :get %>
+    Edit/Admin Officers
+  </div>
+  <div class="cell" style="width: 30%;">
+    <%= button_to "Positions", officer_positions_path, :method => :get %>
+    Edit/Admin Officer Positions
+  </div>
 </div>
+
+<h2>Events &amp; Trips</h2>
+<div class="row padded">
+  <div class="cell" style="width: 30%;">
+    <%= button_to "Events", events_path, :method => :get %>
+    Edit/Admin Upcoming Events
+  </div>
+  <div class="cell" style="width: 30%;">
+    <%= button_to "Locations", locations_path, :method => :get %>
+    Edit/Admin Locations to tie to Events
+  </div>
+  <div class="cell" style="width: 30%;">
+    <%= button_to "Trips", trips_path, :method => :get %>
+    Edit trip info such as trip times, financials and notes
+  </div>
+</div>
+<div class="row padded">
+  <div class="cell" style="width: 30%;">
+    <%= button_to "AirShow Signups", event_signups_path, :method => :get %>
+    Edit/Admin Upcoming Airshow sign up lists
+  </div>
+  <div class="cell" style="width: 30%;">
+    <%= button_to "Ride Requests", ride_requests_path, :method => :get %>
+    List of signups for LFHE Rides
+  </div>
+</div>
+
+<h2>Website Stuff</h2>
+<div class="row padded">
+  <div class="cell" style="width: 30%;">
+    <%= button_to "What's New", teasers_path, :method => :get %>
+    Edit/Admin What's New section on homepage
+  </div>
+  <div class="cell" style="width: 30%;">
+    <%= button_to "News", news_index_path, :method => :get %>
+    Admin News items
+  </div>
+  <div class="cell" style="width: 30%;">
+    <%= button_to "PX Items", products_path, :method => :get %>
+    Edit/Admin PX items
+  </div>
+</div>
+
 <% end %>
 
 <% if current_user.roles.any? {|role| role.name == "superuser" } %>
 <hr />
-<div class="indent_row">
-<%= button_to "Rights", rights_path, :method => :get %>
-Create model/operation rights
-<br /><br />
-<%= button_to "Grants", grants_path, :method => :get %>
-Grant rights to roles
-<br /><br />
-<%= button_to "Roles", roles_path, :method => :get %>
-Website roles
-<br /><br />
-<%= button_to "Users", users_path, :method => :get %>
-see members website permissions and last login
-<br /><br />
+<div class="row padded">
+  <div class="cell" style="width: 22%;">
+    <%= button_to "Rights", rights_path, :method => :get %>
+    Create model/<br />operation rights
+  </div>
+  <div class="cell" style="width: 22%;">
+    <%= button_to "Grants", grants_path, :method => :get %>
+    Grant rights<br />to roles
+  </div>
+  <div class="cell" style="width: 22%;">
+    <%= button_to "Roles", roles_path, :method => :get %>
+    Website roles
+  </div>
+  <div class="cell" style="width: 22%;">
+    <%= button_to "Users", users_path, :method => :get %>
+    see members website<br />permissions and<br />last login
+  </div>
 </div>
 <% end %>

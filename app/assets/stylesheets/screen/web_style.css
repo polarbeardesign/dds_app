@@ -338,12 +338,17 @@ div.clearer {
 /* TABLE STYLING */
 /* ------------- */
 
+table {
+  border-spacing: 0px;
+	border-collapse: collapse;
+  }
+
 .table_border { 
     margin: 10px;
     border: solid #333;
 	border-width: thin;
-	border-collapse: separate ;
-    border-spacing: 0px ;
+	border-collapse: separate;
+
     }
 
 .table_border th { 
@@ -422,15 +427,17 @@ div.clearer {
 	font-size: 1.2em;
   }
 
-.white_row {
-    background: #fff; 
-    	padding: 3px;
-    }
+.plain_row {
+  background: #fff; 
+  }
 
-.grey_row {
-    background: #eee;
-    	padding: 3px; 
-    }
+.colored_row {
+  background: #eee;
+  }
+
+.plain_row td, .colored_row td {
+  padding: 0.5em;
+  }
 
 /* -------------- */
 /* FOOTER STYLING */
@@ -461,6 +468,7 @@ div.clearer {
 
 .tiny-text {
     font-size: 10px;
+    font-weight: normal;
     }
 
 .table_paypal { 
@@ -570,6 +578,10 @@ margin: 18em 1em 1em 1em;
     width: 100%;
     }
 
+.row.padded {
+padding-bottom: 2em;
+}
+
 .cell {
     float: left;
     margin: 0 10px 0 0;
@@ -591,6 +603,12 @@ margin: 18em 1em 1em 1em;
 .indent_row {
     float: left;
     margin: 0 10px 10px 20px;
+    }
+
+.float_row {
+    display: block;
+    width: 100%;
+    margin: 0;
     }
 
 /* Forms Styling */

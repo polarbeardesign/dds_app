@@ -8,40 +8,21 @@
 <% end %>
 
 <% last_position = "" %>
-<h1>Listing Officer Positions</h1>
+<h1>Officer Positions</h1>
+
+<p>Descriptions from <a href="http://www.commemorativeairforce.org/images/2015_Guides_and_Forms/2015_Guides/Unit_Manual_Section_2_July_2015.pdf">CAF Unit Manual July 2015</a>.</p>
 
 <table>
   <tr>
-    <th>Position name</th>
+    <th>Position</th>
     <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @officer_positions.each do |officer_position| %>
-  <tr>
-    <td><%= officer_position.position_name %></td>
-    <td><%= officer_position.description %></td>
-    <td><%= link_to 'Show', officer_position %></td>
-    <td><%= link_to 'Edit', edit_officer_position_path(officer_position) %></td>
-    <td><%= link_to 'Destroy', officer_position, :confirm => 'Are you sure?', :method => :delete %></td>
+   <tr class="<%= cycle('plain_row', 'colored_row') %>">
+    <td class="top-align"><strong><%= link_to officer_position.position_name, officer_position %></strong>
+    <br /><%= officer_position.usual_term_length %><br /><%= officer_position.usual_term_start %> start</td>
+    <td class="top-align"><%= simple_format(officer_position.description) %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<h2>Current Office Holders</h2>
-
-<% @officer_positions.each do |officer_position| %>
-  <%= officer_position.position_name %>: 
-    <% officer_position.members.each do |member| %>
-      <% if last_position == officer_position.position_name %>
-        /
-       <% end %>
-      <%= member.first_name + " " + member.last_name %> 
-      <% last_position = officer_position.position_name %>
-    <% end %>
-    <br />
-<% end %>
