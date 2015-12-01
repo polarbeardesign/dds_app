@@ -1,20 +1,45 @@
-<h1>Devil Dog News:</h1>
- 
-<table width="500" class="table_border">
+<h1>Devil Dog News</h1>
+
+<table>
     <tr> 
-        <th>Date</th>
-        <th>Headline</th>
-        <th>Source</th>
+        <th style="width: 105px;">Date</th>
+        <th >Headline</th>
+        <th style="width: 115px;">Source</th>
     </tr>
-    <% @news.each do |news| %>
-    <tr class="<%= cycle('odd_row', 'even_row') %>"> 
-        <td><%= news.date.strftime("%b %d, %Y") %></td>
-        <td><%= link_to news.title, if !news.content.empty? then news else news.ext_url end %></td>
-        <td><%= news.source %></td>
+    <% @current_news.each do |news| %>
+    <tr class="<%= cycle('white_row', 'grey_row') %>"> 
+        <td class="top-align" ><%= news.date.strftime("%b %d, %Y") %></td>
+        <td class="top-align headline" ><%= link_to news.title, if !news.content.empty? then news else news.ext_url end %></td>
+        <td class="top-align" ><%= news.source %></td>
     </tr>
 <% end %>
 </table>
 
+<% if !@archive_news.empty? %>
+<hr />
+<h2>News Archive</h2>
+<table>
+    <tr> 
+        <th style="width: 105px;">Date</th>
+        <th >Headline</th>
+        <th style="width: 115px;">Source</th>
+    </tr>
+    <% @archive_news.each do |news| %>
+   <tr class="<%= cycle('white_row', 'grey_row') %>">
+        <td class="top-align" ><%= news.date.strftime("%b %d, %Y") %></td>
+        <td class="top-align headline" ><%= link_to news.title, if !news.content.empty? then news else news.ext_url end %></td>
+        <td class="top-align" ><%= news.source %></td>
+    </tr>
+<% end %>
+</table>
+<% end %>
+
 <% content_for :sidebar do %>
   <%= render "sidebars/newsletter_signup" %>
+<% end %>
+
+<% if signed_in?%>
+    <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+       <%= link_to 'New News Item', new_news_path %>
+    <% end %>
 <% end %>

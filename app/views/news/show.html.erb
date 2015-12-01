@@ -4,7 +4,8 @@
 
   <%= simple_format(@news.content) %>
 
-<% if session[:user_id] %>
-<%= link_to 'Edit', edit_news_path(@news) %> |
-<%= link_to 'Back', news_index_path %>
+<% if signed_in?%>
+    <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+       <%= link_to 'Edit', edit_news_path(@news) %> | <%= link_to 'Back', news_index_path %>
+    <% end %>
 <% end %>
