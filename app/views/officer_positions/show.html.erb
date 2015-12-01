@@ -4,10 +4,24 @@
 </p>
 
 <p>
+  <b>Term Duration:</b>
+  <%= @officer_position.usual_term_length %>
+</p>
+
+<p>
+  <b>Term Start:</b>
+  <%= @officer_position.usual_term_start %>
+</p>
+
+<p>
   <b>Description:</b>
-  <%= @officer_position.description %>
+  <%= simple_format(@officer_position.description) %>
 </p>
 
 
-<%= link_to 'Edit', edit_officer_position_path(@officer_position) %> |
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+  <%= link_to 'Edit', edit_officer_position_path(@officer_position) %> |
+  <% end %>
+<% end %>
 <%= link_to 'Back', officer_positions_path %>

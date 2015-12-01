@@ -1,14 +1,21 @@
 <% content_for :sidebar do %>
-<% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
-  <div align="center">
-  <%= button_to 'New term', new_term_path, :method => :get %>
-  </div>
-<% end %>
-<p>To create a new term (assign a member to a position and start and end dates).</p>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+    <div align="center">
+      <%= button_to 'New term', new_term_path, :method => :get %>
+    </div>
+    <p>To create a new term (assign a member to a position and start and end dates).</p>
+  <% end %>
+
+See <%= link_to "Officer Positions and descriptions", officer_positions_path %> or go to individual position:
+  <ul>
+  <% @officer_positions.each do |officer_position| %>
+  <li><%= link_to officer_position.position_name, officer_position %></li>
+  <% end %>
+  </ul>
 <% end %>
 
 <% last_position = "" %>
-<h1>Listing Officer Positions/terms</h1>
+<h1>Officer Positions/Terms</h1>
 
 
 
@@ -25,7 +32,15 @@
     </tr>
     <% @terms.each do |term| %>
     <tr class="<%= cycle('odd_row', 'even_row') %>">
-        <td><%= link_to term.officer_position.position_name, term_path(term) %></td>
+        <td>
+          <% if signed_in?%>
+            <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+               <%= link_to term.officer_position.position_name, term_path(term) %>
+            <% else %>
+              <%= term.officer_position.position_name %>
+            <% end %>
+          <% end %>
+        </td>
         <td><%= term.member.first_name + ' ' + term.member.last_name %></td>
         <td><%= term.term_start.strftime("%b %d, %Y") %></td>
         <td><%= term.term_end.strftime("%b %d, %Y") %></td>
@@ -36,7 +51,7 @@
 <h2>Past Office Holders</h2>
 
     <% @officer_positions.each do |officer_position| %>
-      <h3><%= officer_position.position_name %></h3>
+      <h3><%= officer_position.position_name %> <span class="tiny-text">- <em><%= officer_position.usual_term_length %>, <%= officer_position.usual_term_start %></em> start</span></h3>
       <ul>
       <% officer_position.terms.past.each do |term| %>
       <li><%= term.member.first_name + ' ' + term.member.last_name %> | Term: <%= term.term_start.strftime("%b %d, %Y") %> - <%= term.term_end.strftime("%b %d, %Y") %></li>
