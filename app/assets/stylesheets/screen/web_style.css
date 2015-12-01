@@ -413,6 +413,25 @@ div.clearer {
   background: #628134;
   }
 
+.top-align {
+	vertical-align: top;
+  }
+
+.headline {
+	padding: 0 0 1.5em 0;
+	font-size: 1.2em;
+  }
+
+.white_row {
+    background: #fff; 
+    	padding: 3px;
+    }
+
+.grey_row {
+    background: #eee;
+    	padding: 3px; 
+    }
+
 /* -------------- */
 /* FOOTER STYLING */
 /* -------------- */

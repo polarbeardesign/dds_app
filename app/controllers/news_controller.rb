@@ -6,6 +6,8 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:index
   # GET /news.xml
   def index
     @news = News.ordered.all
+    @current_news = News.current.ordered.all
+    @archive_news = News.archive.ordered.all
 
     respond_to do |format|
       format.html # index.html.erb

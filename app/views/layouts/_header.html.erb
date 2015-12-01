@@ -14,8 +14,12 @@
 
 
     <li><%= link_to 'Home', "/" %></li>
-    <li><%= link_to "Calendar", calendar_path %></li>
-    <li><%= link_to "History", pages_PBJs_path %>
+    <li><%= link_to "Calendar", calendar_path %>
+        <ul>
+        <li><%= link_to "News Items", news_index_path %></li>
+        </ul>
+    </li>
+    <li><%= link_to "History", pages_PBJs_path %></a>
         <ul>
         <li><%= link_to "PBJs", pages_PBJs_path %></li>
         <li><%= link_to "VMB 612", pages_VMB612_path %></li>

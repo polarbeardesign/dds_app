@@ -23,10 +23,14 @@ Record Officer positions
 <br /><br />
 <%= button_to "What's New", teasers_path, :method => :get %>
 Edit/Admin What's New section on homepage
+<br /><br />
+<%= button_to "News", news_index_path, :method => :get %>
+Admin News items
 </div>
 <% end %>
 
 <% if current_user.roles.any? {|role| role.name == "superuser" } %>
+<hr />
 <div class="indent_row">
 <%= button_to "Rights", rights_path, :method => :get %>
 Create model/operation rights
