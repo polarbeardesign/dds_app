@@ -128,6 +128,8 @@ devise_for :users, :skip => [:registrations]
   
   match 'supportcaf' => 'pages#supportcaf', :as => :supportcaf
   
+  match 'twelve_planes' => 'pages#twelve_planes', :as => :twelve_planes
+  
   match 'seventieth_birthday_party' => 'pages#seventieth_birthday_party', :as => :seventieth_birthday_party
 
   match 'arsenal_of_democracy' => 'pages#arsenal_of_democracy', :as => :arsenal_of_democracy
@@ -150,13 +152,13 @@ devise_for :users, :skip => [:registrations]
 
   match 'change_password/:id' => 'users#change_password', :as => :change_password
 
-match 'photo_viewer' => 'galleries#photo_viewer', :as => :photo_viewer
+  match 'photo_viewer' => 'galleries#photo_viewer', :as => :photo_viewer
   
   match 'refund_policy' => 'pages#refund_policy', :as => :refund_policy
 
-#match '/time_off_feed/:id/time_off_feed', to: 'day_offs#time_off_feed', :as => 'time_off_feed_path'
+  #match '/time_off_feed/:id/time_off_feed', to: 'day_offs#time_off_feed', :as => 'time_off_feed_path'
 
-match 'member_feed' => 'events#member_feed', :as => :member_feed
+  match 'member_feed' => 'events#member_feed', :as => :member_feed
 
   
   get "pages/home"

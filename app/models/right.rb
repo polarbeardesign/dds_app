@@ -34,6 +34,7 @@ class Right < ActiveRecord::Base
     "membership" => "READ",
     "all_events" => "READ",
     "supportcaf" => "READ",
+    "twelve_planes" => "READ",
     "terms" => "READ",
     "sort" => "UPDATE"
 }
