@@ -76,4 +76,7 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:home,
     redirect_to "https://supportcaf.org/#npo/b-25-devil-dog-squadron-9643c"
   end
 
+  def twelve_planes
+  end
+
 end
