@@ -78,6 +78,11 @@
   </div>
   <div class="cell" style="width: 65%;">
     <strong><em><%= link_to event.title, event %></em></strong>
+        <% if event.event_statuses_id == 2 %>
+      <span class="error" style="display: inline;"> -- Tentative</span>
+    <% elsif event.event_statuses_id == 3 %>
+      <span class="error" style="display: inline;"> -- Canceled</span>
+    <% end %>
     <br />
       <% if event.details.length > 220 %>
         <%= truncate(event.details, :length => 220, :separator => ' ') %> <em><%= link_to "Go to event", event %></em>
@@ -119,6 +124,11 @@
   </div>
   <div class="cell" style="width: 65%;">
     <strong><em><%= link_to event.title, event %></em></strong>
+        <% if event.event_statuses_id == 2 %>
+      <span class="error" style="display: inline;"> -- Tentative</span>
+    <% elsif event.event_statuses_id == 3 %>
+      <span class="error" style="display: inline;"> -- Canceled</span>
+    <% end %>
     <br />
       <% if event.details.length > 220 %>
         <%= truncate(event.details, :length => 220, :separator => ' ') %> <em><%= link_to "Go to event", event %></em>
@@ -160,6 +170,11 @@
   </div>
   <div class="cell" style="width: 65%;">
     <strong><em><%= link_to event.title, event %></em></strong>
+        <% if event.event_statuses_id == 2 %>
+      <span class="error" style="display: inline;"> -- Tentative</span>
+    <% elsif event.event_statuses_id == 3 %>
+      <span class="error" style="display: inline;"> -- Canceled</span>
+    <% end %>
     <br />
       <% if event.details.length > 220 %>
         <%= truncate(event.details, :length => 220, :separator => ' ') %> <em><%= link_to "Go to event", event %></em>
@@ -173,7 +188,7 @@
 <% else %>
    <div class="calendar_row" style="width: 90%; padding-top: 0.25em">
      <div class="cell" style="width: 30%;">&nbsp;</div>
-       No scheduled maintenance events at this time.
+       No scheduled maintenance events at this time. Winter maintenance starting daily ~9:00 am.
    </div>
 <% end %>
 
