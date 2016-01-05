@@ -11,25 +11,26 @@
 <% if !@air_shows.blank? %>
 <% @air_shows.each do |event| %>
 <div class="calendar_row" style="width: 90%; padding-top: 0.25em">
-  <div class="cell" style="width: 30%;">
+  <div class="cell" style="width: 25%;">
     <% if event.start.strftime("%b %d" ) == event.end.strftime("%b %d") %>
-    <div class="calendar-ii" style="margin: 0 0 0 2.5em;">
+    <div class="calendar-ii" style="margin-left: 3.5em;">
       <div class="calendar_month-ii"><%= event.start.strftime("%b") %></div>
       <div class="calendar_date-ii"><%= event.start.strftime("%d") %></div>
     </div>
     <% else %>
-    <div class="calendar-ii" style="float: left;">
+    <div class="calendar-ii" style="float: left; margin-left: 1.5em;">
       <div class="calendar_month-ii"><%= event.start.strftime("%b") %></div>
       <div class="calendar_date-ii"><%= event.start.strftime("%d") %></div>
     </div>
-    <span style="float: left; font-size: 1em;margin: 0.5em 0 0 0;">&#8211; </span>
+    <span style="float: left; font-size: 1em; margin: 0.5em 0 0 0;">&#8211; </span>
     <div class="calendar-ii">
       <div class="calendar_month-ii"><%= event.end.strftime("%b") %></div>
       <div class="calendar_date-ii"><%= event.end.strftime("%d") %></div>
     </div>
     <% end %>
+    <div class="location"><%= event.location.city + ", " + event.location.state %></div>
   </div>
-  <div class="cell" style="width: 65%;">
+  <div class="cell" style="width: 70%;">
     <strong><em><%= link_to event.title, event %></em></strong>
     <% if event.event_statuses_id == 2 %>
       <span class="event-flag" style="display: inline;"> &lt;= Currently Tentative</span>
@@ -48,7 +49,7 @@
 <% end %>
 <% else %>
    <div class="calendar_row" style="width: 90%; padding-top: 0.25em">
-     <div class="cell" style="width: 30%;">&nbsp;</div>
+     <div class="cell" style="width: 25%;">&nbsp;</div>
        No scheduled air shows events at this time.
    </div>
 <% end %>
@@ -58,14 +59,14 @@
 <% if !@special.blank? %>
 <% @special.each do |event| %>
 <div class="calendar_row" style="width: 90%; padding-top: 0.25em">
-  <div class="cell" style="width: 30%;">
+  <div class="cell" style="width: 25%;">
     <% if event.start.strftime("%b %d" ) == event.end.strftime("%b %d") %>
-    <div class="calendar-ii" style="margin: 0 0 0 2.5em;">
+    <div class="calendar-ii" style="margin-left: 3.5em;">
       <div class="calendar_month-ii"><%= event.start.strftime("%b") %></div>
       <div class="calendar_date-ii"><%= event.start.strftime("%d") %></div>
     </div>
     <% else %>
-    <div class="calendar-ii" style="float: left;">
+    <div class="calendar-ii" style="float: left; margin-left: 1.5em;">
       <div class="calendar_month-ii"><%= event.start.strftime("%b") %></div>
       <div class="calendar_date-ii"><%= event.start.strftime("%d") %></div>
     </div>
@@ -75,8 +76,9 @@
       <div class="calendar_date-ii"><%= event.end.strftime("%d") %></div>
     </div>
     <% end %>
+    <div class="location"><%= event.location.city + ", " + event.location.state %></div>
   </div>
-  <div class="cell" style="width: 65%;">
+  <div class="cell" style="width: 70%;">
     <strong><em><%= link_to event.title, event %></em></strong>
     <% if event.event_statuses_id == 2 %>
       <span class="event-flag" style="display: inline;"> &lt;= Currently Tentative</span>
@@ -104,14 +106,14 @@
 <% if !@meetings.blank? %>
 <% @meetings.each do |event| %>
 <div class="calendar_row" style="width: 90%; padding-top: 0.25em">
-  <div class="cell" style="width: 30%;">
+  <div class="cell" style="width: 25%;">
     <% if event.start.strftime("%b %d" ) == event.end.strftime("%b %d") %>
-    <div class="calendar-ii" style="margin: 0 0 0 2.5em;">
+    <div class="calendar-ii" style="margin-left: 3.5em;">
       <div class="calendar_month-ii"><%= event.start.strftime("%b") %></div>
       <div class="calendar_date-ii"><%= event.start.strftime("%d") %></div>
     </div>
     <% else %>
-    <div class="calendar-ii" style="float: left;">
+    <div class="calendar-ii" style="float: left; margin-left: 1.5em;">
       <div class="calendar_month-ii"><%= event.start.strftime("%b") %></div>
       <div class="calendar_date-ii"><%= event.start.strftime("%d") %></div>
     </div>
@@ -121,8 +123,9 @@
       <div class="calendar_date-ii"><%= event.end.strftime("%d") %></div>
     </div>
     <% end %>
+    <div class="location"><%= event.location.city + ", " + event.location.state %></div>
   </div>
-  <div class="cell" style="width: 65%;">
+  <div class="cell" style="width: 70%;">
     <strong><em><%= link_to event.title, event %></em></strong>
     <% if event.event_statuses_id == 2 %>
       <span class="event-flag" style="display: inline;"> &lt;= Currently Tentative</span>
@@ -150,14 +153,14 @@
 <% if !@maint.blank? %>
 <% @maint.each do |event| %>
 <div class="calendar_row" style="width: 90%; padding-top: 0.25em">
-  <div class="cell" style="width: 30%;">
+  <div class="cell" style="width: 25%;">
     <% if event.start.strftime("%b %d" ) == event.end.strftime("%b %d") %>
-    <div class="calendar-ii" style="margin: 0 0 0 2.5em;">
+    <div class="calendar-ii" style="margin-left: 3.5em;">
       <div class="calendar_month-ii"><%= event.start.strftime("%b") %></div>
       <div class="calendar_date-ii"><%= event.start.strftime("%d") %></div>
     </div>
     <% else %>
-    <div class="calendar-ii" style="float: left;">
+    <div class="calendar-ii" style="float: left; margin-left: 1.5em;">
       <div class="calendar_month-ii"><%= event.start.strftime("%b") %></div>
       <div class="calendar_date-ii"><%= event.start.strftime("%d") %></div>
     </div>
@@ -168,7 +171,7 @@
     </div>
     <% end %>
   </div>
-  <div class="cell" style="width: 65%;">
+  <div class="cell" style="width: 70%;">
     <strong><em><%= link_to event.title, event %></em></strong>
     <% if event.event_statuses_id == 2 %>
       <span class="event-flag" style="display: inline;"> &lt;= Currently Tentative</span>
@@ -187,7 +190,7 @@
 <% end %>
 <% else %>
    <div class="calendar_row" style="width: 90%; padding-top: 0.25em">
-     <div class="cell" style="width: 30%;">&nbsp;</div>
+     <div class="cell" style="width: 25%;">&nbsp;</div>
        No scheduled maintenance events at this time. Winter maintenance starting daily ~9:00 am.
    </div>
 <% end %>
