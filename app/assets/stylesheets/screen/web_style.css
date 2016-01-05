@@ -659,6 +659,7 @@ padding-bottom: 2em;
 
 .location {
   display: block;
+  text-align: center;
   clear: both;
   margin: 4em 0 0 0.25em;
   padding: 0.25em 0.5em;
