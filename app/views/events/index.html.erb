@@ -32,9 +32,9 @@
   <div class="cell" style="width: 65%;">
     <strong><em><%= link_to event.title, event %></em></strong>
     <% if event.event_statuses_id == 2 %>
-      <span class="error" style="display: inline;"> -- Tentative</span>
+      <span class="event-flag" style="display: inline;"> &lt;= Currently Tentative</span>
     <% elsif event.event_statuses_id == 3 %>
-      <span class="error" style="display: inline;"> -- Canceled</span>
+      <span class="event-flag" style="display: inline;"> &lt;= Canceled</span>
     <% end %>
     <br />
       <% if event.details.length > 220 %>
@@ -78,10 +78,10 @@
   </div>
   <div class="cell" style="width: 65%;">
     <strong><em><%= link_to event.title, event %></em></strong>
-        <% if event.event_statuses_id == 2 %>
-      <span class="error" style="display: inline;"> -- Tentative</span>
+    <% if event.event_statuses_id == 2 %>
+      <span class="event-flag" style="display: inline;"> &lt;= Currently Tentative</span>
     <% elsif event.event_statuses_id == 3 %>
-      <span class="error" style="display: inline;"> -- Canceled</span>
+      <span class="event-flag" style="display: inline;"> &lt;= Canceled</span>
     <% end %>
     <br />
       <% if event.details.length > 220 %>
@@ -124,10 +124,10 @@
   </div>
   <div class="cell" style="width: 65%;">
     <strong><em><%= link_to event.title, event %></em></strong>
-        <% if event.event_statuses_id == 2 %>
-      <span class="error" style="display: inline;"> -- Tentative</span>
+    <% if event.event_statuses_id == 2 %>
+      <span class="event-flag" style="display: inline;"> &lt;= Currently Tentative</span>
     <% elsif event.event_statuses_id == 3 %>
-      <span class="error" style="display: inline;"> -- Canceled</span>
+      <span class="event-flag" style="display: inline;"> &lt;= Canceled</span>
     <% end %>
     <br />
       <% if event.details.length > 220 %>
@@ -170,10 +170,10 @@
   </div>
   <div class="cell" style="width: 65%;">
     <strong><em><%= link_to event.title, event %></em></strong>
-        <% if event.event_statuses_id == 2 %>
-      <span class="error" style="display: inline;"> -- Tentative</span>
+    <% if event.event_statuses_id == 2 %>
+      <span class="event-flag" style="display: inline;"> &lt;= Currently Tentative</span>
     <% elsif event.event_statuses_id == 3 %>
-      <span class="error" style="display: inline;"> -- Canceled</span>
+      <span class="event-flag" style="display: inline;"> &lt;= Canceled</span>
     <% end %>
     <br />
       <% if event.details.length > 220 %>

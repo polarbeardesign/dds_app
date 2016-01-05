@@ -645,6 +645,18 @@ padding-bottom: 2em;
   color: #cc0000;
   }
 
+.event-flag {
+  display: block;
+  margin: 5px auto;
+  padding: 0.25em 0.5em;
+  font-style: italic;
+  font-weight: bold;
+  color: #cc0000;
+  background: #ffe4eb;
+  border-top: 1px solid #ff9197;
+  border-bottom: 1px solid #ff9197;
+  }
+
 .photo_viewer {
   float: left;
   width: 840px;
