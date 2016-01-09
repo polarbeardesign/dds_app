@@ -98,6 +98,8 @@ devise_for :users, :skip => [:registrations]
   resources :products
 
   resources :photos
+  
+  resources :attendances
 
   resources :photographers
 
