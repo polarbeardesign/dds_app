@@ -79,4 +79,7 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:home,
   def twelve_planes
   end
 
+  def SN_44_86758
+  end
+
 end
