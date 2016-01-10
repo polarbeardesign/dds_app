@@ -889,6 +889,7 @@ input, textarea {
 
 .caption_text {
   font-style: italic;
+  text-align: center;
   color: #333;
 }
 
