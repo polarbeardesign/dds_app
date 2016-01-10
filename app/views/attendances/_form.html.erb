@@ -17,8 +17,23 @@
   </div>
   <div class="field">
     <%= f.label :event_id %><br />
-      <%= f.collection_select :event_id, Event.ordered.published.all, :id, :title, options = {:order => 'start ASC', :prompt => true}, html_options = {:class => "styled-select"} %>
+      <%#= f.collection_select :event_id, Event.ordered.published.all, :id, :title, options = {:order => 'start ASC', :prompt => true}, html_options = {:class => "styled-select"} %>
+      <%= f.collection_select :event_id, Event.ordered.published.has_rsvp.all, :id, :event_date, options = {:order => 'start ASC', :prompt => true}, html_options = {:class => "styled-select"} %>
   </div>
+
+<div class="indent_row" style="width: 560px;">
+  <div class="cell" style="padding: 0 0 5em 10em;">
+    <div class="field">
+      <div class="cell radio_button_selection">
+        <label><%= f.radio_button 'commitment_level', 'Definite' %><br /><%= f.label :commitment_level, "Definite" %></label>
+      </div>
+      <div class="cell radio_button_selection" style="border: none;">
+        <label><%= f.radio_button 'commitment_level', 'Maybe' %><br /><%= f.label :commitment_level, "Maybe" %></label>
+      </div>
+    </div>
+  </div>
+</div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -1,25 +1,32 @@
-<h1>Listing attendances</h1>
+<% rsvp_event = "" %>
 
-<table>
+<h1>Listing RSVPs</h1>
+
+<table class="table_border">
   <tr>
     <th>Member</th>
     <th>Event</th>
     <th></th>
     <th></th>
-    <th></th>
   </tr>
-
-<% @attendances.each do |attendance| %>
-  <tr>
-    <td><%= attendance.member %></td>
-    <td><%= attendance.event %></td>
-    <td><%= link_to 'Show', attendance %></td>
-    <td><%= link_to 'Edit', edit_attendance_path(attendance) %></td>
-    <td><%= link_to 'Destroy', attendance, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
 
 <%= link_to 'New Attendance', new_attendance_path %>
+
+<%  @attendances.each do |attendance| %>
+  <% if rsvp_event != attendance.event.title %>
+    <tr>
+      <td colspan=4><strong><em><%= attendance.event.title %></strong></em><br /><%= attendance.event.start.strftime("%b %d, %Y") %> <%#= link_to "Add member", new_event_signup_path %></td>
+      </td>
+    </tr>
+  <% end %>
+
+  <tr class="<%= cycle('odd_row', 'even_row') %>">
+    <td><%= link_to attendance.member.first_name + " " + attendance.member.last_name, edit_rsvp_path(attendance)  %></td>
+    <td><%= attendance.commitment_level %></td>
+    <td><%= attendance.created_at.strftime("%b %d, \'%y %H:%M") %></td>
+    <td><%= link_to 'Delete', attendance, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% rsvp_event = attendance.event.title %>
+<% end %>
+
+</table>

@@ -9,10 +9,14 @@ class RsvpNotifier < ActionMailer::Base
   def created(attendance)
     @attendance = attendance
 
-    mail :to => attendance.member.user.email, 
-         :cc => 'info@devildogsquadron.com', 
-         :subject => attendance.event.title + ' RSVP Received'
-
+      if Rails.env.production?
+        mail :to => attendance.member.user.email, 
+             :cc => 'info@devildogsquadron.com', 
+             :subject => attendance.event.title + ' RSVP Received'
+      else
+         mail :to => attendance.member.user.email,  
+             :subject => attendance.event.title + ' RSVP Received' 
+      end
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -23,9 +27,13 @@ class RsvpNotifier < ActionMailer::Base
   def change(attendance)
     @attendance = attendance
 
-    mail :to => attendance.member.user.email, 
-         :cc => 'info@devildogsquadron.com', 
-         :subject => attendance.event.title + ' RSVP Change Received'
-
+      if Rails.env.production?
+        mail :to => attendance.member.user.email, 
+             :cc => 'info@devildogsquadron.com', 
+             :subject => attendance.event.title + ' RSVP Change Received'
+      else
+         mail :to => attendance.member.user.email,  
+             :subject => attendance.event.title + ' RSVP Change Received' 
+      end
   end
 end

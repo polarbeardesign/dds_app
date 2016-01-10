@@ -30,5 +30,10 @@ scope :maint, where("event_type_id = 4")
 
 scope :needs_roster, lambda {where("events.flight_roster = ?", true) }
 scope :has_lfhe, lambda {where("events.rides_available = ?", true) }
+scope :has_rsvp, lambda {where("events.rsvp = ?", true) }
+
+def event_date
+  "#{self.title} - #{self.start.strftime("%b %d, %Y")}"
+end
 
 end
