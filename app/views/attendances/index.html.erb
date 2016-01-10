@@ -15,8 +15,7 @@
 <%  @attendances.each do |attendance| %>
   <% if rsvp_event != attendance.event.title %>
     <tr>
-      <td colspan=2><strong><em><%= attendance.event.title %></strong></em><br /><%= attendance.event.start.strftime("%b %d, %Y") %> <%#= link_to "Add member", new_event_signup_path %></td>
-      <td colspan=2>
+      <td colspan=4><strong><em><%= attendance.event.title %></strong></em><br /><%= attendance.event.start.strftime("%b %d, %Y") %> <%#= link_to "Add member", new_event_signup_path %></td>
       </td>
     </tr>
   <% end %>
