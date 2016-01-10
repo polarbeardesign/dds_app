@@ -131,6 +131,8 @@ devise_for :users, :skip => [:registrations]
   match 'supportcaf' => 'pages#supportcaf', :as => :supportcaf
   
   match 'twelve_planes' => 'pages#twelve_planes', :as => :twelve_planes
+
+  match 'SN_44_86758' => 'pages#SN_44_86758', :as => :SN_44_86758
   
   match 'seventieth_birthday_party' => 'pages#seventieth_birthday_party', :as => :seventieth_birthday_party
 
