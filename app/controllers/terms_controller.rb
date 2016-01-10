@@ -4,7 +4,7 @@ class TermsController < ApplicationController
   # GET /terms
   # GET /terms.xml
   def index
-    @terms = Term.current.all
+    @terms = Term.current.ordered.all
     @terms_past = Term.past.all
     @officer_positions = OfficerPosition.all
 

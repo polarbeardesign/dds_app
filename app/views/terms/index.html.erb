@@ -30,6 +30,7 @@ See <%= link_to "Officer Positions and descriptions", officer_positions_path %> 
         <th>term_start</th>
         <th>term_end</th>
     </tr>
+   <%# @officer_positions.each do |term| %>
     <% @terms.each do |term| %>
     <tr class="<%= cycle('odd_row', 'even_row') %>">
         <td>
