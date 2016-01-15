@@ -1,8 +1,7 @@
 
 <h1>Role Name:</em> <%= @role.name %></h1>
 
-<div class="form_row">
-<div class="cell" style="width: 320px; border-right: 1px solid #999;">
+<div class="cell" style="border-right: 1px solid #999;">
 <p><%= @role.name %> has permission to do the following:</p>
 <% @role.rights.unique_resources.ordered.each do |right| %>
   <p><strong><%= right.resource %></strong></p>
@@ -16,12 +15,13 @@
 <div class="clearer"></div>
 <% end %>
 </div>
-  <div class="cell" style="width: 220px; padding: 0 0 0 1em;">
-    <p>Members with <%= @role.name %> role assignment.</p>
+  <div class="cell" style="max-width: 200px; padding: 0 0 0 1em;">
+    <p>Members with <strong><%= @role.name %></strong> role assignment.</p>
     <% @role.users.member_ordered.each do |user| %>
       <li><%= user.member.last_name + ", " + user.member.first_name %></li>
     <% end %>
     </ul>
-</div></div>
+</div>
+
 <%#= link_to 'Edit', edit_role_path(@role) %>
 <%#= link_to 'Back', roles_path %>
