@@ -1,5 +1,7 @@
 DdsApp::Application.routes.draw do
 
+  resources :dues_payments
+
   resources :product_photos
 
   resources :test_submission_responses

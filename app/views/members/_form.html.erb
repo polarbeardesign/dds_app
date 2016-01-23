@@ -129,6 +129,13 @@
   
 <div class="clearer"></div>
 
+<h3>Dues Info</h3>
+<div class="indent_row">
+  <%= f.fields_for :dues_payments do |builder| %>
+        <%= render "dues_paid", :f => builder %> 
+  <% end %>
+</div>
+<div class="clearer"></div>
 <hr />
 
   <div class="actions" style="text-align: center;">

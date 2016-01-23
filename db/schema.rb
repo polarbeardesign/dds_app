@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150807161703) do
+ActiveRecord::Schema.define(:version => 20160122202057) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -50,6 +50,19 @@ ActiveRecord::Schema.define(:version => 20150807161703) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "dues_payments", :force => true do |t|
+    t.integer  "member_id"
+    t.string   "payment_method"
+    t.string   "payment_type"
+    t.decimal  "amt_paid",       :precision => 8, :scale => 2
+    t.text     "notes"
+    t.date     "date_paid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "dues_payments", ["member_id"], :name => "index_dues_payments_on_member_id"
 
   create_table "email_addresses", :force => true do |t|
     t.string   "address"
@@ -178,6 +191,8 @@ ActiveRecord::Schema.define(:version => 20150807161703) do
     t.boolean  "active"
     t.date     "caf_join_date"
     t.string   "level"
+    t.string   "ec_name"
+    t.string   "ec_phone",      :limit => 30
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -197,6 +212,8 @@ ActiveRecord::Schema.define(:version => 20150807161703) do
   create_table "officer_positions", :force => true do |t|
     t.string   "position_name"
     t.text     "description"
+    t.string   "usual_term_start"
+    t.string   "usual_term_length"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -247,6 +264,7 @@ ActiveRecord::Schema.define(:version => 20150807161703) do
     t.string   "name"
     t.text     "description"
     t.decimal  "value",         :precision => 8, :scale => 2
+    t.decimal  "alt_value",     :precision => 8, :scale => 2, :null => false
     t.string   "photo_path"
     t.boolean  "available"
     t.decimal  "ship_handling", :precision => 8, :scale => 2
