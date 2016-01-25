@@ -39,7 +39,10 @@
     <% end %>
     <td><%= member.user.email %></td>
     <td><%= member.caf_join_date %></td>
-    <td><%= member.dd_dues_date %></td>
+    <td><% if !member.dues_payments.last.nil? %>
+    <%= member.dues_payments.last.date_paid %>
+    <% end %>
+    </td>
 
   </tr>
 <% end %>
@@ -57,6 +60,7 @@
     <th style="min-width: 150px;">Location</th>
     <th>Email</th>
     <th>Join Date</th>
+    <th style="min-width: 90px;">Last Dues Paid</th>
   </tr>
 
 <% @inactive_members.each do |member| %>
@@ -70,7 +74,10 @@
     <% end %>
     <td><%= member.user.email %></td>
     <td><%= member.caf_join_date %></td>
-
+    <td><% if !member.dues_payments.last.nil? %>
+    <%= member.dues_payments.last.date_paid %>
+    <% end %>
+    </td>
   </tr>
 <% end %>
 </table>

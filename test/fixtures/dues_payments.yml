@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  member: 
+  amt_paid: MyString
+  payment_method: MyString
+  payment_type: MyString
+  amt_paid: 9.99
+  notes: MyText
+
+two:
+  member: 
+  amt_paid: MyString
+  payment_method: MyString
+  payment_type: MyString
+  amt_paid: 9.99
+  notes: MyText

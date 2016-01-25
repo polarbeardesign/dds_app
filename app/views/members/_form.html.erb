@@ -117,10 +117,6 @@
     <%= f.label :caf_join_date, "CAF Join Date" %><br />
     <%= f.text_field :caf_join_date, :size => '10' %>
   </div>
-  <div class="cell field">
-    <%= f.label :dd_dues_date, "Sqdn Dues Last Paid" %><br />
-    <%= f.text_field :dd_dues_date, :size => '10' %>
-  </div>
   <div class="cell field" style="text-align: center;">
     <%= f.label :active, "Squadron Active" %><br />
     <%= f.check_box :active %>
@@ -131,9 +127,19 @@
 
 <h3>Dues Info</h3>
 <div class="indent_row">
+      <table class="table_border">
+  <tr>
+    <th>Date Paid</th>
+    <th>Payment method</th>
+    <th>Payment type</th>
+    <th>Amt paid</th>
+    <th>Notes</th>
+  </tr>
   <%= f.fields_for :dues_payments do |builder| %>
         <%= render "dues_paid", :f => builder %> 
   <% end %>
+</table>
+[<%= link_to 'New Dues payment', new_dues_payment_path %>]
 </div>
 <div class="clearer"></div>
 <hr />

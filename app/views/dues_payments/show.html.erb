@@ -1,0 +1,34 @@
+
+<p>
+  <b>Member:</b>
+  <%= @dues_payment.member.last_name + ', ' + @dues_payment.member.first_name %> [ <%= link_to 'Go To Members Page', member_path(@dues_payment.member) %> ]
+</p>
+
+<p>
+  <b>Amt paid:</b>
+  <%= @dues_payment.date_paid %>
+</p>
+
+<p>
+  <b>Amt paid:</b>
+  <%= number_to_currency(@dues_payment.amt_paid) %>
+</p>
+
+<p>
+  <b>Payment method:</b>
+  <%= @dues_payment.payment_method %>
+</p>
+
+<p>
+  <b>Payment type:</b>
+  <%= @dues_payment.payment_type %>
+</p>
+
+<p>
+  <b>Notes:</b>
+  <%= @dues_payment.notes %>
+</p>
+
+
+<%= link_to 'Edit', edit_dues_payment_path(@dues_payment) %> |
+<%= link_to 'Back', dues_payments_path %>
