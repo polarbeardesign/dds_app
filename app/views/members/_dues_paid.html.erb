@@ -1,4 +1,4 @@
-
+<% if !@dues_payments.nil? %>
     <tr>
       <td><%= link_to @dues_payments.date_paid, dues_payment_path(@dues_payments) %></td>
       <td><%= @dues_payments.payment_method %></td>
@@ -6,4 +6,4 @@
       <td><%= number_to_currency(@dues_payments.amt_paid) %></td>
       <td><%= @dues_payments.notes %></td>
     </tr>
-      
+<% end %>
