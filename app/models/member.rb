@@ -8,6 +8,7 @@ class Member < ActiveRecord::Base
   has_many :events, :through => :event_signups
   has_many :terms
   has_many :officer_positions, :through => :terms
+  has_many :dues_payments
   has_paper_trail
 
   scope :active, where("members.active = 1")

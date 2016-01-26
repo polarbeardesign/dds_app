@@ -82,6 +82,7 @@ class MembersController < ApplicationController
   def edit
     @member = Member.find(params[:id])
     @roles = Role.find(:all)
+    @dues_payments = DuesPayment.find_by_member_id(params[:id])
   end
 
   # POST /members

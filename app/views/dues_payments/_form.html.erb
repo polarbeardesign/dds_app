@@ -1,0 +1,55 @@
+  <script>
+  $(function() {
+    $( "#dues_payment_date_paid" ).datepicker({
+     format:'Y-m-d'
+    });
+  });
+  </script>
+
+
+<%= form_for(@dues_payment) do |f| %>
+  <% if @dues_payment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@dues_payment.errors.count, "error") %> prohibited this dues_payment from being saved:</h2>
+
+      <ul>
+      <% @dues_payment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="row">
+  <div class="cell field">
+    <%= f.label :member_id, "Member" %><br />
+    <%= f.collection_select :member_id, Member.ordered.all, :id, :full_name, options = {:prompt => true}, html_options = {:class => "styled-select"} %>
+  </div>
+  <div class="cell field">
+    <%= f.label :date_paid %><br />
+    <%= f.text_field :date_paid, :size => 12  %>
+  </div>
+  <div class="cell field">
+    <%= f.label :amt_paid, 'Amount Paid ($)' %><br />
+    <%= f.text_field :amt_paid, :size => 10  %>
+  </div>
+</div>
+<div class="row">
+  <div class="cell field">
+    <%= f.label :payment_method %><br />
+    <%= f.select :payment_method, options_for_select([ "PayPal", "Check", "Cash" ]), options = {:prompt => true}, html_options = {:class => "styled-select"} %>
+  </div>
+  <div class="cell field">
+    <%= f.label :payment_type %><br />
+    <%= f.select :payment_type, options_for_select([ "Renewal", "New" ]), options = {:prompt => true}, html_options = {:class => "styled-select"} %>
+  </div>
+</div>
+  <div class="cell field">
+    <%= f.label :notes %><br />
+    <%= f.text_area :notes, :size => "50x5" %>
+  </div>
+<div class="clearer"></div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

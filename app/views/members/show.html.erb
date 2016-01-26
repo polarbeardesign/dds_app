@@ -4,11 +4,10 @@
 
 <div class="form_row">
 
-<div class="form_cell" style="width: 200px;">
+<div class="form_cell" style="width: 30%; border-right: 1px solid #ddd;">
 
-<p><b><%= @member.first_name %> <%= @member.last_name %></b></p>
-
-<p><%= @member.street_1 %>
+<p><strong><%= @member.first_name %> <%= @member.last_name %></strong></br />
+<%= @member.street_1 %>
  <% if @member.street_2? %>
    <br /><%= @member.street_2 %>
  <% end %>
@@ -28,27 +27,43 @@
 </p>
 
 </div>
-<div class="form_cell">
+<div class="form_cell" style="width: 30%; border-right: 1px solid #ddd;">
 <p><strong>Emergency Contact:</strong><br />
 <%= @member.ec_name %><br />
 <%= @member.ec_phone %></p>
-
+</div>
+<div class="form_cell" style="width: 33%;">
 <p>
-  <em>Username:</em>
-  <%= @member.user.username %>
-<br />
+<p><strong>CAF Info:</strong><br />
   <em>CAF Col No:</em>
   <%= @member.caf_col_no %>
 <br />
-  <em>DDS dues date:</em>
-  <%= @member.dd_dues_date %>
+  <em>CAF Join Date:</em>
+  <%= @member.caf_join_date %>
 </p>
 </div>
 </div>
 
+<h2>Dues Record</h2>
+<table class="table_border">
+<tr>
+  <th>Date</th>
+  <th>Amt Paid</td>
+  <th>Payment<br />Method</td>
+  <th>Type</td>
+</tr>
+<% @member.dues_payments.each do |dues_payment| %>
+  <tr class="<%= cycle('odd_row', 'even_row') %>">
+  <td><%= dues_payment.date_paid %></td>
+  <td><%= number_to_currency(dues_payment.amt_paid) %></td>
+  <td><%= dues_payment.payment_method %></td>
+  <td><%= dues_payment.payment_type %></td>
+</tr>
+<% end %>
+</table>
 
-
-<%= render 'versions', :member => @member %>
-
+<% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+  <%= render 'versions', :member => @member %>
+<% end %>
 <%= link_to 'Edit', edit_member_path(@member) %> |
 <%= link_to 'Back', members_path %>

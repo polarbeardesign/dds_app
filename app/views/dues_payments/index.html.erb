@@ -1,0 +1,33 @@
+<h1>Listing Dues Payments</h1>
+
+<table class="table_border">
+  <tr>
+    <th>Member</th>
+    <th>Date Paid</th>
+    <th>Payment method</th>
+    <th>Payment type</th>
+    <th>Amt paid</th>
+    <th>Notes</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @dues_payments.each do |dues_payment| %>
+  <tr class="<%= cycle('odd_row', 'even_row') %>">
+    <td><%= dues_payment.member.last_name + ', ' + dues_payment.member.first_name %></td>
+    <td><%= dues_payment.date_paid %></td>
+    <td><%= dues_payment.payment_method %></td>
+    <td><%= dues_payment.payment_type %></td>
+    <td><%= number_to_currency(dues_payment.amt_paid) %></td>
+    <td><%= dues_payment.notes %></td>
+    <td><%= link_to 'Show', dues_payment %></td>
+    <td><%= link_to 'Edit', edit_dues_payment_path(dues_payment) %></td>
+    <td><%= link_to 'Destroy', dues_payment, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Dues payment', new_dues_payment_path %>
