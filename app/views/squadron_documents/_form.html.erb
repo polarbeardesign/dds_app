@@ -11,29 +11,27 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :document_category_id %><br />
-    <%= f.text_field :document_category_id %>
+<div class="row">
+  <div class="cell field">
+    <%= f.label :document_category_id, "Document Category" %><br />
+    <%= f.collection_select :document_category_id, DocumentCategory.ordered.all, :id, :category_name, options = {:prompt => true}, html_options = {:class => "styled-select"} %>
   </div>
-  <div class="field">
+  <div class="cell field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </div>
+</div>
   <div class="field">
     <%= f.label :description %><br />
-    <%= f.text_area :description %>
+    <%= f.text_area :description, :size => "50x5" %>
   </div>
   <div class="field">
-    <%= f.label :file_url %><br />
+    <%= f.label :file_url, 'File name' %><br />
     <%= f.text_field :file_url %>
   </div>
   <div class="field">
     <%= f.label :doc_date %><br />
     <%= f.date_select :doc_date %>
-  </div>
-  <div class="field">
-    <%= f.label :image_url %><br />
-    <%= f.text_field :image_url %>
   </div>
   <div class="actions">
     <%= f.submit %>
