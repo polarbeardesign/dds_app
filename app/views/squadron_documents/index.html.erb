@@ -17,7 +17,7 @@
   </tr>
   <% end %>
   <tr>
-    <td style="padding: .25em 0.5em;"><%= link_to squadron_document.title, squadron_document.file_url %></td>
+    <td style="padding: .25em 0.5em;"><%= link_to squadron_document.title, '/assets/' + squadron_document.file_url %></td>
     <td><%= squadron_document.doc_date %></td>
   </tr>
   <% lastcategory = squadron_document.document_category.category_name %>
