@@ -3,7 +3,9 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.ordered.all
+
+    require 'will_paginate/array'
+    @posts = Post.ordered.paginate :page => params[:page], :per_page => 10
     @user = current_user
 
     respond_to do |format|

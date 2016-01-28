@@ -1,5 +1,8 @@
 source 'http://rubygems.org'
 
+# to avoid railties conflict...
+gem 'i18n', '0.6.11'
+
 gem 'rails', '3.1.3'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
@@ -14,7 +17,8 @@ gem 'fastercsv'
 gem 'paper_trail', '~> 4.0.0.rc'
 gem 'diffy'
 gem 'acts_as_list', '< 0.3.0'
-
+gem 'will_paginate'
+gem 'redcarpet', '<= 2.3.0'
 gem 'exception_notification', '~> 3.0.1'
 
 # Use unicorn as the web server

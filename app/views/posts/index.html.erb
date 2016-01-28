@@ -1,30 +1,34 @@
 <% content_for :sidebar do %>
+ <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+  <div align="center">
+  <%= button_to "Add new post", new_post_path, :method => :get %>
+  </div>
+<% end %>
   <%= render "sidebars/members" %>
   <%= render "sidebars/blog" %>
 <% end %>
 
 <h1>Devil Dog Squadron Bulletin Board</h1>
 
-<p>Most Recent</p>
-
+<div class="pagination-nav"><%= will_paginate @posts %></div>
 <hr />
 
 <% @posts.each do |post| %>
 
-    <h1 class="post"><%= link_to post.title, post %></h1>
-    <p><%= simple_format(post.content) %></p>
-    <p class="post_parameters"><%= post.created_at.strftime("%B %d, %Y") %> | Categories: 
+    <h1><%= post.title %></h1>
+    <% if post.content.length > 220 %>
+         <%= markdown truncate(post.content, :length => 220, :separator => ' ') %> <em><%= link_to "Read More", post %></em>
+      <% else %>
+        <%= markdown post.content %>
+      <% end %>
+    <p><em><%= post.created_at.strftime("%B %d, %Y") %> | Category: 
     
     <% post.categories.each do |category| %>
       <%= category.name %> 
     <%end %>
-     | posted by: <% if post.user_id? %><%= post.user.member.first_name %> <%= post.user.member.last_name.first %>.<% end %></p>
+     | posted by: <% if post.user_id? %><%= post.user.member.first_name %> <%= post.user.member.last_name.first %>.<% end %></em></p>
     <%#= link_to 'Edit', edit_post_path(post) %>
     <%#= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete %>
     <hr />
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Post', new_post_path %>
+<div class="pagination-nav"><%= will_paginate @posts %></div>
