@@ -5,9 +5,11 @@
 <p><%= markdown @post.content %></p>
 
 <p>This entry was posted on <%= @post.created_at.strftime("%B %d, %Y") %> by <% if @post.user_id? %><%= @post.user.member.first_name %> <%= @post.user.member.last_name.first %><% end %>. It was filed under 
-    <% @post.categories.each do |category| %>
-      <%= category.name %> 
+    <% @post.categories.each_with_index do |category, i| %>
+      <% if i > 0 %> and <% end %>
+      <em><%= category.name %></em> 
     <%end %>
+
 </p>
 
 <% if signed_in?%>

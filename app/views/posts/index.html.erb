@@ -19,11 +19,13 @@
     <% if post.content.length > 220 %>
          <%= markdown truncate(post.content, :length => 220, :separator => ' ') %> <em><%= link_to "Read More", post %></em>
       <% else %>
-        <%= markdown post.content %>
+        <%= markdown post.content %><br />
+        <em><%= link_to "View", post %></em>
       <% end %>
-    <p><em><%= post.created_at.strftime("%B %d, %Y") %> | Category: 
+    <p><em><%= post.created_at.strftime("%B %d, %Y") %> | <% if post.categories.size > 1 %> Categories<% else %> Category<% end %>: 
     
-    <% post.categories.each do |category| %>
+    <% post.categories.each_with_index do |category, i| %>
+      <% if i > 0 %>, <% end %>
       <%= category.name %> 
     <%end %>
      | posted by: <% if post.user_id? %><%= post.user.member.first_name %> <%= post.user.member.last_name.first %>.<% end %></em></p>
