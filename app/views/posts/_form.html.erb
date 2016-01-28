@@ -11,13 +11,20 @@
     </div>
   <% end %>
 
+  <h3>Post Categories:</h3>
+  <div class="indent_row">
+    <%= f.fields_for :categories do |builder| %>
+      <%= render "categories", :f => builder %>
+    <% end %>
+  </div>
+<div class="clearer"></div>
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title, :size => '50' %>
   </div>
   <div class="field">
     <%= f.label :content %><br />
-    <%= f.text_area :content, :cols => '75' %>
+    <%= f.text_area :content, :cols => '50' %>
   </div>
   <div class="field">
     <%=f.hidden_field :user_id, :value => @user.id %>

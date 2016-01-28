@@ -1,0 +1,15 @@
+    <% @categories.each.each_with_index do |category, i| %>
+    <% if i == 0 %>
+      <div class="cell">
+    <% end %>
+      <%= check_box_tag('category_list[]', category.id, @post.categories.collect {|obj| obj.id}.include?(category.id)) %><%= category.name %><br />
+    <% if i == 2 %>
+      </div>
+      <div class="cell">
+    <% end %>
+    <% if i == 5 %>
+      </div>
+      <div class="cell">
+    <% end %>
+    <% end %>
+      </div>

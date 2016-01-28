@@ -3,7 +3,9 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.ordered.all
+
+    require 'will_paginate/array'
+    @posts = Post.ordered.paginate :page => params[:page], :per_page => 10
     @user = current_user
 
     respond_to do |format|
@@ -28,6 +30,7 @@ class PostsController < ApplicationController
   # GET /posts/new.json
   def new
     @post = Post.new
+    @categories = Category.find(:all)
     @user = current_user
 
     respond_to do |format|
@@ -39,6 +42,7 @@ class PostsController < ApplicationController
   # GET /posts/1/edit
   def edit
     @post = Post.find(params[:id])
+    @categories = Category.find(:all)
     @user = current_user
   end
 
@@ -46,6 +50,19 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(params[:post])
+
+    @categories = Category.find(:all)
+
+    checked_categories = []
+    checked_params = params[:category_list] || []
+    for check_box_id in checked_params
+      category = Category.find(check_box_id)
+      if not @post.categories.include?(category)
+        @post.categories << category
+      end
+      checked_categories << category
+    end
+
 
     respond_to do |format|
       if @post.save
@@ -62,6 +79,25 @@ class PostsController < ApplicationController
   # PUT /posts/1.json
   def update
     @post = Post.find(params[:id])
+
+     @categories = Category.find(:all)
+
+    checked_categories = []
+    checked_params = params[:category_list] || []
+    for check_box_id in checked_params
+      category = Category.find(check_box_id)
+      if not @post.categories.include?(category)
+        @post.categories << category
+      end
+      checked_categories << category
+    end
+    missing_categories = @categories - checked_categories
+    for category in missing_categories
+      if @post.categories.include?(category)
+        @post.categories.delete(category)
+      end
+    end
+
 
     respond_to do |format|
       if @post.update_attributes(params[:post])

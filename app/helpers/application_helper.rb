@@ -21,4 +21,10 @@ module ApplicationHelper
     link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")")
   end
 
+def markdown(text)
+  markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, :tables => true, :strikethrough => true, :fenced_code_blocks => true, :no_intra_emphasis => true)
+  return markdown.render(text).html_safe
+end
+
+
 end
