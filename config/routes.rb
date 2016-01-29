@@ -1,5 +1,7 @@
 DdsApp::Application.routes.draw do
 
+  resources :safety_items
+
   resources :dues_payments
 
   resources :product_photos

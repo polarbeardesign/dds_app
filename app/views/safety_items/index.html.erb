@@ -1,0 +1,14 @@
+<h1>Listing Safety Submissions</h1>
+
+
+<% @safety_items.each do |safety_item| %>
+    <h2><%= safety_item.subject %> - <%= safety_item.created_at %></h2>
+    <p><%= safety_item.contents %></p>
+    <p><%= safety_item.resolution %></p>
+    <p><%= safety_item.resolved %></p>
+    <p><%= link_to 'Show', safety_item %> | 
+       <%= link_to 'Edit', edit_safety_item_path(safety_item) %> | 
+       <%= link_to 'Destroy', safety_item, :confirm => 'Are you sure?', :method => :delete %></p>
+  <hr />
+<% end %>
+
