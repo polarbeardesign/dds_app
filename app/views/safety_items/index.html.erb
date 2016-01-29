@@ -6,9 +6,16 @@
     <p><%= safety_item.contents %></p>
     <p><%= safety_item.resolution %></p>
     <p><%= safety_item.resolved %></p>
-    <p><%= link_to 'Show', safety_item %> | 
-       <%= link_to 'Edit', edit_safety_item_path(safety_item) %> | 
-       <%= link_to 'Destroy', safety_item, :confirm => 'Are you sure?', :method => :delete %></p>
+    <p><%= link_to 'Show', safety_item %>
+
+<% if signed_in?%>
+    <% if current_user.roles.any? {|role| role.name == "safety_officer" or role.name == "admin" } %>
+        | <%= link_to 'Edit', edit_safety_item_path(safety_item) %> | 
+       <%= link_to 'Destroy', safety_item, :confirm => 'Are you sure?', :method => :delete %>
+    <% end %>
+<% end %>
+
+</p>
   <hr />
 <% end %>
 

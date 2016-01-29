@@ -20,7 +20,7 @@
     <%= f.text_area :contents, :size => '50x10' %>
   </div>
 
- <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+<% if current_user.roles.any? {|role| role.name == "safety_officer" or role.name == "admin" } %>
   <div class="field">
     <%= f.label :resolution %><br />
     <%= f.text_area :resolution, :size => '50x10'  %>
@@ -29,7 +29,7 @@
     <%= f.label :resolved %><br />
     <%= f.check_box :resolved %>
   </div>
-  <% end %>
+<% end %>
 
   <div class="actions">
     <%= f.submit %>
