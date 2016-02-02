@@ -28,6 +28,6 @@
     <%= f.check_box :correct %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :data => { :disable_with => "Submitting..." } %>
   </div>
 <% end %>

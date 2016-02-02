@@ -1,0 +1,37 @@
+<%= form_for(@safety_item) do |f| %>
+  <% if @safety_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@safety_item.errors.count, "error") %> prohibited this safety_item from being saved:</h2>
+
+      <ul>
+      <% @safety_item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :subject %><br />
+    <%= f.text_field :subject, :size => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label :contents %><br />
+    <%= f.text_area :contents, :size => '50x10' %>
+  </div>
+
+<% if current_user.roles.any? {|role| role.name == "safety_officer" or role.name == "admin" } %>
+  <div class="field">
+    <%= f.label :resolution %><br />
+    <%= f.text_area :resolution, :size => '50x10'  %>
+  </div>
+  <div class="field">
+    <%= f.label :resolved %><br />
+    <%= f.check_box :resolved %>
+  </div>
+<% end %>
+
+  <div class="actions">
+    <%= f.submit :data => { :disable_with => "Submitting..." } %>
+  </div>
+<% end %>

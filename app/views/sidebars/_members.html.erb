@@ -10,5 +10,8 @@
   <li><%= link_to 'Password', edit_user_registration_path %></li>
 </ul>
 <p><%= link_to "Renew Membership Online", membership_path %></p>
+
+<%= button_to 'Submit Safety Concern', new_safety_item_path, :method => :get, :class => 'safety-button' %>
+
 <!-- Close right-column-box -->
 </div>

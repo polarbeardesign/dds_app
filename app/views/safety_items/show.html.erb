@@ -1,0 +1,25 @@
+
+<p>
+  <b>Subject:</b>
+  <%= @safety_item.subject %>
+</p>
+
+<p>
+  <b>Contents:</b>
+  <%= @safety_item.contents %>
+</p>
+
+<p>
+  <b>Resolution:</b>
+  <%= @safety_item.resolution %>
+</p>
+
+<p>
+  <b>Resolved:</b>
+  <%= @safety_item.resolved %>
+</p>
+
+<% if current_user.roles.any? {|role| role.name == "safety_officer" or role.name == "admin" } %>
+  <%= link_to 'Edit', edit_safety_item_path(@safety_item) %> | 
+<% end %>
+<%= link_to 'Back', safety_items_path %>

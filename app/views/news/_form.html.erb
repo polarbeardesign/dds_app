@@ -32,6 +32,6 @@
     <%= f.text_area :content, :rows => 20, :cols => 70 %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :data => { :disable_with => "Submitting..." } %>
   </div>
 <% end %>
