@@ -48,7 +48,7 @@ skip_before_filter :check_authorization, :check_authentication
 
     respond_to do |format|
       if @test_submission.save
-        format.html { redirect_to(@test_submission, :notice => 'If you are satisfied with your score click on the "Submit my Test" button. If you would like to make changes use your back button.') }
+        format.html { redirect_to(@test_submission, :notice => 'If you would like to make changes use your back button.') }
         format.xml  { render :xml => @test_submission, :status => :created, :location => @test_submission }
       else
         format.html { render :action => "new" }
