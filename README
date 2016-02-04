@@ -29,7 +29,7 @@ link:files/vendor/rails/actionpack/README.html.
 Versioning
 ---
 
-The Website uses papertrail to provide versioning to select models and diffy to illustrate changes.
+The Website uses PaperTrail to provide versioning to select models and diffy to illustrate changes.
 
 The following models marked with an (x) have model-specific versioning applied:
 
