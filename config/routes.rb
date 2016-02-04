@@ -1,6 +1,14 @@
 DdsApp::Application.routes.draw do
 
-  resources :safety_items
+  #resources :safety_items
+  resources :safety_items do
+    resources :versions, :only => [:destroy] do
+      member do
+        get 'diff', :to => 'safety_item_versions#diff'
+        put 'rollback', :to => 'safety_item_versions#rollback'
+      end
+    end
+  end
 
   resources :dues_payments
 

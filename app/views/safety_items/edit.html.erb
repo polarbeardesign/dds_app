@@ -4,3 +4,7 @@
 
 <%= link_to 'Show', @safety_item %> |
 <%= link_to 'Back', safety_items_path %>
+
+<% if current_user.roles.any? {|role| role.name == "safety_officer" or role.name == "admin"} %>
+  <%= render 'versions', :safety_item => @safety_item %>
+<% end %>
