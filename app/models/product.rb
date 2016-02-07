@@ -20,6 +20,6 @@ def total_value
   value + ship_handling
 end
 
-  scope :membership, where("products.id IN (15,16)")
+  scope :membership, where("products.id IN (15)")
 
 end
