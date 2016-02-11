@@ -69,7 +69,10 @@ class TripsController < ApplicationController
     
     respond_to do |format|
       if @trip.save
-        format.html { redirect_to @trip, :notice => 'Trip was successfully created.' }
+#       if email_notice == true
+          TripInfoNotifier.created(@trip).deliver
+#        end
+      format.html { redirect_to @trip, :notice => 'Trip was successfully created.' }
         format.json { render :json => @trip, :status => :created, :location => @trip }
       else
         format.html { render :action => "new", :event_id => @event.id }#render :action => "new" }
@@ -85,6 +88,9 @@ class TripsController < ApplicationController
 
     respond_to do |format|
       if @trip.update_attributes(params[:trip])
+#       if email_notice == true
+          TripInfoNotifier.change(@trip).deliver
+#        end
         format.html { redirect_to @trip, :notice => 'Trip was successfully updated.' }
         format.json { head :ok }
       else
