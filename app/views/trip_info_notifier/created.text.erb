@@ -1,0 +1,27 @@
+The following trip information for <%= @trip.event.title %> has been recorded on the website.
+
+Crew Arrival: <%= @trip.crew_arrival.strftime("%H:%M - %b %d, %Y") %>
+
+Tug Time: <%= @trip.tug_time.strftime("%H:%M - %b %d, %Y") %>
+
+Wheels up: <%= @trip.wheels_up.strftime("%H:%M - %b %d, %Y") %>
+
+Destination ETA: <%= @trip.destination_eta.strftime("%H:%M - %b %d, %Y") %>
+
+Return ETA: <%= @trip.return_eta.strftime("%H:%M - %b %d, %Y") %>
+
+Distance (nm): <%= @trip.event.location.one_way_distance %> | ~<%= (@trip.event.location.one_way_distance.to_f/185).round(1) %> hours
+
+Notes:
+<%= @trip.notes %>
+
+Roster:
+<% @trip.event.event_signups.ordered.each do |event_signup| %>
+  - <%= event_signup.member.last_name %>, <%= event_signup.member.first_name %> | <%= event_signup.commitment_level %>
+<% end %>
+
+You can view the details at <%= 'https://www.devildogsquadron.com' + event_path(@trip.event) %>.
+
+For any additional questions, please contact Operations Officer Beth Jenkins at (512) 869-1759.
+
+Devil Dog Squadron

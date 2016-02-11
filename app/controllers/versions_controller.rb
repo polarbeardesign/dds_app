@@ -1,4 +1,6 @@
 class VersionsController < ApplicationController
+
+
   def revert
     @version = Version.find(params[:id])
     @version.reify.save!
@@ -25,6 +27,5 @@ class VersionsController < ApplicationController
       @member = Member.find(params[:member_id])
       @version = @member.versions.find(params[:id])
     end
-
 
 end
