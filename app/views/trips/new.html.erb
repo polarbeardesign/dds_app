@@ -25,7 +25,9 @@ jQuery(function($){
   <%= render "events/event_details" %>
 <% end %>
 
-<h1>New trip</h1>
+<h1>New Trip: <%= @event.title %></h1>
+
+<p>After entering Crew Arrival time, Tug Time will auto fill for 30 minutes later and Wheels up for 30 minutes after Tug Time. Autofill values can be changed manually.</p>
 
 <%= render 'form' %>
 
