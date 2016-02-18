@@ -1,17 +1,21 @@
 <script>
 jQuery(function($){
 
-//   $('#trip_crew_arrival').blur(function() {
+// Fills in tug time (tt) and Wheels up (wt) 30 minutes and 60 minutes later respectively after crew time is input 
 
-//   var $origDate = Date($('#trip_crew_arrival'));
+  $('#trip_crew_arrival').blur(function() {
 
-//  alert($origDate);
-  
-//   $('#trip_tug_time').val( Date($origDate.getTime() + 30*60000));
+      var crewTime = new Date($('#trip_crew_arrival').val());
+      var tt = new Date(crewTime.getTime() + 30*60000);
+      var ttString = tt.getFullYear() + "-" + ("0"+(tt.getMonth()+1)).slice(-2) + "-" + ("0" + tt.getDate()).slice(-2) + " " +  ("0" + tt.getHours()).slice(-2) + ":" + ("0" + tt.getMinutes()).slice(-2)  + ":00";
+      var wt = new Date(crewTime.getTime() + 60*60000);
+      var wtString = wt.getFullYear() + "-" + ("0"+(wt.getMonth()+1)).slice(-2) + "-" + ("0" + wt.getDate()).slice(-2) + " " +  ("0" + wt.getHours()).slice(-2) + ":" + ("0" + wt.getMinutes()).slice(-2)  + ":00";
+      
+      $('#trip_tug_time').val(ttString);
+      $('#trip_wheels_up').val(wtString);
+      $('#trip_destination_eta').focus();
 
-//var newDateObj = new Date(oldDateObj.getTime() + diff*60000);
-//   $('#member_user_attributes_username').val($(this).val());
-});
+  });
 
 });
 </script>
