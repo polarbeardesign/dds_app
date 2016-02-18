@@ -3,11 +3,14 @@
 
 <% content_for :sidebar do %>
   <div align="center">
-  <%= link_to "AirNavLookup", "http://www.airnav.com/airports", :target => "_blank" %>
+  <%= button_to "AirNavLookup", "http://www.airnav.com/airports", :method => "post", :form =>{:target => '_blank'} %>
+  Look up airport info<br /> identifier, lat, lan, etc.
   </div>
 <% end %>
 
 <h1>Add New Location</h1>
+
+<p>Locations are used with/tied to events.</p>
 
 <%= render 'form' %>
 
