@@ -26,7 +26,7 @@
 <div class="indent_row">
   <div class="cell field">
       <%= f.label :icao_identifier, 'ICAO Identifier' %><br />
-      <%= f.text_field :icao_identifier, :size => 10 %>
+      <%= f.text_field :icao_identifier, :size => 10, :placeholder => 'KGTU' %>
   </div>
   <div class="cell field">
       <%= f.label :city %><br />
@@ -41,12 +41,14 @@
 <div class="indent_row">
   <div class="cell field">
       <%= f.label :latitude %><br />
-      <%= f.text_field :latitude, :size => 20 %>
+      <%= f.text_field :latitude, :size => 23, :placeholder => '30.6788056' %>
   </div>
   <div class="cell field">
       <%= f.label :longitude %><br />
-      <%= f.text_field :longitude, :size => 20 %>
+      <%= f.text_field :longitude, :size => 23, :placeholder => '-97.6793889' %>
   </div>
+<p class="form_tip">Latitude and Longitude are used to create google map view on event page. You can look up lat and lon for an airport using 
+<%= link_to "AirNavLookup", "http://www.airnav.com/airports", :target => "_blank" %> </p>
 </div>
 
 <div class="indent_row">
@@ -54,12 +56,13 @@
     <%= f.label :one_way_distance, "Distance from KGTU (nm)" %><br />
     <%= f.text_field :one_way_distance, :size => 20 %>
   </div>
+<p class="form_tip">Autofilled if lat and lon are input above</p>
 </div>
 
 <div class="indent_row">
   <div class="field">
     <%= f.label :description %><br />
-    <%= f.text_area :description, :size => "50x5" %>
+    <%= f.text_area :description, :size => "50x5", :placeholder => 'Any thing about this location worth noting' %>
   </div>
 </div>
 <div class="clearer"></div>
