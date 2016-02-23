@@ -24,7 +24,7 @@ class DuesPaymentsController < ApplicationController
   # GET /dues_payments/new
   # GET /dues_payments/new.json
   def new
-    @dues_payment = DuesPayment.new
+    @dues_payment = DuesPayment.new(:member_id=>params[:member])
 
     respond_to do |format|
       format.html # new.html.erb

@@ -139,7 +139,7 @@
         <%= render "dues_paid", :f => builder %> 
   <% end %>
 </table>
-[<%= link_to 'New Dues payment', new_dues_payment_path %>]
+[<%= link_to 'New Dues payment', new_dues_payment_path(:member => @member.id) %>]
 </div>
 <div class="clearer"></div>
 <hr />
