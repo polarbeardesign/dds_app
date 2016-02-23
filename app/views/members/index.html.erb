@@ -40,10 +40,10 @@
     <td><%= member.user.email %></td>
     <td><%= member.caf_join_date %></td>
     <td><% if !member.dues_payments.last.nil? %>
-    <% if member.dues_payments.last.date_paid < (Date.today - 1.year) %>
-      <span class="error"><%= member.dues_payments.last.date_paid %></span>
+    <% if member.dues_payments.most_recent.first.date_paid < (Date.today - 1.year) %>
+      <span class="error"><%= member.dues_payments.most_recent.first.date_paid %></span>
     <% else %>
-      <%= member.dues_payments.last.date_paid %>
+      <%= member.dues_payments.most_recent.first.date_paid %>
     <% end %>
     <% end %>
     </td>
@@ -79,7 +79,11 @@
     <td><%= member.user.email %></td>
     <td><%= member.caf_join_date %></td>
     <td><% if !member.dues_payments.last.nil? %>
-    <%= member.dues_payments.last.date_paid %>
+    <% if member.dues_payments.most_recent.first.date_paid < (Date.today - 1.year) %>
+      <span class="error"><%= member.dues_payments.most_recent.first.date_paid %></span>
+    <% else %>
+      <%= member.dues_payments.most_recent.first.date_paid %>
+    <% end %>
     <% end %>
     </td>
   </tr>
