@@ -2,6 +2,15 @@
 
 
 <% content_for :sidebar do %>
+<% if signed_in?%>
+    <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+         <div align="center">
+           <%= button_to 'New Event', new_event_path, :method => "GET" %>
+           <br /><%= link_to 'See All Events (History)', all_events_path %>
+         </div>
+    <% end %>
+<% end %>
+
   <%= render "sidebars/newsletter_signup" %>
 <% end %>
 
@@ -193,14 +202,6 @@
      <div class="cell" style="width: 25%; height: 2.5em;">&nbsp;</div>
        No scheduled maintenance events at this time. Winter maintenance starting daily ~9:00 am.
    </div>
-<% end %>
-
-<br />
-
-<% if signed_in?%>
-    <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
-       <%= link_to 'New Event', new_event_path %> | <%= link_to 'Past Events', all_events_path %>
-    <% end %>
 <% end %>
 
 
