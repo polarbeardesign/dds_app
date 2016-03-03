@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160204170915) do
+ActiveRecord::Schema.define(:version => 20160303044914) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -238,6 +238,18 @@ ActiveRecord::Schema.define(:version => 20160204170915) do
 
   add_index "photos", ["gallery_id", "photographer_id"], :name => "index_photos_on_gallery_id_and_photographer_id"
 
+  create_table "post_versions", :force => true do |t|
+    t.string   "item_type",       :null => false
+    t.integer  "item_id",         :null => false
+    t.string   "event",           :null => false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.string   "author_username"
+    t.datetime "created_at"
+  end
+
+  add_index "post_versions", ["item_type", "item_id"], :name => "index_post_versions_on_item_type_and_item_id"
+
   create_table "posts", :force => true do |t|
     t.string   "title"
     t.text     "content"
@@ -302,18 +314,6 @@ ActiveRecord::Schema.define(:version => 20160204170915) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "safety_item_versions", :force => true do |t|
-    t.string   "item_type",       :null => false
-    t.integer  "item_id",         :null => false
-    t.string   "event",           :null => false
-    t.string   "whodunnit"
-    t.text     "object"
-    t.string   "author_username"
-    t.datetime "created_at"
-  end
-
-  add_index "safety_item_versions", ["item_type", "item_id"], :name => "index_safety_item_versions_on_item_type_and_item_id"
 
   create_table "safety_items", :force => true do |t|
     t.string   "subject"

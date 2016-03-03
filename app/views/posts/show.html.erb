@@ -14,8 +14,12 @@
 
 <% if signed_in?%>
     <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+      
+      <%= render 'versions', :post => @post %><br />
+      
       <%= link_to 'Edit', edit_post_path(@post) %> |
     <% end %>
 <% end %>
+
 <%= link_to 'Back to Bulletin Board', posts_path %>
 

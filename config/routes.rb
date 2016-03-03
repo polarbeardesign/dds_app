@@ -67,8 +67,16 @@ devise_for :users, :skip => [:registrations]
 
   resources :terms
 
-  resources :posts
-
+  #resources :posts
+  resources :posts do
+    resources :versions, :only => [:destroy] do
+      member do
+        get 'diff', :to => 'post_versions#diff'
+        put 'rollback', :to => 'post_versions#rollback'
+      end
+    end
+  end
+  
   resources :categories
 
   resources :email_addresses
