@@ -20,12 +20,12 @@
 
 <table class="table_border">
   <tr>
-    <th style="min-width: 60px;">Col No.</th>
-    <th style="min-width: 150px;">Name</th>
-    <th style="min-width: 150px;">Location</th>
-    <th style="max-width: 150px;">Email</th>
-    <th style="min-width: 90px;">CAF Join Date</th>
-    <th style="min-width: 90px;">Last Dues Paid</th>
+    <th style="min-width: 60px;"><%= sortable 'caf_col_no', 'Col No.' %></th>
+    <th style="min-width: 150px;"><%= sortable 'last_name,first_name', 'Name' %></th>
+    <th style="min-width: 150px;"><%= sortable 'city, state', 'Location' %></th>
+    <th style="max-width: 150px;"><%= sortable 'email' %></th>
+    <th style="min-width: 90px;"><%= sortable 'caf_join_date', 'CAF Join Date' %></th>
+    <th style="min-width: 90px;"><%= sortable 'date_paid', 'Last Dues Paid'  %></th>
   </tr>
 
 <% @active_members.each do |member| %>
@@ -40,7 +40,11 @@
     <td><%= member.user.email %></td>
     <td><%= member.caf_join_date %></td>
     <td><% if !member.dues_payments.last.nil? %>
-    <%= member.dues_payments.last.date_paid %>
+    <% if member.dues_payments.most_recent.first.date_paid < (Date.today - 1.year) %>
+      <span class="error"><%= member.dues_payments.most_recent.first.date_paid %></span>
+    <% else %>
+      <%= member.dues_payments.most_recent.first.date_paid %>
+    <% end %>
     <% end %>
     </td>
 
@@ -75,7 +79,11 @@
     <td><%= member.user.email %></td>
     <td><%= member.caf_join_date %></td>
     <td><% if !member.dues_payments.last.nil? %>
-    <%= member.dues_payments.last.date_paid %>
+    <% if member.dues_payments.most_recent.first.date_paid < (Date.today - 1.year) %>
+      <span class="error"><%= member.dues_payments.most_recent.first.date_paid %></span>
+    <% else %>
+      <%= member.dues_payments.most_recent.first.date_paid %>
+    <% end %>
     <% end %>
     </td>
   </tr>

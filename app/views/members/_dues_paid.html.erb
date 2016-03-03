@@ -1,9 +1,11 @@
-<% if !@dues_payments.nil? %>
-    <tr>
-      <td><%= link_to @dues_payments.date_paid, dues_payment_path(@dues_payments) %></td>
-      <td><%= @dues_payments.payment_method %></td>
-      <td><%= @dues_payments.payment_type %></td>
-      <td><%= number_to_currency(@dues_payments.amt_paid) %></td>
-      <td><%= @dues_payments.notes %></td>
-    </tr>
+<% if !@member.dues_payments.nil? %>
+  <% @member.dues_payments.each do |dues_payment| %>
+      <tr>
+        <td><%= link_to dues_payment.date_paid, dues_payment_path(dues_payment) %></td>
+        <td><%= dues_payment.payment_method %></td>
+        <td><%= dues_payment.payment_type %></td>
+        <td><%= number_to_currency(dues_payment.amt_paid) %></td>
+        <td><%= dues_payment.notes %></td>
+      </tr>
+  <% end %>
 <% end %>
