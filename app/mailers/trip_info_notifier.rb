@@ -14,10 +14,14 @@ class TripInfoNotifier < ActionMailer::Base
       end
     end
 
+      if Rails.env.production?
       mail :to => email_addresses,
            :cc => 'info@devildogsquadron.com', 
            :subject => 'Devil Dog Trip Info: ' + @trip.event.title
-  
+      else
+        mail :to => 'jim@polarbeardesign.net', 
+             :subject => event_signup.event.title + ' Sign Up Received --WEBSITE TEST'
+      end  
   end
 
   def change(trip)
@@ -33,10 +37,15 @@ class TripInfoNotifier < ActionMailer::Base
       end
     end
 
+      if Rails.env.production?
       mail :to => email_addresses,
            :cc => 'info@devildogsquadron.com', 
            :subject => 'Devil Dog Trip Update: ' + @trip.event.title
-  
+      else
+        mail :to => 'jim@polarbeardesign.net', 
+             :subject => event_signup.event.title + ' Sign Up Received --WEBSITE TEST'
+      end    
+
   end
 
 end
