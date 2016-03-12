@@ -28,10 +28,10 @@ Current Roster:
 <% @event_signup.event.event_signups.ordered.each do |event_signup| %>
   - <%= event_signup.member.last_name %>, <%= event_signup.member.first_name %> | <%= event_signup.commitment_level %>
 <% end %>
+
 <% else %>
 
 You will be notified of schedule information as it becomes available for this trip.
-<% end %>
 <% end %>
 
 If you need to make a change to your commitment level or cancel, return to <%= 'http://www.devildogsquadron.com' + event_path(@event_signup.event) %> and make your change.
