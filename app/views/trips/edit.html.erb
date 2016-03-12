@@ -12,3 +12,5 @@
 
 <%= link_to 'Show', @trip %> |
 <%= link_to 'Back', trips_path %>
+
+<div style="text-align: right;"><%= link_to 'Delete', @trip, :confirm => 'Are you sure?', :method => :delete %></div>

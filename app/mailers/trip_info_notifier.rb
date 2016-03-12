@@ -20,7 +20,7 @@ class TripInfoNotifier < ActionMailer::Base
            :subject => 'Devil Dog Trip Info: ' + @trip.event.title
       else
         mail :to => 'jim@polarbeardesign.net', 
-             :subject => event_signup.event.title + ' Sign Up Received --WEBSITE TEST'
+             :subject => 'Devil Dog Trip Info: ' + @trip.event.title
       end  
   end
 
@@ -43,7 +43,7 @@ class TripInfoNotifier < ActionMailer::Base
            :subject => 'Devil Dog Trip Update: ' + @trip.event.title
       else
         mail :to => 'jim@polarbeardesign.net', 
-             :subject => event_signup.event.title + ' Sign Up Received --WEBSITE TEST'
+             :subject => 'Devil Dog Trip Update: ' + @trip.event.title
       end    
 
   end
