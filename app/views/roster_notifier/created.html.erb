@@ -1,3 +1,5 @@
+<% map_url = "http://maps.googleapis.com/maps/api/staticmap?zoom=9&size=350x250&maptype=roadmap&markers=color:red%7Clabel:X%7C"+@event_signup.event.location.latitude+","+@event_signup.event.location.longitude+"&sensor=false" %>
+
 <p style="font-size: 14pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;"><%= @event_signup.member.first_name %>, </p>
 
 <p style="font-size: 14pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;">Your <%= @event_signup.event.title %> Sign Up has been recorded on the website.</p>
@@ -5,9 +7,9 @@
 <div style="margin-left: 20px;">
 <p style="font-size: 14pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;">Event: <strong><%= @event_signup.event.title %></strong></p>
 <% if @event_signup.event.start.strftime("%b %d" ) == @event_signup.event.end.strftime("%b %d") %>
-    <p style="font-size: 14pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;">Dates: <strong><%= @event_signup.event.start.strftime("%b. %d, %Y") %></strong></p>,
+    <p style="font-size: 14pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;">Dates: <strong><%= @event_signup.event.start.strftime("%b. %d, %Y") %></strong></p>
 <% else %>
-    <p style="font-size: 14pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;">Dates: <strong><%= @event_signup.event.start.strftime("%b %d") %> - <%= @event_signup.event.end.strftime("%b %d, %Y") %>,</strong></p> 
+    <p style="font-size: 14pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;">Dates: <strong><%= @event_signup.event.start.strftime("%b %d") %> - <%= @event_signup.event.end.strftime("%b %d, %Y") %></strong></p> 
 <% end %>
 <p style="font-size: 14pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;">Commitment Level: <strong><%= @event_signup.commitment_level %></strong></p>
 </div>
@@ -59,6 +61,12 @@
 <% else %>
 <p style="font-size: 14pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;">You will be notified of schedule information as it becomes available for this trip.</p>
 <% end %>
+
+<p style="font-size: 14pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;">Location:</p>
+
+  <% if @event_signup.event.location.latitude? %>
+    <div style="margin-left: 20px"><%= link_to image_tag(map_url), "http://maps.google.com/maps?q="+@event_signup.event.location.latitude+",+"+@event_signup.event.location.longitude, :target => "_blank" %></div>
+  <% end %>
 
 <p style="font-size: 14pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;">If you need to make a change to your commitment level or cancel, return to <%= 'http://www.devildogsquadron.com' + event_path(@event_signup.event) %> and make your change.</p>
 
