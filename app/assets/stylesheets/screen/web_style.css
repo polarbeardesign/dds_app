@@ -39,35 +39,9 @@ body {
         width: 900px;
         }
 
-th .current {
-  padding-right: 18px;
-  background-repeat: no-repeat;
-  background-position: right center;
+.table_border th {
+cursor: pointer;
 }
-
-th .asc {
-  margin: 0 0 0 0;
-  background-image: url(/assets/triangle_up.gif);
-}
-
-th .desc {
-  background-image: url(/assets/triangle_down.gif);
-}
-
-th a:link {
-        color: #fff;
-        /*text-decoration: none;*/
-        }
-
-th a:visited {
-        color: #fff;
-        /*text-decoration: none;*/
-        }
-
-th a:hover {
-        color: #b78d0b;
-        /*text-decoration: underline;*/
-        }
 
 
 /* LOGO / HEADER CONTAINER */
