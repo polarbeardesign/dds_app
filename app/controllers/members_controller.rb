@@ -4,8 +4,8 @@ class MembersController < ApplicationController
   helper_method :sort_column, :sort_direction
   
   def index
-    @active_members = Member.active.order(sort_column + " " + sort_direction)
-    @inactive_members = Member.order(params[:sort])
+    @active_members = Member.active.ordered
+    @inactive_members = Member.inactive.ordered
     
     
     respond_to do |format|

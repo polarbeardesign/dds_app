@@ -2,6 +2,24 @@
   $(function() {
     $( "#tabs" ).tabs();
   });
+
+  $(function() {
+$('th').click(function(){
+    var table = $(this).parents('table').eq(0)
+    var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()))
+    this.asc = !this.asc
+    if (!this.asc){rows = rows.reverse()}
+    for (var i = 0; i < rows.length; i++){table.append(rows[i])}
+})
+function comparer(index) {
+    return function(a, b) {
+        var valA = getCellValue(a, index), valB = getCellValue(b, index)
+        return $.isNumeric(valA) && $.isNumeric(valB) ? valA - valB : valA.localeCompare(valB)
+    }
+}
+function getCellValue(row, index){ return $(row).children('td').eq(index).html() }
+  });
+
 </script>
 
 <div class="members-list">
@@ -19,19 +37,27 @@
 <h2>Active Members</h2>
 
 <table class="table_border">
+<thead>
   <tr>
-    <th style="min-width: 60px;"><%= sortable 'caf_col_no', 'Col No.' %></th>
-    <th style="min-width: 150px;"><%= sortable 'last_name,first_name', 'Name' %></th>
-    <th style="min-width: 150px;"><%= sortable 'city, state', 'Location' %></th>
-    <th style="max-width: 150px;"><%= sortable 'email' %></th>
-    <th style="min-width: 90px;"><%= sortable 'caf_join_date', 'CAF Join Date' %></th>
-    <th style="min-width: 90px;"><%= sortable 'date_paid', 'Last Dues Paid'  %></th>
+    <th>Col No.</th>
+    <th style="min-width: 150px;">Name</th>
+    <th style="min-width: 150px;">Location</th>
+    <th style="max-width: 150px;">email</th>
+    <th style="min-width: 90px;">CAF Join Date</th>
+    <th style="min-width: 90px;">Last Dues Paid</th>
   </tr>
-
+</thead>
+<tbody>
 <% @active_members.each do |member| %>
   <tr class="<%= cycle('odd_row', 'even_row') %>">
-    <td><%= member.caf_col_no %></td>
-    <td><%= link_to member.last_name+", "+member.first_name, edit_member_path(member) %></td>
+    <td>
+      <% if !member.caf_col_no.nil? %>
+        <%= link_to member.caf_col_no, edit_member_path(member) %>
+      <% else %>
+        <%= link_to 'n/a', edit_member_path(member) %>
+      <% end %>
+    </td>
+    <td><%=  member.last_name+", "+member.first_name %></td>
     <% if member.city? %>
       <td><%= member.city+", "+member.state %></td>
     <% else %>
@@ -50,6 +76,7 @@
 
   </tr>
 <% end %>
+</tbody>
 </table>
 
 </div>
@@ -59,18 +86,24 @@
 
 <table class="table_border">
   <tr>
-    <th style="min-width: 50px;">Col No.</th>
+    <th style="min-width: 60px;">Col No.</th>
     <th style="min-width: 150px;">Name</th>
     <th style="min-width: 150px;">Location</th>
-    <th>Email</th>
-    <th>Join Date</th>
+    <th style="max-width: 150px;">email</th>
+    <th style="min-width: 90px;">CAF Join Date</th>
     <th style="min-width: 90px;">Last Dues Paid</th>
   </tr>
 
 <% @inactive_members.each do |member| %>
   <tr class="<%= cycle('odd_row', 'even_row') %>">
-    <td><%= member.caf_col_no %></td>
-    <td><%= link_to member.last_name+", "+member.first_name, edit_member_path(member) %></td>
+    <td>
+      <% if !member.caf_col_no.nil? %>
+        <%= link_to member.caf_col_no, edit_member_path(member) %>
+      <% else %>
+        <%= link_to 'n/a', edit_member_path(member) %>
+      <% end %>
+    </td>
+    <td><%=  member.last_name+", "+member.first_name %></td>
     <% if member.city? %>
       <td><%= member.city+", "+member.state %></td>
     <% else %>

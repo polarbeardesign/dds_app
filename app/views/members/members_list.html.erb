@@ -1,3 +1,23 @@
+<script>
+  $(function() {
+$('th').click(function(){
+    var table = $(this).parents('table').eq(0)
+    var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()))
+    this.asc = !this.asc
+    if (!this.asc){rows = rows.reverse()}
+    for (var i = 0; i < rows.length; i++){table.append(rows[i])}
+})
+function comparer(index) {
+    return function(a, b) {
+        var valA = getCellValue(a, index), valB = getCellValue(b, index)
+        return $.isNumeric(valA) && $.isNumeric(valB) ? valA - valB : valA.localeCompare(valB)
+    }
+}
+function getCellValue(row, index){ return $(row).children('td').eq(index).html() }
+  });
+
+</script>
+
 <% content_for :sidebar do %>
 <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
   <div align="center">
@@ -19,17 +39,7 @@
 
 <% @members.each do |member| %>
   <tr class="<%= cycle('odd_row', 'even_row') %>">
-    <td>
-    
-    <% if signed_in?%>
-      <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
-        <%= link_to member.last_name+", "+member.first_name, edit_member_path(member) %>
-      <% else %>
-        <%= member.last_name+", "+member.first_name %>
-      <% end %>
-    <% end %>
-    
-    </td>
+    <td><%= member.last_name+", "+member.first_name %></td>
     <% if member.city? %>
       <td><%= member.city+", "+member.state %></td>
     <% else %>
