@@ -237,6 +237,9 @@ div.clearer {
         margin: 20px 10px 30px 10px;
         background: #fff;
         border: 1px solid #999999;
+         border-radius: 5px;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
         }
 
 .right-column-box h1 {
@@ -251,7 +254,7 @@ div.clearer {
         -webkit-border-radius: 3px 3px 0px 0px;
         height: 24px;
         margin: 0 auto;
-        padding: 0px 0px 0px 4px;
+        padding: 0.25em 0.5em;
         font-family: Verdana, Helvetica, sans-serif;
         font-size: 14px;
         color: #fff;
@@ -263,7 +266,7 @@ div.clearer {
         font-size: 12px;
         color: #333333;
         line-height: 1.6;
-        padding: 2px 4px 0px 4px;
+        padding: 0.25em 0.5em;
         }
 
 /* -------------------------------- */
