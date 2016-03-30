@@ -240,7 +240,15 @@ div.clearer {
         }
 
 .right-column-box h1 {
-        background:  url("/assets/home_page_box_hdr.png") no-repeat top left;
+         /*background:  url("/assets/home_page_box_hdr.png") no-repeat top left;*/
+        background: #52782a; /* Old browsers */
+        background: -moz-linear-gradient(top,  #52782a 0%, #2f2f2f 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top,  #52782a 0%,#2f2f2f 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom,  #52782a 0%,#2f2f2f 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#52782a', endColorstr='#2f2f2f',GradientType=0 ); /* IE6-9 */
+        border-radius: 3px 3px 0px 0px;
+        -moz-border-radius: 3px 3px 0px 0px;
+        -webkit-border-radius: 3px 3px 0px 0px;
         height: 24px;
         margin: 0 auto;
         padding: 0px 0px 0px 4px;
@@ -287,10 +295,17 @@ div.clearer {
         }
 
 .row-container h1 {
-        background:  url("/assets/home_page_box_hdr.png") no-repeat top left;
-        height: 24px;
+        /*background:  url("/assets/home_page_box_hdr.png") no-repeat top left;*/
+        background: #52782a; /* Old browsers */
+        background: -moz-linear-gradient(top,  #52782a 0%, #2f2f2f 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top,  #52782a 0%,#2f2f2f 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom,  #52782a 0%,#2f2f2f 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#52782a', endColorstr='#2f2f2f',GradientType=0 ); /* IE6-9 */
+        border-radius: 3px 3px 0px 0px;
+        -moz-border-radius: 3px 3px 0px 0px;
+        -webkit-border-radius: 3px 3px 0px 0px;
         margin: 0 auto;
-        padding: 0px 0px 0px 4px;
+        padding: 0.25em 0.5em;
         margin-bottom: 0px;
         font-family: Verdana, Helvetica, sans-serif;
         font-size: 16px;
@@ -327,6 +342,9 @@ div.clearer {
         margin: 0px 0px 10px 5px;
         background: #fff;
         border: 1px solid #999;
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
         }
 
 .home-right-box {
@@ -336,6 +354,9 @@ div.clearer {
         margin: 0px 0px 10px 5px;
         background: #fff;
         border: 1px solid #999;
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
         }
 
 /* ------------- */
