@@ -2,19 +2,20 @@
 
 <h1>Calendar</h1>
 
-<table width="180" class="table_border">
-  <tr>
-    <th>Date</th>
-    <th>Title</th>
-  </tr>
-
 <% @events.each do |event| %>
-  <tr class="<%= cycle('odd_row', 'even_row') %>">
-    <td><%= event.start.strftime("%b %d, %y") %></td>
-    <td><%= link_to event.title, event %></td>
-  </tr>
+<div style="display: block; clear: both; margin: 1em 0.25em;-webkit-box-shadow: 0px 1px 2px 0px rgba(171,171,171,1);
+-moz-box-shadow: 0px 1px 2px 0px rgba(171,171,171,1);box-shadow: 0px 1px 2px 0px rgba(171,171,171,1);">
+<div style="display: inline-block;">
+    <div class="calendar-ii" style="margin: 0.25em 0.25em 0.25em 0;float: none; display: inline-block; ">
+      <div class="calendar_month-ii"><%= event.start.strftime("%b") %></div>
+      <div class="calendar_date-ii"><%= event.start.strftime("%d") %></div>
+    </div>
+</div>
+    <div style="display: inline-block;width: 70%;vertical-align: top;"><%= link_to event.title, event %></div>
+    
+</div>
 <% end %>
-</table>
+
 <div align="right"><%= link_to "See all calendar events...", calendar_path %></div>
 <!-- Close right-column-box -->
 </div>
