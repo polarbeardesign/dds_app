@@ -54,7 +54,7 @@ See <%= link_to "Officer Positions and descriptions", officer_positions_path %> 
     <% @officer_positions.each do |officer_position| %>
       <h3><%= officer_position.position_name %> <span class="tiny-text">- <em><%= officer_position.usual_term_length %>, <%= officer_position.usual_term_start %></em> start</span></h3>
       <ul>
-      <% officer_position.terms.past.each do |term| %>
+      <% officer_position.terms.past.time_ordered.each do |term| %>
       <li><%= term.member.first_name + ' ' + term.member.last_name %> | Term: <%= term.term_start.strftime("%b %d, %Y") %> - <%= term.term_end.strftime("%b %d, %Y") %></li>
       <% end %>
       </ul>

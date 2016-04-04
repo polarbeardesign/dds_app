@@ -10,4 +10,6 @@ scope :current, lambda {
 scope :past, lambda {
   where ("terms.term_start IS NOT NULL AND terms.term_end < ? "), (Date.today)
   }
+scope :time_ordered, order("terms.term_start DESC") 
+
 end
