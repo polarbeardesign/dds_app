@@ -18,51 +18,24 @@ Georgetown, TX 78628</div></p>
 
 <% @products.each do |product| %>
   <tr class=""> 
-    <td> <% if !product.photo_path.empty? %>
-           <%= image_tag 'sm_' + product.photo_path %>
-         <% end %>
-    </td>
-    <td><strong><%= product.name %></strong><br /><%= product.description %></td>
+    <td colspan="2" style="vertical-align: top;"><strong><%= product.name %></strong><br /><%= product.description %></td>
     <td>&nbsp;</td>
-    <td align="right"><%= number_to_currency(product.value) %><br />
-    S&amp;H:<%= number_to_currency(product.ship_handling) %><br /><strong>Total: <%= number_to_currency(product.total_value) %></strong>
+    <td align="right"><strong><%= number_to_currency(product.total_value) %></strong>
 
 <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-
-<% if product.sizes.first.size_short != "na" %> 
-<table class="table_nobrdr">
-		<tr>
-			<td>
-				<input type="hidden" name="on0" value="Size"><em><strong>Size:</strong></em>
-			</td>
-			<td>
-
-			  <%= select "size", "product", product.sizes.by_size.collect {|s| [s.size, s.size ]}, {:name => 
-"os0", :prompt => true}, {:name => 
-"os0"} %>
-              
-			</td>
-		</tr>
-	</table>	
-<% end %>
-<br />
-<input type="image" src="https://www.paypal.com//en_US/i/btn/sc-but-03.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
-<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-<input type="hidden" name="add" value="1">
-<input type="hidden" name="cmd" value="_cart">
-<input type="hidden" name="business" value="px_info@devildogsquadron.com">
-<input type="hidden" name="item_name" value="<%= product.name %>">
-<input type="hidden" name="item_number" value="<%= product.item_no %>">
-<input type="hidden" name="amount" value="<%= product.value %>">
-<input type="hidden" name="page_style" value="Primary">
-<input type="hidden" name="shipping" value="<%= product.ship_handling %>">
-<input type="hidden" name="no_shipping" value="2">
-<input type="hidden" name="no_note" value="1">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="3NCMKJQV6AYG4">
+<table>
+<tr><td><input type="hidden" name="on0" value="Options">Options</td></tr><tr><td><select name="os0">
+	<option value="Annual Dues">Annual Dues $75.00 USD</option>
+	<option value="Add $2 to cover CC fee">Add $2 to cover CC fee $77.00 USD</option>
+</select> </td></tr>
+</table>
 <input type="hidden" name="currency_code" value="USD">
-<input type="hidden" name="lc" value="US">
-<input type="hidden" name="bn" value="PP-ShopCartBF">
-
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 </form>
+
 </td>
 
   </tr>
@@ -74,7 +47,7 @@ Georgetown, TX 78628</div></p>
 
 <h2>Aircraft Sponsor</h2>
 
-<p>The highest level of aircraft support is the Aircraft Sponsor, who for a donation of $3,500 becomes a full sponsor of the aircraft and is eligible for selection as a pilot in command or other flight crew member, if they is qualified.</p>
+<p>The highest level of aircraft support is the Aircraft Sponsor, who for a donation of $3,500 becomes a full sponsor of the aircraft and is eligible for selection as a pilot in command or other flight crew member, if they are qualified.</p>
 
 <p>Many non-pilots choose to become Aircraft Sponsors to express their support of the  aircraft, realizing the expense of keeping them flying.</p>
 
