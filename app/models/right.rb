@@ -33,6 +33,7 @@ class Right < ActiveRecord::Base
     "rollback" => "UPDATE",
     "membership" => "READ",
     "all_events" => "READ",
+    "thank_you" => "READ",
     "supportcaf" => "READ",
     "twelve_planes" => "READ",
     "SN_44_86758" => "READ",
