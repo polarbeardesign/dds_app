@@ -16,6 +16,7 @@ class Right < ActiveRecord::Base
     "photo_viewer" => "READ",
     "account" => "READ",
     "account_edit" => "UPDATE",
+    "account_new" => "READ",
     "change_password" => "UPDATE",
     "signup" => "CREATE",
     "edit_signup" => "UPDATE",

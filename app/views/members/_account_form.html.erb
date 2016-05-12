@@ -92,11 +92,15 @@
   </div>
   <div class="cell field">
     <%= f.label :dd_dues_date, "Dues Date" %><br />
-    <%= @member.dd_dues_date %>
+    <%= @member.dues_payments.last.date_paid %>
   </div>
   <div class="cell field">
     <%= f.label :active %><br />
-    <%= @member.active %>
+    <% if @member.active == true %>
+      <div style="font-size: 1.3em;text-align: center;"><i class="icon-check"></i></div>
+    <% else %>
+      <div style="font-size: 1.3em;text-align: center;"><i class="icon-check-empty"></i></div>
+    <% end %>
   </div>
 </div>
 <p class="form_tip">Dues date may not be accurate - currently updating.</p>  

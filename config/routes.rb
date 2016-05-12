@@ -173,6 +173,8 @@ devise_for :users, :skip => [:registrations]
   match 'account/:id' => 'members#account', :as => :account
   
   match 'account_edit/:id' => 'members#account_edit', :as => :account_edit
+  
+  match 'account_new' => 'members#account_new', :as => :account_new
 
   match 'change_password/:id' => 'users#change_password', :as => :change_password
 
