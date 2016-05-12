@@ -20,6 +20,8 @@ class EventSignup < ActiveRecord::Base
   scope :airshow_ordered, joins(:event).merge(Event.ordered)
   
   scope :future, joins(:event).merge(Event.published)
+  
+  scope :trips, joins(:event).merge(Event.confirmed)
 
   validates_uniqueness_of :member_id, :scope => :event_id
 
