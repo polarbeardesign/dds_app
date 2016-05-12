@@ -80,6 +80,17 @@ class MembersController < ApplicationController
     end
   end
 
+  def account_new
+    @member = Member.new
+    user = @member.build_user
+    @roles = Role.find(:all)
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render :json => @member }
+    end
+  end
+
   # GET /members/1/edit
   def edit
     @member = Member.find(params[:id])
