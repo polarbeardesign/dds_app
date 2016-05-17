@@ -214,7 +214,7 @@
   <% if email_addresses == "" %>
     <% email_addresses = email_addresses + event_signup.member.user.email %>
   <% else %>
-    <% email_addresses = email_addresses + "," + event_signup.member.user.email %>
+    <% email_addresses = email_addresses + ", " + event_signup.member.user.email %>
   <% end %>
 <% end %>
 </table>
