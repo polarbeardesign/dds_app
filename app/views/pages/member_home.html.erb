@@ -1,4 +1,7 @@
 <% total_traveled = 0 %>
+<% counter = 1 %>
+<% year = "" %>
+<% grand_counter = 0 %>
 
 <% content_for :sidebar do %>
   <%= render "sidebars/members" %>
@@ -20,22 +23,45 @@ No upcoming trips currently scheduled.
 <% end %>
 <% end %>
 
-<h2>Trip History:</h2>
-<ol>
+<h2>Trips History:</h2>
+<table class="table_border">
+<tr>
+  <th></th>
+  <th>Event</th>
+  <th>Date</th>
+  <th>N. Miles</th>
+</tr>
 <% @member.event_signups.trips.reverse.each do |sign_up| %>
     
     <% if sign_up.commitment_level == "Definite" %>
 
     <% if sign_up.event.start < Time.zone.now %>
+    <% if sign_up.event.start.strftime("%Y") != year %>
+			<tr>
+				<td colspan=4 align="center"><strong><em><%= sign_up.event.start.strftime("%Y") %></em></strong></td>
+			</tr>
+			<% counter = 1 %>
+    <% end %>
 
+  <tr class="<%= cycle('odd_row', 'even_row') %>">
+        <td align="right"><%= counter %>.</td>
+        <td><%= link_to sign_up.event.title, event_path(sign_up.event) %></td>
+        <td><%= sign_up.event.start.strftime("%b %d, %Y") %></td>
+        <td align="right"><%= (sign_up.event.location.one_way_distance * 2) %></td>
+</tr>
         <% if !sign_up.event.location.one_way_distance.blank? %>
             <% total_traveled = (sign_up.event.location.one_way_distance * 2) + total_traveled %>
         <% end %>
-        <li><%= link_to sign_up.event.title, event_path(sign_up.event) %> | <%= sign_up.event.start.strftime("%b %d, %Y") %></li>
+        <% counter = counter + 1 %>
+        <% grand_counter = grand_counter + 1 %>
+        <% year = sign_up.event.start.strftime("%Y") %>
 
     <% end %>
     <% end %>
     
 <% end %>
-</ol>
-<p>Total Traveled: <strong><%= number_with_delimiter(total_traveled) %> nm</strong></p>
+<tr>
+  <td colspan=4 align="right"><%= grand_counter %> Total Trips Traveled: <strong><%= number_with_delimiter(total_traveled) %> nm</strong></td>
+</tr>
+
+</table>

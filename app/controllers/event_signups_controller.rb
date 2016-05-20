@@ -24,8 +24,8 @@ class EventSignupsController < ApplicationController
   end
 
   def frequent_flyer_detail
-    @event_signups = EventSignup.search(params[:search])
-
+    @event_signups = EventSignup.find_all_by_member_id(params[:member_id])
+    @member = Member.find_by_id(params[:member_id])
   end
 
   def manifest
