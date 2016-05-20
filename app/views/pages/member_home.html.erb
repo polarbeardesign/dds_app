@@ -31,7 +31,7 @@ No upcoming trips currently scheduled.
   <th>Date</th>
   <th>N. Miles</th>
 </tr>
-<% @member.event_signups.trips.reverse.each do |sign_up| %>
+<% @member.event_signups.trips.trips_ordered.reverse.each do |sign_up| %>
     
     <% if sign_up.commitment_level == "Definite" %>
 
