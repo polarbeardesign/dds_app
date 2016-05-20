@@ -23,6 +23,8 @@ class EventSignup < ActiveRecord::Base
   
   scope :trips, joins(:event).merge(Event.confirmed)
 
+  scope :trips_ordered, joins(:event).merge(Event.ordered)
+
   validates_uniqueness_of :member_id, :scope => :event_id
 
 #  acts_as_list :scope => :manifest_list, :column => :position
