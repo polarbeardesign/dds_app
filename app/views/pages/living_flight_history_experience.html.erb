@@ -2,7 +2,7 @@
 <div style="width: 220px; background: #fff; border: 1px solid #999;">
 <h2 style="background: #cc0000; color: #eee; margin: 0 0 0 0; padding: 0.75em;">Upcoming Flight Opportunities</h2>
 
-<p style="margin: 0.75em;">Rides booked in advance are <%= number_to_currency(@price.value, :precision => 0) %>, and <%= number_to_currency(@price.alt_value, :precision => 0) %> at the events.
+<p style="margin: 0.75em;">Rides booked in advance are <%= number_to_currency(@price.value, :precision => 0) %>, and normally <%= number_to_currency(@price.alt_value, :precision => 0) %> at the events (event pricing may vary).
 
 <table class="table_border">
 <% @rides.each do |ride| %>
