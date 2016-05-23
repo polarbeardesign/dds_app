@@ -13,7 +13,7 @@ class DuesPayment < ActiveRecord::Base
   }
 
   scope :past_due, lambda {
-  where ("dues_payments.date_paid IS NOT NULL AND dues_payments.date_paid < ?"), (Time.zone.now - 1.year)
+  where ("dues_payments.date_paid IS NOT NULL AND dues_payments.date_paid < ?"), (1.year.ago.to_date)
   }
 
 end
