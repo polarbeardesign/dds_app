@@ -6,7 +6,7 @@ class MembersController < ApplicationController
   def index
     @active_members = Member.active.ordered
     @inactive_members = Member.inactive.ordered
-    
+#    @chart_data = Member.find_by_sql("SELECT SUM(IF(`last_payment` >= (now() - interval 12 month),1,0)) AS `current`, SUM(IF(`last_payment` <= (now() - interval 12 month),1,0)) AS `past_due`, SUM(IF(`last_payment` IS NULL,1,0)) AS `no data` FROM (SELECT `members`.`id`, `active`, MAX(`date_paid`) AS `last_payment` FROM `members` LEFT JOIN `dues_payments` ON `members`.`id` = `member_id` WHERE `active` = 1 GROUP BY `members`.`id`) t ;")
     
     respond_to do |format|
       format.html {render :layout => "homepage" }

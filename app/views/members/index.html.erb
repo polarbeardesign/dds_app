@@ -22,10 +22,43 @@ function getCellValue(row, index){ return $(row).children('td').eq(index).html()
 
 </script>
 
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Status', 'Qty'],
+          ['Current',     <%= @active_members.dues_current.count %>],
+          ['Past Due',    <%= @active_members.dues_past.count %>],
+          ['No Info',  <%= dues_na = @active_members.count - (@active_members.dues_past.count + @active_members.dues_current.count) %>]
+        ]);
+
+        var options = {
+          title: 'Dues Status',
+          is3D: true,
+          backgroundColor: '#f0f0f0',
+          fontName: 'Verdana',
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
 <div class="members-list">
+<div class="indent_row">
+  <div class="cell">
 <h1>Members List Admin</h1>
 <p><%= link_to 'New Member', new_member_path %> | <%= link_to 'Export to CSV', members_path(:format => "csv")  %></p>
-
+  </div>
+  <div class="cell">
+<div id="piechart" style="width: 500px; height: 300px; float: right;"></div>
+  </div>
+</div>
+<div style="clear: both;"></div>
 <div id="tabs">
     <ul>
         <li><a href="#tabs-1"><strong>Active [<%= @active_members.count %>]</strong></a></li>
