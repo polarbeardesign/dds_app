@@ -30,13 +30,13 @@ function getCellValue(row, index){ return $(row).children('td').eq(index).html()
 
         var data = google.visualization.arrayToDataTable([
           ['Status', 'Qty'],
-          ['Current',     <%= @active_members.dues_current.count %>],
-          ['Past Due',    <%= @active_members.dues_past.count %>],
-          ['No Info',  <%= dues_na = @active_members.count - (@active_members.dues_past.count + @active_members.dues_current.count) %>]
+          ['Current',     <%= @current_dues.count %>],
+          ['Past Due',    <%= @has_dues.count - @current_dues.count %>],
+          ['No Info',  <%= @active_members.count - @has_dues.count %>]
         ]);
 
         var options = {
-          title: 'Dues Status',
+          title: 'Active Members Dues Status*',
           is3D: true,
           backgroundColor: '#f0f0f0',
           fontName: 'Verdana',
@@ -50,14 +50,16 @@ function getCellValue(row, index){ return $(row).children('td').eq(index).html()
 
 <div class="members-list">
 <div class="indent_row">
-  <div class="cell">
+  <div class="cell" style="width: 45%;">
 <h1>Members List Admin</h1>
 <p><%= link_to 'New Member', new_member_path %> | <%= link_to 'Export to CSV', members_path(:format => "csv")  %></p>
   </div>
-  <div class="cell">
+  <div class="cell" style="width: 45%;">
 <div id="piechart" style="width: 500px; height: 300px; float: right;"></div>
   </div>
 </div>
+<p>*Transitioning to determine if "Active" by last dues date - until we have complete data members are currently marked as "Active" if they have a current dues date or are known to be "Active".</p>
+
 <div style="clear: both;"></div>
 <div id="tabs">
     <ul>
