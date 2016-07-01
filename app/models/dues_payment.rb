@@ -7,5 +7,13 @@ class DuesPayment < ActiveRecord::Base
   scope :ordered, order("date_paid DESC")
   
   scope :most_recent, order("date_paid DESC").limit(1)
+  
+  scope :current, lambda {
+  where ("dues_payments.date_paid IS NOT NULL AND dues_payments.date_paid > ?"), (Time.zone.now - 1.year)
+  }
+
+  scope :past_due, lambda {
+  where ("dues_payments.date_paid IS NOT NULL AND dues_payments.date_paid < ?"), (1.year.ago.to_date)
+  }
 
 end

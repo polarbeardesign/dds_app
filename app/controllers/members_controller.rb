@@ -6,7 +6,9 @@ class MembersController < ApplicationController
   def index
     @active_members = Member.active.ordered
     @inactive_members = Member.inactive.ordered
-    
+    @has_dues = @active_members.dues_most_recent.uniq
+    @current_dues = @active_members.dues_most_recent.dues_current.uniq
+    @past_dues = @active_members.dues_most_recent.dues_past.uniq
     
     respond_to do |format|
       format.html {render :layout => "homepage" }

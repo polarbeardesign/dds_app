@@ -34,21 +34,29 @@
   </div>
 </div>
 <div class="form_row">
-  <div class="form_cell">
+  <div class="form_cell" style="width: 30%;">
     <div class="field">
       <%= f.label :value %><br />
-      <%= f.text_field :value %><br /> <span class="form_tip">Item's price</span>
+      <%= f.text_field :value, :size => '10' %><br /> <span class="form_tip">Item's price</span>
     </div>
   </div>
-  <div class="form_cell">
+  <div class="form_cell" style="width: 30%;">
+    <div class="field">
+      <%= f.label :alt_value, "Alternate Value" %><br />
+      <%= f.text_field :alt_value, :size => '10' %><br /> <span class="form_tip">Item's alternate price i.e. Rides price at an event.</span>
+    </div>
+  </div>
+  <div class="form_cell" style="width: 30%;">
     <div class="field">
       <%= f.label :ship_handling %><br />
-      <%= f.text_field :ship_handling %><br /><span class="form_tip">Shipping and Handling Charge</span>
+      <%= f.text_field :ship_handling, :size => '10' %><br /><span class="form_tip">Shipping and Handling Charge</span>
     </div>
   </div>
+</div>
+<div class="form_row">
   <div class="form_cell">
   <div class="field">
-    <%= f.label :available %><br />
+    <%= f.label :available, "Item Available" %><br />
     <div align="center"><%= f.check_box :available %></div>
     </div>
   </div>
@@ -57,9 +65,9 @@
 
 <div class="form_row">
   <div class="form_cell">
-    <p>Sizes:</p>
+    <strong>Sizes:</strong>
   </div>
-
+  <div class="form_cell">
     <% @sizes.each_with_index do |size, i| %>
     <% if i == 0 %>
       <div class="form_cell">
@@ -75,7 +83,7 @@
  
     <% end %>
     </div>
-
+ </div>
 </div>
 
 

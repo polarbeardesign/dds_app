@@ -16,6 +16,12 @@ class Member < ActiveRecord::Base
 
   scope :ordered, order("active DESC, members.last_name ASC, members.first_name ASC")
 
+  scope :dues_most_recent, joins(:dues_payments).merge(DuesPayment.ordered)
+  
+  scope :dues_current, joins(:dues_payments).merge(DuesPayment.current)
+
+  scope :dues_past, joins(:dues_payments).merge(DuesPayment.past_due)
+  
   def full_name
     self.last_name + ', ' + self.first_name
   end

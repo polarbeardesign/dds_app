@@ -396,6 +396,10 @@ table {
 	vertical-align: top; 
 	}
 
+.table_border td p {
+margin-top: 0;
+}
+
 .white_row { 
     background: #fff; 
 	border-bottom: #d6d68b;
@@ -533,7 +537,7 @@ img.fr {
 
 .members-list {
 display: block;
-margin: 18em 1em 1em 1em;
+margin: 15em 1em 1em 1em;
 }
 
 /* test styles */

@@ -22,10 +22,45 @@ function getCellValue(row, index){ return $(row).children('td').eq(index).html()
 
 </script>
 
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Status', 'Qty'],
+          ['Current',     <%= @current_dues.count %>],
+          ['Past Due',    <%= @has_dues.count - @current_dues.count %>],
+          ['No Info',  <%= @active_members.count - @has_dues.count %>]
+        ]);
+
+        var options = {
+          title: 'Active Members Dues Status*',
+          is3D: true,
+          backgroundColor: '#f0f0f0',
+          fontName: 'Verdana',
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
 <div class="members-list">
+<div class="indent_row">
+  <div class="cell" style="width: 45%;">
 <h1>Members List Admin</h1>
 <p><%= link_to 'New Member', new_member_path %> | <%= link_to 'Export to CSV', members_path(:format => "csv")  %></p>
+  </div>
+  <div class="cell" style="width: 45%;">
+<div id="piechart" style="width: 500px; height: 300px; float: right;"></div>
+  </div>
+</div>
+<p>*Transitioning to determine if "Active" by last dues date - until we have complete data members are currently marked as "Active" if they have a current dues date or are known to be "Active".</p>
 
+<div style="clear: both;"></div>
 <div id="tabs">
     <ul>
         <li><a href="#tabs-1"><strong>Active [<%= @active_members.count %>]</strong></a></li>

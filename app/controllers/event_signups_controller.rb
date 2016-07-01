@@ -15,7 +15,7 @@ class EventSignupsController < ApplicationController
 
   def frequent_flyers
     @event_signups = EventSignup.definite.member_ordered.all
-    @ff = EventSignup.find_by_sql("SELECT member_id, members.first_name, members.last_name, SUM(locations.one_way_distance)*2 AS total FROM event_signups LEFT JOIN members ON member_id = members.id LEFT JOIN events ON event_id = events.id LEFT JOIN locations ON location_id = locations.id WHERE commitment_level = 'Definite' GROUP BY member_id ORDER BY total DESC;")
+    @ff = EventSignup.find_by_sql("SELECT member_id, members.first_name, members.last_name, SUM(locations.one_way_distance)*2 AS total FROM event_signups LEFT JOIN members ON member_id = members.id LEFT JOIN events ON event_id = events.id LEFT JOIN locations ON location_id = locations.id WHERE commitment_level = 'Definite' AND event_statuses_id = 1 GROUP BY member_id ORDER BY total DESC;")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -24,8 +24,8 @@ class EventSignupsController < ApplicationController
   end
 
   def frequent_flyer_detail
-    @event_signups = EventSignup.search(params[:search])
-
+    @event_signups = EventSignup.find_all_by_member_id(params[:member_id])
+    @member = Member.find_by_id(params[:member_id])
   end
 
   def manifest
