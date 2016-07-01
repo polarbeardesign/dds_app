@@ -10,8 +10,8 @@
 </tr>
 <% @ff.each do |ff| %>
 <tr class="<%= cycle('odd_row', 'even_row') %>">
-  <td><%#= link_to ff.first_name + ' ' + ff.last_name, frequent_flyer_detail_path(ff.member_id) %>
-  <%= ff.first_name + ' ' + ff.last_name %></td>
+  <td><%= link_to ff.first_name + ' ' + ff.last_name, frequent_flyer_detail_path(ff.member_id) %>
+  <%#= ff.first_name + ' ' + ff.last_name %></td>
   <td style="text-align: right;"><%= number_with_delimiter(ff.total.to_i) %></td>
 </tr>
 <% end %>
