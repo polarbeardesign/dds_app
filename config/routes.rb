@@ -1,5 +1,9 @@
 DdsApp::Application.routes.draw do
 
+  resources :lhfe_flights
+
+  resources :aircrafts
+
   #resources :safety_items
   resources :safety_items do
     resources :versions, :only => [:destroy] do

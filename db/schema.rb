@@ -10,7 +10,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160303044914) do
+ActiveRecord::Schema.define(:version => 20160607165113) do
+
+  create_table "aircrafts", :force => true do |t|
+    t.string   "aircraft_type"
+    t.string   "name"
+    t.string   "n_number"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -158,6 +167,18 @@ ActiveRecord::Schema.define(:version => 20160303044914) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "lhfe_flights", :force => true do |t|
+    t.datetime "flight_start_time"
+    t.integer  "event_id"
+    t.integer  "aircraft_id"
+    t.text     "flight_notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "lhfe_flights", ["aircraft_id"], :name => "index_lhfe_flights_on_aircraft_id"
+  add_index "lhfe_flights", ["event_id"], :name => "index_lhfe_flights_on_event_id"
 
   create_table "locations", :force => true do |t|
     t.string   "short_name"
@@ -314,6 +335,18 @@ ActiveRecord::Schema.define(:version => 20160303044914) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "safety_item_versions", :force => true do |t|
+    t.string   "item_type",       :null => false
+    t.integer  "item_id",         :null => false
+    t.string   "event",           :null => false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.string   "author_username"
+    t.datetime "created_at"
+  end
+
+  add_index "safety_item_versions", ["item_type", "item_id"], :name => "index_safety_item_versions_on_item_type_and_item_id"
 
   create_table "safety_items", :force => true do |t|
     t.string   "subject"
