@@ -4,18 +4,18 @@
 
 <p>The following information was received.</p>
 <p>
-  <b>First name:</b>
-  <%= @ride_request.first_name %>
-</p>
-
-<p>
-  <b>Last name:</b>
-  <%= @ride_request.last_name %>
+  <b>Name:</b>
+  <%= @ride_request.first_name %> <%= @ride_request.last_name %>
 </p>
 
 <p>
   <b>Email:</b>
   <%= @ride_request.email %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @ride_request.city %>, <%= @ride_request.state %>
 </p>
 
 <p>

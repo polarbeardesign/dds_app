@@ -1,11 +1,12 @@
 <%= @ride_request.first_name %>, 
 
-Thank you for your interest in the Living History Flight Experience.
+Thank you for your interest in the Devil Dog Living History Flight Experience.
 
 The following information was received.
 
 <%= @ride_request.first_name %> <%= @ride_request.last_name %>
 <%= @ride_request.email %>
+<%= @ride_request.city %>, <%= @ride_request.state %>
 Phone:  <%= @ride_request.phone %>
 
 
@@ -27,6 +28,10 @@ Indicated interest at the following events:
 Living History Flight Experience PrePay is $395, if you would like to prepay for your ride please use this link.
 
 <%= "http://www.devildogsquadron.com" + px_path %>
+
+If you have any questions, you can email us at info@devildogsquadron.com or call 512-869-1759.
+
+We look forward to flying with you soon!
 
 Best regards,
 

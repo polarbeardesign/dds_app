@@ -16,8 +16,21 @@ DdsApp::Application.configure do
 
   # Don't care if the mailer can't send
   #config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.delivery_method = :sendmail
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  #config.action_mailer.delivery_method = :sendmail
+  #config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  config.action_mailer.delivery_method = :smtp
+  
+  config.action_mailer.smtp_settings = {
+    :address => "mail.polarbeardesign.net",
+    :port => 2525,
+    :domain => "polarbeardesign.net",
+    :authentication => "plain",
+    :user_name => "jim@polarbeardesign.net",
+    :password => "sJ2VPx5*KG@x7wq;N",
+    :enable_starttls_auto => false
+  }
+
 
   # Add html tags and attribute to allow from sanitize function 
   config.action_view.sanitized_allowed_tags = 'table', 'tbody', 'tr', 'td', 'th', 'form', 'input'
