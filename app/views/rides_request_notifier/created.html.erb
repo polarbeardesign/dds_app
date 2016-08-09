@@ -1,0 +1,41 @@
+<p style="font-size: 14pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;"><%= @ride_request.first_name %>,</p>
+
+<p style="font-size: 14pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;">Thank you for your interest in the Devil Dog Living History Flight Experience.</p>
+
+<p style="font-size: 14pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;">The following information was received.</p>
+
+<p style="font-size: 14pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919; margin-left: 30px;"><%= @ride_request.first_name %> <%= @ride_request.last_name %></br>
+<%= @ride_request.email %><br />
+<%= @ride_request.city %>, <%= @ride_request.state %><br />
+Phone:  <%= @ride_request.phone %></p>
+
+
+<% if !@ride_request.events.blank? %>
+  <p style="font-size: 14pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;">Indicated interest at the following events:</p>
+    <% @ride_request.events.each do |event| %>
+      <p style="font-size: 14pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919; margin-left: 30px;"><%= event.title %>
+      <% if event.start.strftime("%b %d") == event.end.strftime("%b %d") %>
+        <%= event.start.strftime("%b. %d, %Y") %></p>
+      <% else %>
+        <% if event.start.strftime("%b") == event.end.strftime("%b") %>
+          <%= event.start.strftime("%b. %d") %>-<%= event.end.strftime("%d, %Y") %></p>
+        <% else %>
+          <%= event.start.strftime("%b. %d") %>-<%= event.end.strftime("%b. %d, %Y") %></p>
+        <% end %>
+      <% end %>
+    <% end %>
+<% end %>
+
+<p style="font-size: 14pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;">Living History Flight Experience PrePay is $395, if you would like to prepay for your ride please use this link.</p>
+
+<p style="font-size: 14pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;"><%= "http://www.devildogsquadron.com" + px_path %></p>
+
+<p style="font-size: 14pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;">If you have any questions, you can email us at info@devildogsquadron.com or call 512-869-1759.</p>
+
+<p style="font-size: 14pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;">We look forward to flying with you soon!</p>
+
+<p style="font-size: 14pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;">Best regards,</p>
+
+<p style="font-size: 14pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;">Devil Dog Squadron</p>
+
+<%= image_tag 'https://www.devildogsquadron.com/assets/devildog_logo.gif' %>
