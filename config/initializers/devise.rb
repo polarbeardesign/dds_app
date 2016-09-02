@@ -6,6 +6,8 @@ Devise.setup do |config|
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.
   config.mailer_sender = "info@devildogsquadron.com"
 
+config.secret_key = '50468da06e75cf726cf7aaf77584ad9d18810c236246b5123dc74a0992b8e9a54e0a7db3dc345fb5c5c9aade9d0d3cc9261736b7a43bd86f33425ef6638dba26'
+
   # Configure the class responsible to send e-mails.
   # config.mailer = "Devise::Mailer"
 
@@ -14,6 +16,8 @@ Devise.setup do |config|
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
   require 'devise/orm/active_record'
+
+  config.secret_key = '50468da06e75cf726cf7aaf77584ad9d18810c236246b5123dc74a0992b8e9a54e0a7db3dc345fb5c5c9aade9d0d3cc9261736b7a43bd86f33425ef6638dba26'
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is

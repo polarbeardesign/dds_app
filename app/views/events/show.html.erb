@@ -85,8 +85,21 @@
   
 <p><b>Where:</b> <%= @event.location.short_name %> - <%= @event.location.city %>, <%= @event.location.state %></p>
 
-<p><b>Rides?:</b> <% if @event.rides_available? %>Yes - Rides are available! <a href="/living_flight_history_experience">Learn more</a><% else %>Rides not available at this event.<% end %></p>
+<p><b>Rides?:</b> 
+<% if @event.rides_available? %>
+ Yes - Rides are available! </p>
+  <ul>
+	<% if !@event.lhfe_flights.empty? %>
+		<% @event.lhfe_flights.each do |flight| %>
+		  <li><%= link_to flight.flight_start_time.strftime("%A @ %I:%M %p"), lhfe_flight_path(flight) %></li>
+  <% end %>
+</ul>
+ <% end %>
 
+<% else %>
+ Rides not available at this event. </p>
+
+<% end %>
 
 <% if @event.URL? %>
 <p>
@@ -163,7 +176,7 @@
   </tr>
   <tr class="even_row">
     <td>Notes:</td>
-    <td><%= @event.trip.notes %></td>
+    <td><%= markdown @event.trip.notes %></td>
   </tr>
 </table>
 <% else %>

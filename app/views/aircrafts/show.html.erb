@@ -1,0 +1,48 @@
+<p>
+  <b>Type:</b>
+  <%= @aircraft.aircraft_type %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @aircraft.name %>
+</p>
+
+<p>
+  <b>N Number:</b>
+  <%= @aircraft.n_number %>
+</p>
+
+<p>
+  <b>Passengers:</b>
+  <%= @aircraft.pax %>
+</p>
+
+<p>
+  <b>Pricing:</b>
+  <%= @aircraft.pricing %>
+</p>
+
+<p>
+  <b>Accessibility:</b>
+  <%= @aircraft.accessibility %>
+</p>
+
+<p>
+  <b>Hearing Protection:</b>
+  <%= @aircraft.hearing_protection %>
+</p>
+
+<p>
+  <b>Flight Intensity:</b>
+  <%= @aircraft.flight_intensity %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @aircraft.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_aircraft_path(@aircraft) %> |
+<%= link_to 'Back', aircrafts_path %>

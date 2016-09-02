@@ -1,0 +1,35 @@
+<% content_for :sidebar do %>
+<% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+  <div align="center">
+  <%= button_to "Add New Aircraft", new_aircraft_path, :method => :get %>
+  </div>
+<% end %>
+<% end %>
+
+<h1>Aircraft</h1>
+
+<table class="table_border">
+  <tr>
+    <th>Type</th>
+    <th>Name</th>
+    <th>N number</th>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @aircrafts.each do |aircraft| %>
+  <tr class="<%= cycle('odd_row', 'even_row') %>">
+    <td><%= aircraft.aircraft_type %></td>
+    <td><%= aircraft.name %></td>
+    <td><%= aircraft.n_number %></td>
+    <td><%= aircraft.description %></td>
+    <td><%= link_to 'Show', aircraft %></td>
+    <td><%= link_to 'Edit', edit_aircraft_path(aircraft) %></td>
+    <td><%= link_to 'Destroy', aircraft, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+

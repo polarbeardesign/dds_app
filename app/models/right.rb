@@ -39,7 +39,8 @@ class Right < ActiveRecord::Base
     "twelve_planes" => "READ",
     "SN_44_86758" => "READ",
     "terms" => "READ",
-    "sort" => "UPDATE"
+    "sort" => "UPDATE",
+    "lhfe_flights" => "READ"
 }
 
 scope :ordered, order("rights.resource ASC")
