@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  type: 
+  name: MyString
+  n_number: MyString
+  description: MyText
+
+two:
+  type: 
+  name: MyString
+  n_number: MyString
+  description: MyText

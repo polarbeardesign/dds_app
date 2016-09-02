@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  flight_start_time: 2016-06-07 11:51:13
+  event: 
+  aircraft: 
+  flight_notes: MyText
+
+two:
+  flight_start_time: 2016-06-07 11:51:13
+  event: 
+  aircraft: 
+  flight_notes: MyText

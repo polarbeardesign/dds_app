@@ -1,0 +1,29 @@
+<h1>Listing lhfe_flights</h1>
+
+<table>
+  <tr>
+    <th>Flight start time</th>
+    <th>Event</th>
+    <th>Aircraft</th>
+    <th>Flight notes</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @lhfe_flights.each do |lhfe_flight| %>
+  <tr>
+    <td><%= lhfe_flight.flight_start_time %></td>
+    <td><%= lhfe_flight.event %></td>
+    <td><%= lhfe_flight.aircraft %></td>
+    <td><%= lhfe_flight.flight_notes %></td>
+    <td><%= link_to 'Show', lhfe_flight %></td>
+    <td><%= link_to 'Edit', edit_lhfe_flight_path(lhfe_flight) %></td>
+    <td><%= link_to 'Destroy', lhfe_flight, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Lhfe flight', new_lhfe_flight_path %>

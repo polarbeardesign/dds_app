@@ -1,0 +1,78 @@
+<% content_for :sidebar do %>
+<div style="width: 220px; background: #fff; border: 1px solid #999;">
+<h2 style="background: #cc0000; color: #eee; margin: 0 0 0 0; padding: 0.75em;">Book Your Flight</h2>
+
+<p style="margin: 0.75em;">Rides booked in advance are <%= number_to_currency(@price.value, :precision => 0) %>, and normally <%= number_to_currency(@price.alt_value, :precision => 0) %> at the events (event pricing may vary).
+
+<table class="table_border">
+  <tr class="<%= cycle('odd_row', 'even_row') %>">
+    <td><strong><%= @lhfe_flight.event.title %></strong><br />
+    <%= @lhfe_flight.flight_start_time.strftime("%b %d %I:%M %p" ) %>
+    <br />
+  <%= @lhfe_flight.event.location.city %>, <%= @lhfe_flight.event.location.state %>
+  <div style="float:right; margin: 0.25em 0 0 0.25em;">
+  <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+
+  <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_SM.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+<input type="hidden" name="add" value="1">
+<input type="hidden" name="cmd" value="_cart">
+<input type="hidden" name="business" value="px_info@devildogsquadron.com">
+<input type="hidden" name="item_name" value="Living History Flight Experience - Prepay | <%= @lhfe_flight.event.title %> <%= @lhfe_flight.flight_start_time.strftime("%b %d %I:%M %p" ) %> Flight">
+<input type="hidden" name="item_number" value="100">
+<input type="hidden" name="amount" value="<%= @price.value %>">
+<input type="hidden" name="page_style" value="Primary">
+<input type="hidden" name="shipping" value="0">
+<input type="hidden" name="no_shipping" value="2">
+<input type="hidden" name="no_note" value="1">
+<input type="hidden" name="currency_code" value="USD">
+<input type="hidden" name="lc" value="US">
+<input type="hidden" name="bn" value="PP-ShopCartBF">
+
+</form></div></td>
+</tr>
+
+</table>
+
+<p style="margin: 0.75em;"><%= link_to "Refund Policy", refund_policy_path %>.</p>
+
+<p style="margin: 0.75em;">Not ready to make a reservation, but would like more information? Enter a <%= link_to "Ride Request", new_ride_request_path %>.</p>
+
+</div>
+
+<% end %>
+
+
+<% if signed_in?%>
+    <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+      <%= link_to 'Edit', edit_lhfe_flight_path(@lhfe_flight) %> | <%= link_to 'Back', lhfe_flights_path %>
+    <% end %>
+<% end %>
+
+<h1><%= @lhfe_flight.flight_start_time.strftime("%A @ %I:%M %p") %> Ride at <%= @lhfe_flight.event.title %></h1>
+
+<% if @lhfe_flight.flight_notes? %>
+<p>
+  <b>Flight notes:</b>
+  <%= @lhfe_flight.flight_notes %>
+</p>
+<% end %>
+<%= image_tag "seating.png", :width => '450px' %>
+
+<p>Please plan check in at the aircraft at least an hour before your scheduled flight time.</p>
+
+<ul>
+<li><strong>Pre-flight:</strong> 1/2 to 1 hour before take-off; paperwork and crew/passenger brief</li>
+<li><strong>Boarding:</strong> enter the aircraft, take a seat, seat belt check (5 minutes)</li>
+<li><strong>Engine start-up/Run-up:</strong> Before take off, run-up of engines and taxi to active runway (10 minutes)</li>
+<li><strong>Flight time (in air):</strong> Flight over the local area lasting 20~25 minutes</li>
+<li><strong>Landing/Taxi/Engine shut down:</strong> (5 minutes)</li>
+<li><strong>Disembark:</strong> Once the plane is secure and the crew has opened the exit(s)</li>
+<li><strong>Total Time on Board:</strong> Your entire experience is expected to last about 40-45 minutes.</li>
+</ul>
+
+<h2>Ride Coordinator</h2>
+<p>Please contact our Ride Coordinator for any rides questions:</p>
+
+<p>By phone: 512-869-1759<br />
+By email: rides@devildogsquadron.com</p>

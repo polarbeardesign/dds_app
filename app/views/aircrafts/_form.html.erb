@@ -1,0 +1,59 @@
+<%= form_for(@aircraft) do |f| %>
+  <% if @aircraft.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@aircraft.errors.count, "error") %> prohibited this aircraft from being saved:</h2>
+
+      <ul>
+      <% @aircraft.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :aircraft_type %><br />
+    <%= f.text_field :aircraft_type %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :n_number %><br />
+    <%= f.text_field :n_number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :pax %><br />
+    <%= f.text_field :pax %>
+  </div>
+  <div class="field">
+    <%= f.label :pricing %><br />
+    <%= f.text_field :pricing %>
+  </div>
+  <div class="field">
+    <%= f.label :accessibility %><br />
+    <%= f.text_field :accessibility %>
+  </div>
+  <div class="field">
+    <%= f.label :hearing_protection %><br />
+    <%= f.text_field :hearing_protection %>
+  </div>
+  <div class="field">
+    <%= f.label :flight_intensity %><br />
+    <%= f.text_field :flight_intensity %>
+  </div>
+
+
+
+
+
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description, :size => "50 x 10" %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

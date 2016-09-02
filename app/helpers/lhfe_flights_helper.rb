@@ -1,0 +1,2 @@
+module LhfeFlightsHelper
+end
