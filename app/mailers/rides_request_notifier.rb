@@ -1,5 +1,10 @@
 class RidesRequestNotifier < ActionMailer::Base
+
+if Rails.env.production?
   default :from => "info@devildogsquadron.com"
+else
+  default :from => "jim@polarbeardesign.net"
+end
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
@@ -15,7 +20,7 @@ class RidesRequestNotifier < ActionMailer::Base
              :subject => 'Ride Request Received'
       else
         mail :to => @ride_request.email, 
-             :subject => 'Ride Request Received'
+             :subject => 'Ride Request Received - TEST'
       end
   end
 end

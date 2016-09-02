@@ -27,7 +27,11 @@ role :db,  domain, :primary => true # This is where Rails migrations will run
 
 # If you are using Passenger mod_rails uncomment this:
 
+<<<<<<< HEAD
 # causes bundle install to run
+=======
+# causes bundle install to run (commented out because no longer allowed to compile gems at Site5)
+>>>>>>> 90b305a8f338a6b9ede218f26e83d0a52dbc4d5b
 # require "bundler/capistrano"
 # set :bundle_flags, "--quiet --no-cache"
 
