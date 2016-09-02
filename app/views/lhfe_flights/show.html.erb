@@ -49,7 +49,7 @@
     <% end %>
 <% end %>
 
-<h1><%= @lhfe_flight.flight_start_time.strftime("%A %b %d @ %I:%M %p") %> Ride at <%= @lhfe_flight.event.title %></h1>
+<h1><%= @lhfe_flight.flight_start_time.strftime("%A %b %d @ %I:%M %p") %> Ride<br />at <%= @lhfe_flight.event.title %></h1>
 
 <% if @lhfe_flight.flight_notes? %>
 <p>
@@ -57,7 +57,9 @@
   <%= @lhfe_flight.flight_notes %>
 </p>
 <% end %>
-<%= image_tag "seating.png", :width => '450px' %>
+<%= image_tag "seating.png", :width => '450px', :class => 'center'%>
+
+<p><strong>Note:</strong> Minimum of 5 passengers required for flight to occur.</p>
 
 <p>Please plan check in at the aircraft at least an hour before your scheduled flight time.</p>
 
@@ -75,4 +77,4 @@
 <p>Please contact our Ride Coordinator for any rides questions:</p>
 
 <p>By phone: 512-869-1759<br />
-By email: rides@devildogsquadron.com</p>
+By email: <a href="mailto:rides@devildogsquadron.com">rides@devildogsquadron.com</a></p>
