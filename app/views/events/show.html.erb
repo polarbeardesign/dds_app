@@ -88,12 +88,14 @@
 <p><b>Rides?:</b> 
 <% if @event.rides_available? %>
  Yes - Rides are available! </p>
-  <ul>
+
 	<% if !@event.lhfe_flights.empty? %>
-		<% @event.lhfe_flights.each do |flight| %>
-		  <li><%= link_to flight.flight_start_time.strftime("%A @ %I:%M %p"), lhfe_flight_path(flight) %></li>
+	  <ul>
+      <% @event.lhfe_flights.each do |flight| %>
+        <li><%= link_to flight.flight_start_time.strftime("%A @ %I:%M %p"), lhfe_flight_path(flight) %></li>
+    </ul>  
   <% end %>
-</ul>
+
  <% end %>
 
 <% else %>
