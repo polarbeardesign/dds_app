@@ -3,14 +3,15 @@ source 'http://rubygems.org'
 # to avoid railties conflict...
 gem 'i18n', '0.6.11'
 
-gem 'rails', '3.1.3'
+# gem 'rails', '3.1.3'
+gem 'rails', '3.2.21'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2', '< 0.3.7'
+gem 'mysql2', '~> 0.3.10'
 gem 'devise'
 gem 'json'
 gem 'fastercsv'
@@ -30,13 +31,13 @@ gem 'exception_notification', '~> 3.0.1'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.1.5'
-  gem 'coffee-rails', '~> 3.1.1'
+  gem 'sass-rails'
+  gem 'coffee-rails'
   gem 'uglifier', '>= 1.0.3'
 end
 
 group :production do
-  gem 'execjs'
+  gem 'execjs', '2.0.2'
   gem 'libv8', '3.3.10.4'
   gem 'therubyracer', '0.10.2'
   gem 'rack-google_analytics', :require => "rack/google_analytics"
