@@ -49,7 +49,7 @@
     <% end %>
 <% end %>
 
-<h1><%= @lhfe_flight.flight_start_time.strftime("%A @ %I:%M %p") %> Ride at <%= @lhfe_flight.event.title %></h1>
+<h1><%= @lhfe_flight.flight_start_time.strftime("%A %b %d @ %I:%M %p") %> Ride at <%= @lhfe_flight.event.title %></h1>
 
 <% if @lhfe_flight.flight_notes? %>
 <p>

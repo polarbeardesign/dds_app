@@ -1,4 +1,7 @@
 class LhfeFlightsController < ApplicationController
+
+skip_before_filter :check_authorization, :check_authentication, :only => [:show]
+
   # GET /lhfe_flights
   # GET /lhfe_flights.json
   def index
