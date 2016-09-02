@@ -216,6 +216,11 @@ div.clearer {
         margin: 20px 10px;
         }
 
+.center {
+display: block;
+margin: 0 auto;
+}
+
 /* -------------------------------- */
 /* MAIN PAGE - RIGHT COLUMN STYLING */
 /* -------------------------------- */
