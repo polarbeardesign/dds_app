@@ -10,7 +10,11 @@
 
 <h1>Members Section</h1>
 
-<p>Members only section provides access to information...</p>
+<p>Members only section provides access to members-only information.</p>
+
+<h2>Membership Dues:</h2>
+
+<p>Current records indicate you last paid dues: <strong><%= @dues_paid.date_paid.strftime("%b %d, %Y") %></strong>. If you feel this is in error, please contact the Finance Officer.</p>
 
 <h2>Upcoming Trips:</h2>
 

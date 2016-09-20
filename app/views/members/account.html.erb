@@ -40,8 +40,8 @@
   <em>CAF Col No:</em>
   <%= @member.caf_col_no %>
 <br />
-  <em>DDS dues date:</em>
-  <%= @member.dd_dues_date %>
+  <em>DDS dues last paid:</em>
+  <%= @member.dues_payments.most_recent.last.date_paid.strftime("%b %d, %Y") %>
 </p>
 </div>
 </div>

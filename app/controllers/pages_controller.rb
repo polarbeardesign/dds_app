@@ -54,6 +54,7 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:home,
    @user = current_user
    @member = Member.find(@user.member)
    @products = Product.membership.all
+   @dues_paid = DuesPayment.most_recent.find_by_member_id(@member)
   end
 
   def membership
