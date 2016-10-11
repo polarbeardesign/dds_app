@@ -1,4 +1,32 @@
-<h1>Listing Dues Payments</h1>
+<script>
+  $(function() {
+$('th').click(function(){
+    var table = $(this).parents('table').eq(0)
+    var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()))
+    this.asc = !this.asc
+    if (!this.asc){rows = rows.reverse()}
+    for (var i = 0; i < rows.length; i++){table.append(rows[i])}
+})
+function comparer(index) {
+    return function(a, b) {
+        var valA = getCellValue(a, index), valB = getCellValue(b, index)
+        return $.isNumeric(valA) && $.isNumeric(valB) ? valA - valB : valA.localeCompare(valB)
+    }
+}
+function getCellValue(row, index){ return $(row).children('td').eq(index).html() }
+  });
+
+</script>
+
+<h1>Dues Payments</h1>
+
+<% if signed_in?%>
+    <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+         <div align="center">
+           <%= button_to 'New Dues Payment', new_dues_payment_path, :method => "GET" %>
+         </div>
+    <% end %>
+<% end %>
 
 <table class="table_border">
   <tr>
@@ -8,26 +36,17 @@
     <th>Payment type</th>
     <th>Amt paid</th>
     <th>Notes</th>
-    <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @dues_payments.each do |dues_payment| %>
   <tr class="<%= cycle('odd_row', 'even_row') %>">
-    <td><%= dues_payment.member.last_name + ', ' + dues_payment.member.first_name %></td>
+    <td><%= link_to dues_payment.member.last_name + ', ' + dues_payment.member.first_name, dues_payment %></td>
     <td><%= dues_payment.date_paid %></td>
     <td><%= dues_payment.payment_method %></td>
     <td><%= dues_payment.payment_type %></td>
     <td><%= number_to_currency(dues_payment.amt_paid) %></td>
     <td><%= dues_payment.notes %></td>
-    <td><%= link_to 'Show', dues_payment %></td>
-    <td><%= link_to 'Edit', edit_dues_payment_path(dues_payment) %></td>
-    <td><%= link_to 'Destroy', dues_payment, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Dues payment', new_dues_payment_path %>
