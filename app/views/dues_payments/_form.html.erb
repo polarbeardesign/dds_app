@@ -37,11 +37,11 @@
 <div class="row">
   <div class="cell field">
     <%= f.label :payment_method %><br />
-    <%= f.select :payment_method, options_for_select([ "PayPal", "Check", "Cash" ]), options = {:prompt => true}, html_options = {:class => "styled-select"} %>
+    <%= f.select :payment_method, options_for_select([ "PayPal", "Check", "Cash" ], :selected => @dues_payment.payment_method), options = {:prompt => true}, html_options = {:class => "styled-select"} %>
   </div>
   <div class="cell field">
     <%= f.label :payment_type %><br />
-    <%= f.select :payment_type, options_for_select([ "Renewal", "New" ]), options = {:prompt => true}, html_options = {:class => "styled-select"} %>
+    <%= f.select :payment_type, options_for_select([ "Renewal", "New" ], :selected => @dues_payment.payment_type), options = {:prompt => true}, html_options = {:class => "styled-select"} %>
   </div>
 </div>
   <div class="cell field">
