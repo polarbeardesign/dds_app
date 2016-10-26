@@ -7,7 +7,7 @@ class EventSignup < ActiveRecord::Base
   belongs_to :trip
   has_paper_trail
 
-  scope :ordered, order("FIELD(commitment_level, 'Definite','Maybe','Canceled')")
+  scope :ordered, order("FIELD(commitment_level, 'Definite','Maybe','Canceled')", "created_at")
   
   scope :member_ordered, joins(:member).merge(Member.ordered)
   
