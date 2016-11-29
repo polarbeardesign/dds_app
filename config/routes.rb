@@ -180,6 +180,10 @@ devise_for :users, :skip => [:registrations]
   
   match 'account_new' => 'members#account_new', :as => :account_new
 
+  match 'member_application' => 'members#member_application', :as => :member_application
+
+  match 'member_application_received' => 'members#member_application_received', :as => :member_application_received
+
   match 'change_password/:id' => 'users#change_password', :as => :change_password
 
   match 'photo_viewer' => 'galleries#photo_viewer', :as => :photo_viewer

@@ -91,10 +91,6 @@
     <%= f.text_field :caf_col_no, :size => '15' %>
   </div>
   <div class="cell field">
-    <%= f.label :dd_dues_date, "Dues Date" %><br />
-    <%= @member.dues_payments.last.date_paid %>
-  </div>
-  <div class="cell field">
     <%= f.label :active %><br />
     <% if @member.active == true %>
       <div style="font-size: 1.3em;text-align: center;"><i class="icon-check"></i></div>
