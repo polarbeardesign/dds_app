@@ -2,6 +2,8 @@ class MembersController < ApplicationController
   # GET /members
   # GET /members.json
   helper_method :sort_column, :sort_direction
+
+  skip_before_filter :check_authorization, :check_authentication, :only => [:member_application,:member_application_received, :create]
   
   def index
     @active_members = Member.active.ordered
