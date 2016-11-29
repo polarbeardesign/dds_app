@@ -1,0 +1,47 @@
+<p style="font-size: 12pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;">Thank you for your interest in joining the Devil Dog Squadron. The following Membership Application information has been recorded on the Devil Dog Squadron website.</p>
+
+<p style="font-size: 14pt; font-family: 'Helvetica Neue', Arial, sans-serif; color: #191919; font-weight: 200;">Contact Info</p>
+
+<p style="margin: 0 10px 10px 20px;font-size: 12pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;"><strong><%= @member.first_name %> <%= @member.last_name %><br />
+<%= @member.street_1 %><br />
+
+
+ <% if @member.street_2? %>
+  <%= @member.street_2 %><br />
+ <% end %>
+
+<%= @member.city %>, <%= @member.state %> <%= @member.zip %></strong></p>
+
+<p style="margin: 0 10px 10px 20px;font-size: 12pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;"><strong><%= @member.user.email %></strong></p>
+
+<% if @member.home_phone? %>
+  <p style="margin: 0 10px 10px 20px;font-size: 12pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;"><em>Home:</em> <strong><%= @member.home_phone %></strong></p>
+<% end %>
+<% if @member.work_phone? %>
+  <p style="margin: 0 10px 10px 20px;font-size: 12pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;"><em>Work:</em> <strong><%= @member.work_phone %></strong></p>
+<% end %>
+<% if @member.cell_phone? %>
+  <p style="margin: 0 10px 10px 20px;font-size: 12pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;"><em>Cell:</em> <strong><%= @member.cell_phone %></strong></p>
+<% end %>
+
+
+<p style="font-size: 14pt; font-family: 'Helvetica Neue', Arial, sans-serif; color: #191919; font-weight: 200;">Skills &amp; areas of expertise</p>
+
+<p style="margin: 0 10px 10px 20px;font-size: 12pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;"><strong><%= @member.skills %></strong></p>
+
+<p style="font-size: 14pt; font-family: 'Helvetica Neue', Arial, sans-serif; color: #191919; font-weight: 200;">Emergency Info</p>
+
+<p style="margin: 0 10px 10px 20px;font-size: 12pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;"><em>Contact Name:</em> <strong><%= @member.ec_name %></strong></p>
+<p style="margin: 0 10px 10px 20px;font-size: 12pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;"><em>Contact Phone:</em> <strong><%= @member.ec_phone %></strong></p>
+
+<p style="font-size: 14pt; font-family: 'Helvetica Neue', Arial, sans-serif; color: #191919; font-weight: 200;">CAF Info</p>
+
+<p style="margin: 0 10px 10px 20px;font-size: 12pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;"><em>CAF Col No:</em>  <strong><%= @member.caf_col_no %></strong></p>
+
+<p style="font-size: 12pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;">You will be contacted soon regarding your new membership.</p>
+
+<p style="font-size: 12pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;">For any additional questions, please contact Operations Officer Beth Jenkins at (512) 869-1759.</p>
+
+<p style="font-size: 12pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;">Devil Dog Squadron</p>
+
+<%= image_tag 'https://www.devildogsquadron.com/assets/devildog_logo.gif' %>

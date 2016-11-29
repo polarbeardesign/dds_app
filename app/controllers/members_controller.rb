@@ -50,6 +50,17 @@ class MembersController < ApplicationController
     end
   end
 
+  # show member application profile
+  def member_application_received
+    @member = Member.find(params[:id])
+    @products = Product.membership.all
+    
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render :json => @member }
+    end
+  end
+
   def account_edit
     @member = Member.find(params[:id])
     @user = current_user
@@ -93,6 +104,17 @@ class MembersController < ApplicationController
     end
   end
 
+  def member_application
+    @member = Member.new
+    user = @member.build_user
+    @roles = Role.find(:all)
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render :json => @member }
+    end
+  end
+
   # GET /members/1/edit
   def edit
     @member = Member.find(params[:id])
@@ -118,8 +140,14 @@ class MembersController < ApplicationController
 
     respond_to do |format|
       if @member.save
-        format.html { redirect_to @member, :notice => 'Member was successfully created.' }
-        format.json { render :json => @member, :status => :created, :location => @member }
+        if params[:Submit] == "Submit Application" 
+          MemberApplicationNotifier.created(@member).deliver
+          format.html { redirect_to member_application_received_path(:id => @member), :notice => 'Application was successfully submitted and a copy has been emailed for your records.' }
+          format.json { head :ok }
+        else
+          format.html { redirect_to @member, :notice => 'Member was successfully created.' }
+          format.json { render :json => @member, :status => :created, :location => @member }
+        end
       else
         format.html { render :action => "new" }
         format.json { render :json => @member.errors, :status => :unprocessable_entity }

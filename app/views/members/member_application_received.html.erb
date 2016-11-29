@@ -1,0 +1,149 @@
+
+<h1>Membership Online Payment</h1>
+
+<p>Choose the level of membership you would like to participate at below and click the "Add To Cart" button. You will be redirected to Paypal, our payment processor.</p>
+
+<p>If you prefer to mail a check, make your check payable to Devil Dog Squadron and mail to:<br />
+<div style="margin-left: 2em;">Devil Dog Squadron<br />
+c/o Pilot's Choice Aviation<br />
+209 Corsair Drive<br />
+Georgetown, TX 78628</div></p>
+
+<table width="560" class="table2">
+  <tr>
+    <th>&nbsp;</th>
+    <th>&nbsp;</th>
+    <th>&nbsp;</th>
+    <th width="100">&nbsp;</th>
+  </tr>
+
+<% @products.each do |product| %>
+  <tr class=""> 
+    <td colspan="2" style="vertical-align: top;"><strong><%= product.name %></strong><br /><%= product.description %></td>
+    <td>&nbsp;</td>
+    <td align="right"><strong>&nbsp;</strong>
+
+<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="3NCMKJQV6AYG4">
+<table>
+<tr><td><input type="hidden" name="on0" value="Options">Options</td></tr><tr><td><select name="os0">
+	<option value="Annual Dues">Annual Dues $75.00 USD</option>
+	<option value="Add $2 to cover CC fee">Add $2 to cover CC fee $77.00 USD</option>
+	<option value="Cadet Dues">Cadet (under 18) Dues $25.00 USD</option>
+</select> </td></tr>
+</table>
+<input type="hidden" name="currency_code" value="USD">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+</td>
+
+  </tr>
+  <tr>
+    <td colspan="4"><hr /></td>
+  </tr>
+<% end %>
+</table>
+<h3>Information Received</h3>
+<h3>Contact Info</h3>
+<div class="indent_row">
+  <div class="cell">
+    <em>First name:</em> <strong><%= @member.first_name %></strong>
+  </div>
+  <div class="cell">
+    <em>Last name:</em> <strong><%= @member.last_name %></strong>
+  </div>
+</div>
+
+<div class="clearer"></div>
+
+<div class="indent_row">
+  <div class="cell">
+    <em>Address1:</em> <strong><%= @member.street_1 %></strong>
+  </div>
+ <% if @member.street_2? %>
+  <div class="cell">
+    <em>Address2:</em> <strong><%= @member.street_2 %></strong>
+  </div>
+ <% end %>
+</div>
+
+<div class="clearer"></div>
+
+<div class="indent_row">
+  <div class="cell">
+    <em>City:</em> <strong><%= @member.city %></strong>
+  </div>
+  <div class="cell">
+    <em>State:</em> <strong><%= @member.state %></strong>
+  </div>
+  <div class="cell">
+    <em>Zip:</em> <strong><%= @member.zip %></strong>
+  </div>
+</div>
+
+<div class="clearer"></div>
+
+<div class="indent_row">
+  <div class="cell">
+    <em>Email:</em> <strong><%= @member.user.email %></strong>
+  </div>
+</div>
+
+<div class="clearer"></div>
+
+<div class="indent_row">
+  <% if @member.home_phone? %>
+    <div class="cell">
+      <em>Home:</em> <strong><%= @member.home_phone %></strong>
+    </div>
+  <% end %>
+  <% if @member.work_phone? %>
+    <div class="cell">
+      <em>Work:</em> <strong><%= @member.work_phone %></strong>
+    </div>
+  <% end %>
+  <% if @member.cell_phone? %>
+    <div class="cell">
+      <em>Cell:</em> <strong><%= @member.cell_phone %></strong>
+    </div>
+  <% end %>
+</div>
+
+<div class="clearer"></div>
+
+<h3>Skills &amp; areas of expertise</h3>
+
+<div class="indent_row">
+  <div class="cell">
+  <strong><%= @member.skills %></strong>
+  </div>
+</div>
+
+<div class="clearer"></div>
+
+<h3>Emergency Info</h3>
+
+<div class="indent_row">
+  <div class="cell">
+    <em>Contact Name:</em> <strong><%= @member.ec_name %></strong>
+  </div>
+  <div class="cell">
+    <em>Contact Phone:</em> <strong><%= @member.ec_phone %></strong>
+  </div>
+</div>
+
+<div class="clearer"></div>
+
+<h3>CAF Info</h3>
+
+<div class="indent_row">
+  <div class="cell">
+    <em>CAF Col No:</em>  <strong><%= @member.caf_col_no %></strong>
+  </div>
+</div>
+
+<div class="clearer"></div>
+

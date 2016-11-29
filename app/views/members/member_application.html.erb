@@ -1,0 +1,37 @@
+<script>
+jQuery(function($){
+
+   $('#member_home_phone').mask("(999) 999-9999",{placeholder:" "});
+   $('#member_work_phone').mask("(999) 999-9999? x99999");
+   $('#member_cell_phone').mask("(999) 999-9999");
+
+   $('#member_user_attributes_email').blur(function() {
+
+   $('#member_user_attributes_username').val($(this).val());
+
+});
+
+});
+</script>
+
+  <script>
+  $(function() {
+    $( "#member_dd_dues_date" ).datepicker({
+      changeMonth: true,
+      changeYear: true,
+      dateFormat: "yy-mm-dd"
+    });
+  });
+  </script>
+
+
+<h1>Devil Dog Squadron<BR />Membership Application</h1>
+
+<p>Thank you for your interest in joining the Devil Dog Squadron. We are always looking for new members. There is a lot of work to do, but we have fun doing it. And it's not all work in the hangar. Members have the opportunity travel with the Dog to airshows.</p>
+
+<p>Squadron membership is open to all Commemorative Air Force (CAF) members. If you are not yet a member of the CAF, you can learn more about the benefits of membership, and download an application form, at the <a href="http://commemorativeairforce.org/membership/membership-options">CAF's membership web page</a>.</p>
+
+<p>Please complete and submit the following form. Regular squadron dues are $75 per year, or $25 for Cadets under 18. After you submit the form there will be a link to pay online.</p>
+
+<%= render 'application_form' %>
+

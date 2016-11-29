@@ -1,0 +1,150 @@
+<%= render "scripts" %>
+<script type="text/javascript">
+$(document).ready(function () {
+
+    $('#new_member').validate({ // initialize the plugin
+        rules: {
+            'member[first_name]': {
+                required: true,
+                minlength: 2
+            },
+            'member[last_name]': {
+                required: true,
+                minlength: 5
+            },
+            'member[user_attributes][email]': {
+                required: true,
+                email: true
+            }
+        },
+  messages: {
+    'member[first_name]': "Please specify your first name",
+    'member[last_name]': "Please specify your last name",
+    'member[user_attributes][email]': {
+      required: "Please provide your email address",
+      email: "Email address must be in the format of name@domain.com"
+    }
+  }
+    });
+
+});
+
+</script>
+
+<%= form_for(@member) do |f| %>
+  <% if @member.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@member.errors.count, "error") %> prohibited this member from being saved:</h2>
+
+      <ul>
+      <% @member.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<div class="clearer"></div>
+<h3>Contact Info</h3>
+<div class="indent_row">
+  <div class="cell field">
+    * <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, :size => '20' %>
+  </div>
+  <div class="cell field">
+    * <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, :size => '20' %>
+  </div>
+</div>
+
+<div class="indent_row">
+  <div class="cell field">
+    <%= f.label :street_1 %><br />
+    <%= f.text_field :street_1, :size => '20' %>
+  </div>
+  <div class="cell field">  
+    <%= f.label :street_2 %><br />
+    <%= f.text_field :street_2, :size => '20' %>
+  </div>
+</div>
+
+<div class="indent_row">
+  <div class="cell field">
+    <%= f.label :city %><br />
+    <%= f.text_field :city, :size => '20' %>
+  </div>
+  <div class="cell field">
+    <%= f.label :state %><br />
+    <%= f.text_field :state, :size => '5' %>
+  </div>
+  <div class="cell field">
+    <%= f.label :zip %><br />
+    <%= f.text_field :zip, :size => '10' %>
+  </div>
+</div>
+
+<div class="indent_row">
+  <%= f.fields_for :user do |builder| %>
+        <%= render "user_fields_application", :f => builder %> 
+  <% end %>
+</div>
+
+<div class="indent_row">
+  <div class="cell field">
+    <%= f.label :home_phone %><br />
+    <%= f.text_field :home_phone, :size => '13' %>
+  </div>
+  <div class="cell field">
+    <%= f.label :work_phone %><br />
+    <%= f.text_field :work_phone, :size => '13' %>
+  </div>
+  <div class="cell field">
+    <%= f.label :cell_phone %><br />
+    <%= f.text_field :cell_phone, :size => '13' %>
+  </div>
+</div>
+
+<div class="clearer"></div>
+
+<h3>Skills &amp; areas of expertise</h3>
+<div class="indent_row">
+  <div class="cell field">
+  <%= f.text_area :skills, :size => '40x3' %>
+  </div>
+</div>
+
+<div class="clearer"></div>
+
+<h3>Emergency Info</h3>
+<div class="indent_row">
+  <div class="cell field">
+    <%= f.label :ec_name, "Contact Name" %><br />
+    <%= f.text_field :ec_name, :size => '30' %>
+  </div>
+  <div class="cell field">
+    <%= f.label :ec_phone, "Phone" %><br />
+    <%= f.text_field :ec_phone, :size => '15' %>
+  </div>
+</div>
+  
+<div class="clearer"></div>
+
+<h3>CAF Info</h3>
+<div class="indent_row">
+  <div class="cell field">
+    <%= f.label :caf_col_no, "CAF Col #" %><br />
+    <%= f.text_field :caf_col_no, :size => '8' %>
+  </div>
+</div>
+  
+<div class="clearer"></div>
+
+<hr />
+
+  <div class="actions" style="text-align: center;">
+    <%= f.submit "Submit Application", :name => "Submit", :data => { :disable_with => "Submitting..." } %>
+
+
+  </div>
+<% end %>
