@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160607165113) do
+ActiveRecord::Schema.define(:version => 20161227184243) do
 
   create_table "aircrafts", :force => true do |t|
     t.string   "aircraft_type"
@@ -19,6 +20,11 @@ ActiveRecord::Schema.define(:version => 20160607165113) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "pax"
+    t.string   "pricing"
+    t.string   "accessibility"
+    t.string   "hearing_protection"
+    t.string   "flight_intensity"
   end
 
   create_table "assignments", :force => true do |t|
@@ -180,6 +186,31 @@ ActiveRecord::Schema.define(:version => 20160607165113) do
   add_index "lhfe_flights", ["aircraft_id"], :name => "index_lhfe_flights_on_aircraft_id"
   add_index "lhfe_flights", ["event_id"], :name => "index_lhfe_flights_on_event_id"
 
+  create_table "lhfe_riders", :force => true do |t|
+    t.integer  "event_id"
+    t.date     "ride_date"
+    t.decimal  "payment_amount", :precision => 6, :scale => 4
+    t.string   "payment_type"
+    t.string   "last_name"
+    t.string   "first_name"
+    t.string   "street_1"
+    t.string   "street_2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "home_phone"
+    t.string   "work_phone"
+    t.string   "email"
+    t.date     "dob"
+    t.boolean  "married"
+    t.string   "spouse_name"
+    t.string   "occupation"
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
+  end
+
+  add_index "lhfe_riders", ["event_id"], :name => "index_lhfe_riders_on_event_id"
+
   create_table "locations", :force => true do |t|
     t.string   "short_name"
     t.string   "airport_name"
@@ -209,6 +240,7 @@ ActiveRecord::Schema.define(:version => 20160607165113) do
     t.string   "work_phone"
     t.string   "cell_phone"
     t.string   "email"
+    t.text     "skills"
     t.boolean  "active"
     t.date     "caf_join_date"
     t.string   "level"

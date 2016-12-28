@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  event: 
+  ride_date: 2016-12-27
+  payment_amount: 9.99
+  payment_type: MyString
+  last_name: MyString
+  first_name: MyString
+  street_1: MyString
+  street_2: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  home_phone: MyString
+  work_phone: MyString
+  email: MyString
+  dob: 2016-12-27
+  married: false
+  spouse_name: MyString
+  occupation: MyString
+
+two:
+  event: 
+  ride_date: 2016-12-27
+  payment_amount: 9.99
+  payment_type: MyString
+  last_name: MyString
+  first_name: MyString
+  street_1: MyString
+  street_2: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  home_phone: MyString
+  work_phone: MyString
+  email: MyString
+  dob: 2016-12-27
+  married: false
+  spouse_name: MyString
+  occupation: MyString

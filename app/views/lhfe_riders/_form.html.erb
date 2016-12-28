@@ -1,0 +1,95 @@
+<%= render "scripts" %>
+
+<%= form_for(@lhfe_rider) do |f| %>
+  <% if @lhfe_rider.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@lhfe_rider.errors.count, "error") %> prohibited this lhfe_rider from being saved:</h2>
+
+      <ul>
+      <% @lhfe_rider.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="field">
+      <%= f.label :event_id, "Event" %><br />
+      <%= f.collection_select :event_id, Event.all, :id, :event_date, options = {:order => 'event_date ASC', :prompt => true}, html_options = {:class => "styled-select"} %>
+    </div>
+  <div class="field">
+    <%= f.label :ride_date %><br />
+    <%= f.text_field :ride_date %>
+  </div>
+  <div class="field">
+    <%= f.label :payment_amount %><br />
+    <%= f.text_field :payment_amount %>
+  </div>
+  <div class="field">
+    <%= f.label :payment_type %><br />
+    <%= f.text_field :payment_type %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :street_1 %><br />
+    <%= f.text_field :street_1 %>
+  </div>
+  <div class="field">
+    <%= f.label :street_2 %><br />
+    <%= f.text_field :street_2 %>
+  </div>
+  <div class="field">
+    <%= f.label :city %><br />
+    <%= f.text_field :city %>
+  </div>
+  <div class="field">
+    <%= f.label :state %><br />
+    <%= f.text_field :state %>
+  </div>
+  <div class="field">
+    <%= f.label :zip %><br />
+    <%= f.text_field :zip %>
+  </div>
+  <div class="field">
+    <%= f.label :home_phone %><br />
+    <%= f.text_field :home_phone %>
+  </div>
+  <div class="field">
+    <%= f.label :work_phone %><br />
+    <%= f.text_field :work_phone %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label 'DOB', :dob %><br />
+    <%= f.text_field :dob %>
+  </div>
+  <div class="field">
+    <%= f.label :married %><br />
+    <%= f.check_box :married %>
+  </div>
+  <div class="field">
+    <%= f.label :spouse_name %><br />
+    <%= f.text_field :spouse_name %>
+  </div>
+  <div class="field">
+    <%= f.label :gender %><br />
+    <%= f.select :gender, options_for_select([["n/a"], ["Female"], ["Male"]]) %>
+  </div>
+  <div class="field">
+    <%= f.label :occupation %><br />
+    <%= f.text_field :occupation %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

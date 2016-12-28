@@ -1,0 +1,100 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Event:</b>
+  <%= @lhfe_rider.event.title %>, <%= @lhfe_rider.event.location.short_name %>
+</p>
+
+<p>
+  <b>Ride date:</b>
+  <%= @lhfe_rider.ride_date %>
+</p>
+
+<p>
+  <b>Payment amount:</b>
+  <%= @lhfe_rider.payment_amount %>
+</p>
+
+<p>
+  <b>Payment type:</b>
+  <%= @lhfe_rider.payment_type %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%= @lhfe_rider.last_name %>
+</p>
+
+<p>
+  <b>First name:</b>
+  <%= @lhfe_rider.first_name %>
+</p>
+
+<p>
+  <b>Street 1:</b>
+  <%= @lhfe_rider.street_1 %>
+</p>
+
+<p>
+  <b>Street 2:</b>
+  <%= @lhfe_rider.street_2 %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @lhfe_rider.city %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%= @lhfe_rider.state %>
+</p>
+
+<p>
+  <b>Zip:</b>
+  <%= @lhfe_rider.zip %>
+</p>
+
+<p>
+  <b>Home phone:</b>
+  <%= @lhfe_rider.home_phone %>
+</p>
+
+<p>
+  <b>Work phone:</b>
+  <%= @lhfe_rider.work_phone %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @lhfe_rider.email %>
+</p>
+
+<p>
+  <b>Dob:</b>
+  <%= @lhfe_rider.dob %>
+</p>
+
+<p>
+  <b>Married:</b>
+  <%= @lhfe_rider.married %>
+</p>
+
+<p>
+  <b>Spouse name:</b>
+  <%= @lhfe_rider.spouse_name %>
+</p>
+
+<p>
+  <b>Gender:</b>
+  <%= @lhfe_rider.gender %>
+</p>
+
+<p>
+  <b>Occupation:</b>
+  <%= @lhfe_rider.occupation %>
+</p>
+
+
+<%= link_to 'Edit', edit_lhfe_rider_path(@lhfe_rider) %> |
+<%= link_to 'Back', lhfe_riders_path %>

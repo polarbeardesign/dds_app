@@ -1,5 +1,8 @@
 DdsApp::Application.routes.draw do
 
+  resources :lhfe_riders
+
+
   resources :lhfe_flights
 
   resources :aircrafts
