@@ -1,0 +1,59 @@
+<% content_for :sidebar do %>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+    <div align="center">
+      <%= button_to "Add new LHFE Rider", new_lhfe_rider_path, :method => :get %>
+    </div>
+  <% end %>
+<% end %>
+
+<% event_name = 0 %>
+<% age = 0 %>
+<% index = 0 %>
+<% total_age = 0 %>
+
+<% @lhfe_riders.each do |lhfe_rider_analysis| %>
+  <%# age = (Date.today - lhfe_rider_analysis.dob).to_i/365 %>
+  <% total_age = total_age + age %>
+  <% index = index + 1 %>
+<% end %>
+
+
+<h1>LHFE Riders</h1>
+
+<p>Demographics</p>
+Number of riders:  <%= @lhfe_riders.count %><br />
+Avg Age:  <%= total_age/index %><br />
+<br />
+
+<table width="500" class="table_border">
+  <tr>
+    <th>Last name</th>
+    <th>First name</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Ride date</th>
+    <th>Age</th>
+  </tr>
+
+<% @lhfe_riders.each do |lhfe_rider| %>
+  <% if event_name != lhfe_rider.event.title %>
+    <tr>
+      <th colspan='6'><%= lhfe_rider.event.title + ', ' + lhfe_rider.event.location.short_name + ' - ' + lhfe_rider.event.start.strftime('%b %d, %y') %></th>
+    </tr>
+  <% end %>
+
+  <tr>
+    <td><%= link_to lhfe_rider.last_name, lhfe_rider %></td>
+    <td><%= lhfe_rider.first_name %></td>
+    <td><%= lhfe_rider.city %></td>
+    <td><%= lhfe_rider.state %></td>
+    <td><%= lhfe_rider.ride_date %></td>
+    <td><%#= (Date.today - lhfe_rider.dob).to_i/365 %></td>
+  </tr>
+  <% event_name = lhfe_rider.event.title %>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New LHFE Rider', new_lhfe_rider_path %>

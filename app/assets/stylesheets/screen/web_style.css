@@ -346,7 +346,7 @@ margin: 0 auto;
 .home-left-box {
         float: left;
         width: 420px;
-        height: 230px;
+        height: 275px;
         margin: 0px 0px 10px 5px;
         background: #fff;
         border: 1px solid #999;
@@ -358,7 +358,7 @@ margin: 0 auto;
 .home-right-box {
         float: right;
         width: 420px;
-        height: 230px;
+        height: 275px;
         margin: 0px 0px 10px 5px;
         background: #fff;
         border: 1px solid #999;
@@ -444,6 +444,20 @@ margin-top: 0;
 	padding: 3px;
 	vertical-align: top;
     }
+
+table.table_border tr {
+  background: #fff; 
+	border-bottom: #d6d68b;
+	border-right:  #d6d68b;
+	border-width: 0 1px 1px 0; 
+	border-style: none solid solid none;
+	padding: 3px;
+	vertical-align: top;
+}
+
+table.table_border tr:nth-child(2n+3) {
+  background: #feffea;
+}
 
 .table2 { 
     margin: 10px;
