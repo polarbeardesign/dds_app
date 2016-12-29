@@ -4,7 +4,7 @@ class LhfeRidersController < ApplicationController
   respond_to :html
 
   def index
-    @lhfe_riders = LhfeRider.all
+    @lhfe_riders = LhfeRider.ordered.all
     respond_with(@lhfe_riders)
   end
 
