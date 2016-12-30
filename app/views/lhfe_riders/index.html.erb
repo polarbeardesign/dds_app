@@ -33,7 +33,9 @@ Avg Age:  <%= total_age/index %><br />
 <% @lhfe_riders.each do |lhfe_rider| %>
   <% if event_name != lhfe_rider.event.title %>
     <tr>
-      <th colspan='6'><%= lhfe_rider.event.title + ', ' + lhfe_rider.event.location.short_name + ' - ' + lhfe_rider.event.start.strftime('%b %d, %y') %></th>
+      <th colspan='6'><span style="font-size: 1.2em;"><%= lhfe_rider.event.title %></span><br />
+      <%= lhfe_rider.event.location.short_name %><br />
+      <%= lhfe_rider.event.start.strftime('%b %d, %y') %></th>
     </tr>
   <tr>
     <th>Last name</th>
