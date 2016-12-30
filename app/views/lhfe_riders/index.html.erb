@@ -12,9 +12,11 @@
 <% total_age = 0 %>
 
 <% @lhfe_riders.each do |lhfe_rider_analysis| %>
-  <%# age = (Date.today - lhfe_rider_analysis.dob).to_i/365 %>
-  <% total_age = total_age + age %>
-  <% index = index + 1 %>
+  <% if lhfe_rider_analysis.dob? %>
+    <% age = (Date.today - lhfe_rider_analysis.dob).to_i/365 %>
+    <% total_age = total_age + age %>
+    <% index = index + 1 %>
+  <% end %>
 <% end %>
 
 
@@ -26,6 +28,13 @@ Avg Age:  <%= total_age/index %><br />
 <br />
 
 <table width="500" class="table_border">
+
+
+<% @lhfe_riders.each do |lhfe_rider| %>
+  <% if event_name != lhfe_rider.event.title %>
+    <tr>
+      <th colspan='6'><%= lhfe_rider.event.title + ', ' + lhfe_rider.event.location.short_name + ' - ' + lhfe_rider.event.start.strftime('%b %d, %y') %></th>
+    </tr>
   <tr>
     <th>Last name</th>
     <th>First name</th>
@@ -34,12 +43,6 @@ Avg Age:  <%= total_age/index %><br />
     <th>Ride date</th>
     <th>Age</th>
   </tr>
-
-<% @lhfe_riders.each do |lhfe_rider| %>
-  <% if event_name != lhfe_rider.event.title %>
-    <tr>
-      <th colspan='6'><%= lhfe_rider.event.title + ', ' + lhfe_rider.event.location.short_name + ' - ' + lhfe_rider.event.start.strftime('%b %d, %y') %></th>
-    </tr>
   <% end %>
 
   <tr>
@@ -48,7 +51,11 @@ Avg Age:  <%= total_age/index %><br />
     <td><%= lhfe_rider.city %></td>
     <td><%= lhfe_rider.state %></td>
     <td><%= lhfe_rider.ride_date %></td>
-    <td><%#= (Date.today - lhfe_rider.dob).to_i/365 %></td>
+    <td>
+      <% if lhfe_rider.dob? %>
+        <%= (Date.today - lhfe_rider.dob).to_i/365 %>
+      <% end %>
+    </td>
   </tr>
   <% event_name = lhfe_rider.event.title %>
 <% end %>
