@@ -64,7 +64,8 @@ function getCellValue(row, index){ return $(row).children('td').eq(index).html()
 <div id="tabs">
     <ul>
         <li><a href="#tabs-1"><strong>Active [<%= @active_members.count %>]</strong></a></li>
-        <li><a href="#tabs-2"><strong>Inactive [<%= @inactive_members.count %>]</strong></a></li>
+        <li><a href="#tabs-2"><strong>Pending [<%= @new_members.count %>]</strong></a></li>
+        <li><a href="#tabs-3"><strong>Inactive [<%= @inactive_members.count %>]</strong></a></li>
     </ul>
 
 <div id="tabs-1">
@@ -116,6 +117,49 @@ function getCellValue(row, index){ return $(row).children('td').eq(index).html()
 
 </div>
 <div id="tabs-2">
+
+<h2>New Online Members</h2>
+
+<table class="table_border">
+  <tr>
+    <th style="min-width: 60px;">Col No.</th>
+    <th style="min-width: 150px;">Name</th>
+    <th style="min-width: 150px;">Location</th>
+    <th style="max-width: 150px;">email</th>
+    <th style="min-width: 90px;">CAF Join Date</th>
+    <th style="min-width: 90px;">Last Dues Paid</th>
+  </tr>
+
+<% @new_members.each do |member| %>
+  <tr class="<%= cycle('odd_row', 'even_row') %>">
+    <td>
+      <% if !member.caf_col_no.nil? %>
+        <%= link_to member.caf_col_no, edit_member_path(member) %>
+      <% else %>
+        <%= link_to 'n/a', edit_member_path(member) %>
+      <% end %>
+    </td>
+    <td><%=  member.last_name+", "+member.first_name %></td>
+    <% if member.city? %>
+      <td><%= member.city+", "+member.state %></td>
+    <% else %>
+      <td>---</td>    
+    <% end %>
+    <td><%= member.email %></td>
+    <td><%= member.caf_join_date %></td>
+    <td><% if !member.dues_payments.last.nil? %>
+    <% if member.dues_payments.most_recent.first.date_paid < (Date.today - 1.year) %>
+      <span class="error"><%= member.dues_payments.most_recent.first.date_paid %></span>
+    <% else %>
+      <%= member.dues_payments.most_recent.first.date_paid %>
+    <% end %>
+    <% end %>
+    </td>
+  </tr>
+<% end %>
+</table>
+</div>
+<div id="tabs-3">
 
 <h2>Inactive Members</h2>
 

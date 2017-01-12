@@ -7,6 +7,7 @@ class MembersController < ApplicationController
   
   def index
     @active_members = Member.active.ordered
+    @new_members = Member.find_by_sql("SELECT members.id, members.caf_col_no, members.caf_join_date, last_name, first_name, users.email FROM members LEFT JOIN users on users.id = user_id LEFT JOIN assignments ON assignments.user_id = members.user_id WHERE assignments.role_id IS NULL AND members.id > 144;")
     @inactive_members = Member.inactive.ordered
     @has_dues = @active_members.dues_most_recent.uniq
     @current_dues = @active_members.dues_most_recent.dues_current.uniq

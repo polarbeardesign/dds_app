@@ -1,0 +1,19 @@
+<p style="font-size: 14pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;"><%= @attendance.member.first_name %>, </p>
+
+<p style="font-size: 14pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;">Your <%= @attendance.event.title %> RSVP has been recorded on the website.</p>
+
+<div style="margin-left: 20px;">
+<p style="font-size: 14pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;">Event: <strong><%= @attendance.event.title %></strong></p>
+<% if @attendance.event.start.strftime("%b %d" ) == @attendance.event.end.strftime("%b %d") %>
+    <p style="font-size: 14pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;">Dates: <strong><%= @attendance.event.start.strftime("%b. %d, %Y") %></strong></p>
+<% else %>
+    <p style="font-size: 14pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;">Dates: <strong><%= @attendance.event.start.strftime("%b %d") %> - <%= @attendance.event.end.strftime("%b %d, %Y") %></strong></p> 
+<% end %>
+<p style="font-size: 14pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;">Commitment Level: <strong><%= @attendance.commitment_level %></strong></p>
+</div>
+
+<p style="font-size: 14pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;">If you need to make a change to your commitment level or cancel, return to <%= 'http://www.devildogsquadron.com' + event_path(@attendance.event) %> and make your change.</p>
+
+<p style="font-size: 14pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;">Devil Dog Squadron</p>
+
+<%= image_tag 'https://www.devildogsquadron.com/assets/devildog_logo.gif' %>
