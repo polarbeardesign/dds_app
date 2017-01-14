@@ -12,7 +12,7 @@ class Member < ActiveRecord::Base
   has_paper_trail
 
   scope :active, where("members.active = 1")
-  scope :new, where("members.active = 0")
+#  scope :new, where("members.active = 0") causes error undefined method `build_user' for #<ActiveRecord::Relation:0x000001064b0c88>
   scope :inactive, where("members.active = 0")
 
   scope :ordered, order("active DESC, members.last_name ASC, members.first_name ASC")
