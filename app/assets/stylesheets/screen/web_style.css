@@ -2,8 +2,10 @@
  v2.0b1 | 201101 */
 
 /* COLORS
-dk blue => #1d2644
-gold    => #b78d03
+
+green => #52782a;
+navy  =>  #1d2644;
+gold => #b78d03;
 lt grey => #f0f0f0
 green   => #52782a;
 */
@@ -64,6 +66,7 @@ ins {
   text-decoration: none;
   }
 
+
 del {
   text-decoration: line-through;
   }
@@ -73,6 +76,10 @@ table {
   border-spacing: 0;
 }
 
+td {
+  border: 1px solid #ccc;
+  padding: 0.45em;
+  }
 
 fieldset {
   border: none;
@@ -1442,6 +1449,7 @@ header {
   -webkit-order: 4;
   -ms-order: 4;
   order: 4;
+
   }
 
 .feed {
@@ -1449,6 +1457,7 @@ header {
   -ms-order: 3;
   order: 3;
   }
+
 
 .sponsors {
   -webkit-order: 5;
@@ -1626,6 +1635,7 @@ nav#top-nav > ul {
 
 
 
+
 #main, #main-home {
   -webkit-order: 3;
   -ms-order: 3;
@@ -1644,6 +1654,7 @@ nav#top-nav > ul {
   padding: 1em 0 2em 0;
   background: #f0f0f0;
   }
+
 
 nav#top-nav > ul {
   display: -webkit-flex;
@@ -1877,4 +1888,5 @@ input, textarea {
   font-weight: bold;
   text-align: center;
   font-style: italic;
+
 }
