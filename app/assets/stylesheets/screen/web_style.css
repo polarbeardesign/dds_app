@@ -1228,6 +1228,17 @@ footer {
 /*----------------------------------------------------
    Navigation
 -------------------------------------------------------*/
+.login-bar {
+  background: #1d2644;
+  display: block;
+  padding: 10px 100px 5px 30px;
+  text-align: right;
+  color: #fff;
+  font-size: 0.75em;
+  font-weight: 500; 
+  text-decoration: none; 
+  color: #fff;
+}
 
 .login-bar {
   background: #1d2644;

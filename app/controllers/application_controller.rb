@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
 
 #  force_ssl
 
-
   before_filter :check_authentication, :header_footer
 
   def check_authentication
