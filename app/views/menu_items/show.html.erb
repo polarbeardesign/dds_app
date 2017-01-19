@@ -1,0 +1,28 @@
+<p>
+  <b>Menu:</b>
+  <%= @menu_item.menu.menu_name %>
+</p>
+
+<p>
+  <b>Parent:</b>
+  <%= @menu_item.parent_id %>
+</p>
+
+<p>
+  <b>Display:</b>
+  <%= @menu_item.display %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @menu_item.url %>
+</p>
+
+<p>
+  <b>Position:</b>
+  <%= @menu_item.position %>
+</p>
+
+
+<%= link_to 'Edit', edit_menu_item_path(@menu_item) %> |
+<%= link_to 'Back', menu_items_path %>
