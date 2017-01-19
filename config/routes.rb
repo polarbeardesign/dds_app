@@ -1,5 +1,16 @@
 DdsApp::Application.routes.draw do
 
+  resources :contents
+
+
+  resources :menu_items
+  resources :menu_items do
+    collection { post :sort}
+  end
+
+  resources :menus
+
+
   resources :lhfe_riders
 
 

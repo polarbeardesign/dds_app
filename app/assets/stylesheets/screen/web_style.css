@@ -206,6 +206,9 @@ table {
 
 th, td {
   padding: 0.25em;
+  border: 1px solid #d6d68b;
+  border-collapse: collapse;
+  vertical-align: top;
   }
 
 th {
@@ -214,19 +217,12 @@ th {
   color: #fff;
   }
 
-.odd-row, .even-row {
-  border: 1px solid #d6d68b;
-  border-collapse: collapse;
-  vertical-align: top;
+table tr:nth-child(2n+1) {
+  background: #fdf9ef;
   }
 
-.odd-row {
-  background: #fff;
-  }
 
-.even-row {
-  background: #feffea;
-  }
+
 
 /*----------------------------------------------------
    form styles
@@ -870,10 +866,29 @@ footer {
 /*----------------------------------------------------
    Navigation
 -------------------------------------------------------*/
+.login-bar {
+  background: #1d2644;
+  display: block;
+  padding: 10px 100px 5px 30px;
+  text-align: right;
+  color: #fff;
+  font-size: 0.75em;
+  font-weight: 500; 
+  text-decoration: none; 
+  color: #fff;
+}
 
-nav > ul {
+.login-bar a, .login-bar a:hover {
+  color: #fff;
+}
+
+nav {
   position: fixed;
   width: 100%;
+}
+  
+nav > ul {
+
   -ms-flex-direction: row;
   -webkit-flex-direction: row;
   flex-direction: row;
