@@ -1,0 +1,21 @@
+
+<p>
+  <b>Title:</b>
+  <%= @content.title %>
+</p>
+
+<%= markdown @content.body %>
+
+<p>
+  <b>Slug:</b>
+  <%= @content.slug %>
+</p>
+
+<p>
+  <b>Published at:</b>
+  <%= @content.published_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_content_path(@content) %> |
+<%= link_to 'Back', contents_path %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20161227184243) do
+ActiveRecord::Schema.define(:version => 20170118180528) do
 
   create_table "aircrafts", :force => true do |t|
     t.string   "aircraft_type"
@@ -58,6 +58,18 @@ ActiveRecord::Schema.define(:version => 20161227184243) do
   end
 
   add_index "categories_posts", ["category_id", "post_id"], :name => "index_categories_posts_on_category_id_and_post_id"
+
+  create_table "contents", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "body"
+    t.string   "slug"
+    t.datetime "published_at"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "contents", ["user_id"], :name => "index_contents_on_user_id"
 
   create_table "document_categories", :force => true do |t|
     t.string   "category_name"
@@ -189,7 +201,7 @@ ActiveRecord::Schema.define(:version => 20161227184243) do
   create_table "lhfe_riders", :force => true do |t|
     t.integer  "event_id"
     t.date     "ride_date"
-    t.decimal  "payment_amount", :precision => 6, :scale => 4
+    t.decimal  "payment_amount",              :precision => 8, :scale => 2
     t.string   "payment_type"
     t.string   "last_name"
     t.string   "first_name"
@@ -204,9 +216,10 @@ ActiveRecord::Schema.define(:version => 20161227184243) do
     t.date     "dob"
     t.boolean  "married"
     t.string   "spouse_name"
+    t.string   "gender",         :limit => 6
     t.string   "occupation"
-    t.datetime "created_at",                                   :null => false
-    t.datetime "updated_at",                                   :null => false
+    t.datetime "created_at",                                                :null => false
+    t.datetime "updated_at",                                                :null => false
   end
 
   add_index "lhfe_riders", ["event_id"], :name => "index_lhfe_riders_on_event_id"
@@ -251,6 +264,25 @@ ActiveRecord::Schema.define(:version => 20161227184243) do
   end
 
   add_index "members", ["user_id"], :name => "index_members_on_user_id"
+
+  create_table "menu_items", :force => true do |t|
+    t.integer  "menu_id"
+    t.integer  "parent_id"
+    t.string   "display"
+    t.string   "url"
+    t.integer  "position"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "menu_items", ["menu_id"], :name => "index_menu_items_on_menu_id"
+
+  create_table "menus", :force => true do |t|
+    t.string   "menu_name"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "news", :force => true do |t|
     t.string   "title"
