@@ -1288,11 +1288,16 @@ nav {
   width: 100%;
 }
   
+.login-bar a, .login-bar a:hover {
+  color: #fff;
+}
 
-nav > ul {
+nav {
   position: fixed;
   width: 100%;
-
+}
+  
+nav > ul {
   -ms-flex-direction: row;
   -webkit-flex-direction: row;
   flex-direction: row;

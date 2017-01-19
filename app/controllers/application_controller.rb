@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-
 #  force_ssl
 
   before_filter :check_authentication, :header_footer
