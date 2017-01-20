@@ -7,12 +7,14 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:index
   def index
     if user_signed_in?
       # for signed in members
+      @events = Event.ordered.published.all
       @meetings = Event.meeting.ordered.published.tease.all
       @air_shows = Event.air_show.ordered.published.all
       @special = Event.special.ordered.published.all
       @maint = Event.maint.ordered.published.tease.all
    else
       # for general public
+      @events = Event.confirmed.ordered.published.all
       @meetings = Event.meeting.confirmed.ordered.published.tease.all
       @air_shows = Event.air_show.confirmed.ordered.published.all
       @special = Event.special.confirmed.ordered.published.all
