@@ -1,5 +1,5 @@
 <% current_event_type = "" %>
-
+<% initial_date = "" %>
 
 <% content_for :sidebar do %>
 <% if signed_in?%>
@@ -16,10 +16,19 @@
 
 <h1>Devil Dog Calendar:</h1>
 
-<h2>Events List</h2>
 <% if !@events.blank? %>
 <% @events.each do |event| %>
-<div class="calendar_row" style="width: 90%; padding-top: 0.25em">
+  <% if initial_date == "" %>
+<div class="month-subheader">
+   <strong><%= event.start.strftime("%B - %Y") %></strong>
+</div>
+  <% elsif event.start.strftime("%B - %Y") != initial_date %>
+<div class="month-subheader">
+   <strong><%= event.start.strftime("%B - %Y") %></strong>
+</div>
+  <% end %>
+<div class="calendar_row" style="width: 95%; padding-top: 0.25em">
+
   <div class="cell" style="width: 25%;">
     <% if event.start.strftime("%b %d" ) == event.end.strftime("%b %d") %>
     <div class="calendar-ii" style="margin-left: 3.5em;">
@@ -55,7 +64,10 @@
   </div>
   </div>
 <% current_event_type = event.event_type.title %>
+<% initial_date = event.start.strftime("%B - %Y").to_s %>
+<div class="clearer"></div>
 <% end %>
+
 <% else %>
    <div class="calendar_row" style="width: 90%; padding-top: 0.25em">
      <div class="cell" style="width: 25%;">&nbsp;</div>
