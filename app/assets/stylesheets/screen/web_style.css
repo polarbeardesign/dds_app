@@ -1027,3 +1027,9 @@ input.safety-button {
   padding: 0.75em 0;
   background: #52782a;
 }
+
+.rides-teaser {
+  font-weight: bold;
+  text-align: center;
+  font-style: italic;
+}

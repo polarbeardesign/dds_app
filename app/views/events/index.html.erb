@@ -51,7 +51,7 @@
   <div class="cell" style="width: 70%;">
     <strong><em><%= link_to event.title, event %></em></strong>
     <% if event.event_statuses_id == 2 %>
-      <span class="event-flag" style="display: inline;"> &lt;= Currently Tentative</span>
+      <span class="event-flag" style="display: inline;"> &lt;= Tentative</span>
     <% elsif event.event_statuses_id == 3 %>
       <span class="event-flag" style="display: inline;"> &lt;= Canceled</span>
     <% end %>
@@ -61,6 +61,20 @@
       <% else %>
         <%= event.details %>
       <% end %>
+
+<% if event.rides_available? %>
+<p class='rides-teaser'><%= link_to "Rides available at this event !", living_flight_history_experience_path %></p>
+
+	<% if !event.lhfe_flights.empty? %>
+	  <p>Scheduled ride times:</p>
+	  <ul>
+      <% event.lhfe_flights.each do |flight| %>
+        <li><%= link_to flight.flight_start_time.strftime("%A @ %I:%M %p"), lhfe_flight_path(flight) %></li>
+      <% end %>
+    </ul>
+ <% end %>
+<% end %>
+
   </div>
   </div>
 <% current_event_type = event.event_type.title %>
