@@ -27,23 +27,27 @@
    <strong><%= event.start.strftime("%B - %Y") %></strong>
 </div>
   <% end %>
-<div class="calendar_row" style="width: 95%; padding-top: 0.25em">
+<div class="calendar_row">
 
   <div class="cell" style="width: 25%;">
     <% if event.start.strftime("%b %d" ) == event.end.strftime("%b %d") %>
-    <div class="calendar-ii" style="margin-left: 3.5em;">
+    <div class='date-range'>
+    <div class="calendar-ii">
       <div class="calendar_month-ii"><%= event.start.strftime("%b") %></div>
       <div class="calendar_date-ii"><%= event.start.strftime("%d") %></div>
+    </div>
     </div>
     <% else %>
-    <div class="calendar-ii" style="float: left; margin-left: 1.5em;">
+    <div class='date-range'>
+    <div class="calendar-ii" style="margin-left: 1.5em;">
       <div class="calendar_month-ii"><%= event.start.strftime("%b") %></div>
       <div class="calendar_date-ii"><%= event.start.strftime("%d") %></div>
     </div>
-    <span style="float: left; font-size: 1em; margin: 0.5em 0 0 0;">&#8211; </span>
+    <span style=" font-size: 1em; margin: 0.5em 0 0 0;">&#8211; </span>
     <div class="calendar-ii">
       <div class="calendar_month-ii"><%= event.end.strftime("%b") %></div>
       <div class="calendar_date-ii"><%= event.end.strftime("%d") %></div>
+    </div>
     </div>
     <% end %>
     <div class="location"><%= event.location.city + ", " + event.location.state %></div>
