@@ -11,26 +11,15 @@
 
 <div id="container">
 
-<header>
-  <%= render 'layouts/header' %>
-</header>
-
 <nav>
     <%= render 'layouts/nav' %>
 </nav>
 
 
-<div class="main">
-
-  <% if notice %>
-    <p id="notice"><%= notice %></p>
-  <% end %>
   
-  <article>
     <%= yield %>
-  </article>
 
-</div>
+
 
 <footer>
     <%= render 'layouts/footer' %>
