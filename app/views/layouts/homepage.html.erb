@@ -12,24 +12,88 @@
 <div id="container">
 
 <nav>
-    <%= render 'layouts/nav' %>
+  <%= render 'layouts/nav' %>
 </nav>
 
 
+    <div class="flexslider">
+      <ul class="slides">
+        <li>
+          <img src="/assets/fly_teaser.jpg" alt="">
+          <div class="flex-caption">
+            <div class="flex-caption_inner">
+              <div class="txt1">FLY THE DEVIL DOG</div>
+              <div class="txt2">Checkout upcoming opportunities</div>
+              <div class="txt3"><a href="/living_history_flight_experience" class="btn btn-primary">Fly the Dog</a></div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <img src="/assets/slider_vintage.jpg" alt="">
+          <div class="flex-caption">
+            <div class="flex-caption_inner">
+              <div class="txt1">Giving History a Future</div>
+              <div class="txt2">Learn about the history of PBJ's</div>
+              <div class="txt3"><a href="/PBJs" class="btn btn-primary">PBJ History</a></div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <img src="/assets/hdr_nose.jpg" alt="">
+          <div class="flex-caption">
+            <div class="flex-caption_inner">
+              <div class="txt1">The PX is always open!</div>
+              <div class="txt2">Show your support with Devil Dog items</div>
+              <div class="txt3"><a href="/px" class="btn btn-primary">Go to PX</a></div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <img src="/assets/slider_maintenance.jpg" alt="">
+          <div class="flex-caption">
+            <div class="flex-caption_inner">
+              <div class="txt1">Maintenance</div>
+              <div class="txt2">What's it take to make a Dog fly?</div>
+              <div class="txt3"><a href="#" class="btn btn-primary">Maintenance</a></div>
+            </div>
+          </div>
+        </li>
+
+
+      </ul>
+    </div>
+
+
+<div class="main">
+
+
+
   
+  <article>
+    <% if notice %>
+      <div id="notice"><%= notice %></div>
+    <% end %>
+
     <%= yield %>
+  </article>
 
+</div>
 
+</div>
 
 <footer>
     <%= render 'layouts/footer' %>
 </footer>
 
-
-
-<!-- Close page -->
 </div>
-
-
+  <script type="text/javascript">
+$(window).load(function() {
+  $('.flexslider').flexslider({
+    animation: "slide",
+    controlsContainer: $(".custom-controls-container"),
+    customDirectionNav: $(".custom-navigation a")
+  });
+});
+  </script>
 </body>
 </html>

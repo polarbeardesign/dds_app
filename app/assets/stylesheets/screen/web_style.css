@@ -527,6 +527,10 @@ header .header-image img {
   vertical-align: middle;
   }
 
+.site-logo img {
+  display: none;
+}
+
 .signup_box {
   background: #EDD68A;
   margin: 0.75em 0.75em;
@@ -722,10 +726,32 @@ header .header-image img {
   width: 100%
   }
 
-.main {
-/*  -webkit-order: 2;
-  -ms-order: 2;
-  order: 2; */
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.login-bar {
+  background: #1d2644;
+  display: block;
+  padding: 10px 100px 5px 30px;
+  text-align: right;
+  color: #fff;
+  font-size: 0.75em;
+  font-weight: 500; 
+  text-decoration: none; 
+  color: #fff;
+}
+
+.login-bar a, .login-bar a:hover {
+  color: #fff;
+}
+
+nav > ul {
+  display: -ms-flexbox;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -1217,6 +1243,13 @@ Wide Style
   display: none;
   }
 
+.site-logo img {
+  width: 55px;
+  vertical-align: middle;
+  display: inline;
+  position: relative;
+}
+
 /*----------------------------------------------------
 Set first level order
 -------------------------------------------------------*/
@@ -1256,17 +1289,6 @@ footer {
 /*----------------------------------------------------
    Navigation
 -------------------------------------------------------*/
-.login-bar {
-  background: #1d2644;
-  display: block;
-  padding: 10px 100px 5px 30px;
-  text-align: right;
-  color: #fff;
-  font-size: 0.75em;
-  font-weight: 500; 
-  text-decoration: none; 
-  color: #fff;
-}
 
 .login-bar {
   background: #1d2644;
@@ -1896,6 +1918,11 @@ input, textarea {
   font-style: italic;
 }
 
+#home {
+    position: relative;
+    overflow: hidden;
+}
+
 .hero { 
   background: url('../fly_teaser.jpg'); 
   background-size: cover;
@@ -1904,6 +1931,43 @@ input, textarea {
   margin-top: 84px;
   }
 
-.hero p {
-
+.flexslider {
+  margin-top: 80px;
 }
+
+.flex-caption {
+  position:relative;
+  width: 100%; 
+  left:0;
+  text-align:center; 
+  margin-top: -400px;
+  margin-bottom: 200px;
+}
+
+.flex-caption > div{}
+.flex-caption .img{padding-bottom: 25px;}
+.flex-caption .img img{width: auto; display: block; margin-left: auto; margin-right: auto;}
+.flex-caption .txt1, .flex-caption .txt2 {
+  line-height: 1.1;
+  color: #fff;
+  text-shadow:1px 1px 3px rgba(0, 0, 0, 0.5);
+  padding-bottom: 10px;
+}
+
+.flex-caption .txt1 {
+  font-weight: 900;
+  font-size: 50px;
+}
+.flex-caption .txt2 {
+  font-weight: 400;
+  font-size: 30px;
+}
+.flex-caption .txt3 {
+  padding-top: 10px;
+  text-align: center;
+}
+
+.flex-caption .txt3 a {
+  color: #fff;
+  font-size: 26px;
+  }

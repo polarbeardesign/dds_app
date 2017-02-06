@@ -1,5 +1,12 @@
 <a name="nav"></a>
 
+
+
+<div class="menu-link">
+  <%= link_to image_tag("devildog_logo.png", :alt => "Devil Dog Squadron"), "/" %>
+  <div style="margin-top: 0.75em;"><a href="#nav">menu</a></div>
+</div>
+
 <div class="login-bar">
   <% if user_signed_in? %>
     Welcome: <%= current_user.member.first_name + ' ' + current_user.member.last_name %> | 

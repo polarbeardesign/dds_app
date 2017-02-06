@@ -169,6 +169,12 @@ devise_for :users, :skip => [:registrations]
   match 'supportcaf' => 'pages#supportcaf', :as => :supportcaf
   
   match 'twelve_planes' => 'pages#twelve_planes', :as => :twelve_planes
+  
+  match 'PBJs' => 'pages#PBJs', :as => :PBJs
+  match 'VMB612' => 'pages#VMB612', :as => :VMB612
+  match 'squadron' => 'pages#squadron', :as => :squadron
+  match 'member_home' => 'pages#member_home', :as => :member_home
+  match 'admin_home' => 'pages#admin_home', :as => :admin_home
 
   match 'SN_44_86758' => 'pages#SN_44_86758', :as => :SN_44_86758
   
@@ -216,8 +222,8 @@ devise_for :users, :skip => [:registrations]
   get "pages/VMB612"
   get "pages/PBJs"
   match 'membership' => 'pages#membership', :as => :membership
-  match 'living_flight_history_experience' => 'pages#living_flight_history_experience', :as => :living_flight_history_experience
-  match 'rides' => redirect('/living_flight_history_experience')
+  match 'living_history_flight_experience' => 'pages#living_history_flight_experience', :as => :living_history_flight_experience
+  match 'rides' => redirect('/living_history_flight_experience')
 
   match 'manifest/:event_id' => 'event_signups#manifest', :as => :manifest
   match 'hold_harmless/:event_id' => 'event_signups#hold_harmless', :as => :hold_harmless
