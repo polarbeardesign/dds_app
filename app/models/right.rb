@@ -39,6 +39,7 @@ class Right < ActiveRecord::Base
     "thank_you" => "READ",
     "supportcaf" => "READ",
     "twelve_planes" => "READ",
+    "living_history_flight_experience" => "READ",
     "SN_44_86758" => "READ",
     "terms" => "READ",
     "sort" => "UPDATE",
