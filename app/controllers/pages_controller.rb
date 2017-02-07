@@ -7,6 +7,9 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:home,
   def home
     @events = Event.published.confirmed.ordered.tease
     @teaser = Teaser.current.limit(1).first
+    @sponsors = Sponsor.order("position").all
+    @about = Content.find_by_id(6)
+    @donate = Content.find_by_id(7)
     render :layout => "homepage"
   end
 

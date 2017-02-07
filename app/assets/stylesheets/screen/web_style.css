@@ -125,6 +125,10 @@ h2 {
   font-size: 1.5em;
   }
 
+h3 {
+  font-size: 1.2em;
+  }
+
 p {
   margin: 1em 0;
   text-align: justify;
@@ -250,6 +254,10 @@ input, textarea {
   border-radius: 4px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
+}
+
+input[type="submit"] {
+ margin: 1em auto;
 }
 
 /*----------------------------------------------------
@@ -722,8 +730,47 @@ header .header-image {
   width: 100%;
   }
 
+
 header .header-image img {
   width: 100%
+}
+.sponsor-logo {
+  max-width: 400px;
+  min-height: 120px;
+}
+
+.sponsor-logo img {
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
+.hp-about, .hp-sponsors, .hp-events, 
+.hp-donations, .hp-gallery, .hp-news {
+  display: block;
+  clear: both;
+  margin: 0 auto 2em;
+  border-bottom: 1px solid #efefef;
+}
+
+.membership-form {
+  display: block;
+  width: 100%;
+  padding: 0.5em;
+}
+
+.membership-form h3 {
+  font-size: 1.2em;
+  background: #f0f0f0;
+  padding: 0.5em;
+}
+
+/*----------------------------------------------------
+   Navigation
+-------------------------------------------------------*/
+
+nav {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
 
 
@@ -1443,6 +1490,7 @@ header {
   -webkit-justify-content: space-between;
   justify-content: space-between;
   width: 85%;
+  max-width: 1100px;
   margin: 0 auto 2em;
   }
 
@@ -1768,7 +1816,7 @@ nav#top-nav > ul {
 
 
 .social_icons {
-  float: left;
+  display: inline-block;
   margin-left: 10px;
   }
 
@@ -1863,6 +1911,55 @@ input, textarea {
 .thumb {
   border: 1px solid #ccc;
   }
+
+table.aircraft-facts {
+  float: right;
+  margin: 0 0 0.5em 1.5em;
+}
+
+.article-image {
+  display: inline-block;
+  border: 1px solid #efefef;
+  padding: 0.5em;
+  max-width: 50%;
+}
+
+.article-image img {
+  margin: 0 auto;
+  border: 1px solid #000;
+  width: 100%;
+}
+
+.article-image .caption {
+  font-size: 0.85em;
+  font-style: italic;
+  text-align: center;
+}
+
+.article-image .attribution {
+  text-align: right;
+  font-size: 0.65em;
+  font-style: italic;
+}
+
+.article-image .attribution:before {
+  content: '--';
+}
+
+.article-image.pull-right{
+  margin: 0 0 0.5em 1.5em;
+}
+
+.article-image.pull-left{
+  margin: 0 1.5em 0.5em 0;
+}
+
+.membership-form {
+  display: block;
+  width: 75%;
+  max-width: 800px;
+  margin: 0 auto;
+}
 
 /*-----------------------------------------------------
   Hold Harmless
