@@ -1,21 +1,11 @@
 
-<p>
-  <b>Title:</b>
-  <%= @content.title %>
-</p>
+<h1><%= @content.title %></h1>
 
 <%= markdown @content.body %>
 
-<p>
-  <b>Slug:</b>
-  <%= @content.slug %>
-</p>
-
-<p>
-  <b>Published at:</b>
-  <%= @content.published_at %>
-</p>
-
-
+<% if signed_in?%>
+    <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
 <%= link_to 'Edit', edit_content_path(@content) %> |
 <%= link_to 'Back', contents_path %>
+<% end %>
+<% end %>

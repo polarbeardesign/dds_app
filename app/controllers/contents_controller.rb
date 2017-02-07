@@ -36,6 +36,12 @@ class ContentsController < ApplicationController
     respond_with(@content)
   end
 
+  def squadron
+    @content = Content.find_by_id(4)
+    @terms = Term.current.ordered.all
+    @officer_positions = OfficerPosition.all
+  end
+
   private
     def set_content
       @content = Content.find(params[:id])

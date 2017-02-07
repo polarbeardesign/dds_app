@@ -41,6 +41,7 @@ class Right < ActiveRecord::Base
     "twelve_planes" => "READ",
     "living_history_flight_experience" => "READ",
     "SN_44_86758" => "READ",
+    "squadron" => "READ",
     "terms" => "READ",
     "sort" => "UPDATE",
     "lhfe_flights" => "READ"

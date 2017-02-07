@@ -170,11 +170,13 @@ devise_for :users, :skip => [:registrations]
   
   match 'twelve_planes' => 'pages#twelve_planes', :as => :twelve_planes
   
-  match 'PBJs' => 'pages#PBJs', :as => :PBJs
-  match 'VMB612' => 'pages#VMB612', :as => :VMB612
-  match 'squadron' => 'pages#squadron', :as => :squadron
-  match 'member_home' => 'pages#member_home', :as => :member_home
-  match 'admin_home' => 'pages#admin_home', :as => :admin_home
+  match 'PBJs' => 'contents#show', :id => 1, :as => :PBJs
+  match 'VMB612' => 'contents#show', :id => 2, :as => :VMB612
+  match 'squadron' => 'contents#squadron', :as => :squadron
+  match 'living_history_flight_experience' => 'contents#show', :id => 3, :as => :living_history_flight_experience
+
+  match 'member_home' => 'contents#member_home', :as => :member_home
+  match 'admin_home' => 'contents#admin_home', :as => :admin_home
 
   match 'SN_44_86758' => 'pages#SN_44_86758', :as => :SN_44_86758
   
@@ -219,7 +221,6 @@ devise_for :users, :skip => [:registrations]
   get "pages/VMB612"
   get "pages/PBJs"
   match 'membership' => 'pages#membership', :as => :membership
-  match 'living_history_flight_experience' => 'pages#living_history_flight_experience', :as => :living_history_flight_experience
   match 'rides' => redirect('/living_history_flight_experience')
 
   match 'manifest/:event_id' => 'event_signups#manifest', :as => :manifest
