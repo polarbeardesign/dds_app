@@ -1,36 +1,71 @@
-<div class="home-right-box">
+<div class="hp-events">
 
-<h1>Calendar</h1>
+<h1>Upcoming Events</h1>
 <br />
+<% if !@events.blank? %>
 <% @events.each do |event| %>
-<div class="calendar_row" style="width: 90%; padding-top: 0.25em">
-  <div class="cell" style="width: 30%;">
+<div class="calendar_row">
+
+  <div class="cell" style="width: 25%;">
     <% if event.start.strftime("%b %d" ) == event.end.strftime("%b %d") %>
-    <div class="calendar-ii" style="margin: 0 0 0 2.5em;">
+    <div class='date-range'>
+    <div class="calendar-ii">
       <div class="calendar_month-ii"><%= event.start.strftime("%b") %></div>
       <div class="calendar_date-ii"><%= event.start.strftime("%d") %></div>
+    </div>
     </div>
     <% else %>
-    <div class="calendar-ii" style="float: left;">
+    <div class='date-range'>
+    <div class="calendar-ii" style="margin-left: 1.5em;">
       <div class="calendar_month-ii"><%= event.start.strftime("%b") %></div>
       <div class="calendar_date-ii"><%= event.start.strftime("%d") %></div>
     </div>
-    <span style="float: left; font-size: 1em;margin: 0.5em 0 0 0;">&#8211; </span>
+    <span style=" font-size: 1em; margin: 0.5em 0 0 0;">&#8211; </span>
     <div class="calendar-ii">
       <div class="calendar_month-ii"><%= event.end.strftime("%b") %></div>
       <div class="calendar_date-ii"><%= event.end.strftime("%d") %></div>
     </div>
+    </div>
     <% end %>
+    <div class="location"><%= event.location.city + ", " + event.location.state %></div>
   </div>
-    <%= link_to event.title, event %><br />
-    
-      <% if event.details.length > 100 %>
-        <%= truncate(event.details, :length => 30, :separator => ' ') %> <em><%= link_to "more", event %></em>
+  <div class="cell" style="width: 70%;">
+    <strong><em><%= link_to event.title, event %></em></strong>
+    <% if event.event_statuses_id == 2 %>
+      <span class="event-flag" style="display: inline;"> &lt;= Tentative</span>
+    <% elsif event.event_statuses_id == 3 %>
+      <span class="event-flag" style="display: inline;"> &lt;= Canceled</span>
+    <% end %>
+    <br />
+      <% if event.details.length > 220 %>
+        <%= truncate(event.details, :length => 220, :separator => ' ') %> <em><%= link_to "Go to event", event %></em>
       <% else %>
         <%= event.details %>
       <% end %>
-    
-</div>
+
+<% if event.rides_available? %>
+<p class='rides-teaser'><%= image_tag 'dd_illustration_sm.jpg' %><br /><%= link_to "Devil Dog Rides available at this event !", living_history_flight_experience_path %></p>
+
+	<% if !event.lhfe_flights.empty? %>
+	  <p>Scheduled ride times:</p>
+	  <ul>
+      <% event.lhfe_flights.each do |flight| %>
+        <li><%= link_to flight.flight_start_time.strftime("%A @ %I:%M %p"), lhfe_flight_path(flight) %></li>
+      <% end %>
+    </ul>
+ <% end %>
+<% end %>
+
+  </div>
+  </div>
+<div class="clearer"></div>
+<% end %>
+
+<% else %>
+   <div class="calendar_row" style="width: 90%; padding-top: 0.25em">
+     <div class="cell" style="width: 25%;">&nbsp;</div>
+       No scheduled events at this time.
+   </div>
 <% end %>
 
 <div align="right"><p><%= link_to "See all calendar events...", calendar_path %></p></div>

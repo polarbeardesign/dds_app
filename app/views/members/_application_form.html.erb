@@ -46,98 +46,101 @@ $(document).ready(function () {
 
 
 <div class="clearer"></div>
+
+<div class='membership-form'>
 <h3>Contact Info</h3>
-<div class="indent_row">
-  <div class="cell field">
+<div class="row">
+  <div class="col-sm-6 field">
     * <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, :size => '20' %>
+    <%= f.text_field :first_name, :class => 'boxsizingBorder' %>
   </div>
-  <div class="cell field">
+  <div class="col-sm-6 field">
     * <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, :size => '20' %>
+    <%= f.text_field :last_name, :class => 'boxsizingBorder' %>
   </div>
 </div>
 
-<div class="indent_row">
-  <div class="cell field">
+<div class="row">
+  <div class="col-sm-6 field">
     <%= f.label :street_1 %><br />
-    <%= f.text_field :street_1, :size => '20' %>
+    <%= f.text_field :street_1, :class => 'boxsizingBorder' %>
   </div>
-  <div class="cell field">  
+  <div class="col-sm-6 field">  
     <%= f.label :street_2 %><br />
-    <%= f.text_field :street_2, :size => '20' %>
+    <%= f.text_field :street_2, :class => 'boxsizingBorder' %>
   </div>
 </div>
 
-<div class="indent_row">
-  <div class="cell field">
+<div class="row">
+  <div class="col-sm-5 field">
     <%= f.label :city %><br />
-    <%= f.text_field :city, :size => '20' %>
+    <%= f.text_field :city, :class => 'boxsizingBorder' %>
   </div>
-  <div class="cell field">
+  <div class="col-sm-2 field">
     <%= f.label :state %><br />
-    <%= f.text_field :state, :size => '5' %>
+    <%= f.text_field :state, :class => 'boxsizingBorder' %>
   </div>
-  <div class="cell field">
+  <div class="col-sm-5 field">
     <%= f.label :zip %><br />
-    <%= f.text_field :zip, :size => '10' %>
+    <%= f.text_field :zip, :class => 'boxsizingBorder' %>
   </div>
 </div>
 
-<div class="indent_row">
+<div class="row">
   <%= f.fields_for :user do |builder| %>
         <%= render "user_fields_application", :f => builder %> 
   <% end %>
 </div>
 
-<div class="indent_row">
-  <div class="cell field">
+<div class="row">
+  <div class="col-sm-4 field">
     <%= f.label :home_phone %><br />
-    <%= f.text_field :home_phone, :size => '13' %>
+    <%= f.text_field :home_phone, :class => 'boxsizingBorder' %>
   </div>
-  <div class="cell field">
+  <div class="col-sm-4 field">
     <%= f.label :work_phone %><br />
-    <%= f.text_field :work_phone, :size => '13' %>
+    <%= f.text_field :work_phone, :class => 'boxsizingBorder' %>
   </div>
-  <div class="cell field">
+  <div class="col-sm-4 field">
     <%= f.label :cell_phone %><br />
-    <%= f.text_field :cell_phone, :size => '13' %>
+    <%= f.text_field :cell_phone, :class => 'boxsizingBorder' %>
   </div>
 </div>
 
 <div class="clearer"></div>
 
 <h3>Skills &amp; areas of expertise</h3>
-<div class="indent_row">
-  <div class="cell field">
-  <%= f.text_area :skills, :size => '40x3' %>
+<div class="row">
+  <div class="col-sm-12 field">
+  <%= f.text_area :skills, :rows => 4, :class => 'boxsizingBorder' %>
   </div>
 </div>
 
 <div class="clearer"></div>
 
 <h3>Emergency Info</h3>
-<div class="indent_row">
-  <div class="cell field">
+<div class="row">
+  <div class="col-sm-6 field">
     <%= f.label :ec_name, "Contact Name" %><br />
-    <%= f.text_field :ec_name, :size => '30' %>
+    <%= f.text_field :ec_name, :class => 'boxsizingBorder' %>
   </div>
-  <div class="cell field">
+  <div class="col-sm-6 field">
     <%= f.label :ec_phone, "Phone" %><br />
-    <%= f.text_field :ec_phone, :size => '15' %>
+    <%= f.text_field :ec_phone, :class => 'boxsizingBorder' %>
   </div>
 </div>
   
 <div class="clearer"></div>
 
 <h3>CAF Info</h3>
-<div class="indent_row">
-  <div class="cell field">
+<div class="row">
+  <div class="col-sm-6 field">
     <%= f.label :caf_col_no, "CAF Col #" %><br />
     <%= f.text_field :caf_col_no, :size => '8' %>
   </div>
 </div>
-  
+</div>
+
 <div class="clearer"></div>
 
 <hr />
