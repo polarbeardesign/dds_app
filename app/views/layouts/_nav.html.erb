@@ -1,7 +1,5 @@
 <a name="nav"></a>
 
-
-
 <div class="menu-link">
   <%= link_to image_tag("devildog_logo.png", :alt => "Devil Dog Squadron"), "/" %>
   <div style="margin-top: 0.75em;"><a href="#nav">menu</a></div>
@@ -20,24 +18,35 @@
 
 <ul>
   <% @main_menu.each do |menu| %>
-    <% if menu.display != "Admin" %>
     <li class="dropdown" ><a href="<%= menu.url %>" class="dropdown-toggle"><%= menu.display %></a>
-    <% end %>
-    <% if menu.display == "Admin" %>
-      <% if signed_in?%>
-        <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
-          <li class="dropdown" ><a href="<%= menu.url %>" class="dropdown-toggle"><%= menu.display %></a>
-        <% end %>
-      <% end %>
-    <% end %>
     <% if @sub_menu.collect(&:parent_id).include?(menu.id) %>
-      <ul class="dropdown-menu">
-        <% @sub_menu.each do |submenu| %>
-          <% if submenu.parent_id == menu.id %>
-            <li><a href="<%= submenu.url %>"><%= submenu.display %></a></li>
+      <% if menu.display != "Members" %>
+        <ul class="dropdown-menu">
+          <% @sub_menu.each do |submenu| %>
+            <% if submenu.parent_id == menu.id %>
+              <li><a href="<%= submenu.url %>"><%= submenu.display %></a></li>
+            <% end %>
+          <% end %>
+        </ul>
+      <% elsif menu.display == "Members" %>
+        <% if signed_in?%>
+          <% if current_user.roles.any? {|role| role.name == "member"} %>
+            <ul class="dropdown-menu">
+            <% @sub_menu.each do |submenu| %>
+              <% if submenu.parent_id == menu.id %>
+                <% if submenu.display != "Admin" %>
+                  <li><a href="<%= submenu.url %>"><%= submenu.display %></a></li>
+                <% elsif submenu.display == "Admin" %>
+                  <% if current_user.roles.any? {|role| role.name == "admin"} %>
+                    <li><a href="<%= submenu.url %>"><%= submenu.display %></a></li>
+                  <% end %>
+                <% end %>
+              <% end %>
+            <% end %>
+            </ul>
           <% end %>
         <% end %>
-      </ul>
+      <% end %>
     <% end %>
     </li>
   <% end %>

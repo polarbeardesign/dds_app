@@ -1,15 +1,13 @@
-<div class="home-left-box">
+<div class="hp-about">
 
-<h1>About Devil Dog Squadron</h1>
+<h1><%= @about.title %></h1>
 
-<%= image_tag "CAF_Logo_final_4c_PR.jpg", :width => "161px", :class => "fl"%><p>The Devil Dog Squadron is a volunteer organization of the Commemorative Air Force, dedicated to flying, maintaining and preserving a WWII B-25 bomber, the Devil Dog. The Devil Dog represents a PBJ, the Marine Corps version of a B-25.</p>
+<%= markdown @about.body %>
 
-<p>We encourage you to explore our site to learn more about PBJs, the Squadron and the Commemorative Air Force.</p>
-
-<div class="social_icons">
-  <%= link_to image_tag('twitter_icon.png'), 'http://twitter.com/#!/DevilDog_PBJ', :target => "_blank" %>
-  <%= link_to image_tag('facebook_icon.png'), 'http://www.facebook.com/pages/Commemorative-Air-Force-B-25-Devil-Dog/118844394867108', :target => "_blank" %>
-</div>
-<div align="right"><p><%= link_to "Read more about Devil Dog Squadron...", pages_squadron_path %></p></div>
+<% if signed_in?%>
+    <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+      <%= link_to 'Edit', edit_content_path(@about) %>
+    <% end %>
+<% end %>
 
 </div>
