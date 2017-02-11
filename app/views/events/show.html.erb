@@ -17,111 +17,130 @@
   <div class="event_graphic"><%= image_tag(@event.graphic_address) %></div>
 <% end %>
 
-<% if @event.start.strftime("%b %d" ) == @event.end.strftime("%b %d") %>
-<div class="calendar-css" style="float: right;">
-  <div class="calendar_year">
-    <%= @event.start.strftime("%Y") %>
-  </div>
-  <div class="calendar_month">
-    <%= @event.start.strftime("%b") %>
-  </div>
-  <div class="calendar_day">
-    <%= @event.start.strftime("%A") %>
-  </div>
-  <div class="calendar_date">
-    <%= @event.start.strftime("%d") %>
-  </div>
-</div>
-<% else %>
-<div class="row" style="width: 225px; float: right;">
-<div class="calendar-css" style="float: left;">
-  <div class="calendar_year">
-    <%= @event.start.strftime("%Y") %>
-  </div>
-  <div class="calendar_month">
-    <%= @event.start.strftime("%b") %>
-  </div>
-  <div class="calendar_day">
-    <%= @event.start.strftime("%A") %>
-  </div>
-  <div class="calendar_date">
-    <%= @event.start.strftime("%d") %>
-  </div>
-</div>
-<span style="float: left; font-size: 3em; margin: 1.25em 0 0 0;">&#8211; </span>
-<div class="calendar-css">
-  <div class="calendar_year">
-    <%= @event.end.strftime("%Y") %>
-  </div>
-  <div class="calendar_month">
-    <%= @event.end.strftime("%b") %>
-  </div>
-  <div class="calendar_day">
-    <%= @event.end.strftime("%A") %>
-  </div>
-  <div class="calendar_date">
-    <%= @event.end.strftime("%d") %>
-  </div>
-</div>
-</div>
-<% end %>
 
-<h1><%= @event.title %></h1>
-<% if @event.event_statuses_id == 2 %> <span class="error" style="display: inline;"><strong>--Tentative</strong></span><% end %>
-<p><b>When:</b>
-<% if @event.start.strftime("%b %d" ) == @event.end.strftime("%b %d") %>
-  <%= @event.start.strftime("%b %d, %Y | %H:%M %p") %> - <%= @event.end.strftime("%H:%M %p") %></p>
-<% else %>
-  <% if @event.start.strftime("%b") == @event.end.strftime("%b") %>
-    <%= @event.start.strftime("%b %d") %>-<%= @event.end.strftime("%d, %Y") %>
+<div class="row">
+  <div class="col-sm-7">
+    <h1><%= @event.title %></h1>
+  </div>
+  <% if @event.start.strftime("%b %d" ) == @event.end.strftime("%b %d") %>
+  <div class="col-sm-5">
+  <div class="calendar-ii large">
+    <div class="calendar_year-ii large">
+      <%= @event.start.strftime("%Y") %>
+    </div>
+    <div class="calendar_month-ii large">
+      <%= @event.start.strftime("%b") %>
+    </div>
+    <div class="calendar_day-ii large">
+      <%= @event.start.strftime("%A") %>
+    </div>
+    <div class="calendar_date-ii large">
+      <%= @event.start.strftime("%d") %>
+    </div>
+  </div>
   <% else %>
-    <%= @event.start.strftime("%b %d") %>-<%= @event.end.strftime("%b %d, %Y") %>
-  <% end %>
+  <div class="col-sm-2">
+    <div class="calendar-ii large">
+      <div class="calendar_year-ii large">
+        <%= @event.start.strftime("%Y") %>
+      </div>
+      <div class="calendar_month-ii large">
+        <%= @event.start.strftime("%b") %>
+      </div>
+      <div class="calendar_day-ii large">
+        <%= @event.start.strftime("%A") %>
+      </div>
+      <div class="calendar_date-ii large">
+        <%= @event.start.strftime("%d") %>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-2">
+    <div class="calendar-ii large">
+      <div class="calendar_year-ii large">
+        <%= @event.end.strftime("%Y") %>
+      </div>
+      <div class="calendar_month-ii large">
+        <%= @event.end.strftime("%b") %>
+      </div>
+      <div class="calendar_day-ii large">
+        <%= @event.end.strftime("%A") %>
+      </div>
+      <div class="calendar_date-ii large">
+        <%= @event.end.strftime("%d") %>
+      </div>
+    </div>
+  </div>
 <% end %>
+</div>
 
-<p><b>What:</b> <%= @event.event_type.title%></p>
+<div class="row">
+  <div class="col-sm-7">
+    <% if @event.event_statuses_id == 2 %> <span class="error" style="display: inline;"><strong>--Tentative</strong></span><% end %>
+    <p><b>What:</b> <%= @event.event_type.title%></p>
 
-  <% if @event.location.latitude? %>
-    <div style="float: right; border: 1px solid #ccc; margin: 0 0 1em 1em;"><%= link_to image_tag(map_url), "http://maps.google.com/maps?q="+@event.location.latitude+",+"+@event.location.longitude, :target => "_blank" %></div>
-  <% end %>
-  
-<p><b>Where:</b> <%= @event.location.short_name %> - <%= @event.location.city %>, <%= @event.location.state %></p>
-
-<p><b>Rides?:</b> 
-<% if @event.rides_available? %>
- Yes - Rides are available! </p>
-
-	<% if !@event.lhfe_flights.empty? %>
-	  <ul>
-      <% @event.lhfe_flights.each do |flight| %>
-        <li><%= link_to flight.flight_start_time.strftime("%A @ %I:%M %p"), lhfe_flight_path(flight) %></li>
+    <p><b>When:</b>
+    <% if @event.start.strftime("%b %d" ) == @event.end.strftime("%b %d") %>
+      <%= @event.start.strftime("%b %d, %Y | %H:%M %p") %> - <%= @event.end.strftime("%H:%M %p") %></p>
+    <% else %>
+      <% if @event.start.strftime("%b") == @event.end.strftime("%b") %>
+        <%= @event.start.strftime("%b %d") %>-<%= @event.end.strftime("%d, %Y") %>
+      <% else %>
+        <%= @event.start.strftime("%b %d") %>-<%= @event.end.strftime("%b %d, %Y") %>
       <% end %>
-    </ul>
- <% end %>
+    <% end %>
 
 <% else %>
  Rides not available at this event. Check for other <%= link_to "upcoming ride opportunities", living_flight_history_experience_path %>.</p>
 
-<% end %>
 
-<% if @event.URL? %>
-<p>
-  <b>Website:</b>
-  <%= link_to @event.URL, @event.URL, :target => "_blank" %>
-</p>
-<% end %>
-
-<% if @event.contact_info? %>
-<p>
-  <b>Contact info:</b>
-  <%= @event.contact_info %>
-</p>
-<% end %>
-
-<% if @event.details? %>
-  <p><%= simple_format(@event.details) %></p>
-<% end %>
   
+    <p><b>Where:</b> <%= @event.location.short_name %> - <%= @event.location.city %>, <%= @event.location.state %></p>
+
+    <p><b>Rides?:</b> 
+
+    <% if @event.rides_available? %>
+     Yes - Rides are available! </p>
+      <% if !@event.lhfe_flights.empty? %>
+        <ul>
+          <% @event.lhfe_flights.each do |flight| %>
+            <li><%= link_to flight.flight_start_time.strftime("%A @ %I:%M %p"), lhfe_flight_path(flight) %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    <% else %>
+      Rides not available at this event. </p>
+    <% end %>
+
+    <% if @event.URL? %>
+    <p>
+      <b>Event Website:</b>
+      <%= link_to @event.URL, @event.URL, :target => "_blank" %>
+    </p>
+    <% end %>
+
+    <% if @event.contact_info? %>
+      <p>
+        <b>Contact info:</b>
+        <%= @event.contact_info %>
+      </p>
+    <% end %>
+
+    <% if @event.details? %>
+      <p><%= simple_format(@event.details) %></p>
+    <% end %>
+  </div>
+  <div class="col-sm-5">
+  <% if @event.graphic_address? %>
+    <div class="event_graphic"><%= image_tag(@event.graphic_address) %></div>
+  <% end %>
+
+  <% if @event.location.latitude? %>
+    <%= link_to image_tag(map_url), "http://maps.google.com/maps?q="+@event.location.latitude+",+"+@event.location.longitude, :target => "_blank" %>
+  <% end %>
+  </div>
+</div>
+
 <div style="clear: both;"></div>
 <hr />
 
