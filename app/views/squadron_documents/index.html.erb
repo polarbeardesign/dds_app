@@ -21,6 +21,11 @@
         <% if squadron_document.description? %>
       <br /><div style="margin: 0.5em 0.75em"><%= squadron_document.description %></div>
     <% end %>
+<% if signed_in?%>
+    <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+      <br /><%= link_to 'edit', squadron_document_path(squadron_document) %>
+    <% end %>
+<% end %>
     </td>
     <td width="80px"><%= squadron_document.doc_date %></td>
   </tr>
