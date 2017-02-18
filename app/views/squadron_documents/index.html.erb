@@ -4,7 +4,7 @@
 <% end %>
 <h1>Squadron Documents</h1>
 
-<table width="600">
+<table  class="table_border">
   <tr>
     <th>Title</th>
     <th>Doc date</th>
@@ -13,12 +13,21 @@
 <% @squadron_documents.each do |squadron_document| %>
   <% if squadron_document.document_category.category_name != lastcategory %>
   <tr>
-    <td colspan="2"><strong><em><%= squadron_document.document_category.category_name %></em></strong></td>
+    <th colspan="2"><strong><em><%= squadron_document.document_category.category_name %></em></strong></td>
   </tr>
   <% end %>
-  <tr>
-    <td style="padding: .25em 0.5em;"><%= link_to squadron_document.title, '/assets/' + squadron_document.file_url %></td>
-    <td><%= squadron_document.doc_date %></td>
+  <tr class="<%= cycle('odd_row', 'even_row') %>">
+    <td><strong><%= link_to squadron_document.title, '/assets/' + squadron_document.file_url %></strong>
+        <% if squadron_document.description? %>
+      <br /><div style="margin: 0.5em 0.75em"><%= squadron_document.description %></div>
+    <% end %>
+<% if signed_in?%>
+    <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+      <br /><%= link_to 'edit', squadron_document_path(squadron_document) %>
+    <% end %>
+<% end %>
+    </td>
+    <td width="80px"><%= squadron_document.doc_date %></td>
   </tr>
   <% lastcategory = squadron_document.document_category.category_name %>
 <% end %>
@@ -31,3 +40,5 @@
       <%= link_to 'New Squadron document', new_squadron_document_path %>
     <% end %>
 <% end %>
+
+
