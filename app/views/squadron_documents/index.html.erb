@@ -17,7 +17,7 @@
   </tr>
   <% end %>
   <tr class="<%= cycle('odd_row', 'even_row') %>">
-    <td><strong><%= link_to squadron_document.title, '/assets/' + squadron_document.file_url %></strong>
+    <td><strong><%= link_to squadron_document.title, '../uploads/docs/' + squadron_document.file_url %></strong>
         <% if squadron_document.description? %>
       <br /><div style="margin: 0.5em 0.75em"><%= squadron_document.description %></div>
     <% end %>
