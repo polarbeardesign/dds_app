@@ -19,7 +19,7 @@
   <tr class="<%= cycle('odd_row', 'even_row') %>">
     <td><strong><%= link_to squadron_document.title, '../uploads/docs/' + squadron_document.file_url %></strong>
         <% if squadron_document.description? %>
-      <br /><div style="margin: 0.5em 0.75em"><%= squadron_document.description %></div>
+      <br /><div style="margin: 0.5em 0.75em"><%= markdown squadron_document.description %></div>
     <% end %>
 <% if signed_in?%>
     <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
