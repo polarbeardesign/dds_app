@@ -1,3 +1,41 @@
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script  type="text/javascript">
+
+google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.setOnLoadCallback(drawBasic);
+
+function drawBasic() {
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'bracket');
+      data.addColumn('number', 'Qty');
+
+      data.addRows([
+        <% @age_brackets.each do |age| %> ['10 - 19', <%= age.a %>], ['20 - 29', <%= age.b %>], ['30 - 39', <%= age.c %>], ['40 - 49', <%= age.d %>], ['50 - 59', <%= age.e %>], ['60 - 69', <%= age.f %>], ['70 - 79', <%= age.g %>], ['=/> 80', <%= age.h %>] <% end %>
+      ]);
+
+      var options = {
+        title: 'Riders Ages',
+        colors:['#52782a'],
+        hAxis: {
+          title: 'Age Bracket'
+        },
+        vAxis: {
+          title: 'Qty',
+          format: ' #,###'
+        }
+      };
+
+      var chart = new google.visualization.ColumnChart(
+        document.getElementById('chart_div'));
+
+      chart.draw(data, options);
+    }
+</script>
+
+
+
 <% content_for :sidebar do %>
   <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
     <div align="center">
@@ -28,7 +66,9 @@ Avg Age:  <%= total_age/index %><br />
 Male:  <%= number_to_percentage(((@males.count.to_f / (@males.count + @females.count))*100), :precision => 0)  %><br />
 Female:  <%= number_to_percentage(((@females.count.to_f / (@males.count + @females.count))*100), :precision => 0)  %><br />
 <br />
-number_with_precision((data), :precision => 2)
+
+<div id="chart_div"></div>
+
 <table width="500" class="table_border">
 
 
