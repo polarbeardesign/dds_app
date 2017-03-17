@@ -5,4 +5,7 @@ class LhfeRider < ActiveRecord::Base
   scope :ordered, order("lhfe_riders.ride_date ASC")
   scope :reverse_chron, order("lhfe_riders.ride_date DESC")
   
+  scope :male, where('lhfe_riders.gender = "Male"')
+  scope :female, where('lhfe_riders.gender = "Female"')
+  
 end
