@@ -5,6 +5,8 @@ class LhfeRidersController < ApplicationController
 
   def index
     @lhfe_riders = LhfeRider.reverse_chron.all
+    @males = LhfeRider.male
+    @females = LhfeRider.female
     respond_with(@lhfe_riders)
   end
 

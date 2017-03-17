@@ -25,8 +25,10 @@
 <p>Demographics</p>
 Number of riders:  <%= @lhfe_riders.count %><br />
 Avg Age:  <%= total_age/index %><br />
+Male:  <%= number_to_percentage(((@males.count.to_f / (@males.count + @females.count))*100), :precision => 0)  %><br />
+Female:  <%= number_to_percentage(((@females.count.to_f / (@males.count + @females.count))*100), :precision => 0)  %><br />
 <br />
-
+number_with_precision((data), :precision => 2)
 <table width="500" class="table_border">
 
 
