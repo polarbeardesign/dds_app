@@ -35,6 +35,27 @@ function drawBasic() {
 </script>
 
 
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      
+      function drawChart() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Gender');
+      data.addColumn('number', 'Qty');
+
+      data.addRows([['Male', <%= @males.count %>], ['Female', <%= @females.count %>]]);
+
+
+        var options_pie = {
+          colors:['#52782a','#b78d03']
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options_pie);
+      }
+    </script>
 
 <% content_for :sidebar do %>
   <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
@@ -46,12 +67,13 @@ function drawBasic() {
 
 <% event_name = 0 %>
 <% age = 0 %>
+<% min_dob = 0 %>
 <% index = 0 %>
 <% total_age = 0 %>
 
 <% @lhfe_riders.each do |lhfe_rider_analysis| %>
   <% if lhfe_rider_analysis.dob? %>
-    <% age = (Date.today - lhfe_rider_analysis.dob).to_i/365 %>
+    <% age = (lhfe_rider_analysis.ride_date - lhfe_rider_analysis.dob).to_i/365 %>
     <% total_age = total_age + age %>
     <% index = index + 1 %>
   <% end %>
@@ -60,51 +82,25 @@ function drawBasic() {
 
 <h1>LHFE Riders</h1>
 
-<p>Demographics</p>
+<h2>Demographics</h2>
 Number of riders:  <%= @lhfe_riders.count %><br />
-Avg Age:  <%= total_age/index %><br />
-Male:  <%= number_to_percentage(((@males.count.to_f / (@males.count + @females.count))*100), :precision => 0)  %><br />
-Female:  <%= number_to_percentage(((@females.count.to_f / (@males.count + @females.count))*100), :precision => 0)  %><br />
-<br />
 
 <div id="chart_div"></div>
 
-<table width="500" class="table_border">
-
-
-<% @lhfe_riders.each do |lhfe_rider| %>
-  <% if event_name != lhfe_rider.event.title %>
-    <tr>
-      <th colspan='6'><span style="font-size: 1.2em;"><%= lhfe_rider.event.title %></span><br />
-      <%= lhfe_rider.event.location.short_name %><br />
-      <%= lhfe_rider.event.start.strftime('%b %d, %y') %></th>
-    </tr>
+<table class="table_border" width="100%">
   <tr>
-    <th>Last name</th>
-    <th>First name</th>
-    <th>City</th>
-    <th>State</th>
-    <th>Ride date</th>
-    <th>Age</th>
+    <th>Min Age:</th>
+    <th>Avg Age:</th>
+    <th>Max Age:</th>
+    <th>Qty:</th>
   </tr>
-  <% end %>
-
   <tr>
-    <td><%= link_to lhfe_rider.last_name, lhfe_rider %></td>
-    <td><%= lhfe_rider.first_name %></td>
-    <td><%= lhfe_rider.city %></td>
-    <td><%= lhfe_rider.state %></td>
-    <td><%= lhfe_rider.ride_date %></td>
-    <td>
-      <% if lhfe_rider.dob? %>
-        <%= (Date.today - lhfe_rider.dob).to_i/365 %>
-      <% end %>
-    </td>
+    <td align='center'><%= @demo_ages.first.min_age %></td>
+    <td align='center'><%= total_age/index %></td>
+    <td align='center'><%= @demo_ages.first.max_age %></td>
+    <td align='center'><%= @demo_ages.first.qty %></td>
   </tr>
-  <% event_name = lhfe_rider.event.title %>
-<% end %>
-</table>
+</table>  
 
-<br />
+<div id="piechart"></div>
 
-<%= link_to 'New LHFE Rider', new_lhfe_rider_path %>
