@@ -104,6 +104,7 @@ Number of riders:  <%= @lhfe_riders.count %><br />
 
 <div id="piechart"></div>
 
+<table width="500" class="table_border">
 <% @lhfe_riders.each do |lhfe_rider| %>
   <% if event_name != lhfe_rider.event.title %>
     <tr>
