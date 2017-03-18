@@ -104,3 +104,35 @@ Number of riders:  <%= @lhfe_riders.count %><br />
 
 <div id="piechart"></div>
 
+<% @lhfe_riders.each do |lhfe_rider| %>
+  <% if event_name != lhfe_rider.event.title %>
+    <tr>
+      <th colspan='6'><span style="font-size: 1.2em;"><%= lhfe_rider.event.title %></span><br />
+      <%= lhfe_rider.event.location.short_name %><br />
+      <%= lhfe_rider.event.start.strftime('%b %d, %y') %></th>
+    </tr>
+  <tr>
+    <th>Last name</th>
+    <th>First name</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Ride date</th>
+    <th>Age</th>
+  </tr>
+  <% end %>
+
+  <tr>
+    <td><%= link_to lhfe_rider.last_name, lhfe_rider %></td>
+    <td><%= lhfe_rider.first_name %></td>
+    <td><%= lhfe_rider.city %></td>
+    <td><%= lhfe_rider.state %></td>
+    <td><%= lhfe_rider.ride_date %></td>
+    <td>
+      <% if lhfe_rider.dob? %>
+        <%= (Date.today - lhfe_rider.dob).to_i/365 %>
+      <% end %>
+    </td>
+  </tr>
+  <% event_name = lhfe_rider.event.title %>
+<% end %>
+</table>
