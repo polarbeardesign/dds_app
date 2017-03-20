@@ -50,6 +50,9 @@ body {
 cursor: pointer;
 }
 
+fieldset {
+  border: none;
+}
 
 /* LOGO / HEADER CONTAINER */
 

@@ -104,9 +104,27 @@ Number of riders:  <%= @lhfe_riders.count %><br />
 
 <div id="piechart"></div>
 
+<hr />
+
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+<h2>List of Riders</h2>
+
+<form id="live-search" action="" class="styled formfilter"" method="post">
+  <fieldset>
+    <input type="text" class="text-input" id="table-filter" placeholder='filter' value="" autofocus />
+    <span id="filter-count"></span>
+  </fieldset>
+</form>
+
 <table width="500" class="table_border">
-<% @lhfe_riders.each do |lhfe_rider| %>
+<% @lhfe_riders.each_with_index do |lhfe_rider, i| %>
+
   <% if event_name != lhfe_rider.event.title %>
+    <% if i !=0 %>
+      </tbody>
+    <% end %>
+
+<tbody class="result">
     <tr>
       <th colspan='6'><span style="font-size: 1.2em;"><%= lhfe_rider.event.title %></span><br />
       <%= lhfe_rider.event.location.short_name %><br />
@@ -136,4 +154,6 @@ Number of riders:  <%= @lhfe_riders.count %><br />
   </tr>
   <% event_name = lhfe_rider.event.title %>
 <% end %>
+      </tbody>
 </table>
+<% end %>
