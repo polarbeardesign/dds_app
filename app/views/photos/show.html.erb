@@ -17,8 +17,7 @@
   <em> <- end</em>
 <% end %>
 </p>
-
-  <%= image_tag 'photos/'+ @photo.path + '/' + @photo.filename %>
+  <%= image_tag 'photos/'+ @photo.path + '/' + @photo.filename, :width => "600px" %>
 
 <p><%= @photo.description %></p>
 </div>
