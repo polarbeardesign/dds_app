@@ -28,12 +28,12 @@ role :db,  domain, :primary => true # This is where Rails migrations will run
 # If you are using Passenger mod_rails uncomment this:
 
 # causes bundle install to run
- require "bundler/capistrano"
- set :bundle_flags, "--quiet --no-cache"
+# require "bundler/capistrano"
+# set :bundle_flags, "--quiet --no-cache"
 
 before "deploy:assets:precompile", "deploy:symlink_db_file"
 
-after "deploy:restart", "deploy:cleanup", "deploy:symlink_env_file", "deploy:symlink_htaccess_file", "deploy:symlink_uploads", "deploy:precompile_other"
+after "deploy:restart", "deploy:cleanup", "deploy:symlink_env_file", "deploy:symlink_htaccess_file", "deploy:symlink_uploads"#, "deploy:precompile_other"
 
 namespace :deploy do
 
