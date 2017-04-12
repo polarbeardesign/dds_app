@@ -61,7 +61,8 @@
   </div>
   <div class="cell field"> 
     <%= f.label :destination_eta, "Destination ETA" %>:<br />
-    <%= f.text_field :destination_eta, :value => f.object.try(:destination_eta).try(:strftime,'%Y-%m-%d %H:%M:%S'), :size => 20 %>
+    <%= f.text_field :destination_eta, :value => f.object.try(:destination_eta).try(:strftime,'%Y-%m-%d %H:%M:%S'), :size => 20 %><br />
+    <div class="form_note"><%= @event.location.one_way_distance %> nm @ 200 mph = <%= number_with_precision((@event.location.one_way_distance.to_f/200), :precision => 1) %> hrs</div>
   </div>
 </div>
 <div class="indent_row">
