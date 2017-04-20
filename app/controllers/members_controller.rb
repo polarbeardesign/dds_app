@@ -218,6 +218,20 @@ end
     end
   end
 
+
+def send_welcome_email
+
+  @member = Member.find(params[:id])
+  MembershipAddedNotifier.created(@member).deliver
+
+  respond_to do |format|
+    format.html { redirect_to @member, :notice => 'Member was successfully emailed welcome email.' }
+  end
+
+end
+
+
+
 private
   def undo_link
     view_context.link_to("undo", revert_version_path(@product.versions.scoped.last), :method => :post)
