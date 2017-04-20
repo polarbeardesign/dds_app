@@ -35,6 +35,7 @@ class Right < ActiveRecord::Base
     "diff" => "READ",
     "rollback" => "UPDATE",
     "membership" => "READ",
+    "send_welcome_email" => "CREATE",
     "all_events" => "READ",
     "thank_you" => "READ",
     "supportcaf" => "READ",
