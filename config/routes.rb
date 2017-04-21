@@ -224,6 +224,9 @@ devise_for :users, :skip => [:registrations]
 
   match 'member_feed' => 'events#member_feed', :as => :member_feed
 
+  match "send_welcome_email" => "members#send_welcome_email"
+  
+  match "dues_reminder" => "dues_payments#dues_reminder"
   
   get "pages/home"
   get "pages/VMB612"

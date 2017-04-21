@@ -1,0 +1,21 @@
+Hi <%= @dues_payment.member.first_name %>,
+
+The current website records show your annual squadron dues <% if (@dues_payment.date_paid.end_of_month + 1.year) < Date.today %>were<% else %>are<% end %> due <%= (@dues_payment.date_paid.end_of_month + 1.year).strftime("%b %-d, %Y") %>.
+
+You may pay your dues online at https://www.devildogsquadron.com/membership
+
+Alternatively, if you prefer, you can submit a check for $75 payable to Devil Dog Squadron and mail to 
+
+  Devil Dog Squadron
+  c/o Pilot's Choice Aviation
+  209 Corsair Drive
+  Georgetown, TX 78628
+
+or hand deliver to Beth Jenkins or Gregg Peterson.
+
+If you have already made your dues payment please disregard this auto-generated notice. Your membership should be updated soon.
+
+Thank you for your continued support!
+
+Keep 'em Flying!
+Devil Dog Squadron

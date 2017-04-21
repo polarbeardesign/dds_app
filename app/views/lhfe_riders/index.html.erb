@@ -1,3 +1,62 @@
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script  type="text/javascript">
+
+google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.setOnLoadCallback(drawBasic);
+
+function drawBasic() {
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'bracket');
+      data.addColumn('number', 'Qty');
+
+      data.addRows([
+        <% @age_brackets.each do |age| %> ['10 - 19', <%= age.a %>], ['20 - 29', <%= age.b %>], ['30 - 39', <%= age.c %>], ['40 - 49', <%= age.d %>], ['50 - 59', <%= age.e %>], ['60 - 69', <%= age.f %>], ['70 - 79', <%= age.g %>], ['=/> 80', <%= age.h %>] <% end %>
+      ]);
+
+      var options = {
+        title: 'Riders Ages',
+        colors:['#52782a'],
+        hAxis: {
+          title: 'Age Bracket'
+        },
+        vAxis: {
+          title: 'Qty',
+          format: ' #,###'
+        }
+      };
+
+      var chart = new google.visualization.ColumnChart(
+        document.getElementById('chart_div'));
+
+      chart.draw(data, options);
+    }
+</script>
+
+
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      
+      function drawChart() {
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Gender');
+      data.addColumn('number', 'Qty');
+
+      data.addRows([['Male', <%= @males.count %>], ['Female', <%= @females.count %>]]);
+
+
+        var options_pie = {
+          colors:['#52782a','#b78d03']
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options_pie);
+      }
+    </script>
+
 <% content_for :sidebar do %>
   <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
     <div align="center">
@@ -8,12 +67,13 @@
 
 <% event_name = 0 %>
 <% age = 0 %>
+<% min_dob = 0 %>
 <% index = 0 %>
 <% total_age = 0 %>
 
 <% @lhfe_riders.each do |lhfe_rider_analysis| %>
   <% if lhfe_rider_analysis.dob? %>
-    <% age = (Date.today - lhfe_rider_analysis.dob).to_i/365 %>
+    <% age = (lhfe_rider_analysis.ride_date - lhfe_rider_analysis.dob).to_i/365 %>
     <% total_age = total_age + age %>
     <% index = index + 1 %>
   <% end %>
@@ -22,16 +82,49 @@
 
 <h1>LHFE Riders</h1>
 
-<p>Demographics</p>
+<h2>Demographics</h2>
 Number of riders:  <%= @lhfe_riders.count %><br />
-Avg Age:  <%= total_age/index %><br />
-<br />
 
-<table class="table_border">
+<div id="chart_div"></div>
 
+<table class="table_border" width="100%">
+  <tr>
+    <th>Min Age:</th>
+    <th>Avg Age:</th>
+    <th>Max Age:</th>
+    <th>Qty:</th>
+  </tr>
+  <tr>
+    <td align='center'><%= @demo_ages.first.min_age %></td>
+    <td align='center'><%= total_age/index %></td>
+    <td align='center'><%= @demo_ages.first.max_age %></td>
+    <td align='center'><%= @demo_ages.first.qty %></td>
+  </tr>
+</table>  
 
-<% @lhfe_riders.each do |lhfe_rider| %>
+<div id="piechart"></div>
+
+<hr />
+
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+<h2>List of Riders</h2>
+
+<form id="live-search" action="" class="styled formfilter"" method="post">
+  <fieldset>
+    <input type="text" class="text-input" id="table-filter" placeholder='filter' value="" autofocus />
+    <span id="filter-count"></span>
+  </fieldset>
+</form>
+
+<table width="500" class="table_border">
+<% @lhfe_riders.each_with_index do |lhfe_rider, i| %>
+
   <% if event_name != lhfe_rider.event.title %>
+    <% if i !=0 %>
+      </tbody>
+    <% end %>
+
+<tbody class="result">
     <tr>
       <th colspan='6'><span style="font-size: 1.2em;"><%= lhfe_rider.event.title %></span><br />
       <%= lhfe_rider.event.location.short_name %><br />
@@ -61,8 +154,6 @@ Avg Age:  <%= total_age/index %><br />
   </tr>
   <% event_name = lhfe_rider.event.title %>
 <% end %>
+      </tbody>
 </table>
-
-<br />
-
-<%= link_to 'New LHFE Rider', new_lhfe_rider_path %>
+<% end %>

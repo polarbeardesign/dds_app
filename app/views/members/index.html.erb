@@ -72,6 +72,13 @@ function getCellValue(row, index){ return $(row).children('td').eq(index).html()
 
 <h2>Active Members</h2>
 
+<form id="live-search" action="" class="styled formfilter"" method="post">
+  <fieldset>
+    <input type="text" class="text-input" id="table-row-filter" placeholder='filter' value="" autofocus />
+    <span id="filter-count"></span>
+  </fieldset>
+</form>
+
 <table class="table_border">
 <thead>
   <tr>
@@ -83,9 +90,9 @@ function getCellValue(row, index){ return $(row).children('td').eq(index).html()
     <th style="min-width: 90px;">Last Dues Paid</th>
   </tr>
 </thead>
-<tbody>
+
 <% @active_members.each do |member| %>
-  <tr class="<%= cycle('odd_row', 'even_row') %>">
+  <tr class='result'>
     <td>
       <% if !member.caf_col_no.nil? %>
         <%= link_to member.caf_col_no, edit_member_path(member) %>
@@ -109,10 +116,9 @@ function getCellValue(row, index){ return $(row).children('td').eq(index).html()
     <% end %>
     <% end %>
     </td>
-
   </tr>
 <% end %>
-</tbody>
+
 </table>
 
 </div>

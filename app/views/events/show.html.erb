@@ -227,14 +227,16 @@
 
 <table  id="manifest_list" width="500" class="table_border">
   <tr>
+    <th>Line</th>
     <th>Name</th>
     <th>Col. No.</th>
     <th>Commitment</th>
     <th>Sign-up Date (UTC)</th>
   </tr>
 
-<% @event.event_signups.ordered.each do |event_signup| %>
+<% @event.event_signups.ordered.each_with_index do |event_signup, i| %>
   <tr id="item_<%= event_signup.id %>" class="<%= cycle('odd_row', 'even_row') %>">
+    <td><%= i + 1 %></td>
     <td><%= event_signup.member.last_name %>, <%= event_signup.member.first_name %></td>
     <td><%= event_signup.member.caf_col_no %></td>
     <td><%= event_signup.commitment_level %>
@@ -251,6 +253,7 @@
   <% end %>
 <% end %>
 </table>
+<span class="tiny-text"><em>Devil Dog has 10 seats</em></span>
 <% end %>
 <% end %>
 
@@ -286,14 +289,16 @@
 
 <table width="500" class="table_border" >
   <tr>
+    <th>Line</th>
     <th>Name</th>
     <th>Col. No.</th>
     <th>Commitment</th>
     <th>Sign-up Date (UTC)</th>
   </tr>
 
-<% @event.attendances.ordered.each do |attendance| %>
+<% @event.attendances.ordered.each_with_index do |attendance, i| %>
   <tr class="<%= cycle('odd_row', 'even_row') %>">
+    <td><%= i + 1 %></td>
     <td><%= attendance.member.last_name %>, <%= attendance.member.first_name %></td>
     <td><%= attendance.member.caf_col_no %></td>
     <td><%= attendance.commitment_level %>

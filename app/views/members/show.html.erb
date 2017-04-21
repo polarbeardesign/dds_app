@@ -1,5 +1,8 @@
 <% content_for :sidebar do %>
   <%= render "sidebars/members" %>
+
+<%= button_to "Send Welcome Email", send_welcome_email_path(:id => @member) %></div>
+
 <% end %>
 
 <div class="form_row">
