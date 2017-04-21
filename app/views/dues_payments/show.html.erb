@@ -1,9 +1,3 @@
-<% content_for :sidebar do %>
-
-<%= button_to "Send Dues Reminder", dues_reminder_path(:id => @dues_payment) %></div>
-
-<% end %>
-
 <p>
   <b>Member:</b>
   <%= @dues_payment.member.last_name + ', ' + @dues_payment.member.first_name %> [ <%= link_to 'Go To Members Page', member_path(@dues_payment.member) %> ]
@@ -39,6 +33,7 @@
   <%= @dues_payment.notes %>
 </p>
 
+<%= button_to "Send Dues Reminder", dues_reminder_path(:id => @dues_payment) %>
 
 <%= link_to 'Edit', edit_dues_payment_path(@dues_payment) %> |
 <%= link_to 'Back', dues_payments_path %>

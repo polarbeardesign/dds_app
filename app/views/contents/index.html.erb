@@ -17,11 +17,7 @@
     <td><%= content.user %></td>
     <td><%= content.title %></td>
     <td>
-      <% if content.body.length > 220 %>
-        <%= markdown truncate( content.body, :length => 220, :separator => ' ') %> <em><%= link_to "...More", content %></em>
-      <% else %>
-        <%= markdown content.body %>
-      <% end %>
+
     </td>
     <td><%= content.slug %></td>
     <td><%= content.published_at %></td>
