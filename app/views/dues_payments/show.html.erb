@@ -1,3 +1,8 @@
+<% content_for :sidebar do %>
+
+<%= button_to "Send Dues Reminder", dues_reminder_path(:id => @dues_payment) %></div>
+
+<% end %>
 
 <p>
   <b>Member:</b>
@@ -7,6 +12,11 @@
 <p>
   <b>Date paid:</b>
   <%= @dues_payment.date_paid %>
+</p>
+
+<p>
+  <b>Next Due Date:</b>
+  <%= (@dues_payment.date_paid.end_of_month + 1.year).strftime("%b %-d, %Y") %>
 </p>
 
 <p>

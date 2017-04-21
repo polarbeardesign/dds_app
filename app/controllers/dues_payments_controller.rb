@@ -80,4 +80,18 @@ class DuesPaymentsController < ApplicationController
       format.json { head :ok }
     end
   end
+
+
+def dues_reminder
+
+  @dues_payment = DuesPayment.find(params[:id])
+  DuesPaymentNotifier.created(@dues_payment).deliver
+
+  respond_to do |format|
+    format.html { redirect_to @dues_payment, :notice => 'Dues Reminder was emailed.' }
+  end
+
+end
+
+
 end
