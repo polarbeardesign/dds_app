@@ -174,7 +174,8 @@ devise_for :users, :skip => [:registrations]
   match 'supportcaf' => 'pages#supportcaf', :as => :supportcaf
   
   match 'twelve_planes' => 'pages#twelve_planes', :as => :twelve_planes
-  
+
+# assigning contents pages to URLS
   match 'PBJs' => 'contents#show', :id => 1, :as => :PBJs
   match 'VMB612' => 'contents#show', :id => 2, :as => :VMB612 
   match 'living_history_flight_experience' => 'contents#show', :id => 3, :as => :living_history_flight_experience

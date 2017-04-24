@@ -1,5 +1,6 @@
 class ContentsController < ApplicationController
   before_filter :set_content, only: [:show, :edit, :update, :destroy]
+  skip_before_filter :check_authorization, :check_authentication, :only => [:show]
 
   respond_to :html
 
