@@ -1,5 +1,5 @@
 class MembershipAddedNotifier < ActionMailer::Base
-  default :from => "membership_application@devildogsquadron.com"
+  default :from => "jim.ivanoff@devildogsquadron.com"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
@@ -14,7 +14,7 @@ class MembershipAddedNotifier < ActionMailer::Base
 
       if Rails.env.production?
         mail :to => member.user.email, 
-          #   :cc => 'info@devildogsquadron.com', 
+             :cc => 'jim.ivanoff@devildogsquadron.com', 
              :subject => 'Welcome! Devil Dog Squadron Website Login'
       else
         mail :to => member.user.email, 
