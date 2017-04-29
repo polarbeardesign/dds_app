@@ -266,12 +266,12 @@ input[type="submit"] {
 -------------------------------------------------------*/
 
 .calendar_row {
-  display: -webkit-flex;
+/*  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-flex-flow: row;
   -ms-flex-flow: row;
-  flex-flow: row;
+  flex-flow: row;*/
   margin: 0 0 1.2em 0;
   padding: 0.5em;
   width: 100%; 
@@ -299,7 +299,7 @@ input[type="submit"] {
   }
 
 .date-graphic {
-  display: -webkit-flex;
+/*  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-flex-flow: row;
@@ -307,7 +307,7 @@ input[type="submit"] {
   flex-flow: row;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
-  justify-content: center;
+  justify-content: center;*/
   width: 50%;
   }
 
@@ -328,9 +328,13 @@ input[type="submit"] {
 }
 
 .calendar-ii {
-  width: 50px;
+/*  width: 50px;
   height: 50px;
-  margin: 0 0.25em;
+  margin: 0 0.25em;*/
+  display: inline-block;
+  width: 125px;
+  height: 125px;
+  margin: 1em auto;
   border: 1px solid #333;
   border-radius: 6px;
   -webkit-border-radius: 6px;
@@ -340,7 +344,9 @@ input[type="submit"] {
 .calendar-ii.large {
   width: 125px;
   height: 125px;
-  margin: 1em 0;
+    display: block;
+    text-align: center;
+  margin: 1em auto;
 }
 
 .calendar_year-ii {
@@ -357,7 +363,8 @@ input[type="submit"] {
 
 .calendar_month-ii {
   text-align: center;
-  font-size: 14px;
+/*  font-size: 14px;*/
+  font-size: 1.9em;
   font-weight: bold;
   margin: 0 0 0 0;
   color: #fff;
@@ -380,9 +387,11 @@ input[type="submit"] {
 
 .calendar_date-ii {
   text-align: center;
-  font-size: 1em;
+/*  font-size: 1em;
+  margin: 3px 0 0 0;*/
+  font-size: 3.5em;
+  margin: 0.25em 0 0 0;
   font-weight: bold;
-  margin: 3px 0 0 0;
   padding-top: 0px;
   color: #000;
   }
@@ -392,11 +401,18 @@ input[type="submit"] {
   margin: 0.25em 0 0 0;
 }
 
+.event-title {
+  font-style: italic;
+  font-size: 2em;
+  font-weight: bold;
+}
+
 .location {
   display: block;
   text-align: center;
   clear: both;
-  margin: 4em 0 0 0.25em;
+/*  margin: 4em 0 0 0.25em;*/
+  margin: 1em;
   padding: 0.25em 0.5em;
   background: #009140;
   color: #fff;
@@ -558,6 +574,11 @@ header .header-image img {
   -ms-order: 1;
   order: 1;
   }
+
+.teaser-photo {
+  width: 100%;
+  border: 1px solid #000;
+}
 
 .calendar {
   -webkit-order: 2;
@@ -735,6 +756,15 @@ footer a:link, footer a:visited {
   font-size: 1.2em;
   background: #f0f0f0;
   padding: 0.5em;
+}
+
+.month-subheader {
+  font-size: 1.5em;
+  color: #fff;
+  text-align: center;
+  margin: 1em auto;
+  padding: 0.75em 0;
+  background: #1d2644;
 }
 
 /*----------------------------------------------------
@@ -1339,15 +1369,6 @@ table.aircraft-facts {
 .pagination-nav {
   text-align: center;
   }
-
-.month-subheader {
-  font-size: 1.5em;
-  color: #fff;
-  text-align: center;
-  margin: 1em auto;
-  padding: 0.75em 0;
-  background: #52782a;
-}
 
 .rides-teaser {
   font-weight: bold;
