@@ -5,15 +5,37 @@ jQuery(function($){
 
   $('#trip_crew_arrival').blur(function() {
 
+     //Crew Arrival Time
       var crewTime = new Date($('#trip_crew_arrival').val());
+     // Calculate Tug Time (crew Arrival + 30 minutes)
       var tt = new Date(crewTime.getTime() + 30*60000);
+     // Convert Tug Time to datetime string
       var ttString = tt.getFullYear() + "-" + ("0"+(tt.getMonth()+1)).slice(-2) + "-" + ("0" + tt.getDate()).slice(-2) + " " +  ("0" + tt.getHours()).slice(-2) + ":" + ("0" + tt.getMinutes()).slice(-2)  + ":00";
+     // Calculate Wheels up time (crew Arrival + 60 minutes)
       var wt = new Date(crewTime.getTime() + 60*60000);
+     // Convert Wheels up time to datetime string
       var wtString = wt.getFullYear() + "-" + ("0"+(wt.getMonth()+1)).slice(-2) + "-" + ("0" + wt.getDate()).slice(-2) + " " +  ("0" + wt.getHours()).slice(-2) + ":" + ("0" + wt.getMinutes()).slice(-2)  + ":00";
+
+     // Calculate Destination ETA (Wheels up + estimated time enroute)
+      var destEta = new Date(wt.getTime() + <%= (@event.location.one_way_distance.to_f/200) %> * 3600000);
+     // Convert Wheels up time to datetime string
+      var destEtaString = destEta.getFullYear() + "-" + ("0"+(destEta.getMonth()+1)).slice(-2) + "-" + ("0" + destEta.getDate()).slice(-2) + " " +  ("0" + destEta.getHours()).slice(-2) + ":" + ("0" + destEta.getMinutes()).slice(-2)  + ":00";
+
+
+
+     // Calculate Return ETA (next Sunday at 6PM)
+      var returnEta = new Date(crewTime.getFullYear(),crewTime.getMonth(),crewTime.getDate()+(7-crewTime.getDay()))
+     // Convert Return ETA to datetime string
+      var returnEtaString = returnEta.getFullYear() + "-" + ("0"+(returnEta.getMonth()+1)).slice(-2) + "-" + ("0" + returnEta.getDate()).slice(-2) + " " +  (returnEta.getHours()+18) + ":" + ("0" + returnEta.getMinutes()).slice(-2)  + ":00";
       
+      
+      
+      // Fill in the values to appropriate text fileds
       $('#trip_tug_time').val(ttString);
       $('#trip_wheels_up').val(wtString);
-      $('#trip_destination_eta').focus();
+      $('#trip_destination_eta').val(destEtaString);
+      $('#trip_return_eta').val(returnEtaString);
+      $('#trip_notes').focus();
 
   });
 

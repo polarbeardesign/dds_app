@@ -1,3 +1,28 @@
+<script>
+jQuery(function($){
+
+// Fills in tug time (tt) and Wheels up (wt) 30 minutes and 60 minutes later respectively after crew time is input 
+
+  $('#event_start').blur(function() {
+
+     //Crew Arrival Time
+      var eventStart = new Date($('#event_start').val());
+     // Calculate End Time (next Sunday at 6PM)
+      var eventEnd = new Date(eventStart.getFullYear(),eventStart.getMonth(),eventStart.getDate()+(7-eventStart.getDay()))
+     // Convert Return ETA to datetime string
+      var eventEndString = eventEnd.getFullYear() + "-" + ("0"+(eventEnd.getMonth()+1)).slice(-2) + "-" + ("0" + eventEnd.getDate()).slice(-2) + " " +  (eventEnd.getHours()+16) + ":" + ("0" + eventEnd.getMinutes()).slice(-2)  + ":00";
+      
+      
+      
+      // Fill in the values to appropriate text fileds
+      $('#event_end').val(eventEndString);
+      $('#event_event_type_id').focus();
+
+  });
+
+});
+</script>
+
 <h1>New event</h1>
 
 <%= render 'form' %>

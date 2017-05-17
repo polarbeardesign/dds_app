@@ -29,15 +29,21 @@
 <div class="indent_row">
   <div class="cell">
     <div class="field">
-      <%= f.label :start %><br />
-      <%= f.text_field :start, :value => f.object.try(:start).try(:strftime,'%Y-%m-%d %H:%M:%S'), :size => 20 %>
+      <%= f.label :location %><br />
+      <%= f.collection_select :location_id, Location.ordered.all, :id, :shortname_with_code, options = {:order => 'short_name ASC', :prompt => true}, html_options = {:class => "styled-select"} %><br />
+      <p><%= link_to 'Enter a new location', new_location_path %></p><br />
     </div>
   </div>
-  <div class="cell">
-    <div class="field">
+</div>
+<div class="indent_row">
+  <div class="cell field">
+      <%= f.label :start %><br />
+      <%= f.text_field :start, :value => f.object.try(:start).try(:strftime,'%Y-%m-%d %H:%M:%S'), :size => 20 %>
+  </div>
+  <div class="cell field" style="max-width: 50%;">
       <%= f.label :end %><br />
       <%= f.text_field :end, :value => f.object.try(:end).try(:strftime,'%Y-%m-%d %H:%M:%S'), :size => 20 %>
-    </div>
+      <div class="form_note">Defaults to Sunday at 6PM after event start - adjust as necessary.</div>
   </div>
   <p class="form_note">Times aren't displayed so not really important to be accurate.</p>
 </div>
@@ -54,13 +60,6 @@
     <div class="field">
       <%= f.label :event_statuses_id, "Status" %> <a href="#" title="Only confirmed will show to general public, tentative will show to logged in members">tip</a><br />
       <%= f.collection_select :event_statuses_id, EventStatus.all, :id, :status, options = {:order => 'status ASC', :prompt => true}, html_options = {:class => "styled-select"} %>
-    </div>
-  </div>
-  <div class="cell">
-    <div class="field">
-      <%= f.label :location %><br />
-      <%= f.collection_select :location_id, Location.ordered.all, :id, :short_name, options = {:order => 'short_name ASC', :prompt => true}, html_options = {:class => "styled-select"} %><br />
-      <p><%= link_to 'Enter a new location', new_location_path %></p><br />
     </div>
   </div>
       <div style="clear: both;"><%= f.check_box :rsvp %>Create RSVP list for this event (check for yes)</div>
