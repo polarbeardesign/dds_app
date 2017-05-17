@@ -1,3 +1,40 @@
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '118844394867108', // need app id
+      xfbml      : true,
+      version    : 'v2.9'
+    });
+
+    FB.ui(
+     {
+      method: 'share',
+      href: 'https://developers.facebook.com/docs/'
+    }, function(response){});
+    
+    FB.api(
+  '/me',
+  'GET',
+  {"fields":"id,name,feed"},
+  function(response) {
+      // Insert your code here
+  }
+);
+    
+    FB.AppEvents.logPageView();
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+
+</script>
+
+
 <%= render 'hp_about' %>
 
 <%= render 'hp_whats_new' %>
