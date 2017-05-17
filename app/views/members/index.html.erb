@@ -95,9 +95,9 @@ function getCellValue(row, index){ return $(row).children('td').eq(index).html()
   <tr class='result'>
     <td>
       <% if !member.caf_col_no.nil? %>
-        <%= link_to member.caf_col_no, edit_member_path(member) %>
+        <%= link_to member.caf_col_no, member_path(member) %>
       <% else %>
-        <%= link_to 'n/a', edit_member_path(member) %>
+        <%= link_to 'n/a', member_path(member) %>
       <% end %>
     </td>
     <td><%=  member.last_name+", "+member.first_name %></td>
@@ -183,9 +183,9 @@ function getCellValue(row, index){ return $(row).children('td').eq(index).html()
   <tr class="<%= cycle('odd_row', 'even_row') %>">
     <td>
       <% if !member.caf_col_no.nil? %>
-        <%= link_to member.caf_col_no, edit_member_path(member) %>
+        <%= link_to member.caf_col_no, member_path(member) %>
       <% else %>
-        <%= link_to 'n/a', edit_member_path(member) %>
+        <%= link_to 'n/a', member_path(member) %>
       <% end %>
     </td>
     <td><%=  member.last_name+", "+member.first_name %></td>
