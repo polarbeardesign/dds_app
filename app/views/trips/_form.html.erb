@@ -69,6 +69,7 @@
   <div class="cell field">
     <%= f.label :return_eta, "Return ETA" %>:<br />
     <%= f.text_field :return_eta, :value => f.object.try(:return_eta).try(:strftime,'%Y-%m-%d %H:%M:%S'), :size => 20 %>
+    <div class="form_note">Defaults to Sunday at 6PM after event start - adjust as necessary.</div>
   </div>
 </div>
 <div class="indent_row">
