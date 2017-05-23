@@ -107,7 +107,7 @@ Number of riders:  <%= @lhfe_riders.count %><br />
 <hr />
 
   <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
-<h2>List of Riders</h2>
+<h2>Summary of Ride Events</h2>
 
 <form id="live-search" action="" class="styled formfilter"" method="post">
   <fieldset>
@@ -116,44 +116,45 @@ Number of riders:  <%= @lhfe_riders.count %><br />
   </fieldset>
 </form>
 
-<table width="500" class="table_border">
-<% @lhfe_riders.each_with_index do |lhfe_rider, i| %>
-
-  <% if event_name != lhfe_rider.event.title %>
-    <% if i !=0 %>
-      </tbody>
-    <% end %>
-
+<% @events.each do |ride_event| %>
+<table width="500" class="table_border" style="margin-bottom: 50px;">
+  
 <tbody class="result">
     <tr>
-      <th colspan='6'><span style="font-size: 1.2em;"><%= lhfe_rider.event.title %></span><br />
-      <%= lhfe_rider.event.location.short_name %><br />
-      <%= lhfe_rider.event.start.strftime('%b %d, %y') %></th>
+      <th colspan='6'><span style="font-size: 1.2em;"><%= ride_event.event.title %></span><br />
+      <%= ride_event.event.location.short_name %><br />
+      <%= ride_event.event.start.strftime('%b %d, %y') %><br />
+      <div style="text-align: right;"><%= ride_event.event.lhfe_riders.count %> Riders | <%= number_to_currency(ride_event.event.lhfe_riders.sum(:payment_amount)) %></div></th>
     </tr>
   <tr>
-    <th>Last name</th>
-    <th>First name</th>
+    <th>Name</th>
+    <th>Age</th>
     <th>City</th>
     <th>State</th>
-    <th>Ride date</th>
-    <th>Age</th>
+    <th>Payment</th>
+    <th>Method</th>
   </tr>
-  <% end %>
-
+<% ride_event.event.lhfe_riders.each do |lhfe_rider| %>
   <tr>
-    <td><%= link_to lhfe_rider.last_name, lhfe_rider %></td>
-    <td><%= lhfe_rider.first_name %></td>
-    <td><%= lhfe_rider.city %></td>
-    <td><%= lhfe_rider.state %></td>
-    <td><%= lhfe_rider.ride_date %></td>
+    <td><%= link_to lhfe_rider.first_name + ' ' + lhfe_rider.last_name, lhfe_rider %></td>
     <td>
       <% if lhfe_rider.dob? %>
         <%= (Date.today - lhfe_rider.dob).to_i/365 %>
       <% end %>
     </td>
+    <td><%= lhfe_rider.city %></td>
+    <td><%= lhfe_rider.state %></td>
+    <td align="right"><%= number_to_currency(lhfe_rider.payment_amount) %></td>
+    <td><%= lhfe_rider.payment_type %></td>
   </tr>
-  <% event_name = lhfe_rider.event.title %>
 <% end %>
-      </tbody>
+</tbody>
 </table>
+
+
+
 <% end %>
+
+<% end %>
+
+
