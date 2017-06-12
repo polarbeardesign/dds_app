@@ -16,14 +16,51 @@
 
 <p>Current records indicate you last paid dues: <strong><%= @dues_paid.date_paid.strftime("%b %d, %Y") %></strong>. If you feel this is in error, please contact the Finance Officer.</p>
 
-<h2>Upcoming Trips:</h2>
+<h2>Your Upcoming Trips:</h2>
 
 <% if @member.event_signups.future.empty? %>
 No upcoming trips currently scheduled.
 <% else %>
 
 <% @member.event_signups.future.each do |sign_up| %>
-    <%= link_to sign_up.event.title, event_path(sign_up.event) %> | <%= sign_up.event.start.strftime("%b %d, %Y") %> | Your Commitment Level: <strong><%= sign_up.commitment_level %></strong><br />
+
+<div class="calendar_row" style="width: 95%; padding-top: 0.25em">
+
+  <div class="cell" style="width: 25%;">
+    <% if sign_up.event.start.strftime("%b %d" ) == sign_up.event.end.strftime("%b %d") %>
+    <div class="calendar-ii" style="margin-left: 3.5em;">
+      <div class="calendar_month-ii"><%= sign_up.event.start.strftime("%b") %></div>
+      <div class="calendar_date-ii"><%= sign_up.event.start.strftime("%d") %></div>
+    </div>
+    <% else %>
+    <div class="calendar-ii" style="float: left; margin-left: 1.5em;">
+      <div class="calendar_month-ii"><%= sign_up.event.start.strftime("%b") %></div>
+      <div class="calendar_date-ii"><%= sign_up.event.start.strftime("%d") %></div>
+    </div>
+    <span style="float: left; font-size: 1em; margin: 0.5em 0 0 0;">&#8211; </span>
+    <div class="calendar-ii">
+      <div class="calendar_month-ii"><%= sign_up.event.end.strftime("%b") %></div>
+      <div class="calendar_date-ii"><%= sign_up.event.end.strftime("%d") %></div>
+    </div>
+    <% end %>
+    <div class="location"><%= sign_up.event.location.city + ", " + sign_up.event.location.state %></div>
+  </div>
+  <div class="cell" style="width: 70%;">
+    <strong><em><%= link_to sign_up.event.title, sign_up.event %></em></strong>
+    <% if sign_up.event.event_statuses_id == 2 %>
+      <span class="event-flag" style="display: inline;"> &lt;= Tentative</span>
+    <% elsif sign_up.event.event_statuses_id == 3 %>
+      <span class="event-flag" style="display: inline;"> &lt;= Canceled</span>
+    <% end %>
+    <br />
+      <% if sign_up.event.details.length > 220 %>
+        <%= truncate(sign_up.event.details, :length => 220, :separator => ' ') %> <em><%= link_to "Go to event", sign_up.event %></em>
+      <% else %>
+        <%= sign_up.event.details %>
+      <% end %>
+      <br /><br />Your Commitment Level: <strong><%= sign_up.commitment_level %></strong>
+</div>
+</div>
 <% end %>
 <% end %>
 
