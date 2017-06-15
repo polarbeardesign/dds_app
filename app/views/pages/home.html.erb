@@ -1,27 +1,28 @@
 <script>
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : '118844394867108', // need app id
+      appId      : '1351035148316092',
       xfbml      : true,
       version    : 'v2.9'
     });
-
-    FB.ui(
-     {
-      method: 'share',
-      href: 'https://developers.facebook.com/docs/'
-    }, function(response){});
-    
-    FB.api(
-  '/me',
-  'GET',
-  {"fields":"id,name,feed"},
-  function(response) {
-      // Insert your code here
-  }
-);
-    
     FB.AppEvents.logPageView();
+
+FB.api(
+  '/me/events',
+  'GET',
+  {},
+  function(response) {
+  if (!response) {
+    alert('No response');
+  } else if (response.error) {
+    alert(response.error.message);
+  } else {
+    alert('events were found');
+  }
+  }
+
+);
+
   };
 
   (function(d, s, id){
@@ -31,9 +32,14 @@
      js.src = "//connect.facebook.net/en_US/sdk.js";
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
-
 </script>
 
+<div
+  class="fb-like"
+  data-share="true"
+  data-width="450"
+  data-show-faces="true">
+</div>
 
 <%= render 'hp_about' %>
 
