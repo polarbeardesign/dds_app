@@ -57,7 +57,7 @@
 </tr>
 <% @member.dues_payments.each do |dues_payment| %>
   <tr class="<%= cycle('odd_row', 'even_row') %>">
-  <td><%= dues_payment.date_paid %></td>
+  <td><%= link_to dues_payment.date_paid, dues_payment_path(dues_payment) %></td>
   <td><%= number_to_currency(dues_payment.amt_paid) %></td>
   <td><%= dues_payment.payment_method %></td>
   <td><%= dues_payment.payment_type %></td>
