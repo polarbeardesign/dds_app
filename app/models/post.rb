@@ -5,7 +5,7 @@ class Post < ActiveRecord::Base
   has_paper_trail :class_name => 'PostVersion',
       :meta => { :author_username => :user_name}
       
-scope :ordered, order("posts.created_at DESC, posts.id DESC")
+scope :ordered, order("posts.publish_date DESC, posts.id DESC")
 
 
 end
