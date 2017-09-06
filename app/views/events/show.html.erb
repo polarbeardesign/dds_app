@@ -13,7 +13,9 @@
     <% end %>
 <% end %>
 
-
+<% if @event.graphic_address? %>
+  <div class="event_graphic"><%= image_tag(@event.graphic_address) %></div>
+<% end %>
 
 <% if @event.start.strftime("%b %d" ) == @event.end.strftime("%b %d") %>
 <div class="calendar-css" style="float: right;">
@@ -98,7 +100,7 @@
  <% end %>
 
 <% else %>
- Rides not available at this event. </p>
+ Rides not available at this event. Check for other <%= link_to "upcoming ride opportunities", living_flight_history_experience_path %>.</p>
 
 <% end %>
 
@@ -114,10 +116,6 @@
   <b>Contact info:</b>
   <%= @event.contact_info %>
 </p>
-<% end %>
-
-<% if @event.graphic_address? %>
-  <div class="event_graphic"><%= image_tag(@event.graphic_address) %></div>
 <% end %>
 
 <% if @event.details? %>
