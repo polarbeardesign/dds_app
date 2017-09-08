@@ -350,8 +350,9 @@ input[type="submit"] {
 
 .calendar_year-ii {
   text-align: center;
-  font-size: 14px;
-  font-weight: bold;
+  font-size: 0.65em;
+  font-weight: normal;
+  line-height: 1.4em;
   margin: 0 0 0 0;
   color: #fff;
   background: #cc0000;
@@ -376,8 +377,9 @@ input[type="submit"] {
 
 .calendar_day-ii {
   text-align: center;
-  font-size: 1em;
-  font-weight: bold;
+  font-size: 0.8em;
+  font-weight: normal;
+  line-height: 1.4em;
   margin: 0 0 0 0;
   padding: 0.25em 0 0;
   color: #fff;
@@ -389,7 +391,7 @@ input[type="submit"] {
 /*  font-size: 1em;
   margin: 3px 0 0 0;*/
   font-size: 3.5em;
-  margin: 0.25em 0 0 0;
+  margin: 0.35em 0 0 0;
   font-weight: bold;
   padding-top: 0px;
   color: #000;
@@ -397,7 +399,7 @@ input[type="submit"] {
 
 .calendar_date-ii.large {
   font-size: 3.5em;
-  margin: 0.25em 0 0 0;
+  margin: 0.35em 0 0 0;
 }
 
 .event-title {
@@ -679,7 +681,7 @@ header .header-image img {
 
 .calendar_date-ii.large {
   font-size: 4em;
-  margin: 0.25em 0 0 0;
+  margin: 0.35em 0 0 0;
 }
 /*----------------------------------------------------
 Set first level order small

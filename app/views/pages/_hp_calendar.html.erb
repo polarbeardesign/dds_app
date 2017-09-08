@@ -5,32 +5,69 @@
 <% if !@events.blank? %>
 <% @events.each do |event| %>
 <div class="calendar_row">
-
-  <div class="cell" style="width: 25%;">
-    <% if event.start.strftime("%b %d" ) == event.end.strftime("%b %d") %>
-    <div class='date-range'>
-    <div class="calendar-ii">
-      <div class="calendar_month-ii"><%= event.start.strftime("%b") %></div>
-      <div class="calendar_date-ii"><%= event.start.strftime("%d") %></div>
+<div class='row'>
+<div class="col-xs-12 col-sm-4">
+<div class='row'>
+  <% if event.start.strftime("%b %d" ) == event.end.strftime("%b %d") %>
+<div class="col-xs-12">
+  <div class="calendar-ii large">
+    <div class="calendar_year-ii large">
+      <%= event.start.strftime("%Y") %>
     </div>
+    <div class="calendar_month-ii large">
+      <%= event.start.strftime("%b") %>
     </div>
-    <% else %>
-    <div class='date-range'>
-    <div class="calendar-ii" style="margin-left: 1.5em;">
-      <div class="calendar_month-ii"><%= event.start.strftime("%b") %></div>
-      <div class="calendar_date-ii"><%= event.start.strftime("%d") %></div>
+    <div class="calendar_day-ii large">
+      <%= event.start.strftime("%A") %>
     </div>
-    <span style=" font-size: 1em; margin: 0.5em 0 0 0;">&#8211; </span>
-    <div class="calendar-ii">
-      <div class="calendar_month-ii"><%= event.end.strftime("%b") %></div>
-      <div class="calendar_date-ii"><%= event.end.strftime("%d") %></div>
+    <div class="calendar_date-ii large">
+      <%= event.start.strftime("%d") %>
     </div>
-    </div>
-    <% end %>
-    <div class="location"><%= event.location.city + ", " + event.location.state %></div>
   </div>
-  <div class="cell" style="width: 70%;">
-    <strong><em><%= link_to event.title, event %></em></strong>
+  <% else %>
+  <div class="col-xs-6 col-sm-6">
+    <div class="calendar-ii large">
+      <div class="calendar_year-ii large">
+        <%= event.start.strftime("%Y") %>
+      </div>
+      <div class="calendar_month-ii large">
+        <%= event.start.strftime("%b") %>
+      </div>
+      <div class="calendar_day-ii large">
+        <%= event.start.strftime("%A") %>
+      </div>
+      <div class="calendar_date-ii large">
+        <%= event.start.strftime("%d") %>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-6 col-sm-6">
+    <div class="calendar-ii large">
+      <div class="calendar_year-ii large">
+        <%= event.end.strftime("%Y") %>
+      </div>
+      <div class="calendar_month-ii large">
+        <%= event.end.strftime("%b") %>
+      </div>
+      <div class="calendar_day-ii large">
+        <%= event.end.strftime("%A") %>
+      </div>
+      <div class="calendar_date-ii large">
+        <%= event.end.strftime("%d") %>
+      </div>
+    </div>
+<% end %>
+</div>
+</div>
+
+<div class='row'>
+<div class="col-xs-12">
+<div class="location"><%= event.location.city + ", " + event.location.state %></div>
+</div>
+</div>
+</div>
+  <div class="col-xs-12 col-sm-8">
+    <h3 class="event-title"><em><%= link_to event.title, event %></em></h3>
     <% if event.event_statuses_id == 2 %>
       <span class="event-flag" style="display: inline;"> &lt;= Tentative</span>
     <% elsif event.event_statuses_id == 3 %>
@@ -57,7 +94,7 @@
 <% end %>
 
   </div>
-  </div>
+  </div></div>
 <div class="clearer"></div>
 <% end %>
 
