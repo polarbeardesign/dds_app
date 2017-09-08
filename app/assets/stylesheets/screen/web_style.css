@@ -686,6 +686,11 @@ header .header-image img {
   font-size: 4em;
   margin: 0.35em 0 0 0;
 }
+
+
+.right-inset {
+  float: right;
+}
 /*----------------------------------------------------
 Set first level order small
 -------------------------------------------------------*/
@@ -782,6 +787,19 @@ header .header-image img {
   margin: 0 auto 2em;
  /* border-bottom: 1px solid #efefef;*/
 }
+
+.hp-about p, .hp-sponsors p, .hp-events p, 
+.hp-donations p, .hp-gallery p, .hp-news p {
+  text-shadow: 1px 1px #bbb;
+  font-size: 1.25em;
+}
+
+.hp-about h1, .hp-sponsors h1, .hp-events h1, 
+.hp-donations h1, .hp-gallery h1, .hp-news h1 {
+  text-shadow: 1px 1px #bbb;
+  font-size: 2.25em;
+}
+
 
 .membership-form {
   display: block;
