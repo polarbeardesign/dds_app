@@ -8,21 +8,19 @@
 
 <% end %>
 
-<h1>Members Section</h1>
-
-<p>Members only section provides access to members-only information.</p>
-
+<h1>Member Home</h1>
+<hr />
 <h2>Membership Dues:</h2>
 
 <p>Current records indicate you last paid dues: <strong><%= @dues_paid.date_paid.strftime("%b %d, %Y") %></strong>. If you feel this is in error, please contact the Finance Officer.</p>
-
+<hr />
 <h2>Your Upcoming Trips:</h2>
 
 <% if @member.event_signups.future.empty? %>
 No upcoming trips currently scheduled.
 <% else %>
 
-<% @member.event_signups.future.each do |sign_up| %>
+<% @member.event_signups.future.trips_ordered.each do |sign_up| %>
 
 <div class="calendar_row" style="width: 95%; padding-top: 0.25em">
 
@@ -63,7 +61,7 @@ No upcoming trips currently scheduled.
 </div>
 <% end %>
 <% end %>
-
+<hr />
 <h2>Trips History:</h2>
 <table class="table_border">
 <tr>
