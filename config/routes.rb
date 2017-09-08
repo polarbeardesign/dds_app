@@ -186,6 +186,18 @@ devise_for :users, :skip => [:registrations]
   match 'member_home' => 'pages#member_home', :as => :member_home
   match 'admin_home' => 'contents#admin_home', :as => :admin_home
 
+# assigning contents pages to URLS
+  match 'PBJs' => 'contents#show', :id => 1, :as => :PBJs
+  match 'VMB612' => 'contents#show', :id => 2, :as => :VMB612 
+  match 'living_history_flight_experience' => 'contents#show', :id => 3, :as => :living_history_flight_experience
+  match 'squadron' => 'contents#squadron', :as => :squadron  # 'contents#show', :id => 4
+  match 'admin_home' => 'contents#show', :id => 5, :as => :admin_home
+
+
+
+  match 'member_home' => 'pages#member_home', :as => :member_home
+  match 'admin_home' => 'contents#admin_home', :as => :admin_home
+
   match 'SN_44_86758' => 'pages#SN_44_86758', :as => :SN_44_86758
   
   match 'seventieth_birthday_party' => 'pages#seventieth_birthday_party', :as => :seventieth_birthday_party

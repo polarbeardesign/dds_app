@@ -3,11 +3,13 @@
 
 /* COLORS
 
-green => #52782a;
-navy  =>  #1d2644;
-gold => #b78d03;
-lt grey => #f0f0f0
+
 green   => #52782a;
+navy    =>  #1d2644;
+gold    => #b78d03;
+dk blue => #1d2644
+gold    => #b78d03
+lt grey => #f0f0f0
 */
 
 
@@ -74,6 +76,7 @@ del {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+
 }
 
 td {
@@ -1643,6 +1646,69 @@ nav#top-nav {
 
 
   }
+  
+    nav#top-nav > ul > li {
+      flex: 0 1 auto;
+      margin: 0;
+      padding: 0;
+      width: 160px;
+    }
+    
+      nav#top-nav > ul > li:hover {
+        background: #ddd;
+      }
+      
+      nav#top-nav > ul > li a {
+        background: linear-gradient(to bottom,rgba(102,102,102,1) 0,rgba(0,0,0,0.96) 100%);;
+        border: none;
+        border-radius: 0 0 2px 2px;
+        box-shadow: 0 3px 1px rgba(0,0,0,.05);
+        display: none;
+        font-size: 1em;
+        position: absolute;
+        width: 195px;
+      }
+      
+        nav#top-nav > ul > li:hover a {
+          display: block;
+        }
+        
+        nav#top-nav > ul > li a > ul {
+          list-style-type: none;  
+        }
+        
+          nav#top-nav > ul > li a > ul > li {
+            margin: 0;
+            padding: 0;
+          }
+          
+            nav#top-nav > ul > li a > ul > li > a {
+              color: rgba(255,255,255,.9);
+              display: block;  
+              font-size: .75rem;
+              padding: .25em 1.5em;
+              text-decoration: none;
+            }
+            
+              nav#top-nav > ul > li a > ul > li:hover > a {
+                background-color: rgba(0,0,0,.15);  
+              }
+  
+      nav#top-nav > ul > li > a {
+        align-items: flex-start;
+        color: #fff;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+        font-size: 1.25em;
+        font-weight: 200;
+        letter-spacing: 1px;
+        max-width: 160px;
+        padding: 1em 1em;
+        text-decoration: none;
+        text-shadow: 0 1px 1px rgba(0,0,0,.1);
+        transition: all linear 0.1s;
+      }
 
 #main, #main-home {
   -webkit-order: 3;
@@ -1846,8 +1912,6 @@ nav#top-nav > ul {
         text-shadow: 0 1px 1px rgba(0,0,0,.1);
         transition: all linear 0.1s;
       }
-
-
 
 
 
