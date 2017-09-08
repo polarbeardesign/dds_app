@@ -777,7 +777,7 @@ header .header-image img {
   display: block;
   clear: both;
   margin: 0 auto 2em;
-  border-bottom: 1px solid #efefef;
+ /* border-bottom: 1px solid #efefef;*/
 }
 
 .membership-form {

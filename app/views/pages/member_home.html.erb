@@ -10,9 +10,23 @@
 
 <h1>Member Home</h1>
 <hr />
-<h2>Membership Dues:</h2>
 
-<p>Current records indicate you last paid dues: <strong><%= @dues_paid.date_paid.strftime("%b %d, %Y") %></strong>. If you feel this is in error, please contact the Finance Officer.</p>
+<div class="row">
+<div class="col-sm-6">
+  <h2>Membership Dues:</h2>
+  
+  <p>Current records indicate you last paid dues: <strong><%= @dues_paid.date_paid.strftime("%b %d, %Y") %></strong>. If you feel this is in error, please contact the Finance Officer.</p>
+  
+</div>
+<div class="col-sm-6">
+  <h2>Recent Meeting Minutes:</h2>
+  <ul>
+    <li>July 2017</li>
+    <li>June 2017</li>
+    <li>May 2017</li>
+    </ul>
+</div>
+</div>
 <hr />
 <h2>Your Upcoming Trips:</h2>
 
@@ -22,29 +36,70 @@ No upcoming trips currently scheduled.
 
 <% @member.event_signups.future.trips_ordered.each do |sign_up| %>
 
-<div class="calendar_row" style="width: 95%; padding-top: 0.25em">
-
-  <div class="cell" style="width: 25%;">
-    <% if sign_up.event.start.strftime("%b %d" ) == sign_up.event.end.strftime("%b %d") %>
-    <div class="calendar-ii" style="margin-left: 3.5em;">
-      <div class="calendar_month-ii"><%= sign_up.event.start.strftime("%b") %></div>
-      <div class="calendar_date-ii"><%= sign_up.event.start.strftime("%d") %></div>
+<div class="calendar_row">
+<div class='row'>
+<div class="col-xs-12 col-sm-4">
+<div class='row'>
+  <% if sign_up.event.start.strftime("%b %d" ) == sign_up.event.end.strftime("%b %d") %>
+<div class="col-xs-12">
+  <div class="calendar-ii large">
+    <div class="calendar_year-ii large">
+      <%= sign_up.event.start.strftime("%Y") %>
     </div>
-    <% else %>
-    <div class="calendar-ii" style="float: left; margin-left: 1.5em;">
-      <div class="calendar_month-ii"><%= sign_up.event.start.strftime("%b") %></div>
-      <div class="calendar_date-ii"><%= sign_up.event.start.strftime("%d") %></div>
+    <div class="calendar_month-ii large">
+      <%= sign_up.event.start.strftime("%b") %>
     </div>
-    <span style="float: left; font-size: 1em; margin: 0.5em 0 0 0;">&#8211; </span>
-    <div class="calendar-ii">
-      <div class="calendar_month-ii"><%= sign_up.event.end.strftime("%b") %></div>
-      <div class="calendar_date-ii"><%= sign_up.event.end.strftime("%d") %></div>
+    <div class="calendar_day-ii large">
+      <%= sign_up.event.start.strftime("%A") %>
     </div>
-    <% end %>
-    <div class="location"><%= sign_up.event.location.city + ", " + sign_up.event.location.state %></div>
+    <div class="calendar_date-ii large">
+      <%= sign_up.event.start.strftime("%d") %>
+    </div>
   </div>
-  <div class="cell" style="width: 70%;">
-    <strong><em><%= link_to sign_up.event.title, sign_up.event %></em></strong>
+  <% else %>
+  <div class="col-xs-6 col-sm-6">
+    <div class="calendar-ii large">
+      <div class="calendar_year-ii large">
+        <%= sign_up.event.start.strftime("%Y") %>
+      </div>
+      <div class="calendar_month-ii large">
+        <%= sign_up.event.start.strftime("%b") %>
+      </div>
+      <div class="calendar_day-ii large">
+        <%= sign_up.event.start.strftime("%A") %>
+      </div>
+      <div class="calendar_date-ii large">
+        <%= sign_up.event.start.strftime("%d") %>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-6 col-sm-6">
+    <div class="calendar-ii large">
+      <div class="calendar_year-ii large">
+        <%= sign_up.event.end.strftime("%Y") %>
+      </div>
+      <div class="calendar_month-ii large">
+        <%= sign_up.event.end.strftime("%b") %>
+      </div>
+      <div class="calendar_day-ii large">
+        <%= sign_up.event.end.strftime("%A") %>
+      </div>
+      <div class="calendar_date-ii large">
+        <%= sign_up.event.end.strftime("%d") %>
+      </div>
+    </div>
+<% end %>
+</div>
+</div>
+
+<div class='row'>
+<div class="col-xs-12">
+<div class="location"><%= sign_up.event.location.city + ", " + sign_up.event.location.state %></div>
+</div>
+</div>
+</div>
+  <div class="col-xs-12 col-sm-8">
+    <h3 class="event-title"><em><%= link_to sign_up.event.title, sign_up.event %></em></h3>
     <% if sign_up.event.event_statuses_id == 2 %>
       <span class="event-flag" style="display: inline;"> &lt;= Tentative</span>
     <% elsif sign_up.event.event_statuses_id == 3 %>
@@ -52,18 +107,21 @@ No upcoming trips currently scheduled.
     <% end %>
     <br />
       <% if sign_up.event.details.length > 220 %>
-        <%= truncate(sign_up.event.details, :length => 220, :separator => ' ') %> <em><%= link_to "Go to event", sign_up.event %></em>
+        <%= truncate(sign_up.event.details, :length => 220, :separator => ' ') %> <em><%= link_to "Go to " + sign_up.event.title, sign_up.event %></em>
       <% else %>
         <%= sign_up.event.details %>
       <% end %>
-      <br /><br />Your Commitment Level: <strong><%= sign_up.commitment_level %></strong>
-</div>
-</div>
-<% end %>
-<% end %>
+
+
+<br /><br />Your Commitment Level: <strong><%= sign_up.commitment_level %></strong>
+  </div>
+  </div></div>
+<div class="clearer"></div>
+<% end %>   <% end %>     
+
 <hr />
 <h2>Trips History:</h2>
-<table class="table_border">
+<table class="table_border" width="100%">
 <tr>
   <th></th>
   <th>Event</th>

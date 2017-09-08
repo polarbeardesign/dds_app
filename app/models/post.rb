@@ -7,5 +7,4 @@ class Post < ActiveRecord::Base
       
 scope :ordered, order("posts.publish_date DESC, posts.id DESC")
 
-
 end
