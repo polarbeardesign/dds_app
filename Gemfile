@@ -39,7 +39,9 @@ end
 group :production do
   gem 'execjs', '2.0.2'
   gem 'libv8', '3.3.10.4'
+# gem 'libv8', '3.16.14.15' // Necessary to run on my mac
   gem 'therubyracer', '0.10.2'
+# gem 'therubyracer', '0.12.2' // Necessary to run on my mac
   gem 'rack-google_analytics', :require => "rack/google_analytics"
 end
 

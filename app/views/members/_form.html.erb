@@ -25,7 +25,7 @@
 
 <div class="clearer"></div>
 
-<% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+<% if current_user != nil && current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
   <h3>Website Role(s)</h3>
   <div class="indent_row">
     <%= f.fields_for :roles do |builder| %>
