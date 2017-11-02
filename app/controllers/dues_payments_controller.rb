@@ -82,13 +82,18 @@ class DuesPaymentsController < ApplicationController
   end
 
 
-def dues_reminder
+def send_dues_reminder
 
   @dues_payment = DuesPayment.find(params[:id])
+  @dues_reminder = DuesReminder.new
+  @dues_reminder.member_id = @dues_payment.member_id
+  @dues_reminder.sent_to = @dues_payment.member.user.email
+  @dues_reminder.notice_name = "Dues Reminder"
+  @dues_reminder.save
   DuesPaymentNotifier.created(@dues_payment).deliver
 
   respond_to do |format|
-    format.html { redirect_to @dues_payment, :notice => 'Dues Reminder was emailed.' }
+    format.html { redirect_to member_path(@dues_payment.member_id), :notice => 'Dues Reminder was emailed.' }
   end
 
 end
