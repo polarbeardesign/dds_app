@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Member:</b>
+  <%= @dues_reminder.member.first_name + " " + @dues_reminder.member.last_name %>
+</p>
+
+<p>
+  <b>Notice name:</b>
+  <%= @dues_reminder.notice_name %>
+</p>
+
+<p>
+  <b>Sent to:</b>
+  <%= @dues_reminder.sent_to %>
+</p>
+
+<p>
+  <b>Text sent:</b>
+  <%= @dues_reminder.text_sent %>
+</p>
+
+<p>
+  <b>Date sent:</b>
+  <%= @dues_reminder.date_sent %>
+</p>
+
+
+<%= link_to 'Edit', edit_dues_reminder_path(@dues_reminder) %> |
+<%= link_to 'Back', dues_reminders_path %>

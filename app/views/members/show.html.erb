@@ -1,7 +1,11 @@
+ <% last_payment = "" %>
+
 <% content_for :sidebar do %>
   <%= render "sidebars/members" %>
 
-<%= button_to "Send Welcome Email", send_welcome_email_path(:id => @member) %></div>
+<% if @member.created_at > Date.today  - 30.days %>
+	<%= button_to "Send Welcome Email", send_welcome_email_path(:id => @member) %></div>
+<% end %>
 
 <% end %>
 
@@ -43,6 +47,9 @@
 <br />
   <em>CAF Join Date:</em>
   <%= @member.caf_join_date %>
+<br />
+  <em>DDS Join Date:</em>
+  <%= @member.created_at.strftime("%b %d, %Y") %>
 </p>
 </div>
 </div>
@@ -56,14 +63,33 @@
   <th>Type</td>
 </tr>
 <% @member.dues_payments.each do |dues_payment| %>
-  <tr class="<%= cycle('odd_row', 'even_row') %>">
+  <tr>
   <td><%= link_to dues_payment.date_paid, dues_payment_path(dues_payment) %></td>
   <td><%= number_to_currency(dues_payment.amt_paid) %></td>
   <td><%= dues_payment.payment_method %></td>
   <td><%= dues_payment.payment_type %></td>
 </tr>
+ <% last_payment = dues_payment %>
 <% end %>
 </table>
+
+<h2>Dues Reminders Sent</h2>
+<table class="table_border">
+<tr>
+  <th>Date</th>
+  <th>Notice</td>
+</tr>
+
+<% @member.dues_reminders.each do |dues_reminder| %>
+  <tr>
+<td><%= dues_reminder.created_at.strftime("%Y-%m-%d %H:%M ") %></td>
+<td><%= dues_reminder.notice_name %></td>
+</tr>
+<% end %>
+</table>
+
+<%= button_to "Send Dues Reminder", send_dues_reminder_path(:id => last_payment) %>
+
 
 <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
   <%= render 'versions', :member => @member %>

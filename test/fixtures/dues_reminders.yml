@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  member.references: MyString
+  notice_name: MyString
+  sent_to: MyString
+  text_sent.text: MyString
+  date_sent.date: MyString
+
+two:
+  member.references: MyString
+  notice_name: MyString
+  sent_to: MyString
+  text_sent.text: MyString
+  date_sent.date: MyString

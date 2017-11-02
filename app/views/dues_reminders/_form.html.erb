@@ -1,0 +1,37 @@
+<%= form_for(@dues_reminder) do |f| %>
+  <% if @dues_reminder.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@dues_reminder.errors.count, "error") %> prohibited this dues_reminder from being saved:</h2>
+
+      <ul>
+      <% @dues_reminder.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :member_id %><br />
+    <%= f.text_field :member_id %>
+  </div>
+  <div class="field">
+    <%= f.label :notice_name %><br />
+    <%= f.text_field :notice_name %>
+  </div>
+  <div class="field">
+    <%= f.label :sent_to %><br />
+    <%= f.text_field :sent_to %>
+  </div>
+  <div class="field">
+    <%= f.label :text_sent %><br />
+    <%= f.text_field :text_sent %>
+  </div>
+  <div class="field">
+    <%= f.label :date_sent %><br />
+    <%= f.text_field :date_sent %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

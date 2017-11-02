@@ -1,5 +1,8 @@
 DdsApp::Application.routes.draw do
 
+  resources :dues_reminders
+
+
   resources :lhfe_riders
 
 
@@ -199,7 +202,7 @@ devise_for :users, :skip => [:registrations]
 
   match "send_welcome_email" => "members#send_welcome_email"
   
-  match "dues_reminder" => "dues_payments#dues_reminder"
+  match "send_dues_reminder" => "dues_payments#send_dues_reminder"
   
   get "pages/home"
   get "pages/VMB612"

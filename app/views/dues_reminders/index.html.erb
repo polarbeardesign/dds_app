@@ -1,0 +1,31 @@
+<h1>Listing dues_reminders</h1>
+
+<table>
+  <tr>
+    <th>Member</th>
+    <th>Notice name</th>
+    <th>Sent to</th>
+    <th>Text sent</th>
+    <th>Date sent</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @dues_reminders.each do |dues_reminder| %>
+  <tr>
+    <td><%= dues_reminder.member.first_name + " " + dues_reminder.member.last_name %></td>
+    <td><%= dues_reminder.notice_name %></td>
+    <td><%= dues_reminder.sent_to %></td>
+    <td><%= dues_reminder.text_sent %></td>
+    <td><%= dues_reminder.date_sent %></td>
+    <td><%= link_to 'Show', dues_reminder %></td>
+    <td><%= link_to 'Edit', edit_dues_reminder_path(dues_reminder) %></td>
+    <td><%= link_to 'Destroy', dues_reminder, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Dues reminder', new_dues_reminder_path %>

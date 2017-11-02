@@ -36,7 +36,7 @@ class Right < ActiveRecord::Base
     "rollback" => "UPDATE",
     "membership" => "READ",
     "send_welcome_email" => "CREATE",
-    "dues_reminder" => "CREATE",
+    "send_dues_reminder" => "CREATE",
     "all_events" => "READ",
     "thank_you" => "READ",
     "supportcaf" => "READ",
