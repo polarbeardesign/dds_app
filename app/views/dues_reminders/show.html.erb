@@ -22,7 +22,7 @@
 
 <p>
   <b>Date sent:</b>
-  <%= @dues_reminder.date_sent %>
+  <%= @dues_reminder.created_at.strftime("%Y-%m-%d %H:%M") %>
 </p>
 
 

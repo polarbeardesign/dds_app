@@ -1,3 +1,24 @@
+DUES REMINDERS 171110
+---------------------
+
+- date sent
+- member id
+- text sent
+
+
+Logic
+
+on 15th of month if member.dues_paid > 11 months send reminder and record sent in dues_reminders
+
+have different dues reminders
+
+- first when due
+- past due
+- final notice
+
+rails generate scaffold DuesReminder member.references notice_name:string sent_to:string text_sent.text date_sent.date
+
+
 CHRON JOBS 170510
 ----------
 
@@ -16,6 +37,7 @@ Show detail images on PX items. Add detail pages
   - link opens image, not lightbox - fixed by adding script address to bottom of page
 - add larger images to a new table `product_images` ?
   - where product has_many product_images
+
 
 
 
