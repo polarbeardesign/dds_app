@@ -1,11 +1,10 @@
-<h1>Listing dues_reminders</h1>
+<h1>Listing Dues Reminders</h1>
 
-<table>
+<table class="table_border">
   <tr>
     <th>Member</th>
     <th>Notice name</th>
     <th>Sent to</th>
-    <th>Text sent</th>
     <th>Date sent</th>
     <th></th>
     <th></th>
@@ -17,8 +16,7 @@
     <td><%= dues_reminder.member.first_name + " " + dues_reminder.member.last_name %></td>
     <td><%= dues_reminder.notice_name %></td>
     <td><%= dues_reminder.sent_to %></td>
-    <td><%= dues_reminder.text_sent %></td>
-    <td><%= dues_reminder.date_sent %></td>
+    <td><%= dues_reminder.created_at.strftime("%Y-%m-%d %H:%M") %></td>
     <td><%= link_to 'Show', dues_reminder %></td>
     <td><%= link_to 'Edit', edit_dues_reminder_path(dues_reminder) %></td>
     <td><%= link_to 'Destroy', dues_reminder, method: :delete, data: { confirm: 'Are you sure?' } %></td>

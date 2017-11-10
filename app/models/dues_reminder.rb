@@ -4,4 +4,6 @@ class DuesReminder < ActiveRecord::Base
 
   belongs_to :member
   
+	scope :ordered, order("created_at ASC")
+  
 end
