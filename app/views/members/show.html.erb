@@ -11,7 +11,7 @@
 
 <div class="form_row">
 
-<div class="form_cell" style="width: 30%; border-right: 1px solid #ddd;">
+<div class="form_cell" style="width: 55%; border-right: 1px solid #ddd;">
 
 <p><strong><%= @member.first_name %> <%= @member.last_name %></strong></br />
 <%= @member.street_1 %>
@@ -32,14 +32,17 @@
     <em>Cell:</em> <%= @member.cell_phone %><br />
   <% end %>
 </p>
-
+<p>
+  <% if @member.user.email? %>
+    <em>email:</em> <%= mail_to @member.user.email %><br />
+  <% end %>
+</p>
 </div>
-<div class="form_cell" style="width: 30%; border-right: 1px solid #ddd;">
+<div class="form_cell" style="width: 40%;">
 <p><strong>Emergency Contact:</strong><br />
 <%= @member.ec_name %><br />
 <%= @member.ec_phone %></p>
-</div>
-<div class="form_cell" style="width: 33%;">
+
 <p>
 <p><strong>CAF Info:</strong><br />
   <em>CAF Col No:</em>
