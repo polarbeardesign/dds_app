@@ -152,8 +152,12 @@ class MembersController < ApplicationController
           format.json { render :json => @member, :status => :created, :location => @member }
         end
       else
-        format.html { render :action => "new" }
-        format.json { render :json => @member.errors, :status => :unprocessable_entity }
+        if params[:Submit] == "Submit Application" 
+          format.html { render :action => "member_application" }
+        else
+          format.html { render :action => "new" }
+          format.json { render :json => @member.errors, :status => :unprocessable_entity }
+        end
       end
     end
   end

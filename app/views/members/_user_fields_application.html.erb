@@ -5,7 +5,7 @@
     <%= f.text_field :email, :size => '20'  %>
   </div>
     <%= f.hidden_field :username, :size => '20'  %>
-    <% if @member.user.username.nil? %>
+    <% if @member.user.id.nil? %>
       <%= f.hidden_field :password, :value => 'welcome_1'  %>
     <% end %>
   </div>
