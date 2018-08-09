@@ -34,7 +34,8 @@ function getCellValue(row, index){ return $(row).children('td').eq(index).html()
   <tr>
     <th>Name</th>
     <th>Location</th>
-    <th>Email</th>
+    <th width="125">Cell</th>
+    <th width="125">Email</th>
   </tr>
 
 <% @members.each do |member| %>
@@ -45,6 +46,7 @@ function getCellValue(row, index){ return $(row).children('td').eq(index).html()
     <% else %>
       <td>---</td>    
     <% end %>
+    <td><%= member.cell_phone %></td>
     <td><%= member.user.email %></td>
   </tr>
 <% end %>
