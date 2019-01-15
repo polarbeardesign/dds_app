@@ -119,7 +119,7 @@
 <% end %>
 
 <% if @event.details? %>
-  <p><%= simple_format(@event.details) %></p>
+  <p><%= markdown @event.details %></p>
 <% end %>
   
 <div style="clear: both;"></div>
