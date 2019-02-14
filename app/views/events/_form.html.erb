@@ -38,11 +38,11 @@
 <div class="indent_row">
   <div class="cell field">
       <%= f.label :start %><br />
-      <%= f.text_field :start, :value => f.object.try(:start).try(:strftime,'%Y-%m-%d %H:%M:%S'), :size => 20 %>
+      <%= f.text_field :start, :value => f.object.try(:start).try(:strftime,'%Y-%m-%d %H:%M:%S'), :size => 20, :autocomplete => "off" %>
   </div>
   <div class="cell field" style="max-width: 50%;">
       <%= f.label :end %><br />
-      <%= f.text_field :end, :value => f.object.try(:end).try(:strftime,'%Y-%m-%d %H:%M:%S'), :size => 20 %>
+      <%= f.text_field :end, :value => f.object.try(:end).try(:strftime,'%Y-%m-%d %H:%M:%S'), :size => 20, :autocomplete => "off" %>
       <div class="form_note">Defaults to Sunday at 6PM after event start - adjust as necessary.</div>
   </div>
   <p class="form_note">Times aren't displayed so not really important to be accurate.</p>

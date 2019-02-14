@@ -1,6 +1,6 @@
-<% map_1_url = "https://maps.googleapis.com/maps/api/staticmap?zoom=4&size=300x200&maptype=roadmap&markers=color:red%7Clabel:X%7C"+@event_signup.event.location.latitude+","+@event_signup.event.location.longitude+"&sensor=false" %>
+<% map_1_url = "https://maps.googleapis.com/maps/api/staticmap?zoom=4&size=300x200&maptype=roadmap&markers=color:red%7Clabel:X%7C"+@event_signup.event.location.latitude+","+@event_signup.event.location.longitude+"&sensor=false&key=AIzaSyBTLIEMHnR7-4zunQEj0NYdn0r8e7_fkig" %>
 
-<% map_2_url = "https://maps.googleapis.com/maps/api/staticmap?zoom=12&size=300x200&maptype=roadmap&markers=color:red%7Clabel:X%7C"+@event_signup.event.location.latitude+","+@event_signup.event.location.longitude+"&sensor=false" %>
+<% map_2_url = "https://maps.googleapis.com/maps/api/staticmap?zoom=12&size=300x200&maptype=roadmap&markers=color:red%7Clabel:X%7C"+@event_signup.event.location.latitude+","+@event_signup.event.location.longitude+"&sensor=false&key=AIzaSyBTLIEMHnR7-4zunQEj0NYdn0r8e7_fkig" %>
 
 <p style="font-size: 14pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;"><%= @event_signup.member.first_name %>, </p>
 
@@ -69,8 +69,8 @@
   <% if @event_signup.event.location.latitude? %>
     <table style="margin-left: 20px;border: solid #333;border-width: thin;border-collapse: separate;border-spacing: 0px;font-size: 14pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;">
       <tr>
-        <td style="padding: 3px; border-right: 1px solid #333;"><%= link_to image_tag(map_1_url), "https://maps.google.com/maps?q="+@event_signup.event.location.latitude+",+"+@event_signup.event.location.longitude, :target => "_blank" %></td>
-        <td style="padding: 3px;"><%= link_to image_tag(map_2_url), "https://maps.google.com/maps?q="+@event_signup.event.location.latitude+",+"+@event_signup.event.location.longitude, :target => "_blank" %></td>
+        <td style="padding: 3px; border-right: 1px solid #333;"><%= link_to image_tag(map_1_url), "https://www.google.com/maps/search/?api=1&query="+@event_signup.event.location.latitude+","+@event_signup.event.location.longitude, :target => "_blank" %></td>
+        <td style="padding: 3px;"><%= link_to image_tag(map_2_url), "https://www.google.com/maps/search/?api=1&query="+@event_signup.event.location.latitude+","+@event_signup.event.location.longitude, :target => "_blank" %></td>
       </tr>
     </table>
   <% end %>
