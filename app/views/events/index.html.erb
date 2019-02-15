@@ -1,6 +1,6 @@
 <% current_event_type = "" %>
 <% initial_date = "" %>
-
+<%= render "scripts" %>
 <% content_for :sidebar do %>
 <% if signed_in?%>
     <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
@@ -16,6 +16,15 @@
 
 <h1>Devil Dog Calendar:</h1>
 
+<div id="live-search" class="styled formfilter">
+  <fieldset>
+      <label>Search/Filter:</label>
+      <input type="text" class="text-input" id="filter" value="" />
+      <span id="filter-count"></span>
+  </fieldset>
+  <div class="form-tip">examples include: type like "airshow" or "meeting", state like "tx" </div>
+</div>
+
 <% if !@events.blank? %>
 <% @events.each do |event| %>
   <% if initial_date == "" %>
@@ -27,9 +36,10 @@
    <strong><%= event.start.strftime("%B - %Y") %></strong>
 </div>
   <% end %>
-<div class="calendar_row" style="width: 95%; padding-top: 0.25em">
+<div class="calendar_row blocchi-parent" style="width: 95%; padding-top: 0.25em">
 
   <div class="cell" style="width: 25%;">
+    <div style="display: none"><%= event.event_type.title %></div>
     <% if event.start.strftime("%b %d" ) == event.end.strftime("%b %d") %>
     <div class="calendar-ii" style="margin-left: 3.5em;">
       <div class="calendar_month-ii"><%= event.start.strftime("%b") %></div>
