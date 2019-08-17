@@ -41,7 +41,11 @@
   <%= @member.caf_col_no %>
 <br />
   <em>DDS dues last paid:</em>
+  <% if !@member.dues_payments.empty? %>
   <%= @member.dues_payments.most_recent.last.date_paid.strftime("%b %d, %Y") %>
+  <% else %>
+   n/a
+  <% end %>
 </p>
 </div>
 </div>
