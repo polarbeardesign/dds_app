@@ -1,3 +1,25 @@
-<div class="header-image">
-  <%= image_tag("headers/" + random_image) %>
+<header>
+
+<div class="login-bar">
+  <% if user_signed_in? %>
+    Welcome: <%= current_user.member.first_name + ' ' + current_user.member.last_name %> | 
+    <%= link_to current_user.email, member_path(current_user.member) %> | 
+    Last login: <%= current_user.last_sign_in_at.strftime('%H:%M on %m/%d/%y') %> | 
+    <%= link_to 'Logout', destroy_user_session_path, :method => :delete %>
+  <% else %>
+    <%= link_to 'Member Login', login_path %>
+  <% end %>
 </div>
+
+<ul class="social2 socialtop">
+  <li><a href="https://www.instagram.com/nationalcenterofcontinuingedu/" ><i class="fa icon-instagram"></i></a></li>
+  <li><a href="https://www.facebook.com/NationalCenterCE" ><i class="fa icon-facebook-sign"></i></a></li>
+  <li><a href="https://twitter.com/NationalCente11" ><i class="fa icon-twitter-sign"></i></a></li>
+</ul>
+<br />
+<%= link_to (image_tag "devildog_logo.png", :class => "header_logo", :style => "width: 60px;"), root_path %>
+
+</header>
+
+
+

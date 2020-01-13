@@ -10,7 +10,7 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:home,
     @sponsors = Sponsor.order("position").all
     @about = Content.find_by_id(6)
     @donate = Content.find_by_id(7)
-    render :layout => "homepage"
+#    render :layout => "homepage"
   end
 
   def VMB612
