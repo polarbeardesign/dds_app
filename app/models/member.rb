@@ -30,9 +30,9 @@ class Member < ActiveRecord::Base
 
 	def self.to_csv
 		CSV.generate do |csv|
-			csv << ["id","CAF Col No","First Name","Last Name","Address 1","Address 2","City","State","Zip","Phone -home","Phone -work","Phone -mobile","Email","active","Join Date","Dues Date"] 
+			csv << ["id","CAF Col No","First Name","Last Name","Address 1","Address 2","City","State","Zip","Phone -home","Phone -work","Phone -mobile","Email","active","Join Date","Account Created","Dues Date"] 
 			all.each do |member|
-				csv << [member.id,member.caf_col_no,member.first_name,member.last_name,member.street_1,member.street_2,member.city,member.state,member.zip,member.home_phone,member.work_phone,member.cell_phone,member.user.email,member.active,member.caf_join_date,
+				csv << [member.id,member.caf_col_no,member.first_name,member.last_name,member.street_1,member.street_2,member.city,member.state,member.zip,member.home_phone,member.work_phone,member.cell_phone,member.user.email,member.active,member.caf_join_date,member.created_at,
         if !member.dues_payments.last.nil?
           member.dues_payments.most_recent.first.date_paid
         end
