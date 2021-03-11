@@ -45,14 +45,6 @@ Requirements:
 - record the reminder was sent (at member level)
 - send notification summary email to admins of what was sent to who
 
-SELECT * FROM dues_payments WHERE date_paid BETWEEN NOW() - INTERVAL 11 MONTH AND NOW() - 13 MONTH
-
-SELECT id, member_id, payment_method, payment_type, amt_paid,date_paid FROM dues_payments WHERE date_paid BETWEEN DATE_SUB(NOW(), INTERVAL 1 MONTH) AND DATE_SUB(NOW(), INTERVAL 2 MONTH);
-
-SELECT id, member_id, payment_method, payment_type, amt_paid,date_paid FROM dues_payments WHERE MONTH(date_paid) BETWEEN 1 AND 3 AND YEAR(date_paid) = 2020;
-
-SELECT id, member_id, payment_method, payment_type, amt_paid, date_paid FROM dues_payments WHERE MONTH(date_paid) BETWEEN MONTH(DATE_SUB(NOW(), INTERVAL 13 MONTH)) and MONTH(DATE_SUB(NOW(), INTERVAL 11 MONTH)) AND YEAR(date_paid) = 2020;
-
 Between now and one month (mar & apr)
 
 SELECT id, member_id, payment_method, payment_type, amt_paid, date_paid FROM dues_payments WHERE date_paid BETWEEN DATE_ADD(LAST_DAY(DATE_SUB(NOW(), INTERVAL 13 MONTH)), INTERVAL 1 DAY) and LAST_DAY(DATE_SUB(NOW(), INTERVAL 11 MONTH)) ORDER BY date_paid;
@@ -69,7 +61,12 @@ Example reminder email
 http://rordevelopmenttips.over-blog.com/2018/09/cron-job-in-ruby-on-rails-application-a-complete-tutorial-for-beginners.html
 https://www.cryptextechnologies.com/uploads/ckeditor/pictures/60/content_cron1.jpg
 
+Set up queries with list pages
 
+- https://www.devildogsquadron.com/dues_reminders_list
+- https://www.devildogsquadron.com/dues_reminders_past_due_list
+
+Need to set up emails and chrons
 
 CHRON JOBS 170510
 ----------
