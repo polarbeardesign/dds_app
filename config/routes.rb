@@ -22,6 +22,8 @@ DdsApp::Application.routes.draw do
 
   resources :dues_payments
 
+  match 'dues_reminders_list' => 'dues_payments#dues_reminders_list', :as => :dues_reminders_list
+  match 'dues_reminders_past_due_list' => 'dues_payments#dues_reminders_past_due_list', :as => :dues_reminders_past_due_list
   resources :product_photos
 
   resources :test_submission_responses

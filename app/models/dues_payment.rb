@@ -16,4 +16,15 @@ class DuesPayment < ActiveRecord::Base
   where ("dues_payments.date_paid IS NOT NULL AND dues_payments.date_paid < ?"), (1.year.ago.to_date)
   }
 
+#Scopes for email reminders
+
+# find members whose due date is less than 13 months?
+# but not more than 15 month?
+
+  scope :expires_in_one_month, lambda { 
+  where ("dues_payments.date_paid IS NOT NULL AND dues_payments.date_paid < ?"), (11.months.ago.to_date)
+  }
+  
+#  expires_at: 1.month.from_now.to_date) }
+# joins(:member)merge(Member.ordered).
 end

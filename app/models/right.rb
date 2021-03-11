@@ -37,6 +37,8 @@ class Right < ActiveRecord::Base
     "membership" => "READ",
     "send_welcome_email" => "CREATE",
     "send_dues_reminder" => "CREATE",
+    "dues_reminders_list" => "READ",
+    "dues_reminders_past_due_list" => "READ",
     "all_events" => "READ",
     "thank_you" => "READ",
     "supportcaf" => "READ",

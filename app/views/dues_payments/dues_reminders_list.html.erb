@@ -18,15 +18,9 @@ function getCellValue(row, index){ return $(row).children('td').eq(index).html()
 
 </script>
 
-<h1>Dues Payments</h1>
+<h1>Dues Payment Reminder List</h1>
 
-<% if signed_in?%>
-    <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
-         <div align="center">
-           <%= button_to 'New Dues Payment', new_dues_payment_path, :method => "GET" %>
-         </div>
-    <% end %>
-<% end %>
+<p>Qty: <%= @dues_reminders.size %></p>
 
 <table class="table_border">
   <tr>
@@ -38,14 +32,14 @@ function getCellValue(row, index){ return $(row).children('td').eq(index).html()
     <th>Notes</th>
   </tr>
 
-<% @dues_reminders.each do |dues_reminder| %>
+<% @dues_reminders.each do |dues_payment| %>
   <tr class="<%= cycle('odd_row', 'even_row') %>">
-    <td><%= link_to dues_reminder.member.last_name + ', ' + dues_reminder.member.first_name, dues_payment %></td>
-    <td><%= dues_reminder.date_paid %></td>
-    <td><%= dues_reminder.payment_method %></td>
-    <td><%= dues_reminder.payment_type %></td>
-    <td><%= number_to_currency(dues_reminder.amt_paid) %></td>
-    <td><%= dues_reminder.notes %></td>
+    <td><%= link_to dues_payment.member.last_name + ', ' + dues_payment.member.first_name, dues_payment %></td>
+    <td><%= dues_payment.date_paid %></td>
+    <td><%= dues_payment.payment_method %></td>
+    <td><%= dues_payment.payment_type %></td>
+    <td><%= number_to_currency(dues_payment.amt_paid) %></td>
+    <td><%= dues_payment.notes %></td>
   </tr>
 <% end %>
 </table>

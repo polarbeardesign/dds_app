@@ -5,6 +5,13 @@ DUES REMINDERS 171110
 - member id
 - text sent
 
+Requirements:
+
+- send dues reminder emails
+  - when dues paid date > 11, 12, 13 months
+  - don't send to 'special' members (where some flag?)
+- record the reminder was sent (at member level)
+- send notification summary email to admins of what was sent to who
 
 Logic
 
@@ -17,6 +24,51 @@ have different dues reminders
 - final notice
 
 rails generate scaffold DuesReminder member.references notice_name:string sent_to:string text_sent.text date_sent.date
+
+
+dds - dues notifier
+
+have mailer /mailers/dues_payment_notifier.rb
+have view /views/dues_payment_notifier/created.text/html.erb
+
+don't have an action in the controller
+
+Requirements:
+
+- send reminder emails
+  - so if mid march 2021 need people who paid march 2020 and april 2020 (12 and 11 months ago)
+- past due emails
+  - so if mid march 2021 need people who paid jan 2020 and feb 2020 (13 and 14 months ago)
+
+  
+  - don't send to 'special' members (where some flag?)
+- record the reminder was sent (at member level)
+- send notification summary email to admins of what was sent to who
+
+SELECT * FROM dues_payments WHERE date_paid BETWEEN NOW() - INTERVAL 11 MONTH AND NOW() - 13 MONTH
+
+SELECT id, member_id, payment_method, payment_type, amt_paid,date_paid FROM dues_payments WHERE date_paid BETWEEN DATE_SUB(NOW(), INTERVAL 1 MONTH) AND DATE_SUB(NOW(), INTERVAL 2 MONTH);
+
+SELECT id, member_id, payment_method, payment_type, amt_paid,date_paid FROM dues_payments WHERE MONTH(date_paid) BETWEEN 1 AND 3 AND YEAR(date_paid) = 2020;
+
+SELECT id, member_id, payment_method, payment_type, amt_paid, date_paid FROM dues_payments WHERE MONTH(date_paid) BETWEEN MONTH(DATE_SUB(NOW(), INTERVAL 13 MONTH)) and MONTH(DATE_SUB(NOW(), INTERVAL 11 MONTH)) AND YEAR(date_paid) = 2020;
+
+Between now and one month (mar & apr)
+
+SELECT id, member_id, payment_method, payment_type, amt_paid, date_paid FROM dues_payments WHERE date_paid BETWEEN DATE_ADD(LAST_DAY(DATE_SUB(NOW(), INTERVAL 13 MONTH)), INTERVAL 1 DAY) and LAST_DAY(DATE_SUB(NOW(), INTERVAL 11 MONTH)) ORDER BY date_paid;
+
+PAst Due (jan & Feb)
+
+SELECT id, member_id, payment_method, payment_type, amt_paid, date_paid FROM dues_payments WHERE date_paid BETWEEN DATE_ADD(LAST_DAY(DATE_SUB(NOW(), INTERVAL 14 MONTH)), INTERVAL 1 DAY) and LAST_DAY(DATE_SUB(NOW(), INTERVAL 13 MONTH)) ORDER BY date_paid;
+
+DATE_FORMAT(DATE_SUB(NOW(), INTERVAL (DAY(NOW())-1) DAY),"%Y-%m-%d")
+
+
+Example reminder email
+
+http://rordevelopmenttips.over-blog.com/2018/09/cron-job-in-ruby-on-rails-application-a-complete-tutorial-for-beginners.html
+https://www.cryptextechnologies.com/uploads/ckeditor/pictures/60/content_cron1.jpg
+
 
 
 CHRON JOBS 170510
