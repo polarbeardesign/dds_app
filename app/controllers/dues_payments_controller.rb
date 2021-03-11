@@ -81,6 +81,18 @@ class DuesPaymentsController < ApplicationController
     end
   end
 
+  def dues_reminders_list
+    @dues_reminders = DuesPayment.find_by_sql("SELECT id, member_id, payment_method, payment_type, amt_paid, 
+                                       date_paid, notes FROM dues_payments WHERE date_paid BETWEEN DATE_ADD(LAST_DAY(DATE_SUB(NOW(), INTERVAL 13 MONTH)), INTERVAL 1 DAY) 
+                                       AND LAST_DAY(DATE_SUB(NOW(), INTERVAL 11 MONTH)) ORDER BY date_paid;")
+
+
+    respond_to do |format|
+      format.html # dues_reminders.html.erb
+      format.json { render :json => @dues_payment }
+    end
+  end
+
 
 def send_dues_reminder
 
