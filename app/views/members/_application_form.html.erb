@@ -141,7 +141,13 @@ $(document).ready(function () {
 <div class="clearer"></div>
 
 <hr />
-
+<div class="indent_row_special">
+  <div class="cell field"> 
+    <%= f.label :caf_nickname, "CAF Nickname" %><br />   
+    <%= text_field_tag :caf_nickname, nil %>
+  </div>
+</div>    
+    
   <div class="actions" style="text-align: center;">
     <%= f.submit "Submit Application", :name => "Submit", :data => { :disable_with => "Submitting..." } %>
 

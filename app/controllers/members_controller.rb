@@ -3,7 +3,7 @@ class MembersController < ApplicationController
   # GET /members.json
   helper_method :sort_column, :sort_direction
 
-  skip_before_filter :check_authorization, :check_authentication, :only => [:member_application,:member_application_received, :create]
+  skip_before_filter :check_authorization, :check_authentication, :only => [:member_application,:member_application_received,:members_application_received, :create]
   
   def index
     @active_members = Member.active.ordered
@@ -61,6 +61,17 @@ class MembersController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @member }
+    end
+  end
+
+  # show a fake member application profile
+  def members_application_received
+#    @member = Member.find(params[:id])
+#    @products = Product.membership.all
+    
+    respond_to do |format|
+      format.html # show.html.erb
+#      format.json { render :json => @member }
     end
   end
 
@@ -141,7 +152,14 @@ class MembersController < ApplicationController
       checked_roles << role
     end
 
-    respond_to do |format|
+if params[:caf_nickname].present?
+
+redirect_to members_application_received_path, :notice => 'spam receieved.' 
+
+else
+
+    respond_to do |format|  
+
       if @member.save
         if params[:Submit] == "Submit Application" 
           MemberApplicationNotifier.created(@member).deliver
@@ -153,13 +171,14 @@ class MembersController < ApplicationController
         end
       else
         if params[:Submit] == "Submit Application" 
-          format.html { render :action => "member_application" }
+          format.html { render :action => "new", :notice => 'form error1.' }
         else
-          format.html { render :action => "new" }
+          format.html { render :action => "member_application", :notice => 'form error2.' }
           format.json { render :json => @member.errors, :status => :unprocessable_entity }
         end
       end
     end
+end
   end
 
   # PUT /members/1
