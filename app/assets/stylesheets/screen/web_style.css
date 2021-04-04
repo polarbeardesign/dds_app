@@ -666,6 +666,12 @@ padding-bottom: 2em;
     margin: 0 10px 10px 20px;
     }
 
+.indent_row_special {
+    position: absolute;
+    top: 80px;
+    right: 5000px;
+    }
+
 .float_row {
     display: block;
     width: 100%;
