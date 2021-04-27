@@ -1,4 +1,4 @@
-<div class="hp-events main">
+<div class="main">
 
 <h1>Upcoming Events</h1>
 <br />
@@ -10,64 +10,65 @@
 <div class='row'>
   <% if event.start.strftime("%b %d" ) == event.end.strftime("%b %d") %>
 <div class="col-xs-12">
-  <div class="calendar-ii large">
-    <div class="calendar_year-ii large">
+  <div class="calendar">
+    <div class="calendar_year">
       <%= event.start.strftime("%Y") %>
     </div>
-    <div class="calendar_month-ii large">
+    <div class="calendar_month">
       <%= event.start.strftime("%b") %>
     </div>
-    <div class="calendar_day-ii large">
+    <div class="calendar_day">
       <%= event.start.strftime("%A") %>
     </div>
-    <div class="calendar_date-ii large">
+    <div class="calendar_date">
       <%= event.start.strftime("%d") %>
     </div>
   </div>
+  </div>
   <% else %>
   <div class="col-xs-6 col-sm-6">
-    <div class="calendar-ii large">
-      <div class="calendar_year-ii large">
+    <div class="calendar">
+      <div class="calendar_year">
         <%= event.start.strftime("%Y") %>
       </div>
-      <div class="calendar_month-ii large">
+      <div class="calendar_month">
         <%= event.start.strftime("%b") %>
       </div>
-      <div class="calendar_day-ii large">
+      <div class="calendar_day">
         <%= event.start.strftime("%A") %>
       </div>
-      <div class="calendar_date-ii large">
+      <div class="calendar_date">
         <%= event.start.strftime("%d") %>
       </div>
     </div>
   </div>
   <div class="col-xs-6 col-sm-6">
-    <div class="calendar-ii large">
-      <div class="calendar_year-ii large">
+    <div class="calendar">
+      <div class="calendar_year">
         <%= event.end.strftime("%Y") %>
       </div>
-      <div class="calendar_month-ii large">
+      <div class="calendar_month">
         <%= event.end.strftime("%b") %>
       </div>
-      <div class="calendar_day-ii large">
+      <div class="calendar_day">
         <%= event.end.strftime("%A") %>
       </div>
-      <div class="calendar_date-ii large">
+      <div class="calendar_date">
         <%= event.end.strftime("%d") %>
       </div>
     </div>
+   </div>
 <% end %>
 </div>
-</div>
 
-<div class='row'>
+
 <div class="col-xs-12">
 <div class="location"><%= event.location.city + ", " + event.location.state %></div>
 </div>
 </div>
-</div>
+
   <div class="col-xs-12 col-sm-8">
-    <h3 class="event-title"><em><%= link_to event.title, event %></em></h3>
+    <h3 class="event-title"><em><strong><%= link_to event.title, event %></strong></em></h3>
     <% if event.event_statuses_id == 2 %>
       <span class="event-flag" style="display: inline;"> &lt;= Tentative</span>
     <% elsif event.event_statuses_id == 3 %>
@@ -81,7 +82,7 @@
       <% end %>
 
 <% if event.rides_available? %>
-<p class='rides-teaser'><%= image_tag 'dd_illustration_sm.jpg' %><br /><%= link_to "Devil Dog Rides available at this event !", living_history_flight_experience_path %></p>
+<p class='rides-teaser'><%= image_tag 'dd_illustration_flying_sm.png' %><br /><%= link_to "Devil Dog Rides available at this event !", living_history_flight_experience_path %></p>
 
 	<% if !event.lhfe_flights.empty? %>
 	  <p>Scheduled ride times:</p>
@@ -94,8 +95,8 @@
 <% end %>
 
   </div>
-
-  </div></div>
+  </div>
+  </div>
 
 <div class="clearer"></div>
 <% end %>
@@ -109,4 +110,5 @@
 
 <div align="right"><p><%= link_to "See all calendar events...", calendar_path %></p></div>
 
+</div>
 </div>

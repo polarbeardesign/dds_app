@@ -72,8 +72,21 @@ body,
 input,
 textarea {
   font-family: Verdana, Helvetica, sans-serif;
-
+  font-size: 18px;
 }
+
+h1 {
+  line-height: 1.4em;
+  margin: .67em 0;
+  }
+
+p {
+  line-height: 1.4em;
+  }
+
+.main {
+
+  }
 
 /* =Header
 -------------------------------------------------------------- */
@@ -86,4 +99,242 @@ textarea {
 .header_pic {
        float: right;
        }
+
+.login-bar {
+  font-size: 0.75em;
+  }
+
+/* =Footer
+-------------------------------------------------------------- */
+
+footer {
+  width: 100%;
+  padding: 1em 1em 4em;
+  background: #1d2644;
+  color: #FFFFFF;
+  }
+
+footer p {
+  max-width: 900px;
+  margin: 0 auto;
+  }
+
+/* =calendar items
+-------------------------------------------------------------- */
+
+.calendar-ii {
+  float: left;
+  width: 40px;
+  height: 40px;
+  margin: 0 0.25em;
+  border: 1px solid #333;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  }
+.calendar_month-ii {
+  text-align: center;
+  font-size: 10px;
+  font-weight: bold;
+  margin: 0 0 0 0;
+  color: #fff;
+  background: #cc0000;
+  border-radius: 5px 5px 0px 0px;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 5px 5px 0px 0px;
+  }
+.calendar_date-ii {
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 3px 0 0 0;
+  padding-top: 0px;
+  color: #000;
+  }
+
+.calendar_row {
+  margin: 0 10px 10px 20px;
+  padding: 1em;
+  border: 1px solid #ccc;
+  border-bottom: none;
+  border-radius: 5px 5px 0px 0px;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 5px 5px 0px 0px;
+    }
+
+.calendar {
+  width: 7em;
+  height: 8.5em;
+  background: #fff;
+  margin: 0 auto 0.5em;
+  border: 1px solid #333;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  }
+
+.calendar_month {
+  text-align: center;
+  font-size: 1.75em;
+  font-weight: bold;
+  line-height: 14px;
+  margin: 0 0;
+  padding: 0.25em 0;
+  color: #fff;
+  background: #cc0000;
+  }
+
+.calendar_date {
+  text-align: center;
+  font-size: 3.2em;
+  font-weight: bold;
+  margin: 0.1em 0 0 0;
+  padding-top: 0px;
+  color: #000;
+  }
+
+.calendar_year {
+  text-align: center;
+  font-size: 0.8em;
+  font-weight: bold;
+  padding-top: 0.25em;
+  color: #fff;
+  background: #cc0000;
+  border-radius: 5px 5px 0px 0px;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 5px 5px 0px 0px;
+  }
+
+.calendar_day {
+  text-align: center;
+  font-size: 10px;
+  font-weight: bold;
+  margin: -1px 0 0 0;
+  padding: 1em;
+  color: #fff;
+  background: #cc0000;
+  }
+
+.location {
+    display: block;
+    text-align: center;
+    clear: both;
+    margin: 1em 0 1em 0.25em;
+    padding: 0.25em 0.5em;
+    background: #009140;
+    color: #fff;
+    font-style: italic;
+    font-weight: bold;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 0px 3px #009140;
+    -moz-box-shadow: 0px 0px 0px 3px #009140;
+    box-shadow: 0px 0px 0px 3px #009140;
+}
+
+.rides-teaser {
+  font-weight: bold;
+  text-align: center;
+  font-style: italic;
+}
+
+
+/* =homepage divs
+-------------------------------------------------------------- */
+
+.hp-about,.hp-news,.hp-donations,.hp-events,.hp-gallery,.hp-sponsors {
+  display: block;width: 100%;background: #fff;padding: 2em 1em 4em;border-top: 1px solid #1d2644;
+  }
+
+.hp-about {
+  background: url('/uploads/images/devildog_logo_big.png') center center no-repeat #cadbeb;
+  background-size: 300px;
+  }
+
+.hp-donations {
+  background: #b78d03;
+  }
+
+.fl {
+    float: right;
+    margin-left: 10px;
+    padding: 9px 9px 0px 0px;
+}
+
+/* =Sponsors
+-------------------------------------------------------------- */
+
+.sponsor-logo img {
+  max-width: 300px;
+  width: 100%;
+  display: block;
+  margin: 1em auto;
+  }
+
+
+
+
+/* =FlexSlider mods
+-------------------------------------------------------------- */
+
+.flex-caption {
+  position: relative;
+  top: -120px;
+  }
+
+.flex-caption_inner {
+  display: block;
+  width: 100%;
+  text-align: center;
+  /*margin: -20% auto 0;*/
+  color: #ffffff;
+  font-size: 1em;
+  line-height: 1em;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+  }
+
+.flex-caption_inner .btn-primary {
+  margin: 1em auto;
+  }
+
+/* =Full Size
+-------------------------------------------------------------- */
+
+@media only screen and (min-width: 600px) {
+
+
+
+/* =FlexSlider mods
+-------------------------------------------------------------- */
+
+.flex-caption {
+  position: relative;
+  top: -220px;
+  }
+
+.flex-caption_inner {
+  font-size: 2.5em;
+  }
+
+/* =homepage divs
+-------------------------------------------------------------- */
+
+.hp-about,.hp-news,.hp-donations,.hp-events,.hp-gallery,.hp-sponsors {
+  padding: 2em 4em 4em;
+  }
+
+.main {
+  max-width: 1000px;
+  margin: 0 auto;
+  }
+
+.calendar {
+  width: 8em;
+  height:8em;
+  }
+
+}
+
+
+
 

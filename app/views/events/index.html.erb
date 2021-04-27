@@ -33,49 +33,49 @@
 <div class='row'>
   <% if event.start.strftime("%b %d" ) == event.end.strftime("%b %d") %>
 <div class="col-xs-12">
-  <div class="calendar-ii large">
-    <div class="calendar_year-ii large">
+  <div class="calendar">
+    <div class="calendar_year">
       <%= event.start.strftime("%Y") %>
     </div>
-    <div class="calendar_month-ii large">
+    <div class="calendar_month">
       <%= event.start.strftime("%b") %>
     </div>
-    <div class="calendar_day-ii large">
+    <div class="calendar_day">
       <%= event.start.strftime("%A") %>
     </div>
-    <div class="calendar_date-ii large">
+    <div class="calendar_date">
       <%= event.start.strftime("%d") %>
     </div>
   </div>
   <% else %>
   <div class="col-xs-6 col-sm-6">
-    <div class="calendar-ii large">
-      <div class="calendar_year-ii large">
+    <div class="calendar">
+      <div class="calendar_year">
         <%= event.start.strftime("%Y") %>
       </div>
-      <div class="calendar_month-ii large">
+      <div class="calendar_month">
         <%= event.start.strftime("%b") %>
       </div>
-      <div class="calendar_day-ii large">
+      <div class="calendar_day">
         <%= event.start.strftime("%A") %>
       </div>
-      <div class="calendar_date-ii large">
+      <div class="calendar_date">
         <%= event.start.strftime("%d") %>
       </div>
     </div>
   </div>
   <div class="col-xs-6 col-sm-6">
-    <div class="calendar-ii large">
-      <div class="calendar_year-ii large">
+    <div class="calendar">
+      <div class="calendar_year">
         <%= event.end.strftime("%Y") %>
       </div>
-      <div class="calendar_month-ii large">
+      <div class="calendar_month">
         <%= event.end.strftime("%b") %>
       </div>
-      <div class="calendar_day-ii large">
+      <div class="calendar_day">
         <%= event.end.strftime("%A") %>
       </div>
-      <div class="calendar_date-ii large">
+      <div class="calendar_date">
         <%= event.end.strftime("%d") %>
       </div>
     </div>

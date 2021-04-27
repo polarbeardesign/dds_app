@@ -1,4 +1,4 @@
-<div class="hp-sponsors main">
+<div class="main">
 
 <h1>Sponsors</h1>
 
@@ -6,7 +6,7 @@
 
 <div class="row">
   <% @sponsors.each do |sponsor| %>
-    <div class="col-sm-3 sponsor-logo">
+    <div class="col-sm-4 sponsor-logo">
       <%= link_to (image_tag '/uploads/images/' + sponsor.logo), sponsor.url, :target => '_blank' %>
     </div> 
   <% end %>
