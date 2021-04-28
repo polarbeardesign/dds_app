@@ -6,6 +6,15 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $('.flexslider').flexslider({
+    animation: "slide"
+  });
+});
+  </script>
+
 </head>
 <body>
 
@@ -19,7 +28,7 @@
     <div class="flexslider">
       <ul class="slides">
         <li>
-          <img src="/assets/fly_teaser.jpg" alt="">
+          <img src="http://192.168.88.117:3000/assets/fly_teaser.jpg" alt=""> <!-- 1912 x 741 -->
           <div class="flex-caption">
             <div class="flex-caption_inner">
               <div class="txt1"><strong>FLY THE DEVIL DOG</strong></div>
@@ -29,7 +38,7 @@
           </div>
         </li>
         <li>
-          <img src="/assets/slider_vintage.jpg" alt="">
+          <img src="http://192.168.88.117:3000//assets/slider_vintage.jpg" alt=""> <!-- 1913 x 741 -->
           <div class="flex-caption">
             <div class="flex-caption_inner">
               <div class="txt1"><strong>Giving History a Future</strong></div>
@@ -38,18 +47,9 @@
             </div>
           </div>
         </li>
+
         <li>
-          <img src="/assets/hdr_nose.jpg" alt="">
-          <div class="flex-caption">
-            <div class="flex-caption_inner">
-              <div class="txt1"><strong>The PX is always open!</strong></div>
-              <div class="txt2">Show your support with Devil Dog items</div>
-              <div class="txt3"><a href="/px" class="btn btn-primary">Go to PX</a></div>
-            </div>
-          </div>
-        </li>
-        <li>
-          <img src="/assets/slider_maintenance.jpg" alt="">
+          <img src="http://192.168.88.117:3000//assets/slider_maintenance.jpg" alt=""> <!-- 1912 x 741 -->
           <div class="flex-caption">
             <div class="flex-caption_inner">
               <div class="txt1"><strong>Maintenance</strong></div>
@@ -86,14 +86,6 @@
 </footer>
 
 </div>
-  <script type="text/javascript">
-$(window).load(function() {
-  $('.flexslider').flexslider({
-    animation: "slide",
-    controlsContainer: $(".custom-controls-container"),
-    customDirectionNav: $(".custom-navigation a")
-  });
-});
-  </script>
+
 </body>
 </html>

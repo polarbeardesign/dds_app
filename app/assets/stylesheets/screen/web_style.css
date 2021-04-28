@@ -102,6 +102,7 @@ p {
 
 .login-bar {
   font-size: 0.75em;
+  margin: 1em;
   }
 
 /* =Footer
@@ -280,6 +281,7 @@ footer p {
 .flex-caption {
   position: relative;
   top: -120px;
+    height: 0px;
   }
 
 .flex-caption_inner {
@@ -296,6 +298,9 @@ footer p {
 .flex-caption_inner .btn-primary {
   margin: 1em auto;
   }
+
+
+
 
 /* =Full Size
 -------------------------------------------------------------- */
@@ -315,6 +320,7 @@ footer p {
 .flex-caption_inner {
   font-size: 2.5em;
   }
+
 
 /* =homepage divs
 -------------------------------------------------------------- */

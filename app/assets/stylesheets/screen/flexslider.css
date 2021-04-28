@@ -33,6 +33,19 @@
   margin: 0;
   padding: 0;
   list-style: none;
+  /*max-height: 160px;  added to minimize white space between image and dot nav bar */
+}
+
+@media only screen and (min-width: 900px) {
+.slides,
+.slides > li,
+.flex-control-nav,
+.flex-direction-nav {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+   /* max-height: 580px;added to minimize white space between image and dot nav bar */
+}
 }
 .flex-pauseplay span {
   text-transform: capitalize;
