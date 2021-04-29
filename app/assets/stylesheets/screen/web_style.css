@@ -114,6 +114,10 @@ article {
   margin: 1em;
   }
 
+
+/* =Nav Elements
+-------------------------------------------------------------- */
+
 .navbar-default {
 background-color: #ffd800;
 border-color: #775B02;
@@ -124,6 +128,24 @@ border-color: #775B02;
   font-family: Courier, serif;
   text-transform: uppercase;
 }
+
+.navbar_ .nav {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  display: block;
+  float: none;
+}
+
+.dropdown:hover .dropdown-menu {/* To make dropdown visible on hover - MAY NEED TO WRAP IN MEDIA QUERY FOR MOBILE VIEW TO WORK */
+  display: block;
+  margin-top: 0;
+  background: #ffd800;
+  color: #333;
+  font-family: Courier, serif;
+  text-transform: uppercase;
+}
+
 
 /* =Footer
 -------------------------------------------------------------- */
