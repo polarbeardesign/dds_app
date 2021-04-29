@@ -82,7 +82,7 @@
       <% end %>
 
 <% if event.rides_available? %>
-<p class='rides-teaser'><%= image_tag 'dd_illustration_flying_sm.png' %><br /><%= link_to "Devil Dog Rides available at this event !", living_history_flight_experience_path %></p>
+<p class='rides-teaser'><%= image_tag '/uploads/images/dd_illustration_flying_sm.png' %><br /><%= link_to "Devil Dog Rides available at this event !", living_history_flight_experience_path %></p>
 
 	<% if !event.lhfe_flights.empty? %>
 	  <p>Scheduled ride times:</p>
