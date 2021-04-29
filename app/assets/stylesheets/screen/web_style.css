@@ -76,7 +76,15 @@ textarea {
   font-size: 18px;
 }
 
-h1 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol {
   line-height: 1.4em;
   margin: .67em 0;
   }
@@ -161,6 +169,46 @@ footer p {
   max-width: 900px;
   margin: 0 auto;
   }
+
+/* =Input Elements
+-------------------------------------------------------------- */
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  background: #fdf9ef;
+  border: 1px solid #e0debc;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -moz-box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1);
+  -webkit-box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1);
+  box-shadow: inset 1px 1px 1px rgba(0,0,0,0.1);
+  padding: 0.3em;
+}
+
+input[type="checkbox"] {
+  margin: 0.3em 0.5em;
+}
+
+input:focus, select:focus, textarea:focus /*, input[type=submit]:hover */ {
+  border-color: #e0dfab;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(224,223,171,.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(224,223,171,.6);
+  outline: 0;
+}
+
+.styled-select {
+  background: #fdf9ef;
+  border: 1px solid #e0debc;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  color: #666;
+  font-size: 1em;
+  padding: 0.1em 0.5em;
+}
 
 /* =calendar items
 -------------------------------------------------------------- */
