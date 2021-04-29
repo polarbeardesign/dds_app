@@ -8,7 +8,7 @@
 <%# "&key=AIzaSyB7VXiMl6JcYSuuF6XreGXm9Wge3IssPO4 %>
 
 <% content_for :sidebar do %>
-  <%= render "sidebars/newsletter_signup" %>
+  <%#= render "sidebars/newsletter_signup" %>
 <% end %>
 
 <% if signed_in?%>
@@ -30,56 +30,56 @@
   </div>
   <% if @event.start.strftime("%b %d" ) == @event.end.strftime("%b %d") %>
   <div class="col-sm-5">
-  <div class="calendar-ii large">
-    <div class="calendar_year-ii large">
+  <div class="calendar large">
+    <div class="calendar_year large">
       <%= @event.start.strftime("%Y") %>
     </div>
-    <div class="calendar_month-ii large">
+    <div class="calendar_month large">
       <%= @event.start.strftime("%b") %>
     </div>
-    <div class="calendar_day-ii large">
+    <div class="calendar_day large">
       <%= @event.start.strftime("%A") %>
     </div>
-    <div class="calendar_date-ii large">
+    <div class="calendar_date large">
       <%= @event.start.strftime("%d") %>
     </div>
   </div>
   <% else %>
   <div class="col-sm-2">
-    <div class="calendar-ii large">
-      <div class="calendar_year-ii large">
+    <div class="calendar large">
+      <div class="calendar_year large">
         <%= @event.start.strftime("%Y") %>
       </div>
-      <div class="calendar_month-ii large">
+      <div class="calendar_month large">
         <%= @event.start.strftime("%b") %>
       </div>
-      <div class="calendar_day-ii large">
+      <div class="calendar_day large">
         <%= @event.start.strftime("%A") %>
       </div>
-      <div class="calendar_date-ii large">
+      <div class="calendar_date large">
         <%= @event.start.strftime("%d") %>
       </div>
     </div>
   </div>
   <div class="col-sm-2">
-    <div class="calendar-ii large">
-      <div class="calendar_year-ii large">
+    <div class="calendar large">
+      <div class="calendar_year large">
         <%= @event.end.strftime("%Y") %>
       </div>
-      <div class="calendar_month-ii large">
+      <div class="calendar_month large">
         <%= @event.end.strftime("%b") %>
       </div>
-      <div class="calendar_day-ii large">
+      <div class="calendar_day large">
         <%= @event.end.strftime("%A") %>
       </div>
-      <div class="calendar_date-ii large">
+      <div class="calendar_date large">
         <%= @event.end.strftime("%d") %>
       </div>
     </div>
   </div>
 <% end %>
 </div>
-</div>
+
 
 <div class="row">
   <div class="col-sm-7">
@@ -137,7 +137,7 @@
   <div class="col-sm-5">
   <% if @event.location.latitude? %>
     <div class="map-image">
-    <%= link_to image_tag(map_url.html_safe), raw("https://www.google.com/maps/place/" + @event.location.latitude + ' ' + @event.location.longitude + "/@" + @event.location.latitude + "," + @event.location.longitude + ",13z/"), :target => "_blank" %>
+    <%#= link_to image_tag(map_url.html_safe), raw("https://www.google.com/maps/place/" + @event.location.latitude + ' ' + @event.location.longitude + "/@" + @event.location.latitude + "," + @event.location.longitude + ",13z/"), :target => "_blank" %>
     <%= link_to image_tag("http://vfrmap.com/api?req=map&type=sectc&lat=" + @event.location.latitude + "&lon=" + @event.location.longitude + "&zoom=10&width=350&height=350"), raw("http://vfrmap.com/?type=vfrc&lat=" + @event.location.latitude + "&lon=" + @event.location.longitude + "&zoom=11"), :target => "_blank" %>
     
     
@@ -230,10 +230,10 @@
       <%= button_to 'Maybe',    {:controller => :event_signups, :action => :signup, :member_id => current_user.member, :event_id => @event.id, :commitment_level => 'Maybe', :position => 0 } %>
     </div>
   <% end %>
-<span style="font-style: italic;font-size:0.85em;">Your name will be entered on the list below, you can change your commitment or remove yourself at any time. Signing up only indicates your availability and desire to participate. Final roster at discretion of pilots.</em>
+<p style="font-style: italic;font-size:0.85em;">Your name will be entered on the list below, you can change your commitment or remove yourself at any time. Signing up only indicates your availability and desire to participate. Final roster at discretion of pilots.</p>
 </div>
 
-<table  id="manifest_list" width="500" class="table_border">
+<table id="manifest_list">
   <tr>
     <th>Line</th>
     <th>Name</th>
@@ -261,7 +261,7 @@
   <% end %>
 <% end %>
 </table>
-<span class="tiny-text"><em>Devil Dog has 10 seats</em></span>
+<p class="tiny-text"><em>Devil Dog has 10 seats</em></p>
 <% end %>
 <% end %>
 
@@ -295,7 +295,7 @@
 <% end %>
 </p>
 
-<table width="500" class="table_border" >
+<table>
   <tr>
     <th>Line</th>
     <th>Name</th>
