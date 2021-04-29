@@ -8,7 +8,7 @@ green   => #52782a;
 navy    =>  #1d2644;
 gold    => #b78d03;
 dk blue => #1d2644
-gold    => #b78d03
+gold    => #ffd800
 lt grey => #f0f0f0
 */
 
@@ -30,6 +30,7 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 }
 body {
   line-height: 1;
+  background: #1d2644;
 }
 h1, h2, h3, h4, h5, h6 {
   clear: both;
@@ -85,11 +86,18 @@ p {
   }
 
 .main {
+  background: #fff;*/
+  }
+
+article {
+  padding: 1em 1.25em 2em;
 
   }
 
 /* =Header
 -------------------------------------------------------------- */
+#container {
+}
 
 #header_logo {
   float: left;
@@ -104,6 +112,17 @@ p {
   font-size: 0.75em;
   margin: 1em;
   }
+
+.navbar-default {
+background-color: #ffd800;
+border-color: #775B02;
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: #333;
+  font-family: Courier, serif;
+  text-transform: uppercase;
+}
 
 /* =Footer
 -------------------------------------------------------------- */
@@ -278,6 +297,10 @@ footer p {
 /* =FlexSlider mods
 -------------------------------------------------------------- */
 
+.flexslider {
+  border: none;
+}
+
 .flex-caption {
   position: relative;
   top: -120px;
@@ -299,15 +322,33 @@ footer p {
   margin: 1em auto;
   }
 
+.flex-control-paging li a {
+background: #ffff;
+background: rgba(255, 255, 255, 0.5);
+cursor: default;
+}
 
-
+.flex-control-paging li a.flex-active {
+background: #ffff;
+background: rgba(255, 255, 255, 0.9);
+cursor: default;
+}
 
 /* =Full Size
 -------------------------------------------------------------- */
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 900px) {
 
+/* =Header
+-------------------------------------------------------------- */
 
+/* =Header
+-------------------------------------------------------------- */
+
+#header_logo {
+  float: left;
+  margin: 40px 0 0 0;
+  }
 
 /* =FlexSlider mods
 -------------------------------------------------------------- */
@@ -329,7 +370,7 @@ footer p {
   padding: 2em 4em 4em;
   }
 
-.main {
+article, .hp-copy {
   max-width: 1000px;
   margin: 0 auto;
   }
