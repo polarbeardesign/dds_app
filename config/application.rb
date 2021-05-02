@@ -55,7 +55,7 @@ module DdsApp
     config.assets.precompile += %w( application_print.css )
 
     if Rails.env == "production"
-      config.middleware.use("Rack::GoogleAnalytics", :web_property_id => "UA-478868-3")
+    #  config.middleware.use("Rack::GoogleAnalytics", :web_property_id => "UA-478868-3")
     end
 
   end
