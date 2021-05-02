@@ -111,7 +111,10 @@ article {
   float: left;
   margin: 40px 0 0 0;
   }
-
+.header_logo {
+  width: 80px;
+  margin: 0 0 .5em 1em;
+}
 .header_pic {
        float: right;
        }
@@ -120,9 +123,12 @@ article {
   font-size: 0.75em;
   color: #fff;
   margin: 1em;
+  float: right;
   }
 
-
+.login-bar a {
+  color: #ffd800;
+}
 /* =Nav Elements
 -------------------------------------------------------------- */
 
@@ -464,6 +470,10 @@ cursor: default;
   float: left;
   margin: 40px 0 0 0;
   }
+
+.header_logo {
+  width: 200px;
+}
 
 /* =FlexSlider mods
 -------------------------------------------------------------- */
