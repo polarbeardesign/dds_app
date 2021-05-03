@@ -12,6 +12,20 @@
 
 <p>If you have any questions or comments about the items below, you may also address them to the email address <a href="mailto:px_info@devildogsquadron.com">px_info@devildogsquadron.com</a></p>
 
+<div class="flex-row">
+<% @products.each do |product| %>
+<div class="product-card">
+<% if product.photo_path? %>
+  <div style="padding:1em;"><%= image_tag 'sm_' + product.photo_path %></div>
+<% end %>
+<div style="padding: 1em;"><h2><%= product.name %></h2></div>
+<div style="padding: 1em;"><%= product.description %></div>
+<div><%= number_to_currency(product.value) %><br />
+    S&amp;H:<%= number_to_currency(product.ship_handling) %><br /><strong>Total: <%= number_to_currency(product.total_value) %></strong></div>
+</div>
+<% end %>
+</div>
+
 <table width="560" class="table2">
   <tr>
     <th>&nbsp;</th>

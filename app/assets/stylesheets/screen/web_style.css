@@ -227,6 +227,31 @@ input:focus, select:focus, textarea:focus /*, input[type=submit]:hover */ {
   box-sizing: border-box;
   }
 
+/* =Flex Elements
+-------------------------------------------------------------- */
+
+.flex-row {
+    width: 100%;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: center;
+    justify-content: space-around;
+}
+
+.product-card {
+    width: 100%;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+    color: #333;
+    margin: 10px 5px 10px 5px;
+    border: 1px solid #999;
+}
+
 /* =Table Elements
 -------------------------------------------------------------- */
 
@@ -477,6 +502,13 @@ cursor: default;
 
 .header_logo {
   width: 200px;
+}
+
+/* =Flex Elements
+-------------------------------------------------------------- */
+
+.product-card {
+    width: 30%;
 }
 
 /* =FlexSlider mods
