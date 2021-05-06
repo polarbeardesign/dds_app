@@ -3,17 +3,14 @@
 <% year = "" %>
 <% grand_counter = 0 %>
 
-<% content_for :sidebar do %>
-  <%= render "sidebars/members" %>
-
-<% end %>
-
 <h1>Member Home</h1>
 <hr />
 
 <div class="row">
 <div class="col-sm-6">
   <h2>Membership Dues:</h2>
+  
+  <% if (@dues_paid.date_paid + 1.year) > DateTime.now %><div class="dues_current">CURRENT</div><%else %><div class="dues_not_current">NOT CURRENT</div><% end %>
   
   <p>Current records indicate you last paid dues: <strong><%= @dues_paid.date_paid.strftime("%b %d, %Y") %></strong>. If you feel this is in error, please contact the Finance Officer.</p>
   
@@ -42,49 +39,49 @@ No upcoming trips currently scheduled.
 <div class='row'>
   <% if sign_up.event.start.strftime("%b %d" ) == sign_up.event.end.strftime("%b %d") %>
 <div class="col-xs-12">
-  <div class="calendar-ii large">
-    <div class="calendar_year-ii large">
+  <div class="calendar">
+    <div class="calendar_year">
       <%= sign_up.event.start.strftime("%Y") %>
     </div>
-    <div class="calendar_month-ii large">
+    <div class="calendar_month">
       <%= sign_up.event.start.strftime("%b") %>
     </div>
-    <div class="calendar_day-ii large">
+    <div class="calendar_day">
       <%= sign_up.event.start.strftime("%A") %>
     </div>
-    <div class="calendar_date-ii large">
+    <div class="calendar_date">
       <%= sign_up.event.start.strftime("%d") %>
     </div>
   </div>
   <% else %>
   <div class="col-xs-6 col-sm-6">
-    <div class="calendar-ii large">
-      <div class="calendar_year-ii large">
+    <div class="calendar">
+      <div class="calendar_year">
         <%= sign_up.event.start.strftime("%Y") %>
       </div>
-      <div class="calendar_month-ii large">
+      <div class="calendar_month">
         <%= sign_up.event.start.strftime("%b") %>
       </div>
-      <div class="calendar_day-ii large">
+      <div class="calendar_day">
         <%= sign_up.event.start.strftime("%A") %>
       </div>
-      <div class="calendar_date-ii large">
+      <div class="calendar_date">
         <%= sign_up.event.start.strftime("%d") %>
       </div>
     </div>
   </div>
   <div class="col-xs-6 col-sm-6">
-    <div class="calendar-ii large">
-      <div class="calendar_year-ii large">
+    <div class="calendar">
+      <div class="calendar_year">
         <%= sign_up.event.end.strftime("%Y") %>
       </div>
-      <div class="calendar_month-ii large">
+      <div class="calendar_month">
         <%= sign_up.event.end.strftime("%b") %>
       </div>
-      <div class="calendar_day-ii large">
+      <div class="calendar_day">
         <%= sign_up.event.end.strftime("%A") %>
       </div>
-      <div class="calendar_date-ii large">
+      <div class="calendar_date">
         <%= sign_up.event.end.strftime("%d") %>
       </div>
     </div>

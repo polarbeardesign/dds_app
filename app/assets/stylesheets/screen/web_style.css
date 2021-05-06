@@ -484,6 +484,27 @@ cursor: default;
   border: 1px solid #75946C;
 }
 
+/* =Random Elements
+-------------------------------------------------------------- */
+
+.dues_current {
+  font-weight: bold;
+  display: inline-block;
+  color: #009140;
+  padding: 0.5em;
+  border: 3px solid #009140;
+  border-radius: 5px;
+}
+
+.dues_not_current {
+  font-weight: bold;
+  display: inline-block;
+  color: #cc0000;
+  padding: 0.5em;
+  border: 3px solid #cc0000;
+  border-radius: 5px;
+}
+
 /* =Full Size
 -------------------------------------------------------------- */
 
