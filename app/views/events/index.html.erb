@@ -99,9 +99,9 @@
     <% end %>
     <br />
       <% if event.details.length > 220 %>
-        <%= truncate(event.details, :length => 220, :separator => ' ') %> <em><%= link_to "Go to event", event %></em>
+        <p><%= truncate(event.details, :length => 220, :separator => ' ') %> <em><%= link_to "Go to event", event %></em></p>
       <% else %>
-        <%= event.details %>
+        <p><%= event.details %></p>
       <% end %>
 
 <% if event.rides_available? %>

@@ -1,7 +1,3 @@
-<% content_for :sidebar do %>
-  <%= render "sidebars/calendar" %>
-<% end %>
-
 <h1>PX</h1>
 
 <p>Show your support for the Devil Dog with these official Devil Dog items. </p>
@@ -22,55 +18,7 @@
 <div style="padding: 1em;"><%= product.description %></div>
 <div><%= number_to_currency(product.value) %><br />
     S&amp;H:<%= number_to_currency(product.ship_handling) %><br /><strong>Total: <%= number_to_currency(product.total_value) %></strong></div>
-</div>
-<% end %>
-</div>
-
-<table width="560" class="table2">
-  <tr>
-    <th>&nbsp;</th>
-    <th>&nbsp;</th>
-    <th>&nbsp;</th>
-    <th width="100">&nbsp;</th>
-  </tr>
-
-<% @products.each do |product| %>
-  <tr class=""> 
-    <td> <% if product.photo_path? %>
-           <%= image_tag 'sm_' + product.photo_path %>
-
-<% product.product_photos.each do |product_photo| %>
-	<%= link_to image_tag(product_photo.image_url, :size => "25x25", :class => 'thumb'),'assets/' + product_photo.image_url, :data => {:lightbox => 'image-' + product.id.to_s} %>
-<% end %>
-
-
-
-         <% end %>
-    </td>
-    <td><strong><%= product.name %></strong><br /><%= product.description %></td>
-    <td>&nbsp;</td>
-    <td align="right"><%= number_to_currency(product.value) %><br />
-    S&amp;H:<%= number_to_currency(product.ship_handling) %><br /><strong>Total: <%= number_to_currency(product.total_value) %></strong>
-
 <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-
-<% if product.sizes.first.size_short != "na" %> 
-<table class="table_nobrdr">
-		<tr>
-			<td>
-				<input type="hidden" name="on0" value="Size"><em><strong>Size:</strong></em>
-			</td>
-			<td>
-
-			  <%= select "size", "product", product.sizes.by_size.collect {|s| [s.size, s.size ]}, {:name => 
-"os0", :prompt => true}, {:name => 
-"os0"} %>
-              
-			</td>
-		</tr>
-	</table>	
-<% end %>
-<br />
 <input type="image" src="https://www.paypal.com//en_US/i/btn/sc-but-03.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
 <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
 <input type="hidden" name="add" value="1">
@@ -86,16 +34,10 @@
 <input type="hidden" name="currency_code" value="USD">
 <input type="hidden" name="lc" value="US">
 <input type="hidden" name="bn" value="PP-ShopCartBF">
-
 </form>
-</td>
+</div>
 
-  </tr>
-  <tr>
-    <td colspan="4"><hr /></td>
-  </tr>
 <% end %>
-</table>
-
+</div>
 
 <%= javascript_include_tag "lightbox" %>
