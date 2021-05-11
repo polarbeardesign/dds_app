@@ -1,6 +1,6 @@
 class LhfeFlightsController < ApplicationController
 
-skip_before_filter :check_authorization, :check_authentication, :only => [:show]
+skip_before_filter :check_authorization, :check_authentication, :only => [:show, :living_history_flight_experience]
 
   # GET /lhfe_flights
   # GET /lhfe_flights.json
