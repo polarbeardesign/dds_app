@@ -248,7 +248,7 @@ devise_for :users, :skip => [:registrations]
   
   get "pages/home"
   get "pages/VMB612"
-  get "pages/PBJs"
+  match "pages/PBJs" => redirect('/PBJs')
   match 'membership' => 'pages#membership', :as => :membership
   match 'rides' => redirect('/living_history_flight_experience')
 
@@ -258,7 +258,7 @@ devise_for :users, :skip => [:registrations]
   get "pages/map_0"
   get "pages/map_2103"
   get "pages/operations_2014"
-  get "pages/squadron"
+  match "pages/squadron" => redirect('/squadron')
   get "pages/thank_you"
   get "pages/member_home"
   get "pages/admin_home"
