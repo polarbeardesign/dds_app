@@ -35,18 +35,6 @@
     </div>
   </div>
 </div>
-<div class="indent_row">
-  <div class="cell field">
-      <%= f.label :start %><br />
-      <%= f.text_field :start, :value => f.object.try(:start).try(:strftime,'%Y-%m-%d %H:%M:%S'), :size => 20, :autocomplete => "off" %>
-  </div>
-  <div class="cell field" style="max-width: 50%;">
-      <%= f.label :end %><br />
-      <%= f.text_field :end, :value => f.object.try(:end).try(:strftime,'%Y-%m-%d %H:%M:%S'), :size => 20, :autocomplete => "off" %>
-      <div class="form_note">Defaults to Sunday at 6PM after event start - adjust as necessary.</div>
-  </div>
-</div>
-
 <div class="row">
 <p class="form_note">Times aren't displayed so not really important to be accurate.</p>
   <div class="field col-sm-4">
@@ -57,10 +45,6 @@
     <%= f.label :end %><br />
     <%= f.text_field :end, :value => f.object.try(:end).try(:strftime,'%Y-%m-%d %H:%M:%S'), :size => 20 %>
   </div>
-
-      <div style="clear: both;"><%= f.check_box :rsvp %>Create RSVP list for this event (check for yes)</div>
-      <div style="clear: both;"><%= f.check_box :flight_roster %>Create flight roster for this event i.e. flight crew (check for yes)</div>
-      <div style="clear: both;"><%= f.check_box :rides_available %>LHFE Rides Available at this event (check for yes)</div>
 </div>
 
 <div class="row">
@@ -78,18 +62,6 @@
   </div>
 </div>
 
-
-
-
-<div class="row">
-
-
-
-    <div><%= f.check_box :rsvp %>Create RSVP list for this event (check for yes)</div>
-    <div><%= f.check_box :flight_roster %>Create flight roster for this event i.e. flight crew (check for yes)</div>
-    <div><%= f.check_box :rides_available %>LHFE Rides Available at this event (check for yes)</div>
-</div>
-
 <div class="row">
   <div class="field col-sm-4">
     <%= f.label :entered_by %><br />
@@ -104,7 +76,14 @@
     <%= f.text_area :details, :rows => 5, :class => 'boxsizingBorder'  %>
   </div>
 </div>
-
+<div class="row">
+  <div class="field col-sm-12">
+      <p>Check for Yes</p>
+      <div style="clear: both;"><%= f.check_box :flight_roster %>Create flight roster for this event i.e. airshow signup</div>
+      <div style="clear: both;"><%= f.check_box :rides_available %>LHFE Rides Available at this event</div>
+      <div style="clear: both;"><%= f.check_box :rsvp %>Create RSVP list (RSVP for local events or ones not involving the aircraft)</div>
+  </div>
+</div>
 
   <div class="actions">
     <%= f.submit :data => { :disable_with => "Submitting..." } %>
