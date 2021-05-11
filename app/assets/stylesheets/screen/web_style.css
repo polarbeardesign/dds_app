@@ -429,10 +429,15 @@ td {
   background: #b78d03;
   }
 
-.fl {
 
-    padding: 9px 0px;
-    max-width: 320px;
+.fl {
+    float: right;
+    margin-left: 10px;
+    padding: 9px 9px 0px 0px;
+    max-width: 400px;
+
+ /*   padding: 9px 0px;
+    max-width: 320px;*/
 }
 
 .fb_iframe_widget {
@@ -551,6 +556,8 @@ cursor: default;
   padding: 1em;
   margin-bottom: 1em;
 }
+
+
 
 
 /* =Full Size
