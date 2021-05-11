@@ -3,6 +3,26 @@
 <%= render "scripts" %>
 
 
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+    <div class="admin-section" >
+<div class='row'>
+  <div class='col-sm-12'>
+      <h2>Admin</h2>
+      <p>You are seeing this admin area because you are logged in with admin privileges.</p>
+      <div class='row'>
+        <div class="col-xs-12 col-sm-2">
+        <%= button_to 'New Event', new_event_path, method: :get, :class => "btn-default btn" %>
+        </div>
+        <div class="col-xs-12 col-sm-2">
+        <%= button_to 'See All Events (History', all_events_path, method: :get, :class => "btn-default btn" %>
+  </div>
+  </div>
+  </div>
+  </div>
+</div> 
+<% end %><% end %>
+
 <h1>Devil Dog Calendar:</h1>
 
 <div id="live-search" class="styled formfilter">
