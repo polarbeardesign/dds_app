@@ -1,0 +1,22 @@
+
+<h1><%= @content.title %></h1>
+
+<%= markdown @content.body %>
+
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+    <div class="admin-section" >
+<div class='row'>
+  <div class='col-sm-6'>
+      <h2>Admin</h2>
+        <%= button_to 'Edit Content', edit_content_path(@content), method: :get, :class => "btn-default btn" %>
+  </div>
+  <div class='col-sm-6 google-search-result'>
+
+  </div>
+</div>    
+        <%#= render '/contents/versions', :contents => @contents %>
+    </div>
+
+  <% end %>
+<% end %>

@@ -1,0 +1,19 @@
+<h1>Sponsor</h1>
+
+<div class="sponsor-logo">
+  <%= image_tag '/uploads/images/' + @sponsor.logo %>
+</div>
+<p><strong><%= @sponsor.sponsor_name %></strong></p>
+
+<p><%= link_to @sponsor.url, @sponsor.url, :target => "_blank" %></p>
+
+<% if !@sponsor.notes.blank? %>
+
+<p>Notes:</p>
+  
+<%= markdown @sponsor.notes %>
+
+<% end %>
+
+<%= link_to 'Edit', edit_sponsor_path(@sponsor) %> |
+<%= link_to 'Back', sponsors_path %>

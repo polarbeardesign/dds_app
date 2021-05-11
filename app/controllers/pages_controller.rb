@@ -7,6 +7,9 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:home,
   def home
     @events = Event.published.confirmed.ordered.tease
     @teaser = Teaser.current.limit(1).first
+    @sponsors = Sponsor.order("position").all
+    @about = Content.find_by_id(6)
+    @donate = Content.find_by_id(7)
     render :layout => "homepage"
   end
 
@@ -17,7 +20,7 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:home,
 
   end
 
-  def living_flight_history_experience
+  def living_history_flight_experience
     @rides = Event.published.ordered.has_lhfe
     @price = Product.find_by_id(11)
   end
@@ -55,6 +58,7 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:home,
    @member = Member.find(@user.member)
    @products = Product.membership.all
    @dues_paid = DuesPayment.most_recent.find_by_member_id(@member)
+ 
   end
 
   def membership

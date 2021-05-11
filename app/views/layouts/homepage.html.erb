@@ -5,6 +5,8 @@
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+
 
   <%= favicon_link_tag '/apple-icon-57x57.png', :rel => 'apple-touch-icon', :sizes => '57x57' %>
   <%= favicon_link_tag '/apple-icon-60x60.png', :rel => 'apple-touch-icon', :sizes => '60x60' %>
@@ -20,31 +22,99 @@
   <%= favicon_link_tag '/favicon-96x96.png', :rel => 'icon', :type => 'image/png', :sizes => '96x96' %>
   <%= favicon_link_tag '/favicon-16x16.png', :rel => 'icon', :type => 'image/png', :sizes => '16x16' %>
 <meta name="google-site-verification" content="bDCd2KypL07hC0KWnjy0SK9rdQe7Ey6E_608grWInkA" />
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E2JPP02LBK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-E2JPP02LBK');
+</script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $('.flexslider').flexslider({
+    animation: "slide"
+  });
+});
+  </script>
+
 </head>
 <body>
 
-<div id="page">
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0&appId=1351035148316092&autoLogAppEvents=1" nonce="NV0JiJ8P"></script>
 
-<%= render 'layouts/header' %>
+<div id="container">
 
-<div id="main-area">
-
-<% if notice %>
-<p id="notice" style="padding-top: 6em; margin-left: 2em;"><%= notice %></p>
-<% end %>
-
-<%= yield %>
+  <%= render 'layouts/header' %>
+  <%= render 'layouts/nav' %>
 
 
-<%= render 'layouts/footer' %>
+
+    <div class="flexslider">
+      <ul class="slides">
+        <li>
+          <img src="/assets/fly_teaser.jpg" alt=""> <!-- 1912 x 741 -->
+          <div class="flex-caption">
+            <div class="flex-caption_inner">
+              <div class="txt1"><strong>FLY THE DEVIL DOG</strong></div>
+              <div class="txt2">Checkout upcoming opportunities</div>
+              <div class="txt3"><a href="/living_history_flight_experience" class="btn btn-primary">Fly the Dog</a></div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <img src="/assets/slider_vintage.jpg" alt=""> <!-- 1913 x 741 -->
+          <div class="flex-caption">
+            <div class="flex-caption_inner">
+              <div class="txt1"><strong>Giving History a Future</strong></div>
+              <div class="txt2">Learn about the history of PBJ's</div>
+              <div class="txt3"><a href="/PBJs" class="btn btn-primary">PBJ History</a></div>
+            </div>
+          </div>
+        </li>
+
+        <li>
+          <img src="/assets/slider_maintenance.jpg" alt=""> <!-- 1912 x 741 -->
+          <div class="flex-caption">
+            <div class="flex-caption_inner">
+              <div class="txt1"><strong>Maintenance</strong></div>
+              <div class="txt2">What's it take to make a Dog fly?</div>
+              <div class="txt3"><a href="#" class="btn btn-primary">Maintenance</a></div>
+            </div>
+          </div>
+        </li>
 
 
-<!-- Close main-area -->
+      </ul>
+    </div>
+
+
+
+
+
+
+  
+
+    <% if notice %>
+      <div id="notice"><%= notice %></div>
+    <% end %>
+
+
+    <%= yield %>
+
+
+
 </div>
 
-<!-- Close page -->
-</div>
+<footer>
+    <%= render 'layouts/footer' %>
+</footer>
 
+</div>
 
 </body>
 </html>

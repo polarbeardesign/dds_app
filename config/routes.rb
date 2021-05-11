@@ -2,6 +2,21 @@ DdsApp::Application.routes.draw do
 
   resources :dues_reminders
 
+  resources :sponsors do
+    collection { post :sort}
+  end
+
+
+  resources :contents
+
+
+  resources :menu_items
+  resources :menu_items do
+    collection { post :sort}
+  end
+
+  resources :menus
+
 
   resources :lhfe_riders
 
@@ -163,6 +178,29 @@ devise_for :users, :skip => [:registrations]
   match 'supportcaf' => 'pages#supportcaf', :as => :supportcaf
   
   match 'twelve_planes' => 'pages#twelve_planes', :as => :twelve_planes
+  
+  match 'PBJs' => 'contents#show', :id => 1, :as => :PBJs
+  match 'VMB612' => 'contents#show', :id => 2, :as => :VMB612 
+  match 'living_history_flight_experience' => 'contents#show', :id => 3, :as => :living_history_flight_experience
+  match 'squadron' => 'contents#squadron', :as => :squadron  # 'contents#show', :id => 4
+  match 'admin_home' => 'contents#show', :id => 5, :as => :admin_home
+
+
+
+  match 'member_home' => 'pages#member_home', :as => :member_home
+  match 'admin_home' => 'contents#admin_home', :as => :admin_home
+
+# assigning contents pages to URLS
+  match 'PBJs' => 'contents#show', :id => 1, :as => :PBJs
+  match 'VMB612' => 'contents#show', :id => 2, :as => :VMB612 
+  match 'living_history_flight_experience' => 'contents#show', :id => 3, :as => :living_history_flight_experience
+  match 'squadron' => 'contents#squadron', :as => :squadron  # 'contents#show', :id => 4
+  match 'admin_home' => 'contents#show', :id => 5, :as => :admin_home
+
+
+
+  match 'member_home' => 'pages#member_home', :as => :member_home
+  match 'admin_home' => 'contents#admin_home', :as => :admin_home
 
   match 'SN_44_86758' => 'pages#SN_44_86758', :as => :SN_44_86758
   
@@ -212,8 +250,7 @@ devise_for :users, :skip => [:registrations]
   get "pages/VMB612"
   get "pages/PBJs"
   match 'membership' => 'pages#membership', :as => :membership
-  match 'living_flight_history_experience' => 'pages#living_flight_history_experience', :as => :living_flight_history_experience
-  match 'rides' => redirect('/living_flight_history_experience')
+  match 'rides' => redirect('/living_history_flight_experience')
 
   match 'manifest/:event_id' => 'event_signups#manifest', :as => :manifest
   match 'hold_harmless/:event_id' => 'event_signups#hold_harmless', :as => :hold_harmless

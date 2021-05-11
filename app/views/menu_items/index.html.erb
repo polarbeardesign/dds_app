@@ -1,0 +1,31 @@
+<h1>Menu Items</h1>
+
+<table>
+  <tr>
+    <th>Menu</th>
+    <th>Parent</th>
+    <th>Display</th>
+    <th>Url</th>
+    <th>Position</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+<tbody id="menu_items" data-update-url="<%= sort_menu_items_url %>">
+<% @menu_items.each do |menu_item| %>
+  <%= content_tag_for :tr, menu_item do %>
+    <td><%= menu_item.menu.menu_name %></td>
+    <td class='center'><%= menu_item.parent_id %></td>
+    <td><%= menu_item.display %></td>
+    <td><%= menu_item.url %></td>
+    <td class='center'><%= menu_item.position %></td>
+    <td><%= link_to 'Show', menu_item %></td>
+    <td><%= link_to 'Edit', edit_menu_item_path(menu_item) %></td>
+    <td><%= link_to 'Destroy', menu_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <% end %>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Menu item', new_menu_item_path %>

@@ -450,6 +450,7 @@ ActiveRecord::Schema.define(:version => 20171102143447) do
     t.integer  "position",     :default => 0, :null => false
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
+
   end
 
   create_table "squadron_documents", :force => true do |t|

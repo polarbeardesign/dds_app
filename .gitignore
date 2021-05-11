@@ -3,7 +3,9 @@ db/*.sqlite3
 log/*.log
 tmp/
 *.DS_Store
+app/views/.DS_Store
 public/.DS_Store
+app/views/.DS_Store
 config/database.yml
 .sass-cache/
 .idea

@@ -1,7 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter :check_authentication
+#  force_ssl
+
+  before_filter :check_authentication, :header_footer
 
   def check_authentication
     unless params[:controller] == 'devise/sessions' or params[:controller] == 'devise/passwords'
@@ -14,6 +16,13 @@ class ApplicationController < ActionController::Base
   end
 
   before_filter :check_authorization
+
+  def header_footer
+    @sub_menu = MenuItem.sub.order("position").all
+
+    @main_menu = MenuItem.search(params[:search])
+
+  end
 
   private 
 
