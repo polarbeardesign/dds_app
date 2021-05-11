@@ -25,6 +25,14 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:show]
     end
   end
 
+  def living_history_flight_experience
+  
+    @content = Content.find_by_id(3)
+    @rides = Event.published.ordered.has_lhfe
+    @price = Product.find_by_id(11)
+  
+  end
+
   # GET /lhfe_flights/new
   # GET /lhfe_flights/new.json
   def new
