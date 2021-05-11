@@ -26,17 +26,22 @@
     </div>
   <% end %>
 
-<div class="indent_row">
-  <div class="cell">
-    <div class="field">
+<div class="row">
+    <div class="field col-sm-4">
       <%= f.label :location %><br />
       <%= f.collection_select :location_id, Location.ordered.all, :id, :shortname_with_code, options = {:order => 'short_name ASC', :prompt => true}, html_options = {:class => "styled-select"} %><br />
-      <p><%= link_to 'Enter a new location', new_location_path %></p><br />
+      <p><%= link_to 'Enter a new location', new_location_path %></p>
     </div>
+</div>
+
+<div class="row">
+  <div class="field col-sm-4">
+    <%= f.label :title, "Event Name" %><br />
+    <%= f.text_field :title, :size => "20" %>
   </div>
 </div>
+
 <div class="row">
-<p class="form_note">Times aren't displayed so not really important to be accurate.</p>
   <div class="field col-sm-4">
     <%= f.label :start %><br />
     <%= f.text_field :start, :value => f.object.try(:start).try(:strftime,'%Y-%m-%d %H:%M:%S'), :size => 20 %>
@@ -45,6 +50,19 @@
     <%= f.label :end %><br />
     <%= f.text_field :end, :value => f.object.try(:end).try(:strftime,'%Y-%m-%d %H:%M:%S'), :size => 20 %>
   </div>
+    <div class="form_note" style="clear: both;margin: 0 0 1em 1em;">Times aren't displayed so not really important to be accurate.</div>
+</div>
+
+<div class="row">
+  <div class="field col-sm-4">
+    <%= f.label :event_types_id, "Event Type" %><br />
+    <%= f.collection_select :event_type_id, EventType.all, :id, :title, options = {:order => 'title ASC', :prompt => true}, html_options = {:class => "styled-select"} %>
+  </div>
+    <div class="field col-sm-8">
+      <%= f.label :event_statuses_id, "Status" %> <br />
+      <%= f.collection_select :event_statuses_id, EventStatus.all, :id, :status, options = {:order => 'status ASC', :prompt => true}, html_options = {:class => "styled-select"} %>
+      <div class="form_note">Only confirmed will show to general public, tentative will show to logged in members</div>
+    </div>
 </div>
 
 <div class="row">
@@ -55,10 +73,6 @@
   <div class="field col-sm-4">
     <%= f.label :graphic_address, "Graphic Filename" %><br />
     <%= f.text_field :graphic_address, :size => "20" %>
-  </div>
-  <div class="field col-sm-4">
-    <%= f.label :event_types_id, "Event Type" %><br />
-    <%= f.collection_select :event_type_id, EventType.all, :id, :title, options = {:order => 'title ASC', :prompt => true}, html_options = {:class => "styled-select"} %>
   </div>
 </div>
 

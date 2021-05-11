@@ -551,6 +551,10 @@ cursor: default;
   padding: 1em;
   margin-bottom: 1em;
 }
+.form_note {
+  font-size: 0.75em;
+  color: #aaa;
+}
 
 
 /* =Full Size
