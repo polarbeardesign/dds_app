@@ -1,4 +1,42 @@
-<% content_for :sidebar do %>
+
+
+
+<% if signed_in?%>
+    <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+      <%= link_to 'Edit', edit_lhfe_flight_path(@lhfe_flight) %> | <%= link_to 'Back', lhfe_flights_path %>
+    <% end %>
+<% end %>
+
+<h1><%= @lhfe_flight.flight_start_time.strftime("%A %b %d @ %I:%M %p") %> Ride<br />at <%= @lhfe_flight.event.title %></h1>
+
+<% if @lhfe_flight.flight_notes? %>
+<p>
+  <b>Flight notes:</b>
+  <%= @lhfe_flight.flight_notes %>
+</p>
+<% end %>
+<%= image_tag "seating.png", :width => '450px', :class => 'center'%>
+
+<p><strong>Note:</strong> Minimum of 5 passengers required for flight to occur.</p>
+
+<p>Please plan check in at the aircraft at least an hour before your scheduled flight time.</p>
+
+<ul>
+<li><strong>Pre-flight:</strong> 1/2 to 1 hour before take-off; paperwork and crew/passenger brief</li>
+<li><strong>Boarding:</strong> enter the aircraft, take a seat, seat belt check (5 minutes)</li>
+<li><strong>Engine start-up/Run-up:</strong> Before take off, run-up of engines and taxi to active runway (10 minutes)</li>
+<li><strong>Flight time (in air):</strong> Flight over the local area lasting 20~25 minutes</li>
+<li><strong>Landing/Taxi/Engine shut down:</strong> (5 minutes)</li>
+<li><strong>Disembark:</strong> Once the plane is secure and the crew has opened the exit(s)</li>
+<li><strong>Total Time on Board:</strong> Your entire experience is expected to last about 40-45 minutes.</li>
+</ul>
+
+<h2>Ride Coordinator</h2>
+<p>Please contact our Ride Coordinator for any rides questions:</p>
+
+<p>By phone: 512-869-1759<br />
+By email: <a href="mailto:rides@devildogsquadron.com">rides@devildogsquadron.com</a></p>
+
 <div style="width: 220px; background: #fff; border: 1px solid #999;">
 <h2 style="background: #cc0000; color: #eee; margin: 0 0 0 0; padding: 0.75em;">Book Your Flight</h2>
 
@@ -39,42 +77,3 @@
 <p style="margin: 0.75em;">Not ready to make a reservation, but would like more information? Enter a <%= link_to "Ride Request", new_ride_request_path %>.</p>
 
 </div>
-
-<% end %>
-
-
-<% if signed_in?%>
-    <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
-      <%= link_to 'Edit', edit_lhfe_flight_path(@lhfe_flight) %> | <%= link_to 'Back', lhfe_flights_path %>
-    <% end %>
-<% end %>
-
-<h1><%= @lhfe_flight.flight_start_time.strftime("%A %b %d @ %I:%M %p") %> Ride<br />at <%= @lhfe_flight.event.title %></h1>
-
-<% if @lhfe_flight.flight_notes? %>
-<p>
-  <b>Flight notes:</b>
-  <%= @lhfe_flight.flight_notes %>
-</p>
-<% end %>
-<%= image_tag "seating.png", :width => '450px', :class => 'center'%>
-
-<p><strong>Note:</strong> Minimum of 5 passengers required for flight to occur.</p>
-
-<p>Please plan check in at the aircraft at least an hour before your scheduled flight time.</p>
-
-<ul>
-<li><strong>Pre-flight:</strong> 1/2 to 1 hour before take-off; paperwork and crew/passenger brief</li>
-<li><strong>Boarding:</strong> enter the aircraft, take a seat, seat belt check (5 minutes)</li>
-<li><strong>Engine start-up/Run-up:</strong> Before take off, run-up of engines and taxi to active runway (10 minutes)</li>
-<li><strong>Flight time (in air):</strong> Flight over the local area lasting 20~25 minutes</li>
-<li><strong>Landing/Taxi/Engine shut down:</strong> (5 minutes)</li>
-<li><strong>Disembark:</strong> Once the plane is secure and the crew has opened the exit(s)</li>
-<li><strong>Total Time on Board:</strong> Your entire experience is expected to last about 40-45 minutes.</li>
-</ul>
-
-<h2>Ride Coordinator</h2>
-<p>Please contact our Ride Coordinator for any rides questions:</p>
-
-<p>By phone: 512-869-1759<br />
-By email: <a href="mailto:rides@devildogsquadron.com">rides@devildogsquadron.com</a></p>
