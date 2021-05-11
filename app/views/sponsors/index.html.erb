@@ -1,0 +1,35 @@
+<h1>Sponsors</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th>Sponsor name</th>
+    <th>Url</th>
+    <th>Logo</th>
+    <th>Notes</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+<tbody id="sponsors" data-update-url="<%= sort_sponsors_url %>">
+
+<% @sponsors.each do |sponsor| %>
+  <%= content_tag_for :tr, sponsor do %>
+    <td><%= sponsor.position %></td>
+    <td><%= sponsor.sponsor_name %></td>
+    <td><%= sponsor.url %></td>
+    <td><%= sponsor.logo %></td>
+    <td><%= sponsor.notes %></td>
+    <td><%= link_to 'Show', sponsor %></td>
+    <td><%= link_to 'Edit', edit_sponsor_path(sponsor) %></td>
+    <td><%= link_to 'Destroy', sponsor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+  <% end %>
+<% end %>
+
+</tbody>
+</table>
+
+<br />
+
+<%= link_to 'New Sponsor', new_sponsor_path %>

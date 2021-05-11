@@ -1,8 +1,13 @@
-<div class="home-right-box">
-
+<div class="hp-copy">
 
 <h1>What's New</h1>
 
 <%= markdown @teaser.content %>
+
+<% if signed_in?%>
+    <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+      <%= link_to 'Edit', edit_teaser_path(@teaser) %>
+    <% end %>
+<% end %>
 
 </div>

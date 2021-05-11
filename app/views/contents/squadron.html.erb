@@ -1,0 +1,35 @@
+<% last_position = "" %>
+<h1><%= @content.title %></h1>
+
+<%= markdown @content.body %>
+
+<h2>Squadron Officers</h2>
+
+<table width="440" border="0" align="center" class="table_border">
+    <tr> 
+        <th>Position</th>
+        <th>Officer</th>
+    </tr>
+   <% @officer_positions.each do |officer_position| %>
+   <tr class="<%= cycle('white_row', 'yellow_row') %>">
+     <td><%= officer_position.position_name %>: </td>
+     <td><% officer_position.terms.current.each do |term| %>
+      <% if last_position == officer_position.position_name %>
+        /
+       <% end %>
+      <%= term.member.first_name + " " + term.member.last_name %>
+      <% last_position = officer_position.position_name %>
+    <% end %>
+    </td>
+    </tr>
+<% end %>
+</table>
+
+<p>If you have any questions or comments, please send us an email at <a href="mailto:info@devildogsquadron.com">info@devildogsquadron.com</a></p>
+
+<% if signed_in?%>
+    <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+<%= link_to 'Edit', edit_content_path(@content) %> |
+<%= link_to 'Back', contents_path %>
+<% end %>
+<% end %>

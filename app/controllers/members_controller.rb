@@ -14,7 +14,7 @@ class MembersController < ApplicationController
     @past_dues = @active_members.dues_most_recent.dues_past.uniq
     
     respond_to do |format|
-      format.html {render :layout => "homepage" }
+      format.html # index.html.erb
       format.csv { render :text => Member.to_csv }
       format.json { render :json => @members }
     end

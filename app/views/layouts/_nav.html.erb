@@ -1,0 +1,46 @@
+<div class="navbar navbar_ navbar-default">
+  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <div class="navbar-collapse navbar-collapse_ collapse">
+    <ul class="nav navbar-nav sf-menu clearfix">
+    <% @main_menu.each do |menu| %>
+      <li class="dropdown" ><a href="<%= menu.url %>" class="dropdown-toggle"><%= menu.display %></a>
+      <% if @sub_menu.collect(&:parent_id).include?(menu.id) %>
+        <% if menu.display != "Members" %>
+          <ul class="dropdown-menu">
+            <% @sub_menu.each do |submenu| %>
+              <% if submenu.parent_id == menu.id %>
+                <li><a href="<%= submenu.url %>"><%= submenu.display %></a></li>
+              <% end %>
+            <% end %>
+          </ul>
+        <% elsif menu.display == "Members" %>
+          <% if signed_in?%>
+            <% if current_user.roles.any? {|role| role.name == "member"} %>
+              <ul class="dropdown-menu">
+              <% @sub_menu.each do |submenu| %>
+                <% if submenu.parent_id == menu.id %>
+                  <% if submenu.display != "Admin" %>
+                    <li><a href="<%= submenu.url %>"><%= submenu.display %></a></li>
+                  <% elsif submenu.display == "Admin" %>
+                    <% if current_user.roles.any? {|role| role.name == "admin"} %>
+                      <li><a href="<%= submenu.url %>"><%= submenu.display %></a></li>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              <% end %>
+              </ul>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+      </li>
+    <% end %>
+    </ul>
+    </div>
+  </div>
+</div>

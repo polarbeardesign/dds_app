@@ -15,7 +15,7 @@
 
 <% @posts.each do |post| %>
 
-    <h1><%= post.title %></h1>
+    <h1><%= link_to post.title, post %></h1>
     <% if post.content.length > 220 %>
          <%= markdown truncate(post.content, :length => 220, :separator => ' ') %> <em><%= link_to "Read More", post %></em>
       <% else %>

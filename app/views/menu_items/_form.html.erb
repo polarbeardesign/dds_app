@@ -1,0 +1,37 @@
+<%= form_for(@menu_item) do |f| %>
+  <% if @menu_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@menu_item.errors.count, "error") %> prohibited this menu_item from being saved:</h2>
+
+      <ul>
+      <% @menu_item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :menu %><br />
+    <%= f.collection_select :menu_id, Menu.all, :id, :menu_name, options = {:prompt => true}, html_options = {:class => "styled-select boxsizingBorder"} %>
+  </div>
+  <div class="field">
+    <%= f.label :parent_id %><br />
+    <%= f.collection_select :parent_id, MenuItem.all, :id, :display, options = {:prompt => true, :include_blank => true}, html_options = {:class => "styled-select"} %>
+  </div>
+  <div class="field">
+    <%= f.label :display %><br />
+    <%= f.text_field :display %>
+  </div>
+  <div class="field">
+    <%= f.label :url %><br />
+    <%= f.text_field :url %>
+  </div>
+  <div class="field">
+    <%= f.label :position %><br />
+    <%= f.number_field :position %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
