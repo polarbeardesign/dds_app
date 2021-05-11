@@ -35,17 +35,6 @@
 </table>
 <% end %>
 
-<% content_for :sidebar do %>
-  <% if signed_in?%>
-    <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
-      <div align="center">
-        <%= button_to 'New News Item', new_news_path, :method => "GET" %>
-      </div>
-    <% end %>
-  <% end %>
-  <%= render "sidebars/newsletter_signup" %>
-<% end %>
-
 <% if signed_in?%>
     <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
        <%= link_to 'New News Item', new_news_path %>

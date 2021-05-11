@@ -6,10 +6,6 @@
 <h1>Member Home</h1>
 <hr />
 
-<% if !@dues_paid.blank? %>
-<h2>Membership Dues:</h2>
-
-
 <div class="row">
 <div class="col-sm-6">
   <h2>Membership Dues:</h2>
@@ -29,12 +25,6 @@
 </div>
 </div>
 <hr />
-<% else %>
-<h2>Membership Dues:</h2>
-
-<p>We currently do not have dues information recorded in your online account. If you feel this is in error, please contact the Finance Officer.</p>
-
-<% end %>
 <h2>Your Upcoming Trips:</h2>
 
 <% if @member.event_signups.future.empty? %>

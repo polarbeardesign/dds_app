@@ -1,18 +1,7 @@
 <% current_event_type = "" %>
 <% initial_date = "" %>
 <%= render "scripts" %>
-<% content_for :sidebar do %>
-<% if signed_in?%>
-    <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
-         <div align="center">
-           <%= button_to 'New Event', new_event_path, :method => "GET" %>
-           <br /><%= link_to 'See All Events (History)', all_events_path %>
-         </div>
-    <% end %>
-<% end %>
 
-  <%= render "sidebars/newsletter_signup" %>
-<% end %>
 
 <h1>Devil Dog Calendar:</h1>
 
