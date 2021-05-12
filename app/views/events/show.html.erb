@@ -5,80 +5,75 @@
 
 <%# "&key=AIzaSyB7VXiMl6JcYSuuF6XreGXm9Wge3IssPO4 %>
 
+<%= link_to 'Back to Calendar', events_path %>
 
-<% content_for :sidebar do %>
-  <%#= render "sidebars/newsletter_signup" %>
-<% end %>
-
-<% if signed_in?%>
-    <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
-      <%= link_to 'Edit', edit_event_path(@event) %> | <%= link_to 'Back', events_path %>
-    <% end %>
-<% end %>
 
 <% if @event.graphic_address? %>
   <div class="event_graphic"><%= image_tag(@event.graphic_address) %></div>
 <% end %>
 
 <div class="row">
-  <div class="col-sm-7">
-    <h1><%= @event.title %></h1>
-  <% if @event.graphic_address? %>
-    <div class="event_graphic"><%= image_tag '/uploads/misc_images/' +@event.graphic_address, :class => 'event-graphic'  %></div>
-  <% end %>
+  <div class="col-xs-12 col-sm-7">
+      <h1><%= @event.title %></h1>
+    <% if @event.graphic_address? %>
+      <div class="event_graphic"><%= image_tag '/uploads/misc_images/' +@event.graphic_address, :class => 'event-graphic'  %></div>
+    <% end %>
   </div>
-  <% if @event.start.strftime("%b %d" ) == @event.end.strftime("%b %d") %>
-  <div class="col-sm-5">
-  <div class="calendar large">
-    <div class="calendar_year large">
-      <%= @event.start.strftime("%Y") %>
-    </div>
-    <div class="calendar_month large">
-      <%= @event.start.strftime("%b") %>
-    </div>
-    <div class="calendar_day large">
-      <%= @event.start.strftime("%A") %>
-    </div>
-    <div class="calendar_date large">
-      <%= @event.start.strftime("%d") %>
-    </div>
-  </div>
-  <% else %>
-  <div class="col-sm-2">
-    <div class="calendar large">
-      <div class="calendar_year large">
-        <%= @event.start.strftime("%Y") %>
+  <div class="col-xs-12 col-sm-5">
+    <div class='row'>
+      <% if @event.start.strftime("%b %d" ) == @event.end.strftime("%b %d") %>
+      <div class="col-xs-12">
+        <div class="calendar">
+          <div class="calendar_year">
+            <%= @event.start.strftime("%Y") %>
+          </div>
+          <div class="calendar_month">
+            <%= @event.start.strftime("%b") %>
+          </div>
+          <div class="calendar_day">
+            <%= @event.start.strftime("%A") %>
+          </div>
+          <div class="calendar_date">
+            <%= @event.start.strftime("%d") %>
+          </div>
+        </div>
+        <% else %>
+        <div class="col-xs-6 col-sm-6">
+          <div class="calendar">
+            <div class="calendar_year">
+              <%= @event.start.strftime("%Y") %>
+            </div>
+            <div class="calendar_month">
+              <%= @event.start.strftime("%b") %>
+            </div>
+            <div class="calendar_day">
+              <%= @event.start.strftime("%A") %>
+            </div>
+            <div class="calendar_date">
+              <%= @event.start.strftime("%d") %>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-6">
+          <div class="calendar">
+            <div class="calendar_year">
+              <%= @event.end.strftime("%Y") %>
+            </div>
+            <div class="calendar_month">
+              <%= @event.end.strftime("%b") %>
+            </div>
+            <div class="calendar_day">
+              <%= @event.end.strftime("%A") %>
+            </div>
+            <div class="calendar_date">
+              <%= @event.end.strftime("%d") %>
+            </div>
+          </div>
+      <% end %>
       </div>
-      <div class="calendar_month large">
-        <%= @event.start.strftime("%b") %>
       </div>
-      <div class="calendar_day large">
-        <%= @event.start.strftime("%A") %>
       </div>
-      <div class="calendar_date large">
-        <%= @event.start.strftime("%d") %>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-2">
-    <div class="calendar large">
-      <div class="calendar_year large">
-        <%= @event.end.strftime("%Y") %>
-      </div>
-      <div class="calendar_month large">
-        <%= @event.end.strftime("%b") %>
-      </div>
-      <div class="calendar_day large">
-        <%= @event.end.strftime("%A") %>
-      </div>
-      <div class="calendar_date large">
-        <%= @event.end.strftime("%d") %>
-      </div>
-    </div>
-  </div>
-<% end %>
 </div>
-
 
 <div class="row">
   <div class="col-sm-7">
@@ -135,15 +130,9 @@
   <div class="col-sm-5">
   <% if @event.location.latitude? %>
     <div class="map-image">
-    <%#= link_to image_tag(map_url.html_safe), raw("https://www.google.com/maps/place/" + @event.location.latitude + ' ' + @event.location.longitude + "/@" + @event.location.latitude + "," + @event.location.longitude + ",13z/"), :target => "_blank" %>
-    <%= link_to image_tag("http://vfrmap.com/api?req=map&type=sectc&lat=" + @event.location.latitude + "&lon=" + @event.location.longitude + "&zoom=10&width=350&height=350"), raw("http://vfrmap.com/?type=vfrc&lat=" + @event.location.latitude + "&lon=" + @event.location.longitude + "&zoom=11"), :target => "_blank" %>
-    
-    
+    <%= link_to image_tag(map_url.html_safe), raw("https://www.google.com/maps/place/" + @event.location.latitude + ' ' + @event.location.longitude + "/@" + @event.location.latitude + "," + @event.location.longitude + ",13z/"), :target => "_blank" %>
+
     </div>
-
-
-
-
   <% end %>
   </div>
 </div>
@@ -157,6 +146,15 @@
 <% if current_user %>
 
 <h2>Members Info:</h2>
+
+
+  <% if @event.location.latitude? %>
+    <div class="map-image">
+    <%= image_tag("http://vfrmap.com/api?req=map&type=sectc&lat=" + @event.location.latitude + "&lon=" + @event.location.longitude + "&zoom=10&width=350&height=350") %>
+    </div>
+  <% end %>
+
+
 
 <% if !@event.trip.blank? %>
 
@@ -210,25 +208,59 @@
 <% end %>
 
 <% if signed_in?%>
-    <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
-<% if !@event.trip.blank? %>
-  <%= link_to 'Edit Trip', edit_trip_path(@event.trip) %>
-<% else %>
-  <%= link_to 'Add Trip Details', new_trip_path(:event_id => @event) %>
-<% end %>
-  | <%= link_to 'Create Manifest', manifest_path(:event_id => @event) %>
-<% end %>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+    <div class="admin-section" >
+      <div class='row'>
+        <div class='col-sm-12'>
+            <p class="admin_heading">Admin</p>
+            <p class="form_note admin_heading">You are seeing this admin area because you are logged in with admin privileges.</p>
+            <div class='row' style="padding-top:1em;">
+              <div class="col-xs-4">
+                <%= button_to 'Edit Event', edit_event_path(@event), method: :get, :class => "btn-default btn" %>
+              </div>
+              <% if !@event.trip.blank? %>
+              <div class="col-xs-4">
+                <%= button_to 'Edit Trip', edit_trip_path(@event.trip), method: :get, :class => "btn-default btn" %>
+              </div>
+              <% else %>
+              <div class="col-xs-4">
+                <%= button_to 'Add Trip Details', new_trip_path(:event_id => @event), method: :get, :class => "btn-default btn" %>
+              </div>
+              <% end %>              
+              <div class="col-xs-4">
+                <%= button_to 'Create Manifest', manifest_path(:event_id => @event), method: :get, :class => "btn-default btn" %>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div> 
+  <% end %>
 <% end %>
 
+
 <div class="signup_box">
-<strong>Put me on the List for this airshow:</strong>
+<h3>Put me on the List for this airshow:</h3>
   <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "member"} %>
-    <div class="signup_buttons">
-      <%= button_to 'Definite', {:controller => :event_signups, :action => :signup, :member_id => current_user.member, :event_id => @event.id, :commitment_level => 'Definite', :position => 0 } %>
-      <%= button_to 'Maybe',    {:controller => :event_signups, :action => :signup, :member_id => current_user.member, :event_id => @event.id, :commitment_level => 'Maybe', :position => 0 } %>
-    </div>
-  <% end %>
+<div class='row'>
+  <div class="col-xs-4  col-xs-offset-2 col-sm-2 col-sm-offset-0">
+    <%= button_to 'Definite', {:controller => :event_signups, :action => :signup, :member_id => current_user.member, :event_id => @event.id, :commitment_level => 'Definite', :position => 0 },:class => "btn-default btn btn-big btn-success" %>
+  </div>
+  <div class="col-xs-6 col-sm-2">
+      <%= button_to 'Maybe',    {:controller => :event_signups, :action => :signup, :member_id => current_user.member, :event_id => @event.id, :commitment_level => 'Maybe', :position => 0 },:class => "btn-default btn btn-big btn-warning" %>
+  </div>
+</div>
+<% end %>
+
 <p style="font-style: italic;font-size:0.85em;">Your name will be entered on the list below, you can change your commitment or remove yourself at any time. Signing up only indicates your availability and desire to participate. Final roster at discretion of pilots.</p>
+
+<p>Total RSVPs: <%= @event.event_signups.size %> - Definite: <%= @event.event_signups.definite.size %>
+<% if @event.event_signups.maybe.size.to_i > 0 %>
+  , Maybe: <%= @event.event_signups.maybe.size %>
+<% end %>
+<% if @event.event_signups.canceled.size.to_i > 0 %>
+  , Cancelations: <%= @event.event_signups.canceled.size %>
+<% end %>
+</p>
 </div>
 
 <table id="manifest_list">
@@ -272,16 +304,20 @@
 
 <% if @event.rsvp == true  %>
 <% if current_user %>
-
 <div class="signup_box">
-<strong>RSVP for this event:</strong>
+<h3>RSVP for this event:</h3>
   <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "member"} %>
-    <div class="signup_buttons">
-      <%= button_to 'Yes', {:controller => :attendances, :action => :signup, :member_id => current_user.member, :event_id => @event.id, :commitment_level => 'Definite'  } %>
-      <%= button_to 'Maybe', {:controller => :attendances, :action => :signup, :member_id => current_user.member, :event_id => @event.id, :commitment_level => 'Maybe'  } %>
-    </div>
-  <% end %>
-<span style="font-style: italic;font-size:0.85em;">Your name will be entered on the list below, you can remove yourself at any time.</em>
+<div class='row'>
+  <div class="col-xs-4  col-xs-offset-2 col-sm-2 col-sm-offset-0">
+    <%= button_to 'Definite', {:controller => :attendances, :action => :signup, :member_id => current_user.member, :event_id => @event.id, :commitment_level => 'Definite', :position => 0 },:class => "btn-default btn btn-big btn-success" %>
+  </div>
+  <div class="col-xs-6 col-sm-2">
+      <%= button_to 'Maybe',    {:controller => :attendances, :action => :signup, :member_id => current_user.member, :event_id => @event.id, :commitment_level => 'Maybe', :position => 0 },:class => "btn-default btn btn-big btn-warning" %>
+  </div>
+</div>
+<% end %>
+
+<p style="font-style: italic;font-size:0.85em;">Your name will be entered on the list below, you can change your commitment or remove yourself at any time. Signing up only indicates your availability and desire to participate. Final roster at discretion of pilots.</p>
 </div>
 
 <p>Total RSVPs: <%= @event.attendances.size %> - Definite: <%= @event.attendances.definite.size %>

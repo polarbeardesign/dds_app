@@ -1,4 +1,10 @@
-<h2>Sign in</h2>
+<div class="row">
+  <div class='col-sm-3 col-sm-push-3'>
+    <%= image_tag "/assets/devildog_logo.png", :class => "img-responsive" %>
+  </div>
+
+  <div class='col-sm-3 col-sm-push-3'>
+<h2>Login</h2>
 
 <% if flash[:alert] %>
   <p id="alert"><%= flash[:alert] %></p>
@@ -16,7 +22,10 @@
     <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
   <% end -%>
 
-  <div><%= f.submit "Sign in" %></div>
+  <div style="text-align: center;"><%= f.submit "Sign in",:class => "btn-default btn btn-big btn-primary" %></div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<div style="margin:1em 0;">
+  <%= render "devise/shared/links" %>
+</div>
+</div>
