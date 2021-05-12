@@ -247,7 +247,7 @@ devise_for :users, :skip => [:registrations]
   match "send_dues_reminder" => "dues_payments#send_dues_reminder"
   
   get "pages/home"
-  get "pages/VMB612"
+  match "pages/VMB612" => redirect('/VMB612')
   match "pages/PBJs" => redirect('/PBJs')
   match 'membership' => 'pages#membership', :as => :membership
   match 'rides' => redirect('/living_history_flight_experience')
