@@ -1,7 +1,7 @@
 <% email_addresses = "" %>
 
 <% map_url = "https://maps.googleapis.com/maps/api/staticmap?center="+@event.location.latitude+","+@event.location.longitude+"&zoom=11&size=400x400&maptype=roadmap
-&markers=color:red%7Clabel:1%7C"+@event.location.latitude+","+@event.location.longitude+"&key=AIzaSyB7VXiMl6JcYSuuF6XreGXm9Wge3IssPO4" %>
+&markers=color:red%7Clabel:1%7C"+@event.location.latitude+","+@event.location.longitude+"&key=AIzaSyBTLIEMHnR7-4zunQEj0NYdn0r8e7_fkig" %>
 
 <%# "&key=AIzaSyB7VXiMl6JcYSuuF6XreGXm9Wge3IssPO4 %>
 
@@ -130,7 +130,7 @@
   <div class="col-sm-5">
   <% if @event.location.latitude? %>
     <div class="map-image">
-    <%= link_to image_tag(map_url.html_safe), raw("https://www.google.com/maps/place/" + @event.location.latitude + ' ' + @event.location.longitude + "/@" + @event.location.latitude + "," + @event.location.longitude + ",13z/"), :target => "_blank" %>
+    <%= link_to image_tag(map_url.html_safe, :alt => "map"), raw("https://www.google.com/maps/place/" + @event.location.latitude + ' ' + @event.location.longitude + "/@" + @event.location.latitude + "," + @event.location.longitude + ",13z/"), :target => "_blank" %>
 
     </div>
   <% end %>
@@ -140,6 +140,35 @@
 <div style="clear: both;"></div>
 
 <hr />
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+    <div class="admin-section" >
+      <div class='row'>
+        <div class='col-sm-12'>
+            <p class="admin_heading">Admin</p>
+            <p class="form_note admin_heading">You are seeing this admin area because you are logged in with admin privileges.</p>
+            <div class='row' style="padding-top:1em;">
+              <div class="col-xs-4">
+                <%= button_to 'Edit Event', edit_event_path(@event), method: :get, :class => "btn-default btn" %>
+              </div>
+              <% if !@event.trip.blank? %>
+              <div class="col-xs-4">
+                <%= button_to 'Edit Trip', edit_trip_path(@event.trip), method: :get, :class => "btn-default btn" %>
+              </div>
+              <% else %>
+              <div class="col-xs-4">
+                <%= button_to 'Add Trip Details', new_trip_path(:event_id => @event), method: :get, :class => "btn-default btn" %>
+              </div>
+              <% end %>              
+              <div class="col-xs-4">
+                <%= button_to 'Create Manifest', manifest_path(:event_id => @event), method: :get, :class => "btn-default btn" %>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div> 
+  <% end %>
+<% end %>
 
 <% if @event.flight_roster == true  %>
 
@@ -205,36 +234,6 @@
 </table>
 <% else %>
 <p>No trip details yet...</p>
-<% end %>
-
-<% if signed_in?%>
-  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
-    <div class="admin-section" >
-      <div class='row'>
-        <div class='col-sm-12'>
-            <p class="admin_heading">Admin</p>
-            <p class="form_note admin_heading">You are seeing this admin area because you are logged in with admin privileges.</p>
-            <div class='row' style="padding-top:1em;">
-              <div class="col-xs-4">
-                <%= button_to 'Edit Event', edit_event_path(@event), method: :get, :class => "btn-default btn" %>
-              </div>
-              <% if !@event.trip.blank? %>
-              <div class="col-xs-4">
-                <%= button_to 'Edit Trip', edit_trip_path(@event.trip), method: :get, :class => "btn-default btn" %>
-              </div>
-              <% else %>
-              <div class="col-xs-4">
-                <%= button_to 'Add Trip Details', new_trip_path(:event_id => @event), method: :get, :class => "btn-default btn" %>
-              </div>
-              <% end %>              
-              <div class="col-xs-4">
-                <%= button_to 'Create Manifest', manifest_path(:event_id => @event), method: :get, :class => "btn-default btn" %>
-              </div>
-            </div>
-        </div>
-      </div>
-    </div> 
-  <% end %>
 <% end %>
 
 
