@@ -48,7 +48,7 @@
   <% end %>
 <div class="calendar_row">
 <div class='row'>
-<div class="col-xs-12 col-sm-4">
+<div class="col-xs-12 col-sm-5 col-md-4">
 <div class='row'>
   <% if event.start.strftime("%b %d" ) == event.end.strftime("%b %d") %>
 <div class="col-xs-12">
@@ -109,12 +109,12 @@
 </div>
 </div>
 </div>
-  <div class="col-xs-12 col-sm-8">
+  <div class="col-xs-12 col-sm-7 col-md-8">
     <h2 class='event-title'><%= link_to event.title, event %></h2>
     <% if event.event_statuses_id == 2 %>
-      <span class="event-flag" style="display: inline;"> &lt;= Tentative</span>
+      <span class="event-flag">Tentative</span>
     <% elsif event.event_statuses_id == 3 %>
-      <span class="event-flag" style="display: inline;"> &lt;= Canceled</span>
+      <span class="event-flag">Canceled</span>
     <% end %>
     <br />
       <% if event.details.length > 220 %>
@@ -135,8 +135,48 @@
     </ul>
  <% end %>
 <% end %>
-
   </div>
+  
+<% if signed_in?%>
+
+<div class="col-xs-12">
+  <% if current_user.roles.any? {|role| role.name == "admin" or role.name == "member"} %>
+    <% @members_array = event.event_signups.map{|x| x[:member_id]} %>
+    <% if @members_array.include? current_user.member.id %>
+<div class="signup_box" style = "border: 1px solid #999;padding:0 0.5em 0.5em;background: #eee; border-radius: 3px;">
+      <p><strong>You're signed up!</strong>
+      <% event.event_signups.ordered.each_with_index do |sign_up, i| %>
+        <% if sign_up.member_id == current_user.member.id %>
+        You signed up for this trip <%= sign_up.created_at.strftime("%b %-d, %Y")%> with a commitment of  <%= sign_up.commitment_level %> and are <%= (i + 1).ordinalize %> on the list.</p>
+</div>
+        <% end %>
+
+      <% end %>
+    <% else %>
+    <% if event.event_type_id == 2 %>
+
+<div class="signup_box" style = "border: 1px solid #999;padding:0 0.5em 0.5em;background: #eee; border-radius: 3px;">
+<p>Put me on the signup list for this airshow:</p>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "member"} %>
+<div class='row'>
+  <div class="col-xs-6 col-sm-3 col-sm-offset-3 col-md-3 col-md-offset-4">
+    <%= button_to 'Definite', {:controller => :event_signups, :action => :signup, :member_id => current_user.member, :event_id => event.id, :commitment_level => 'Definite', :position => 0 },:class => "btn-default btn btn-big btn-success" %>
+  </div>
+  <div class="col-xs-6 col-sm-3">
+      <%= button_to 'Maybe',    {:controller => :event_signups, :action => :signup, :member_id => current_user.member, :event_id => event.id, :commitment_level => 'Maybe', :position => 0 },:class => "btn-default btn btn-big btn-warning" %>
+  </div>
+</div>
+<% end %>
+  </div>
+  
+    <% end %>
+    <% end %>
+ <% end %>
+  </div>
+
+<% end %>
+
+
   </div>
   </div>
 <% current_event_type = event.event_type.title %>
