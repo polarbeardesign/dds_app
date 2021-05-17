@@ -535,7 +535,7 @@ cursor: default;
   margin: .67em 0;
 }
 
-.dues_not_current {
+.dues_not_current, .event-flag {
   font-weight: bold;
   display: inline-block;
   color: #cc0000;

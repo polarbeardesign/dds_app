@@ -39,6 +39,10 @@
     <%= f.label :title, "Event Name" %><br />
     <%= f.text_field :title, :size => "20" %>
   </div>
+  <div class="field col-sm-4">
+    <%= f.label :URL, "Event website" %><br />
+    <%= f.text_field :URL, :size => 20 %>
+  </div>
 </div>
 
 <div class="row">
@@ -61,7 +65,7 @@
     <div class="field col-sm-8">
       <%= f.label :event_statuses_id, "Status" %> <br />
       <%= f.collection_select :event_statuses_id, EventStatus.all, :id, :status, options = {:order => 'status ASC', :prompt => true}, html_options = {:class => "styled-select"} %>
-      <div class="form_note">Only confirmed will show to general public, tentative will show to logged in members</div>
+      <div class="form_note" style="padding-top: 0.5em;">Only confirmed will show to general public, tentative will show to logged in members</div>
     </div>
 </div>
 
@@ -86,7 +90,7 @@
 
 <div class="row">
   <div class="field col-sm-12">
-    <%= f.label :details %><br />
+    <%= f.label :details %> <span class="form_note">Everyone can see - enter members only details in trip notes</span><br />
     <%= f.text_area :details, :rows => 5, :class => 'boxsizingBorder'  %>
   </div>
 </div>
