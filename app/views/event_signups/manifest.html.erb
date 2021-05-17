@@ -3,7 +3,7 @@
 <% content_for :sidebar do %>
 <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
   <div align="center">
-  <%= button_to "New Event signup", new_event_signup_path, :method => :get %>
+  <%= button_to "New Event signup", new_event_signup_path, :method => :get,:class => "btn-default btn btn-big btn-primary" %>
   </div>
 <% end %>
 <% end %>
@@ -38,6 +38,6 @@
 </tbody>
 </table>
 
-<div style="text-align: center;">
-<%= button_to "Create Hold Harmless / Manifest", hold_harmless_path(params[:event_id]) %>
+<div style="text-align: center;margin-top:1em;">
+<%= button_to "Create Hold Harmless / Manifest", hold_harmless_path(params[:event_id]),:class => "btn-default btn btn-big btn-primary" %>
 </div>

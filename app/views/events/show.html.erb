@@ -157,7 +157,7 @@
               </div>
               <% else %>
               <div class="col-xs-4">
-                <%= button_to 'Add Trip Details', new_trip_path(:event_id => @event), method: :get, :class => "btn-default btn" %>
+                <%= button_to 'Add Trip Details', new_trip_path(:event_id => @event), :class => "btn-default btn" %>
               </div>
               <% end %>              
               <div class="col-xs-4">
@@ -237,20 +237,49 @@
 <% end %>
 
 
-<div class="signup_box">
-<h3>Put me on the List for this airshow:</h3>
+<% if signed_in?%>
+
+<div class="col-xs-12">
+  <% if current_user.roles.any? {|role| role.name == "admin" or role.name == "member"} %>
+    <% @members_array = @event.event_signups.map{|x| x[:member_id]} %>
+    <% if @members_array.include? current_user.member.id %>
+<div class="signup_box" style = "border: 1px solid #999;padding:0 0.5em 0.5em;background: #eee; border-radius: 3px;margin-bottom: 1em;">
+      <p><strong>You're signed up!</strong>
+      <% @event.event_signups.ordered.each_with_index do |sign_up, i| %>
+        <% if sign_up.member_id == current_user.member.id %>
+        You signed up for this trip <%= sign_up.created_at.strftime("%b %-d, %Y")%> with a commitment of  <%= sign_up.commitment_level %> and are <%= (i + 1).ordinalize %> on the list.</p>
+</div>
+        <% end %>
+
+      <% end %>
+    <% else %>
+    <% if @event.event_type_id == 2 %>
+
+<div class="signup_box" style = "border: 1px solid #999;padding:0 0.5em 0.5em;background: #eee; border-radius: 3px; margin-bottom: 1em;">
+<p>Put me on the signup list for this airshow:</p>
   <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "member"} %>
 <div class='row'>
-  <div class="col-xs-4  col-xs-offset-2 col-sm-2 col-sm-offset-0">
+  <div class="col-xs-6 col-sm-3 col-sm-offset-3 col-md-3 col-md-offset-4">
     <%= button_to 'Definite', {:controller => :event_signups, :action => :signup, :member_id => current_user.member, :event_id => @event.id, :commitment_level => 'Definite', :position => 0 },:class => "btn-default btn btn-big btn-success" %>
   </div>
-  <div class="col-xs-6 col-sm-2">
+  <div class="col-xs-6 col-sm-3">
       <%= button_to 'Maybe',    {:controller => :event_signups, :action => :signup, :member_id => current_user.member, :event_id => @event.id, :commitment_level => 'Maybe', :position => 0 },:class => "btn-default btn btn-big btn-warning" %>
   </div>
 </div>
+<p style="font-style: italic;font-size:0.85em;">Your name will be entered on the list below, you can change your commitment or remove yourself at any time. Signing up only indicates your availability and desire to participate. Final roster at discretion of pilots.</p>
+
+<% end %>
+  </div>
+  
+    <% end %>
+    <% end %>
+ <% end %>
+  </div>
+
 <% end %>
 
-<p style="font-style: italic;font-size:0.85em;">Your name will be entered on the list below, you can change your commitment or remove yourself at any time. Signing up only indicates your availability and desire to participate. Final roster at discretion of pilots.</p>
+
+
 
 <p>Total RSVPs: <%= @event.event_signups.size %> - Definite: <%= @event.event_signups.definite.size %>
 <% if @event.event_signups.maybe.size.to_i > 0 %>
@@ -260,7 +289,7 @@
   , Cancelations: <%= @event.event_signups.canceled.size %>
 <% end %>
 </p>
-</div>
+
 
 <table id="manifest_list">
   <tr>

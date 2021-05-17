@@ -11,17 +11,15 @@
       </ul>
     </div>
   <% end %>
-
-<div class="row">
   <div class="field">
-    <%= f.label :event_id, "Event" %><br />
+    <%= f.label :event_id, "Event" %> :
     <strong><%= @event_signup.event.title %></strong>
   </div>
   <div class="field">
-    <%= f.label :member_id, "Member" %><br />
+    <%= f.label :member_id, "Member" %> :
     <strong><%= @event_signup.member.first_name %> <%= @event_signup.member.last_name %></strong>
   </div>
-</div>
+
 
 <div class="row">
       <div class="col-sm-4 radio_button_selection">
@@ -37,7 +35,7 @@
 </div>
 
 <div class="actions">
- <%= f.submit "Update my Request" %>
-</div>
+ <%= f.submit "Update my Request",:class => "btn-default btn btn-big btn-primary" %>
+ </div>
 
 <% end %>
