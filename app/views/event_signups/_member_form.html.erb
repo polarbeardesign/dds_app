@@ -1,4 +1,5 @@
 <%= form_for(@event_signup) do |f| %>
+
   <% if @event_signup.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@event_signup.errors.count, "error") %> prohibited this event_signup from being saved:</h2>
@@ -11,34 +12,28 @@
     </div>
   <% end %>
 
-<div class="indent_row" style="width: 560px;">
-  <div class="cell">
-    <div class="field">
-      <%= f.label :event_id, "Event" %><br />
-      <strong><%= @event_signup.event.title %></strong>
-    </div>
+<div class="row">
+  <div class="field">
+    <%= f.label :event_id, "Event" %><br />
+    <strong><%= @event_signup.event.title %></strong>
   </div>
-  <div class="cell">
-    <div class="field">
-      <%= f.label :member_id, "Member" %><br />
-      <strong><%= @event_signup.member.first_name %> <%= @event_signup.member.last_name %></strong>
-    </div>
+  <div class="field">
+    <%= f.label :member_id, "Member" %><br />
+    <strong><%= @event_signup.member.first_name %> <%= @event_signup.member.last_name %></strong>
   </div>
 </div>
-<div class="indent_row" style="width: 560px;">
-  <div class="cell" style="padding: 0 0 5em 6em;">
-    <div class="field">
-      <div class="cell radio_button_selection">
+
+<div class="row">
+      <div class="col-sm-4 radio_button_selection">
         <label><%= f.radio_button 'commitment_level', 'Definite' %><br /><%= f.label :commitment_level, "Definite" %></label>
       </div>
-      <div class="cell radio_button_selection">
+      <div class="col-sm-4 radio_button_selection">
         <label><%= f.radio_button 'commitment_level', 'Maybe' %><br /><%= f.label :commitment_level, "Maybe" %></label>
       </div>
-      <div class="cell radio_button_selection" style="border: none;">
+      <div class="col-sm-4 radio_button_selection" style="border: none;">
         <label><%= f.radio_button 'commitment_level', 'Canceled' %><br /><%= f.label :commitment_level, "Canceled" %></label>
       </div>
-    </div>
-  </div>
+
 </div>
 
 <div class="actions">

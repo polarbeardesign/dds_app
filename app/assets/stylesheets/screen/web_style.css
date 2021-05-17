@@ -237,7 +237,15 @@ label {
   font-size: 1.1em;
 }
 
+.radio_button_selection {
+  margin: 0;
+  text-align: center;
+  font-size:1.4em;
+  }
 
+.indent_row_special {
+  display: none;
+}
 
 /* =Flex Elements
 -------------------------------------------------------------- */

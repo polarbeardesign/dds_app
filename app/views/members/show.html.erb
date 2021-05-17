@@ -1,14 +1,5 @@
  <% last_payment = "" %>
 
-<% content_for :sidebar do %>
-  <%= render "sidebars/members" %>
-
-<% if @member.created_at > Date.today  - 30.days %>
-	<%= button_to "Send Welcome Email", send_welcome_email_path(:id => @member) %></div>
-<% end %>
-
-<% end %>
-
 <div class="form_row">
 
 <div class="form_cell" style="width: 55%; border-right: 1px solid #ddd;">
