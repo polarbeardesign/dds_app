@@ -3,10 +3,3 @@
   They will automatically be included in application.css.
 */
 
-.radio_button_selection {
-  border-right: 1px solid #ccc;
-  margin: 0;
-  text-align: center;
-  font-size:1.4em;
-  width: 120px;
-  }

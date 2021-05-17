@@ -3,7 +3,7 @@
 <div class="login-bar">
   <% if user_signed_in? %>
     Welcome: <%= current_user.member.first_name + ' ' + current_user.member.last_name %> | 
-    <%= link_to current_user.email, member_path(current_user.member) %> | 
+    <%= link_to current_user.email, account_path(current_user.member) %> | 
     Last login: <%= current_user.last_sign_in_at.strftime('%H:%M on %m/%d/%y') %> | 
     <%= link_to 'Logout', destroy_user_session_path, :method => :delete %>
   <% else %>
