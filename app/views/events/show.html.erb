@@ -127,7 +127,7 @@
   <div class="col-sm-5">
   <% if @event.location.latitude? %>
     <div class="map-image">
-    <%= link_to image_tag(map_url.html_safe, :alt => "map"), raw("https://www.google.com/maps/place/" + @event.location.latitude + ' ' + @event.location.longitude + "/@" + @event.location.latitude + "," + @event.location.longitude + ",13z/"), :target => "_blank" %>
+    <%= link_to image_tag(map_url, :alt => "map"), raw("https://www.google.com/maps/place/" + @event.location.latitude + ' ' + @event.location.longitude + "/@" + @event.location.latitude + "," + @event.location.longitude + ",13z/"), :target => "_blank" %>
 
     </div>
   <% end %>
@@ -176,7 +176,7 @@
 
   <% if @event.location.latitude? %>
     <div class="map-image">
-    <%= image_tag("http://vfrmap.com/api?req=map&type=sectc&lat=" + @event.location.latitude + "&lon=" + @event.location.longitude + "&zoom=10&width=350&height=350") %>
+    <%= image_tag("https://vfrmap.com/api?req=map&type=sectc&lat=" + @event.location.latitude + "&lon=" + @event.location.longitude + "&zoom=10&width=350&height=350") %>
     </div>
   <% end %>
 
