@@ -585,6 +585,18 @@ cursor: default;
   margin-bottom: 0;
 }
 
+.gallery_card {
+
+  }
+
+.gallery_card img {
+  max-width: 300px;
+  width: 100%;
+  display: block;
+  margin: 1em auto;
+  border: 1px solid #000;
+  }
+
 /* =Full Size
 -------------------------------------------------------------- */
 

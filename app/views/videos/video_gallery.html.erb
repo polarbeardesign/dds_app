@@ -1,30 +1,27 @@
 <h1>Video Gallery</h1>
 
-
-
-
-
 <% @videos.each_with_index do |video, i| %>
-<% if i == 0 || i % 3 == 0 %>
-  <div class="form_row">
-<% end %>
+  <% if i == 0 || i % 3 == 0 %>
+    <div class="row">
+  <% end %>
 
 
-  <div class="photo_cell">
-    <%= link_to (image_tag '/uploads/images/' + video.video_graphic), video %>
+  <div class="col-sm-4 gallery_card">
+    <%= link_to (image_tag '/uploads/images/' + video.video_graphic), video %><br />
     <%= link_to video.title, video %><br />
     <%= video.date.strftime("%b %d, %Y") %> - <%= video.source %>
     <% if session[:current_user] %><br /><%= link_to 'Edit', edit_video_path(video) %><% end %>
-  </div>
+  </div> 
 
-<% if i > 0 && i == 2 || i == 5 || i == 8 || i == 11 || i == 14 || i == 17 || i == 20 || i == 23 || i == 26 || i == 29 || i == 32 || i == 35 || i == 38 || i == 41 || i == 44 || i == 47 %>
+  <% if i > 0 && i == 2 || i == 5 || i == 8 || i == 11 || i == 14 || i == 17 || i == 20 || i == 23 || i == 26 || i == 29 || i == 32 || i == 35 || i == 38 || i == 41 || i == 44 || i == 47 %>
   <!-- close form_row div -->
   </div>
-<% elsif i+1 >= @videos.size %>
+  <% elsif i+1 >= @videos.size %>
   </div>
+  <% end %>
 <% end %>
 
-<% end %>
+
 
 <br />
 
