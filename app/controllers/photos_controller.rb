@@ -20,7 +20,7 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:show]
     @photo = Photo.find(params[:id])
 
 
-    render :layout => "homepage"
+#    render :layout => "homepage"
   end
 
   # GET /photos/new
