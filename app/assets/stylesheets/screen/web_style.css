@@ -307,6 +307,10 @@ td {
   padding: 0.4em;
 }
 
+.smaller-table * td,th {
+font-size: 0.75em;
+}
+
 /* =calendar items
 -------------------------------------------------------------- */
 

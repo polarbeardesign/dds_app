@@ -13,7 +13,7 @@
 
 <% @dues_reminders.each do |dues_reminder| %>
   <tr>
-    <td><%= dues_reminder.member.first_name + " " + dues_reminder.member.last_name %></td>
+
     <td><%= dues_reminder.notice_name %></td>
     <td><%= dues_reminder.sent_to %></td>
     <td><%= dues_reminder.created_at.strftime("%Y-%m-%d %H:%M") %></td>

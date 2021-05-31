@@ -25,21 +25,52 @@ function getCellValue(row, index){ return $(row).children('td').eq(index).html()
 <table class="table_border">
   <tr>
     <th>Member</th>
-    <th>Date Paid</th>
-    <th>Payment method</th>
-    <th>Payment type</th>
-    <th>Amt paid</th>
-    <th>Notes</th>
+    <th>Payment History</th>
+    <th>Reminder History</th>
   </tr>
 
 <% @dues_reminders.each do |dues_payment| %>
   <tr class="<%= cycle('odd_row', 'even_row') %>">
-    <td><%= link_to dues_payment.member.last_name + ', ' + dues_payment.member.first_name, dues_payment %></td>
-    <td><%= dues_payment.date_paid %></td>
-    <td><%= dues_payment.payment_method %></td>
-    <td><%= dues_payment.payment_type %></td>
-    <td><%= number_to_currency(dues_payment.amt_paid) %></td>
-    <td><%= dues_payment.notes %></td>
+    <td><% if dues_payment.member %><%= link_to dues_payment.member.last_name + ', ' + dues_payment.member.first_name, dues_payment %><% end %></td>
+
+    <td>
+      <table class="smaller-table">
+      <tr>
+        <th>Date</th>
+        <th>Amt Paid</td>
+        <th>Payment<br />Method</td>
+        <th>Type</td>
+      </tr>
+      <% dues_payment.member.dues_payments.each do |dues_paid| %>
+        <tr style="background: #fff;">
+        <td><%= link_to dues_paid.date_paid, dues_payment_path(dues_paid) %></td>
+        <td><%= number_to_currency(dues_paid.amt_paid) %></td>
+        <td><%= dues_paid.payment_method %></td>
+        <td><%= dues_paid.payment_type %></td>
+      </tr>
+       <% last_payment = dues_payment %>
+      <% end %>
+      </table>
+   </td>
+   <td>
+   <% if dues_payment.member.dues_reminders.present? %>
+     <table class="smaller-table">
+      <tr>
+        <th>Notice</th>
+        <th>Sent</td>
+      </tr>
+
+      <% dues_payment.member.dues_reminders.each do |dues_reminder| %>
+        <tr style="background: #fff;">
+      <td><%= dues_reminder.notice_name %></td>
+      <td><%= dues_reminder.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+      </tr>
+      <% end %>
+      </table>
+      <% end %>
+            <div style="text-align:center;margin-top:0.5em;"><%= button_to "Send Dues Reminder", send_dues_reminder_path(:id => dues_payment), :class => "btn-default btn btn-primary" %></div>
+
+   </td>
   </tr>
 <% end %>
 </table>

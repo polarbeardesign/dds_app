@@ -19,7 +19,7 @@ end
              :cc => 'info@devildogsquadron.com', 
              :subject => 'Devil Dog Squadron Dues Reminder'
       else
-        mail :to => @dues_payment.member.user.email, 
+        mail :to => "jim@polarbeardesign.net", 
              :subject => 'Devil Dog Squadron Dues Reminder - TEST'
       end
   end
