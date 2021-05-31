@@ -14,18 +14,14 @@
   </thead>
 
   <tbody>
-    <%- member.versions.reverse.each do |version| %>
+    <%- @member.versions.reverse.each do |version| %>
       <tr class="<%= cycle('odd_row', 'even_row') %>">
         <td><%= version.index %></td>
         <td><%= version.created_at.strftime("%b %d, %Y") %></td>
-        <td>
-          <% if version.whodunnit? %>
-          <%= find_version_author_name(version) %>
-          <% end %>
-        </td>
+        <td><% if version.whodunnit? %><%= find_version_author_name(version) %><% end %></td>
         <td><%= version.event.humanize %></td>
-        <td><%= link_to 'Diff', diff_member_version_path(member, version) %></td>
-        <td><%= link_to 'Rollback', rollback_member_version_path(member, version), :method => 'put' %></td>
+        <td><%= link_to 'Diff', diff_member_version_path(@member, version) %></td>
+        <td><%= link_to 'Rollback', rollback_member_version_path(@member, version), :method => 'put' %></td>
       </tr>
     <% end %>
   </tbody>
