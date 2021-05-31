@@ -33,7 +33,7 @@
   <%= @dues_payment.notes %>
 </p>
 
-<%= button_to "Send Dues Reminder", dues_reminder_path(:id => @dues_payment) %>
-
+<%= button_to "Send Dues Reminder", dues_reminder_path(:id => @dues_payment), :class => "btn-default btn btn-big btn-primary" %>
+<br />
 <%= link_to 'Edit', edit_dues_payment_path(@dues_payment) %> |
 <%= link_to 'Back', dues_payments_path %>

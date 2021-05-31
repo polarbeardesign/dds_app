@@ -1,5 +1,6 @@
  <% last_payment = "" %>
 
+<%= link_to 'back to Members', members_path %>
 <div class="row">
 
 <div class="form_cell">
@@ -82,7 +83,7 @@
 <% end %>
 </table>
 <br />
-<%= button_to "Send Dues Reminder", send_dues_reminder_path(:id => last_payment), :class => "btn-default btn btn-primary" %>
+<%= button_to "Send Dues Reminder", send_dues_reminder_path(:id => last_payment), :class => "btn-default btn btn-big btn-primary" %>
 
 
 <hr />
