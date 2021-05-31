@@ -38,7 +38,7 @@ function getCellValue(row, index){ return $(row).children('td').eq(index).html()
         var options = {
           title: 'Active Members Dues Status*',
           is3D: true,
-          backgroundColor: '#f0f0f0',
+          backgroundColor: '#fff',
           fontName: 'Verdana',
         };
 
@@ -52,7 +52,7 @@ function getCellValue(row, index){ return $(row).children('td').eq(index).html()
 <div class="indent_row">
   <div class="cell" style="width: 45%;">
 <h1>Members List Admin</h1>
-<p><%= link_to 'New Member', new_member_path %> | <%= link_to 'Export to CSV', members_path(:format => "csv")  %></p>
+<p><%= link_to 'Add New Member', new_member_path %> | <%= link_to 'Export to CSV', members_path(:format => "csv")  %></p>
   </div>
   <div class="cell" style="width: 45%;">
 <div id="piechart" style="width: 500px; height: 300px; float: right;"></div>
@@ -133,7 +133,7 @@ function getCellValue(row, index){ return $(row).children('td').eq(index).html()
     <th style="min-width: 150px;">Location</th>
     <th style="max-width: 150px;">email</th>
     <th style="min-width: 90px;">CAF Join Date</th>
-    <th style="min-width: 90px;">Last Dues Paid</th>
+    <th style="min-width: 90px;">---</th>
   </tr>
 
 <% @new_members.each do |member| %>
@@ -152,15 +152,8 @@ function getCellValue(row, index){ return $(row).children('td').eq(index).html()
       <td>---</td>    
     <% end %>
     <td><%= member.email %></td>
-    <td><%= member.caf_join_date %></td>
-    <td><% if !member.dues_payments.last.nil? %>
-    <% if member.dues_payments.most_recent.first.date_paid < (Date.today - 1.year) %>
-      <span class="error"><%= member.dues_payments.most_recent.first.date_paid %></span>
-    <% else %>
-      <%= member.dues_payments.most_recent.first.date_paid %>
-    <% end %>
-    <% end %>
-    </td>
+    <td><%= button_to 'Edit Member', edit_member_path(member), :method => :get, :class => "btn-default btn btn-big btn-primary" %></td>
+    <td><%= button_to  'Delete', member, method: :delete, :confirm => 'Are you sure you want to delete this member?', :method => :delete, :class => "btn-default btn btn-big btn-warning" %></td>
   </tr>
 <% end %>
 </table>
