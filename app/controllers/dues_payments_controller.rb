@@ -86,7 +86,7 @@ class DuesPaymentsController < ApplicationController
 FROM (SELECT id, member_id, MAX(date_paid) as date_paid, payment_method, payment_type 
 FROM dues_payments
 GROUP BY member_id) as dp
-WHERE dp.date_paid between DATE_ADD(LAST_DAY(DATE_SUB(NOW(), INTERVAL 15 MONTH)), INTERVAL 1 DAY) AND LAST_DAY(DATE_SUB(NOW(), INTERVAL 11 MONTH))")
+WHERE dp.date_paid between DATE_ADD(LAST_DAY(DATE_SUB(NOW(), INTERVAL 16 MONTH)), INTERVAL 1 DAY) AND LAST_DAY(DATE_SUB(NOW(), INTERVAL 11 MONTH))")
     respond_to do |format|
       format.html # dues_reminders.html.erb
       format.json { render :json => @dues_payment }
