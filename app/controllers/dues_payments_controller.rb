@@ -82,10 +82,11 @@ class DuesPaymentsController < ApplicationController
   end
 
   def dues_reminders_list
-    @dues_reminders = DuesPayment.find_by_sql("SELECT t.id, t2.last_name, t2.first_name, t.member_id, t.payment_method, t.payment_type, t.amt_paid, t.date_paid, t.notes FROM dues_payments t
-JOIN (SELECT mx.member_id, MAX(date_paid) AS last_paid FROM dues_payments mx GROUP BY member_id) m ON m.last_paid = t.date_paid 
-LEFT JOIN members t2 ON t.member_id = t2.id 
-WHERE date_paid BETWEEN DATE_ADD(LAST_DAY(DATE_SUB(NOW(), INTERVAL 15 MONTH)), INTERVAL 1 DAY) AND LAST_DAY(DATE_SUB(NOW(), INTERVAL 11 MONTH)) GROUP BY t.member_id ORDER BY date_paid;")
+    @dues_reminders = DuesPayment.find_by_sql("SELECT dp.id,dp.member_id, dp.date_paid, dp.payment_method, dp.payment_type 
+FROM (SELECT id, member_id, MAX(date_paid) as date_paid, payment_method, payment_type 
+FROM dues_payments
+GROUP BY member_id) as dp
+WHERE dp.date_paid between DATE_ADD(LAST_DAY(DATE_SUB(NOW(), INTERVAL 15 MONTH)), INTERVAL 1 DAY) AND LAST_DAY(DATE_SUB(NOW(), INTERVAL 11 MONTH))")
     respond_to do |format|
       format.html # dues_reminders.html.erb
       format.json { render :json => @dues_payment }
