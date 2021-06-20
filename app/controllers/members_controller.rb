@@ -44,7 +44,7 @@ class MembersController < ApplicationController
 
   # show member account profile
   def account
-    @member = Member.find(params[:id])
+    @member = current_user.member
     @user = current_user
 
     respond_to do |format|

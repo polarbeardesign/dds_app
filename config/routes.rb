@@ -220,7 +220,7 @@ devise_for :users, :skip => [:registrations]
 
   match 'frequent_flyer_detail/:member_id' => 'event_signups#frequent_flyer_detail', :as => :frequent_flyer_detail
 
-  match 'account/:id' => 'members#account', :as => :account
+  match 'account/' => 'members#account', :as => :account
   
   match 'account_edit/:id' => 'members#account_edit', :as => :account_edit
   
