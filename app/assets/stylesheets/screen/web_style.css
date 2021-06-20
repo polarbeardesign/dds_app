@@ -152,10 +152,14 @@ border-color: #775B02;
   float: none;
 }
 
+.navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+  background: #FCEA83;
+}
+
 .dropdown:hover .dropdown-menu {/* To make dropdown visible on hover - MAY NEED TO WRAP IN MEDIA QUERY FOR MOBILE VIEW TO WORK */
   display: block;
   margin-top: 0;
-  background: #ffd800;
+  background: #FCEA83;
   color: #333;
   font-family: Courier, serif;
   text-transform: uppercase;
@@ -622,11 +626,11 @@ cursor: default;
 }
 
 li.dropdown a {
-  padding: 0.75em 1em;
+  padding: 0.75em;
 }
 
 ul.dropdown-menu li a {
-  padding: 0.75em 1em;
+  padding: 0.75em;
 }
 
 /* =Flex Elements
