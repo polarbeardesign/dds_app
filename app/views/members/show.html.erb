@@ -1,90 +1,100 @@
  <% last_payment = "" %>
 
 <%= link_to 'back to Members', members_path %>
+
+<h2>Member Information</h2>
 <div class="row">
+  <div class="col-xs-12 col-sm-4">
 
-<div class="form_cell">
+    <p><strong><%= @member.first_name %> <%= @member.last_name %></strong></br />
+    <%= @member.street_1 %>
+     <% if @member.street_2? %>
+       <br /><%= @member.street_2 %>
+     <% end %>
+    <br /><%= @member.city %>, <%= @member.state %> <%= @member.zip %>
+    </p>
 
-<p><strong><%= @member.first_name %> <%= @member.last_name %></strong></br />
-<%= @member.street_1 %>
- <% if @member.street_2? %>
-   <br /><%= @member.street_2 %>
- <% end %>
-<br /><%= @member.city %>, <%= @member.state %> <%= @member.zip %>
-</p>
+    <p>
+      <% if @member.home_phone? %>
+        <em>Home:</em> <%= @member.home_phone %><br />
+      <% end %>
+      <% if @member.work_phone? %>
+        <em>Work:</em> <%= @member.work_phone %><br />
+      <% end %>
+      <% if @member.cell_phone? %>
+        <em>Cell:</em> <%= @member.cell_phone %><br />
+      <% end %>
+    </p>
+    <p>
+      <% if @member.user.email? %>
+        <em>email:</em> <%= mail_to @member.user.email %><br />
+      <% end %>
+    </p>
+  </div>
 
-<p>
-  <% if @member.home_phone? %>
-    <em>Home:</em> <%= @member.home_phone %><br />
-  <% end %>
-  <% if @member.work_phone? %>
-    <em>Work:</em> <%= @member.work_phone %><br />
-  <% end %>
-  <% if @member.cell_phone? %>
-    <em>Cell:</em> <%= @member.cell_phone %><br />
-  <% end %>
-</p>
-<p>
-  <% if @member.user.email? %>
-    <em>email:</em> <%= mail_to @member.user.email %><br />
-  <% end %>
-</p>
+
+
+  <div class="col-xs-12 col-sm-4">
+    <p><strong>CAF Info:</strong><br />
+      <em>CAF Col No:</em>
+      <%= @member.caf_col_no %>
+    <br />
+      <em>CAF Join Date:</em>
+      <%= @member.caf_join_date %>
+    <br />
+      <em>DDS Join Date:</em>
+      <%= @member.created_at.strftime("%b %d, %Y") %>
+    </p>
+  </div>
+  
+  <div class="col-xs-12 col-sm-4">
+    <p><strong>Emergency Contact:</strong><br />
+    <%= @member.ec_name %><br />
+    <%= @member.ec_phone %></p>
+    </div>
 </div>
-<div class="form_cell" style="width: 40%;">
-<p><strong>Emergency Contact:</strong><br />
-<%= @member.ec_name %><br />
-<%= @member.ec_phone %></p>
 
-<p>
-<p><strong>CAF Info:</strong><br />
-  <em>CAF Col No:</em>
-  <%= @member.caf_col_no %>
-<br />
-  <em>CAF Join Date:</em>
-  <%= @member.caf_join_date %>
-<br />
-  <em>DDS Join Date:</em>
-  <%= @member.created_at.strftime("%b %d, %Y") %>
-</p>
+<div class="row">
+  <div class="col-xs-12 col-sm-6">
+
+    <h2>Dues Record</h2>
+    <table class="table_border">
+    <tr>
+      <th>Date</th>
+      <th>Amt Paid</td>
+      <th>Payment<br />Method</td>
+      <th>Type</td>
+    </tr>
+    <% @member.dues_payments.each do |dues_payment| %>
+      <tr>
+      <td><%= link_to dues_payment.date_paid, dues_payment_path(dues_payment) %></td>
+      <td><%= number_to_currency(dues_payment.amt_paid) %></td>
+      <td><%= dues_payment.payment_method %></td>
+      <td><%= dues_payment.payment_type %></td>
+    </tr>
+     <% last_payment = dues_payment %>
+    <% end %>
+    </table>
+  </div>
+  <div class="col-xs-12 col-sm-6">
+    <h2>Dues Reminders Sent</h2>
+    <table class="table_border">
+    <tr>
+      <th>Date</th>
+      <th>Notice</td>
+    </tr>
+
+    <% @member.dues_reminders.each do |dues_reminder| %>
+      <tr>
+    <td><%= dues_reminder.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+    <td><%= dues_reminder.notice_name %></td>
+    </tr>
+    <% end %>
+    </table>
+    <br />
+    <%= button_to "Send Dues Reminder", send_dues_reminder_path(:id => last_payment), :class => "btn-default btn btn-big btn-primary" %>
+    </div>
 </div>
-</div>
-
-<h2>Dues Record</h2>
-<table class="table_border">
-<tr>
-  <th>Date</th>
-  <th>Amt Paid</td>
-  <th>Payment<br />Method</td>
-  <th>Type</td>
-</tr>
-<% @member.dues_payments.each do |dues_payment| %>
-  <tr>
-  <td><%= link_to dues_payment.date_paid, dues_payment_path(dues_payment) %></td>
-  <td><%= number_to_currency(dues_payment.amt_paid) %></td>
-  <td><%= dues_payment.payment_method %></td>
-  <td><%= dues_payment.payment_type %></td>
-</tr>
- <% last_payment = dues_payment %>
-<% end %>
-</table>
-
-<h2>Dues Reminders Sent</h2>
-<table class="table_border">
-<tr>
-  <th>Date</th>
-  <th>Notice</td>
-</tr>
-
-<% @member.dues_reminders.each do |dues_reminder| %>
-  <tr>
-<td><%= dues_reminder.created_at.strftime("%Y-%m-%d %H:%M") %></td>
-<td><%= dues_reminder.notice_name %></td>
-</tr>
-<% end %>
-</table>
-<br />
-<%= button_to "Send Dues Reminder", send_dues_reminder_path(:id => last_payment), :class => "btn-default btn btn-big btn-primary" %>
-
 
 <hr />
 <% if signed_in?%>
@@ -97,6 +107,11 @@
             <div class='row' style="padding-top:1em;">
               <div class="col-xs-4">
                 <%= button_to 'Edit Member', edit_member_path(@member), method: :get, :class => "btn-default btn" %>
+              </div>
+              <div class="col-xs-4">
+                <% if @member.created_at > Date.today  - 30.days %>
+                  <%= button_to "Send Welcome Email", send_welcome_email_path(:id => @member), :class => "btn-default btn" %></div>
+                <% end %>
               </div>
             </div>
         </div>
