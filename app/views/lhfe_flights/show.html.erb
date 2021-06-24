@@ -6,8 +6,10 @@
       <%= link_to 'Edit', edit_lhfe_flight_path(@lhfe_flight) %> | <%= link_to 'Back', lhfe_flights_path %>
     <% end %>
 <% end %>
+<div class="row">
+<div class="col-xs-12  col-sm-8">
+<h1><%= @lhfe_flight.event.title %> Ride<br /><%= @lhfe_flight.flight_start_time.strftime("%A %b %d @ %I:%M %p") %></h1>
 
-<h1><%= @lhfe_flight.flight_start_time.strftime("%A %b %d @ %I:%M %p") %> Ride<br />at <%= @lhfe_flight.event.title %></h1>
 
 <% if @lhfe_flight.flight_notes? %>
 <p>
@@ -21,6 +23,7 @@
 
 <p>Please plan check in at the aircraft at least an hour before your scheduled flight time.</p>
 
+<h2>Typical Schedule</h2>
 <ul>
 <li><strong>Pre-flight:</strong> 1/2 to 1 hour before take-off; paperwork and crew/passenger brief</li>
 <li><strong>Boarding:</strong> enter the aircraft, take a seat, seat belt check (5 minutes)</li>
@@ -36,14 +39,16 @@
 
 <p>By phone: 512-869-1759<br />
 By email: <a href="mailto:rides@devildogsquadron.com">rides@devildogsquadron.com</a></p>
+</div>
 
-<div style="width: 220px; background: #fff; border: 1px solid #999;">
+<div class="col-xs-12 col-sm-4">
+<div style="width: 100%; background: #fff; border: 1px solid #999;">
 <h2 style="background: #cc0000; color: #eee; margin: 0 0 0 0; padding: 0.75em;">Book Your Flight</h2>
 
-<p style="margin: 0.75em;">Rides booked in advance are <%= number_to_currency(@price.value, :precision => 0) %>, and normally <%= number_to_currency(@price.alt_value, :precision => 0) %> at the events (event pricing may vary).
+<p style="margin: 0.75em;">Rides booked in advance are <%= number_to_currency(@price.value, :precision => 0) %>, and normally <%= number_to_currency(@price.alt_value, :precision => 0) %> at the events (event pricing may vary).</p>
 
-<table class="table_border">
-  <tr class="<%= cycle('odd_row', 'even_row') %>">
+<table style="width: 100%">
+  <tr>
     <td><strong><%= @lhfe_flight.event.title %></strong><br />
     <%= @lhfe_flight.flight_start_time.strftime("%b %d %I:%M %p" ) %>
     <br />
@@ -76,4 +81,6 @@ By email: <a href="mailto:rides@devildogsquadron.com">rides@devildogsquadron.com
 
 <p style="margin: 0.75em;">Not ready to make a reservation, but would like more information? Enter a <%= link_to "Ride Request", new_ride_request_path %>.</p>
 
+</div>
+</div>
 </div>

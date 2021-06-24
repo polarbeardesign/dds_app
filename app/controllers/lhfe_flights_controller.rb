@@ -5,7 +5,7 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:show,
   # GET /lhfe_flights
   # GET /lhfe_flights.json
   def index
-    @lhfe_flights = LhfeFlight.all
+    @lhfe_flights = LhfeFlight.upcoming
 
     respond_to do |format|
       format.html # index.html.erb
