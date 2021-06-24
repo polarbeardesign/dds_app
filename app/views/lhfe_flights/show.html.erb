@@ -8,7 +8,7 @@
 <% end %>
 <div class="row">
 <div class="col-xs-12  col-sm-8">
-<h1><%= @lhfe_flight.event.title %> Ride<br /><%= @lhfe_flight.flight_start_time.strftime("%A %b %d @ %I:%M %p") %></h1>
+<h1><%= @lhfe_flight.event.title %> Ride<br /><%= @lhfe_flight.flight_start_time.strftime("%A %b %d @ %l:%M %p") %></h1>
 
 
 <% if @lhfe_flight.flight_notes? %>
