@@ -1,3 +1,5 @@
+<%= render "scripts" %>
+
 <%= form_for(@lhfe_flight) do |f| %>
   <% if @lhfe_flight.errors.any? %>
     <div id="error_explanation">
@@ -11,26 +13,29 @@
     </div>
   <% end %>
 
-  <div class="field">
+<div class="row">
+
+  <div class="field col-xs-12">
     <%= f.label :flight_start_time %><br />
-    <%= f.datetime_select :flight_start_time %>
+    <%= f.text_field :flight_start_time, :value => f.object.try(:flight_start_time).try(:strftime,'%Y-%m-%d %H:%M:%S'), :size => 20 %>
   </div>
 
-    <div class="field">
+    <div class="field col-xs-12">
       <%= f.label :event_id, "Event" %><br />
-      <%= f.collection_select :event_id, Event.published.all, :id, :title, options = {:order => 'title ASC', :prompt => true}, html_options = {:class => "styled-select"} %>
+      <%= f.collection_select :event_id, Event.published.air_show.all, :id, :event_date, options = {:order => 'event_date ASC', :prompt => true, :selected => params['event_id']}, html_options = {:class => "styled-select"} %>
     </div>
 
-  <div class="field">
+  <div class="field col-xs-12">
     <%= f.label :aircraft %><br />
     <%= f.collection_select :aircraft_id, Aircraft.all, :id, :name, options = {:order => 'name ASC', :prompt => true}, html_options = {:class => "styled-select"} %>
 
   </div>
-  <div class="field">
-    <%= f.label :flight_notes %><br />
+  <div class="field col-xs-12">
+    <%= f.label :flight_notes %><div class="form_note" style="padding-top: 0.5em;"> usually "Flight time subject to change"</div><br />
     <%= f.text_area :flight_notes, :size => '50x10' %>
   </div>
-  <div class="actions">
-    <%= f.submit "Create LHFE Flight" %>
+  <div class="actions col-xs-12">
+    <%= f.submit "Create LHFE Flight", :data => { :disable_with => "Submitting..." },:class => "btn-default btn btn-big btn-primary" %>
   </div>
+</div>
 <% end %>
