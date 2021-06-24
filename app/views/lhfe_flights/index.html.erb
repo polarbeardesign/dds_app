@@ -11,7 +11,7 @@
 
 <% @lhfe_flights.each do |lhfe_flight| %>
   <tr class="<%= cycle('odd_row', 'even_row') %>">
-    <td><%= link_to lhfe_flight.flight_start_time.strftime('%a %b %d %H:%M'), lhfe_flight %></td>
+    <td><%= link_to lhfe_flight.flight_start_time.strftime('%a, %b %d, %y @ %H:%M'), lhfe_flight %></td>
     <td><%= lhfe_flight.event.title %></td>
     <td><%= lhfe_flight.aircraft.name %></td>
     <td><%= lhfe_flight.flight_notes %></td>

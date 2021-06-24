@@ -610,6 +610,18 @@ cursor: default;
   margin: 0.5em auto;
 }
 
+.no-gutter > [class*="col-"] {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.odd_row {
+  background: #fdf9ef;
+}
+
+.even_row {
+  background: #ffffff;
+}
 /* =Full Size
 -------------------------------------------------------------- */
 

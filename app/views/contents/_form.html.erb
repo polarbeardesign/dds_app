@@ -28,6 +28,8 @@
     <%= f.text_field :published_at %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+
+    <%= f.submit :data => { :disable_with => "Submitting..." },:class => "btn-default btn btn-big btn-primary" %>
+
   </div>
 <% end %>
