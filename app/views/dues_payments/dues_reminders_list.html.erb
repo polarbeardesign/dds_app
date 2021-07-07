@@ -18,6 +18,8 @@ function getCellValue(row, index){ return $(row).children('td').eq(index).html()
 
 </script>
 
+<% last_payment = "" %>
+
 <h1>Dues Payment Reminder List</h1>
 
 <p>Qty: <%= @dues_reminders.size %></p>
@@ -48,7 +50,7 @@ function getCellValue(row, index){ return $(row).children('td').eq(index).html()
         <td><%= dues_paid.payment_method %></td>
         <td><%= dues_paid.payment_type %></td>
       </tr>
-       <% last_payment = dues_payment %>
+       <% last_payment = dues_paid %>
       <% end %>
       </table>
    </td>
@@ -68,7 +70,7 @@ function getCellValue(row, index){ return $(row).children('td').eq(index).html()
       <% end %>
       </table>
       <% end %>
-            <div style="text-align:center;margin-top:0.5em;"><%= button_to "Send Dues Reminder", send_dues_reminder_path(:id => dues_payment), :class => "btn-default btn btn-primary" %></div>
+                  <div style="text-align:center;margin-top:0.5em;"><%= button_to "Send Dues Reminder", send_dues_reminder_path(:id => last_payment), :class => "btn-default btn btn-primary" %></div>
 
    </td>
   </tr>
