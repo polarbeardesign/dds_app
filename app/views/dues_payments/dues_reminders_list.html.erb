@@ -41,7 +41,7 @@ function getCellValue(row, index){ return $(row).children('td').eq(index).html()
         <th>Payment<br />Method</td>
         <th>Type</td>
       </tr>
-      <% dues_payment.member.dues_payments.each do |dues_paid| %>
+      <% dues_payment.member.dues_payments.order('date_paid ASC').each do |dues_paid| %>
         <tr style="background: #fff;">
         <td><%= link_to dues_paid.date_paid, dues_payment_path(dues_paid) %></td>
         <td><%= number_to_currency(dues_paid.amt_paid) %></td>
@@ -60,7 +60,7 @@ function getCellValue(row, index){ return $(row).children('td').eq(index).html()
         <th>Sent</td>
       </tr>
 
-      <% dues_payment.member.dues_reminders.each do |dues_reminder| %>
+      <% dues_payment.member.dues_reminders.order('created_at ASC').each do |dues_reminder| %>
         <tr style="background: #fff;">
       <td><%= dues_reminder.notice_name %></td>
       <td><%= dues_reminder.created_at.strftime("%Y-%m-%d %H:%M") %></td>
