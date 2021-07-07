@@ -630,8 +630,7 @@ cursor: default;
 /* =Header
 -------------------------------------------------------------- */
 
-/* =Header
--------------------------------------------------------------- */
+
 
 #header_logo {
   float: left;
@@ -642,12 +641,15 @@ cursor: default;
   width: 200px;
 }
 
+/* =Nav Elements
+-------------------------------------------------------------- */
+
 li.dropdown a {
   padding: 0.75em;
 }
 
 ul.dropdown-menu li a {
-  padding: 0.75em;
+  padding: 0.5em;
 }
 
 /* =Flex Elements
