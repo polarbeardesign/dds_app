@@ -15,8 +15,14 @@ class Event < ActiveRecord::Base
 
   validates :start, :end, :event_type_id, :event_statuses_id, :location_id, :presence => true, :on => :create
 
+# upcoming events
 scope :published, lambda {
   where ("events.start IS NOT NULL AND events.end > ?"), (Time.zone.now - 2.day)
+  }
+
+# gives a longer lookback than published
+scope :recent, lambda {
+  where ("events.start IS NOT NULL AND events.end > ?"), (Time.zone.now - 180.day)
   }
 
 scope :ordered, order("events.start ASC")
