@@ -57,14 +57,6 @@ function drawBasic() {
       }
     </script>
 
-<% content_for :sidebar do %>
-  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
-    <div align="center">
-      <%= button_to "Add new LHFE Rider", new_lhfe_rider_path, :method => :get %>
-    </div>
-  <% end %>
-<% end %>
-
 <% event_name = 0 %>
 <% age = 0 %>
 <% min_dob = 0 %>
@@ -108,6 +100,12 @@ Number of riders:  <%= @lhfe_riders.count %><br />
 <hr />
 
   <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+
+    <div align="center">
+      <%= button_to "Add New LHFE Rider", new_lhfe_rider_path, :method => :get,:class => "btn-default btn btn-big btn-primary" %>
+    </div>
+
+
 <h2>Summary of Ride Events</h2>
 
 <form id="live-search" action="" class="styled formfilter"" method="post">
@@ -115,7 +113,7 @@ Number of riders:  <%= @lhfe_riders.count %><br />
     <input type="text" class="text-input" id="table-filter" placeholder='filter' value="" autofocus />
     <span id="filter-count"></span>
   </fieldset>
-</form>
+</form><br />
 
 <% @events.each do |ride_event| %>
 <table width="500" class="table_border" style="margin-bottom: 50px;">
