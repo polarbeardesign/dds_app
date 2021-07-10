@@ -257,6 +257,18 @@ label {
   display: none;
 }
 
+fieldset {
+  border: 1px solid #397fb4;
+  padding: 1em;
+  
+}
+
+legend {
+  font-size: 1.5em;
+  color: #397fb4;
+  width: auto;
+}
+
 /* =Flex Elements
 -------------------------------------------------------------- */
 
