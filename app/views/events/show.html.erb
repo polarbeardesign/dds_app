@@ -266,7 +266,7 @@
       <%= button_to 'Maybe',    {:controller => :event_signups, :action => :signup, :member_id => current_user.member, :event_id => @event.id, :commitment_level => 'Maybe', :position => 0 },:class => "btn-default btn btn-big btn-warning" %>
   </div>
 </div>
-<p style="font-style: italic;font-size:0.85em;">Your name will be entered on the list below, you can change your commitment or remove yourself at any time. Signing up only indicates your availability and desire to participate. Final roster at discretion of pilots.</p>
+<p style="font-style: italic;font-size:0.85em;">Your name will be entered on the flight list below, you can change your commitment or remove yourself at any time. Signing up only indicates your availability and desire to participate. Final roster at discretion of pilots.</p>
 
 <% end %>
   </div>
@@ -281,7 +281,7 @@
 
 
 
-<p>Total RSVPs: <%= @event.event_signups.size %> - Definite: <%= @event.event_signups.definite.size %>
+<p>Total Flight Signups: <%= @event.event_signups.size %> - Definite: <%= @event.event_signups.definite.size %>
 <% if @event.event_signups.maybe.size.to_i > 0 %>
   , Maybe: <%= @event.event_signups.maybe.size %>
 <% end %>
@@ -333,7 +333,7 @@
 <% if @event.rsvp == true  %>
 <% if current_user %>
 <div class="signup_box">
-<h3>RSVP for this event:</h3>
+<h3>RSVP for this event (not flying):</h3>
   <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "member"} %>
 <div class='row'>
   <div class="col-xs-4  col-xs-offset-2 col-sm-2 col-sm-offset-0">
@@ -345,7 +345,7 @@
 </div>
 <% end %>
 
-<p style="font-style: italic;font-size:0.85em;">Your name will be entered on the list below, you can change your commitment or remove yourself at any time. Signing up only indicates your availability and desire to participate. Final roster at discretion of pilots.</p>
+<p style="font-style: italic;font-size:0.85em;">Your name will be entered on the (non-flying) list below, you can change your commitment or remove yourself at any time. Signing up only indicates your availability and desire to participate. Final roster at discretion of pilots.</p>
 </div>
 
 <p>Total RSVPs: <%= @event.attendances.size %> - Definite: <%= @event.attendances.definite.size %>
