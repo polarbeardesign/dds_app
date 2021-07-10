@@ -102,7 +102,7 @@ Number of riders:  <%= @lhfe_riders.count %><br />
   <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
 
     <div align="center">
-      <%= button_to "Add New LHFE Rider", new_lhfe_rider_path, :method => :get,:class => "btn-default btn btn-big btn-primary" %>
+      <%= button_to "Add New LHFE Rider", new_lhfe_rider_path, :method => :get, :class => "btn-default btn btn-big btn-primary" %>
     </div>
 
 
