@@ -35,8 +35,14 @@
   <div class="row">
 
   <% ride.lhfe_flights.each do |flight| %>
+  
   <div class="col-xs-11 col-xs-offset-1" style = "padding: 0.75em;">
-  <p><%= flight.flight_start_time.strftime("%a, %b %d @ %l:%M %p") %></p>
+  <p><%= flight.flight_start_time.strftime("%a, %b %d @ %l:%M %p") %> <%= link_to "More Info", lhfe_flight_path(flight) %> | 
+    <% if ((flight.flight_start_time - Time.now).to_f / 1.day).floor >= 1 %>
+    <%= number_to_currency(flight.discount_price) %>
+  <% else %>
+   <%= number_to_currency(flight.price) %>
+  <% end %></p>
   <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
   <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_SM.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
   <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
@@ -45,7 +51,13 @@
   <input type="hidden" name="business" value="px_info@devildogsquadron.com">
   <input type="hidden" name="item_name" value="Living History Flight Experience - Prepay | <%= ride.title + ' ' + flight.flight_start_time.strftime("%A %b %d, %y @ %l:%M %p").to_s %>">
   <input type="hidden" name="item_number" value="100">
-  <input type="hidden" name="amount" value="<%= @price.value %>">
+
+  <% if ((flight.flight_start_time - Time.now).to_f / 1.day).floor >= 1 %>
+    <input type="hidden" name="amount" value="<%= flight.discount_price %>">
+  <% else %>
+    <input type="hidden" name="amount" value="<%= flight.price %>">
+  <% end %>
+  
   <input type="hidden" name="page_style" value="Primary">
   <input type="hidden" name="shipping" value="0">
   <input type="hidden" name="no_shipping" value="2">

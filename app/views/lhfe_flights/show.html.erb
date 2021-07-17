@@ -1,6 +1,3 @@
-
-
-
 <% if signed_in?%>
     <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
       <%= link_to 'Edit', edit_lhfe_flight_path(@lhfe_flight) %> | <%= link_to 'Back', lhfe_flights_path %>
@@ -10,7 +7,9 @@
 <div class="col-xs-12  col-sm-8">
 <h1><%= @lhfe_flight.event.title %> Ride<br /><%= @lhfe_flight.flight_start_time.strftime("%A %b %d @ %l:%M %p") %></h1>
 
-
+<%= Date.today %><br />
+<%= @lhfe_flight.flight_start_time %><br />
+# of days: <%= ((@lhfe_flight.flight_start_time - Time.now).to_f / 1.day).floor %><br />
 <% if @lhfe_flight.flight_notes? %>
 <p>
   <b>Flight notes:</b>
@@ -45,14 +44,19 @@ By email: <a href="mailto:rides@devildogsquadron.com">rides@devildogsquadron.com
 <div style="width: 100%; background: #fff; border: 1px solid #999;">
 <h2 style="background: #cc0000; color: #eee; margin: 0 0 0 0; padding: 0.75em;">Book Your Flight</h2>
 
-<p style="margin: 0.75em;">Rides booked in advance are <%= number_to_currency(@price.value, :precision => 0) %>, and normally <%= number_to_currency(@price.alt_value, :precision => 0) %> at the events (event pricing may vary).</p>
+<p style="margin: 0.75em;">Rides booked in advance are <%= number_to_currency(@lhfe_flight.discount_price, :precision => 0) %>, and normally <%= number_to_currency(@lhfe_flight.price, :precision => 0) %> at the events (event pricing may vary).</p>
 
 <table style="width: 100%">
   <tr>
     <td><strong><%= @lhfe_flight.event.title %></strong><br />
     <%= @lhfe_flight.flight_start_time.strftime("%b %d %I:%M %p" ) %>
     <br />
-  <%= @lhfe_flight.event.location.city %>, <%= @lhfe_flight.event.location.state %>
+  <%= @lhfe_flight.event.location.city %>, <%= @lhfe_flight.event.location.state %><br />
+  <% if ((@lhfe_flight.flight_start_time - Time.now).to_f / 1.day).floor >= 1 %>
+    <%= number_to_currency(@lhfe_flight.discount_price) %>
+  <% else %>
+    <%= number_to_currency(@lhfe_flight.price) %>
+  <% end %>
   <div style="float:right; margin: 0.25em 0 0 0.25em;">
   <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
 
@@ -63,7 +67,13 @@ By email: <a href="mailto:rides@devildogsquadron.com">rides@devildogsquadron.com
 <input type="hidden" name="business" value="px_info@devildogsquadron.com">
 <input type="hidden" name="item_name" value="Living History Flight Experience - Prepay | <%= @lhfe_flight.event.title %> <%= @lhfe_flight.flight_start_time.strftime("%b %d %I:%M %p" ) %> Flight">
 <input type="hidden" name="item_number" value="100">
-<input type="hidden" name="amount" value="<%= @price.value %>">
+
+  <% if ((@lhfe_flight.flight_start_time - Time.now).to_f / 1.day).floor >= 1 %>
+        <input type="hidden" name="amount" value="<%= @lhfe_flight.discount_price %>">
+  <% else %>
+    <input type="hidden" name="amount" value="<%= @lhfe_flight.price %>">
+  <% end %>
+
 <input type="hidden" name="page_style" value="Primary">
 <input type="hidden" name="shipping" value="0">
 <input type="hidden" name="no_shipping" value="2">
