@@ -634,6 +634,17 @@ cursor: default;
 .even_row {
   background: #ffffff;
 }
+
+/* =iPad Size
+-------------------------------------------------------------- */
+
+@media only screen and (min-width: 760px) {
+
+li.dropdown a {
+  font-size: 0.85em;
+}
+}
+
 /* =Full Size
 -------------------------------------------------------------- */
 
@@ -643,14 +654,13 @@ cursor: default;
 -------------------------------------------------------------- */
 
 
-
 #header_logo {
   float: left;
   margin: 40px 0 0 0;
   }
 
 .header_logo {
-  width: 200px;
+  width: 150px;
 }
 
 /* =Nav Elements
@@ -658,6 +668,7 @@ cursor: default;
 
 li.dropdown a {
   padding: 0.75em;
+  font-size: 1em;
 }
 
 ul.dropdown-menu li a {

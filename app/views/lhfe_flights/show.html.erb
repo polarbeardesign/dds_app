@@ -59,7 +59,7 @@ By email: <a href="mailto:rides@devildogsquadron.com">rides@devildogsquadron.com
   <% if @lhfe_flight.flight_start_time < Time.now %>
   <p style="font-size: 0.75em;">This flight is no longer available.</p>
   <% else %>
-  <% if ((@lhfe_flight.flight_start_time - Time.now).to_f / 1.day).floor >= 1 %>
+  <% if ((@lhfe_flight.event.start - Time.now).to_f / 1.day).floor >= 1 %>
     <%= number_to_currency(@lhfe_flight.discount_price) %>
   <% else %>
     <%= number_to_currency(@lhfe_flight.price) %>
@@ -95,7 +95,7 @@ By email: <a href="mailto:rides@devildogsquadron.com">rides@devildogsquadron.com
 
 </table>
 
-<p style="margin: 0.75em; font-size: 0.75em;">Rides booked in advance are <%= number_to_currency(@lhfe_flight.discount_price, :precision => 0) %>, and increase to <%= number_to_currency(@lhfe_flight.price, :precision => 0) %> one day before the event (at event pricing may vary).</p>
+<p style="margin: 0.75em; font-size: 0.75em;">Rides booked in advance are <%= number_to_currency(@lhfe_flight.discount_price, :precision => 0) %>, and increase to <%= number_to_currency(@lhfe_flight.price, :precision => 0) %> one day before the event (event pricing may vary).</p>
 
 <p style="margin: 0.75em;"><%= link_to "Refund Policy", refund_policy_path %>.</p>
 

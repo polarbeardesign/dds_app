@@ -13,9 +13,6 @@
 <div class="row" style="margin: none;">
 <div class="col-sm-8" style = "border: 1px solid black;">
 <h2 style="background: #cc0000; color: #eee; margin: 0 -15px 0 -15px; padding: 0.75em;">Upcoming Flight Opportunities</h2>
-
-<p style="margin: 0.75em;">Rides booked in advance are <%= number_to_currency(@price.value, :precision => 0) %>, and normally <%= number_to_currency(@price.alt_value, :precision => 0) %> at the events (event pricing may vary).
-
 <div class="row" style="border-top: 1px solid black;">
 <% @rides.each do |ride| %>
 
@@ -37,8 +34,11 @@
   <% ride.lhfe_flights.each do |flight| %>
   
   <div class="col-xs-11 col-xs-offset-1" style = "padding: 0.75em;">
-  <p><%= flight.flight_start_time.strftime("%a, %b %d @ %l:%M %p") %> <%= link_to "More Info", lhfe_flight_path(flight) %> | 
-    <% if ((flight.flight_start_time - Time.now).to_f / 1.day).floor >= 1 %>
+  <p><%= flight.flight_start_time.strftime("%a, %b %d @ %l:%M %p") %> => <%= link_to "More Flight Info", lhfe_flight_path(flight) %> <br />
+  <% if flight.flight_start_time < Time.now %>
+  <p style="font-size: 0.75em;">This flight is no longer available.</p>
+  <% else %>  
+  <% if ((flight.event.start - Time.now).to_f / 1.day).floor >= 1 %>
     <%= number_to_currency(flight.discount_price) %>
   <% else %>
    <%= number_to_currency(flight.price) %>
@@ -52,7 +52,7 @@
   <input type="hidden" name="item_name" value="Living History Flight Experience - Prepay | <%= ride.title + ' ' + flight.flight_start_time.strftime("%A %b %d, %y @ %l:%M %p").to_s %>">
   <input type="hidden" name="item_number" value="100">
 
-  <% if ((flight.flight_start_time - Time.now).to_f / 1.day).floor >= 1 %>
+  <% if ((flight.event.start - Time.now).to_f / 1.day).floor >= 1 %>
     <input type="hidden" name="amount" value="<%= flight.discount_price %>">
   <% else %>
     <input type="hidden" name="amount" value="<%= flight.price %>">
@@ -68,11 +68,13 @@
   </form>
   </div>
   <% end %>
+  <% end %>
   </div>
 
 <% else %>
   <div class="col-xs-11 col-xs-offset-1" style = "padding: 0.75em;">
   <p style="font-size: 0.75em; font-style: italic;">Flight times not set for this event, you will be contacted when times are set.</p>
+  <p><%= number_to_currency(@price.value) %></p>
   <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
   <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_SM.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
   <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
@@ -97,6 +99,8 @@
 <% end %>
 
 </div>
+
+<p style="margin: 0.75em; font-size: 0.75em;">Rides booked in advance are <%= number_to_currency(395, :precision => 0) %>, and increase to <%= number_to_currency(425, :precision => 0) %> one day before the event (event pricing may vary).</p>
 
 <p style="margin: 0.75em;"><%= link_to "Refund Policy", refund_policy_path %>.</p>
 
