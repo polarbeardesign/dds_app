@@ -17,7 +17,7 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:show,
   # GET /lhfe_flights/1.json
   def show
     @lhfe_flight = LhfeFlight.find(params[:id])
-    @price = Product.find_by_id(11)
+  #  @price = Product.find_by_id(11)
 
     respond_to do |format|
       format.html # show.html.erb

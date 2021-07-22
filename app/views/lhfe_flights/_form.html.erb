@@ -16,7 +16,7 @@
 <div class="row">
 
   <div class="field col-xs-12">
-    <%= f.label :flight_start_time %><br />
+    <%= f.label :flight_start_time, "Flight Time" %><br />
     <%= f.text_field :flight_start_time, :value => f.object.try(:flight_start_time).try(:strftime,'%Y-%m-%d %H:%M:%S'), :size => 20 %>
   </div>
 
@@ -28,8 +28,18 @@
   <div class="field col-xs-12">
     <%= f.label :aircraft %><br />
     <%= f.collection_select :aircraft_id, Aircraft.all, :id, :name, options = {:order => 'name ASC', :prompt => true}, html_options = {:class => "styled-select"} %>
-
   </div>
+
+    <div class="field col-xs-6">
+      <%= f.label :discount_price %><div class="form_note" style="padding-top: 0.5em;"> usually $395</div><br />
+    <%= f.text_field :discount_price, :size => 20 %>
+    </div>
+
+    <div class="field col-xs-6">
+      <%= f.label :price %><div class="form_note" style="padding-top: 0.5em;"> usually $425</div><br />
+    <%= f.text_field :price, :size => 20 %>
+    </div>
+
   <div class="field col-xs-12">
     <%= f.label :flight_notes %><div class="form_note" style="padding-top: 0.5em;"> usually "Flight time subject to change"</div><br />
     <%= f.text_area :flight_notes, :size => '50x10' %>
