@@ -1,3 +1,5 @@
+<% map_url = "https://maps.googleapis.com/maps/api/staticmap?center="+@lhfe_flight.event.location.latitude+","+@lhfe_flight.event.location.longitude+"&zoom=11&size=400x400&maptype=roadmap&markers=color:red%7Clabel:1%7C"+@lhfe_flight.event.location.latitude+","+@lhfe_flight.event.location.longitude+"&key=AIzaSyBTLIEMHnR7-4zunQEj0NYdn0r8e7_fkig" %>
+
 <% if signed_in?%>
     <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
       <%= link_to 'Edit', edit_lhfe_flight_path(@lhfe_flight) %> | <%= link_to 'Back', lhfe_flights_path %>
@@ -5,11 +7,14 @@
 <% end %>
 <div class="row">
 <div class="col-xs-12  col-sm-8">
-<h1><%= @lhfe_flight.event.title %> Ride<br /><%= @lhfe_flight.flight_start_time.strftime("%A %b %d @ %l:%M %p") %></h1>
+<h1><%= @lhfe_flight.event.title %> Ride<br /><%= @lhfe_flight.flight_start_time.strftime("%A %b %d, %Y @ %l:%M %p") %></h1>
 
-<%= Date.today %><br />
-<%= @lhfe_flight.flight_start_time %><br />
-# of days: <%= ((@lhfe_flight.flight_start_time - Time.now).to_f / 1.day).floor %><br />
+<% if @lhfe_flight.event.location.latitude? %>
+
+  <strong>Location:</strong> <%= @lhfe_flight.event.location.airport_name + " - " + @lhfe_flight.event.location.city + ", " + @lhfe_flight.event.location.state%> [<%= link_to "Google map link", raw("https://www.google.com/maps/place/" + @lhfe_flight.event.location.latitude + ' ' + @lhfe_flight.event.location.longitude + "/@" + @lhfe_flight.event.location.latitude + "," + @lhfe_flight.event.location.longitude + ",13z/"), :target => "_blank" %>]
+
+<% end %>
+
 <% if @lhfe_flight.flight_notes? %>
 <p>
   <b>Flight notes:</b>
@@ -44,19 +49,22 @@ By email: <a href="mailto:rides@devildogsquadron.com">rides@devildogsquadron.com
 <div style="width: 100%; background: #fff; border: 1px solid #999;">
 <h2 style="background: #cc0000; color: #eee; margin: 0 0 0 0; padding: 0.75em;">Book Your Flight</h2>
 
-<p style="margin: 0.75em;">Rides booked in advance are <%= number_to_currency(@lhfe_flight.discount_price, :precision => 0) %>, and normally <%= number_to_currency(@lhfe_flight.price, :precision => 0) %> at the events (event pricing may vary).</p>
 
 <table style="width: 100%">
   <tr>
     <td><strong><%= @lhfe_flight.event.title %></strong><br />
-    <%= @lhfe_flight.flight_start_time.strftime("%b %d %I:%M %p" ) %>
+    <%= @lhfe_flight.flight_start_time.strftime("%b %d, %Y %l:%M %p" ) %>
     <br />
   <%= @lhfe_flight.event.location.city %>, <%= @lhfe_flight.event.location.state %><br />
+  <% if @lhfe_flight.flight_start_time < Time.now %>
+  <p style="font-size: 0.75em;">This flight is no longer available.</p>
+  <% else %>
   <% if ((@lhfe_flight.flight_start_time - Time.now).to_f / 1.day).floor >= 1 %>
     <%= number_to_currency(@lhfe_flight.discount_price) %>
   <% else %>
     <%= number_to_currency(@lhfe_flight.price) %>
   <% end %>
+
   <div style="float:right; margin: 0.25em 0 0 0.25em;">
   <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
 
@@ -82,10 +90,12 @@ By email: <a href="mailto:rides@devildogsquadron.com">rides@devildogsquadron.com
 <input type="hidden" name="lc" value="US">
 <input type="hidden" name="bn" value="PP-ShopCartBF">
 
-</form></div></td>
+</form></div><% end %></td>
 </tr>
 
 </table>
+
+<p style="margin: 0.75em; font-size: 0.75em;">Rides booked in advance are <%= number_to_currency(@lhfe_flight.discount_price, :precision => 0) %>, and increase to <%= number_to_currency(@lhfe_flight.price, :precision => 0) %> one day before the event (at event pricing may vary).</p>
 
 <p style="margin: 0.75em;"><%= link_to "Refund Policy", refund_policy_path %>.</p>
 
