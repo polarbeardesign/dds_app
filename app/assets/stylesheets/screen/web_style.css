@@ -4,12 +4,13 @@
 /* COLORS
 
 
-green   => #52782a;
-navy    =>  #1d2644;
-gold    => #b78d03;
-dk blue => #1d2644
-gold    => #ffd800
-lt grey => #f0f0f0
+green     => #52782a;
+navy      =>  #1d2644;
+gold      => #b78d03;
+dk blue   => #1d2644
+gold      => #ffd800
+lt yellow => #FCEA83;
+lt grey   => #f0f0f0
 */
 
 
@@ -103,6 +104,16 @@ article {
 
   }
 
+.fa {
+  display: inline-block;
+  color: #ffd800;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: 4em;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 /* =Header
 -------------------------------------------------------------- */
 #container {
@@ -127,9 +138,21 @@ article {
   float: right;
   }
 
-.login-bar a {
+.login-bar > a {
   color: #ffd800;
 }
+
+
+.social2 {display: block; margin: 0; padding: 0px 0; list-style: none;}
+.social2 li{display: block; margin: 5px; width: 50px; float: left;}
+.social2 li a{display: block; text-decoration: none; font-size: 20px; color: #fff; line-height: 50px; text-align: center; background: rgba(255, 255, 255, 0.1);
+transition: all 0.3s ease-out; -moz-transition: all 0.3s ease-out; -webkit-transition: all 0.3s ease-out; -o-transition: all 0.3s ease-out;
+}
+
+
+.social2 li a:hover{background: #fff;}
+
+
 /* =Nav Elements
 -------------------------------------------------------------- */
 
@@ -662,6 +685,7 @@ li.dropdown a {
 .header_logo {
   width: 150px;
 }
+
 
 /* =Nav Elements
 -------------------------------------------------------------- */
