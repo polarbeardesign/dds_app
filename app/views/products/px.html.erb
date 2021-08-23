@@ -16,9 +16,23 @@
 <% end %>
 <div style="padding: 1em;"><h2><%= product.name %></h2></div>
 <div style="padding: 1em;"><%= product.description %></div>
-<div><%= number_to_currency(product.value) %><br />
+<div style="padding: 1em;"><%= number_to_currency(product.value) %><br />
     S&amp;H:<%= number_to_currency(product.ship_handling) %><br /><strong>Total: <%= number_to_currency(product.total_value) %></strong></div>
-<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" style="padding: 1em;">
+
+<% if product.sizes.first.size_short != "na" %> 
+<table class="table_nobrdr">
+		<tr>
+			<td>
+				<input type="hidden" name="on0" value="Size"><em><strong>Size:</strong></em>
+			</td>
+			<td>
+			  <%= select "size", "product", product.sizes.by_size.collect {|s| [s.size, s.size ]}, {:name => "os0", :prompt => true}, {:name => "os0"} %>
+			</td>
+		</tr>
+	</table><br />
+<% end %>
+
 <input type="image" src="https://www.paypal.com//en_US/i/btn/sc-but-03.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
 <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
 <input type="hidden" name="add" value="1">
