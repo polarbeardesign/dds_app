@@ -32,7 +32,7 @@ end
 group :production do
   gem 'execjs', '2.0.2'
 #  gem 'libv8', '3.3.10.4'
-  gem 'therubyracer', '0.12.1'
+  gem 'therubyracer'
   gem 'rack-google_analytics', :require => "rack/google_analytics"
 end
 
