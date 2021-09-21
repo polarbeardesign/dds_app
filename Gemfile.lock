@@ -75,7 +75,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.25.1)
     multi_json (1.15.0)
-    mysql2 (0.3.21)
+    mysql2 (0.4.10)
     net-scp (3.0.0)
       net-ssh (>= 2.6.5, < 7.0.0)
     net-sftp (2.1.2)
@@ -169,7 +169,7 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   json
-  mysql2 (~> 0.3.10)
+  mysql2 (~> 0.4.10)
   paper_trail (~> 4.0.0.rc)
   rack-google_analytics
   rails (= 3.2.21)
