@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 # to avoid railties conflict...
 gem 'i18n', '0.6.11'
 
-gem 'rails', '3.2.21'
+gem 'rails', '3.2.22'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
