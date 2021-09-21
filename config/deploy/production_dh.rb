@@ -32,8 +32,8 @@ role :db,  domain, :primary => true # This is where Rails migrations will run
 # If you are using Passenger mod_rails uncomment this:
 
 # causes bundle install to run (commented out because no longer allowed to compile gems at Site5)
-# require "bundler/capistrano"
-# set :bundle_flags, "--quiet --no-cache"
+ require "bundler/capistrano"
+ set :bundle_flags, "--quiet --no-cache"
 
 before "deploy:assets:precompile", "deploy:symlink_db_file"
 
