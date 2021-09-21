@@ -118,7 +118,7 @@ GEM
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     rdoc (3.9.5)
-    redcarpet (2.3.0)
+    redcarpet (3.5.1)
     ref (2.0.0)
     request_store (1.5.0)
       rack (>= 1.4)
@@ -173,7 +173,7 @@ DEPENDENCIES
   paper_trail (~> 4.0.0.rc)
   rack-google_analytics
   rails (= 3.2.22)
-  redcarpet (<= 2.3.0)
+  redcarpet (<= 3.6.0)
   sass-rails
   therubyracer
   uglifier (>= 1.0.3)
