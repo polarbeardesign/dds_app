@@ -7,10 +7,10 @@ gem 'rails', '3.2.22'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
-# gem 'mysql2', '~> 0.3.10'
-gem 'mysql2', '~> 0.4.10'
+gem 'mysql2', '~> 0.3.10'
+# gem 'mysql2', '~> 0.4.10'
 # requested on bundle
-gem 'activerecord-mysql2-adapter'
+# gem 'activerecord-mysql2-adapter'
 gem 'devise'
 gem 'json'
 gem 'paper_trail', '~> 4.0.0.rc'
