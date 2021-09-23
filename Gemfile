@@ -17,7 +17,7 @@ gem 'paper_trail', '~> 4.0.0.rc'
 gem 'diffy'
 gem 'acts_as_list', '< 0.3.0'
 gem 'will_paginate'
-gem 'redcarpet', '<= 2.3.0'
+gem 'redcarpet', '<= 3.6.0'
 gem 'exception_notification', '~> 3.0.1'
 
 # Deploy with Capistrano
