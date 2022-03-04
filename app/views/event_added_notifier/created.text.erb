@@ -1,0 +1,12 @@
+Hi,
+
+A new event has been added to the Devil Dog calendar - <%= link_to @event.title, event_path(@event) %>.
+
+Start: <%= @event.start.strftime("%b %d, %Y") %>
+End: <%= @event.end.strftime("%b %d, %Y") %>
+Location: <%= @event.location.short_name %>
+Event Type: <%= @event.event_type.title %>
+
+Keep 'em Flying!
+
+Devil Dog Squadron

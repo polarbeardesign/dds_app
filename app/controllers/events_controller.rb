@@ -71,6 +71,7 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:index
 
     respond_to do |format|
       if @event.save
+        EventAddedNotifier.created(@event).deliver
         format.html { redirect_to(@event, :notice => 'Event was successfully created.') }
         format.xml  { render :xml => @event, :status => :created, :location => @event }
       else
