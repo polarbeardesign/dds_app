@@ -251,6 +251,8 @@ devise_for :users, :skip => [:registrations]
   get "pages/home"
   match "pages/VMB612" => redirect('/VMB612')
   match "pages/PBJs" => redirect('/PBJs')
+  match "fb_test" => "pages#fb_test", :as => :fb_test
+
   match 'membership' => 'pages#membership', :as => :membership
   match 'rides' => redirect('/living_history_flight_experience')
 

@@ -43,6 +43,7 @@ class Right < ActiveRecord::Base
     "dues_reminders_past_due_list" => "READ",
     "all_events" => "READ",
     "thank_you" => "READ",
+    "fb_test" => "READ",
     "supportcaf" => "READ",
     "twelve_planes" => "READ",
     "living_history_flight_experience" => "READ",
