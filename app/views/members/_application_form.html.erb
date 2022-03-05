@@ -135,7 +135,7 @@ $(document).ready(function () {
 <h3>CAF Info</h3>
 <div class="row">
   <div class="col-sm-6 field">
-    <%= f.label :caf_col_no, "CAF Col #" %><br />
+    <%= f.label :caf_col_no, "CAF Col #" %> <span class="form_note">Must have a valid number to join - <a href="https://commemorativeairforce.org/pages/membership-options">Join the CAF</a></span><br />
     <%= f.text_field :caf_col_no, :size => '8' %>
   </div>
 </div>
@@ -147,7 +147,7 @@ $(document).ready(function () {
 <div class="indent_row_special">
   <div class="cell field"> 
     <%= f.label :caf_nickname, "CAF Nickname" %><br />   
-    <%= text_field_tag :caf_nickname, nil %>
+    <%= text_field_tag :caf_nickname %>
   </div>
 </div>    
     

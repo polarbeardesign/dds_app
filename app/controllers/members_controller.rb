@@ -3,7 +3,7 @@ class MembersController < ApplicationController
   # GET /members.json
   helper_method :sort_column, :sort_direction
 
-  skip_before_filter :check_authorization, :check_authentication, :only => [:member_application,:member_application_received,:members_application_received, :create]
+  skip_before_filter :check_authorization, :check_authentication, :only => [:member_application,:member_application_received,:members_application_received,:members_application_error, :create]
   
   def index
     @active_members = Member.active.ordered
@@ -75,6 +75,13 @@ class MembersController < ApplicationController
     end
   end
 
+  def members_application_error
+
+    respond_to do |format|
+      format.html # show.html.erb
+    end
+  end
+  
   def account_edit
     @member = Member.find(params[:id])
     @user = current_user
@@ -141,6 +148,7 @@ class MembersController < ApplicationController
   def create
     @member = Member.new(params[:member]) 
     @roles = Role.find(:all)
+    @last_update = Member.last.created_at
 
     checked_roles = []
     checked_params = params[:role_list] || []
@@ -154,7 +162,12 @@ class MembersController < ApplicationController
 
 if params[:caf_nickname].present?
 
-redirect_to members_application_received_path, :notice => 'spam receieved.' 
+redirect_to members_application_error_path, :notice => 'Error: One of the values entered is not valid.' 
+
+elsif @last_update > (Time.zone.now - 5.minute)
+
+redirect_to members_application_error_path, :notice => 'Error: Application Form Currently Unavailable.' 
+
 
 else
 
@@ -171,7 +184,7 @@ else
         end
       else
         if params[:Submit] == "Submit Application" 
-          format.html { render :action => "new", :notice => 'form error1.' }
+          format.html { render :action => "member_application", :notice => 'form error1.' }
         else
           format.html { render :action => "member_application", :notice => 'form error2.' }
           format.json { render :json => @member.errors, :status => :unprocessable_entity }

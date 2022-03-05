@@ -14,6 +14,7 @@ class Right < ActiveRecord::Base
     "member_application" => "READ",
     "member_application_received" => "READ",
     "members_application_received" => "READ",
+    "member_application_error" => "READ",
     "admin_home" => "READ",
     "members_list" => "READ",
     "photo_viewer" => "READ",
