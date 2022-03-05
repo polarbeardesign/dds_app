@@ -1,9 +1,8 @@
 class Member < ActiveRecord::Base
 
   attr_accessible :id, :first_name, :last_name, :home_phone, :zip, :city, :dd_dues_date, :work_phone, :state, :user_attributes, :cell_phone, :skills, :caf_col_no, :active, :street_2, :street_1, :ec_name, :ec_phone, :caf_join_date, :caf_nickname
-  belongs_to :user
-  accepts_nested_attributes_for :user, :allow_destroy => true
- 
+  belongs_to :user, :dependent => :destroy
+  accepts_nested_attributes_for :user 
   validates :caf_col_no, presence: true, numericality: { :only_integer => true, :greater_than => 10000, :less_than => 60000, :message => "'%{value}' is not a valid Col No" }
   
   has_many :event_signups
