@@ -129,6 +129,7 @@ class MembersController < ApplicationController
     @member = Member.new
     user = @member.build_user
     @roles = Role.find(:all)
+    @valid_area_codes = AreaCode.find(:all)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -149,6 +150,8 @@ class MembersController < ApplicationController
     @member = Member.new(params[:member]) 
     @roles = Role.find(:all)
     @last_update = Member.last.created_at
+    @area_code = @member.home_phone.slice(1,3)
+    @valid_area_codes = AreaCode.find(:all)
 
     checked_roles = []
     checked_params = params[:role_list] || []
@@ -168,6 +171,9 @@ elsif @last_update > (Time.zone.now - 5.minute)
 
 redirect_to members_application_error_path, :notice => 'Error: Application Form Currently Unavailable.' 
 
+elsif !@valid_area_codes.any? {|h| h['area_code'] == @area_code.to_i}
+
+redirect_to members_application_error_path, :notice => 'Error: One of the values entered is not valid [ac]'
 
 else
 

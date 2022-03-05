@@ -1,0 +1,49 @@
+<div class="hp-copy">
+
+<h1>What's New</h1>
+
+<script type="text/javascript">
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId            : '1108222516684743',
+      autoLogAppEvents : true,
+      xfbml            : true,
+      version          : 'v13.0'
+    });
+  };
+   
+    // JS SDK - this will be loaded asynchronously
+    (function(d, s, id){
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+
+
+    FB.api(
+      '/DevilDogSquadron',
+      'GET',
+      {"fields":"posts.limit(1){permalink_url}"},
+      function(response) {
+          // Insert your code here
+        //  document.getElementById('postdata').setAttribute('data-href', (response.data))
+          console.log(response.data);
+
+      }
+    );
+
+</script>
+
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+ 
+
+  <div class="fb-post" id="postdata"
+      data-href="https://www.facebook.com"
+      data-width="500"></div>
+
+
+
+</div>
