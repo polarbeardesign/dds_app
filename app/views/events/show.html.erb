@@ -144,23 +144,23 @@
         <div class='col-sm-12'>
             <p class="admin_heading">Admin</p>
             <p class="form_note admin_heading">You are seeing this admin area because you are logged in with admin privileges.</p>
-            <div class='row' style="padding-top:1em;">
-              <div class="col-xs-3">
+            <div class='row'>
+              <div class="col-xs-6 col-sm-3" style="padding-top:1em;">
                 <%= button_to 'Edit Event', edit_event_path(@event), method: :get, :class => "btn-default btn" %>
               </div>
               <% if !@event.trip.blank? %>
-              <div class="col-xs-3">
+              <div class="col-xs-6 col-sm-3" style="padding-top:1em;">
                 <%= button_to 'Edit Trip', edit_trip_path(@event.trip), method: :get, :class => "btn-default btn" %>
               </div>
               <% else %>
-              <div class="col-xs-3">
+              <div class="col-xs-6 col-sm-3" style="padding-top:1em;">
                 <%= button_to 'Add Trip Details', new_trip_path(:event_id => @event), :class => "btn-default btn" %>
               </div>
-              <div class="col-xs-3">
+              <div class="col-xs-6 col-sm-3" style="padding-top:1em;">
                 <%= button_to 'Add LHFE Flight', new_lhfe_flight_path(:event_id => @event), :class => "btn-default btn" %>
               </div>
               <% end %>              
-              <div class="col-xs-3">
+              <div class="col-xs-6 col-sm-3" style="padding-top:1em;">
                 <%= button_to 'Create Manifest', manifest_path(:event_id => @event), method: :get, :class => "btn-default btn" %>
               </div>
             </div>
