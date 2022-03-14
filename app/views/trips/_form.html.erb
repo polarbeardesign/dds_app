@@ -44,7 +44,7 @@
 
 
 
-<div class="indent_row">
+<div class="flex-row">
   <div class="cell field"> 
     <%= f.label :crew_arrival, "Crew Arrival" %>:<br />
     <%= f.text_field :crew_arrival, :value => f.object.try(:crew_arrival).try(:strftime,'%Y-%m-%d %H:%M:%S'), :size => 20 %>
@@ -54,7 +54,7 @@
     <%= f.text_field :tug_time, :value => f.object.try(:tug_time).try(:strftime,'%Y-%m-%d %H:%M:%S'), :size => 20 %>
   </div>
 </div>
-<div class="indent_row">
+<div class="flex-row">
   <div class="cell field"> 
     <%= f.label :wheels_up %>:<br />
     <%= f.text_field :wheels_up, :value => f.object.try(:wheels_up).try(:strftime,'%Y-%m-%d %H:%M:%S'), :size => 20 %>
@@ -65,14 +65,14 @@
     <div class="form_note"><%= @event.location.one_way_distance %> nm @ 200 mph = <%= number_with_precision((@event.location.one_way_distance.to_f/200), :precision => 1) %> hrs</div>
   </div>
 </div>
-<div class="indent_row">
+<div class="flex-row">
   <div class="cell field">
     <%= f.label :return_eta, "Return ETA" %>:<br />
     <%= f.text_field :return_eta, :value => f.object.try(:return_eta).try(:strftime,'%Y-%m-%d %H:%M:%S'), :size => 20 %>
-    <div class="form_note">Defaults to Sunday at 6PM after event start - adjust as necessary.</div>
+    <div class="form_note">Defaults to Sunday at 6PM after<br />event start - adjust as necessary.</div>
   </div>
 </div>
-<div class="indent_row">
+<div class="flex-row">
   <div class="cell field">
   <%= f.label :notes %>:<br />
   <%= f.text_area :notes, :size => "50x5", :placeholder => "Enter other relevant trip details such as fuel stops, lodging details, etc. Also crew member trip responsibilities." %>
@@ -80,107 +80,8 @@
 </div>
 <div class="clearer"></div>
 
-<%# if @trip.event_id.nil? %>
-  <%#= f.hidden_field :event_id, :value => (params[:event_id])%>
-<%# end %>
 
-<% if !@event.nil? %>
-  <%= f.hidden_field :event_id, :value => @event.id %>
-<% end %>
-<hr />
-<h2>Post Trip Info</h2>
-<div class="indent_row">
-  <div class="cell field"> 
-    <%= f.label :fuel_start %>:<br />
-    <%= f.text_field :fuel_start, :size => 20, :placeholder => "gallons" %>
-  </div>
-  <div class="cell field"> 
-    <%= f.label :fuel_end %>:<br />
-    <%= f.text_field :fuel_end, :size => 20, :placeholder => "gallons" %>  </div>
-</div>
-<div class="indent_row">
-  <div class="cell field"> 
-    <%= f.label :oil_start %>:<br />
-    <%= f.text_field :oil_start, :size => 20, :placeholder => "gallons" %>
-  </div>
-  <div class="cell field"> 
-    <%= f.label :oil_end %>:<br />
-    <%= f.text_field :oil_end, :size => 20, :placeholder => "gallons" %>
-  </div>
-</div>
-<div class="indent_row">
-  <div class="cell field"> 
-    <%= f.label :hobbs_start %>:<br />
-    <%= f.text_field :hobbs_start, :size => 20, :placeholder => "hobbs time" %>
-  </div>
-  <div class="cell field"> 
-    <%= f.label :hobbs_end %>:<br />
-    <%= f.text_field :hobbs_end, :size => 20, :placeholder => "hobbs time" %>
-  </div>
-</div>
-<div class="clearer"></div>
-<h2>Show</h2>
-<div class="indent_row">
-  <div class="cell field"> 
-    <%= f.label :show_fees %>:<br />
-    <%= f.text_field :show_fees, :size => 20, :placeholder => "$ received from show" %>
-  </div>
-  <div class="cell field"> 
-    <%= f.label :show_expenses %>:<br />
-    <%= f.text_field :show_expenses, :size => 20, :placeholder => "expenses incurred" %>
-  </div>
-</div>
-<div class="indent_row">
-  <div class="cell field"> 
-    <%= f.label :show_fuel_gallons %>:<br />
-    <%= f.text_field :show_fuel_gallons, :size => 20, :placeholder => "gallons fuel received" %>
-  </div>
-  <div class="cell field"> 
-    <%= f.label :show_oil_gallons %>:<br />
-    <%= f.text_field :show_oil_gallons, :size => 20, :placeholder => "gallons oil received" %>
-  </div>
-</div>
-<div class="indent_row">
-  <div class="cell field"> 
-    <%= f.label :t_shirt_cost %>:<br />
-    <%= f.text_field :t_shirt_cost, :size => 20, :placeholder => "cost of shirts sold" %>
-  </div>
-  <div class="cell field"> 
-    <%= f.label :t_shirt_sales %>:<br />
-    <%= f.text_field :t_shirt_sales, :size => 20, :placeholder => "sales from t-shirts" %>
-  </div>
-</div>
-<div class="clearer"></div>
-<h2>LFHE Rides</h2>
-<div class="indent_row">
-  <div class="cell field"> 
-    <%= f.label :rides_given %>:<br />
-    <%= f.text_field :rides_given, :size => 20, :placeholder => "Qty of LHFE flights" %>
-  </div>
-  <div class="cell field"> 
-    <%= f.label :total_pax %>:<br />
-    <%= f.text_field :total_pax, :size => 20, :placeholder => "Qty of LHFE pax" %>
-  </div>
-</div>
-<div class="indent_row">
-  <div class="cell field"> 
-    <%= f.label :pax_income %>:<br />
-    <%= f.text_field :pax_income, :size => 20, :placeholder => "$ from LHFE rides" %>
-  </div>
-  <div class="cell field"> 
-    <%= f.label :hq_amount_paid %>:<br />
-    <%= f.text_field :hq_amount_paid, :size => 20, :placeholder => "LFHE portion to HQ" %>
-  </div>
-</div>
-<div class="indent_row">
-  <div class="cell field"> 
-    <%= f.label :lfhe_hobbs_start, "LFHE Hobbs start" %>:<br />
-    <%= f.text_field :lfhe_hobbs_start, :size => 20, :placeholder => "hobbs time"  %>
-  </div>
-  <div class="cell field"> 
-    <%= f.label :lfhe_hobbs_end, "LFHE Hobbs end" %>:<br />
-    <%= f.text_field :lfhe_hobbs_end, :size => 20, :placeholder => "hobbs time"  %>  </div>
-</div>
+
 
 <div class="clearer"></div>
 <hr />
@@ -189,6 +90,6 @@ Click checkbox to send email notification to trip participants. <%= check_box_ta
 <div class="clearer"></div>
 
   <div class="actions">
-    <%= f.submit :data => { :disable_with => "Submitting..." } %>
+    <%= f.submit :data => { :disable_with => "Submitting..." },:class => "btn-default btn btn-big btn-primary" %>
   </div>
 <% end %>

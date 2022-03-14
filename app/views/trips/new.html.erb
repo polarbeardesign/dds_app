@@ -5,8 +5,16 @@ jQuery(function($){
 
   $('#trip_crew_arrival').blur(function() {
 
+     //console.log(new Date(Date.parse("2005-07-08T00:00:00Z")).toString());
+
      //Crew Arrival Time
-      var crewTime = new Date($('#trip_crew_arrival').val());
+      //dateString = $('#trip_crew_arrival').replace(/-/g, '/');
+
+      //var dateString = $('#trip_crew_arrival').toString().replace(/\s/, 'T');
+      var crewTime = new Date(($('#trip_crew_arrival').val()).replace(/\s/, 'T'));
+
+      //var crewTime = new Date(dateString);
+      //window.alert(crewTime);
      // Calculate Tug Time (crew Arrival + 30 minutes)
       var tt = new Date(crewTime.getTime() + 30*60000);
      // Convert Tug Time to datetime string
@@ -43,11 +51,66 @@ jQuery(function($){
 </script>
 
 
-<% content_for :sidebar do %>
-  <%= render "events/event_details" %>
-<% end %>
-
-<h1>New Trip: <%= @event.title %></h1>
+<div class="row">
+  <div class="col-xs-12 col-sm-7">
+      <h1><%= @event.title %></h1>
+      <p><%= @event.location.short_name %> - <%= @event.location.city %>, <%= @event.location.state %></p>
+  </div>
+  <div class="col-xs-12 col-sm-5">
+    <div class='row'>
+      <% if @event.start.strftime("%b %d" ) == @event.end.strftime("%b %d") %>
+      <div class="col-xs-12">
+        <div class="calendar">
+          <div class="calendar_year">
+            <%= @event.start.strftime("%Y") %>
+          </div>
+          <div class="calendar_month">
+            <%= @event.start.strftime("%b") %>
+          </div>
+          <div class="calendar_day">
+            <%= @event.start.strftime("%A") %>
+          </div>
+          <div class="calendar_date">
+            <%= @event.start.strftime("%d") %>
+          </div>
+        </div>
+        <% else %>
+        <div class="col-xs-6 col-sm-6">
+          <div class="calendar">
+            <div class="calendar_year">
+              <%= @event.start.strftime("%Y") %>
+            </div>
+            <div class="calendar_month">
+              <%= @event.start.strftime("%b") %>
+            </div>
+            <div class="calendar_day">
+              <%= @event.start.strftime("%A") %>
+            </div>
+            <div class="calendar_date">
+              <%= @event.start.strftime("%d") %>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-6">
+          <div class="calendar">
+            <div class="calendar_year">
+              <%= @event.end.strftime("%Y") %>
+            </div>
+            <div class="calendar_month">
+              <%= @event.end.strftime("%b") %>
+            </div>
+            <div class="calendar_day">
+              <%= @event.end.strftime("%A") %>
+            </div>
+            <div class="calendar_date">
+              <%= @event.end.strftime("%d") %>
+            </div>
+          </div>
+      <% end %>
+      </div>
+      </div>
+      </div>
+</div>
 
 <p>After entering Crew Arrival time, Tug Time will auto fill for 30 minutes later and Wheels up for 30 minutes after Tug Time. Autofill values can be changed manually.</p>
 
