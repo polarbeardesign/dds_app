@@ -26,7 +26,7 @@ Phone:  <%= @ride_request.phone %></p>
     <% end %>
 <% end %>
 
-<p style="font-size: 14pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;">Living History Flight Experience PrePay is $395, if you would like to prepay for your ride please use this link.</p>
+<p style="font-size: 14pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;">Living History Flight Experience PrePay is <%= number_to_currency(@price.value) %> per seat, if you would like to prepay for your ride please use this link. (Flights are <%= number_to_currency(@price.alt_value) %> per seat during the event)</p>
 
 <p style="font-size: 14pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;"><%= "http://www.devildogsquadron.com" + px_path %></p>
 

@@ -25,7 +25,7 @@ Indicated interest at the following events:
 <% end %>
 <% end %>
 
-Living History Flight Experience PrePay is $395, if you would like to prepay for your ride please use this link.
+Living History Flight Experience PrePay is <%= number_to_currency(@price.value) %> per seat, if you would like to prepay for your ride please use this link. (Flights are <%= number_to_currency(@price.alt_value) %> per seat during the event)
 
 <%= "http://www.devildogsquadron.com" + px_path %>
 
