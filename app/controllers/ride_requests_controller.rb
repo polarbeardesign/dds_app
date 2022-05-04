@@ -19,7 +19,8 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:new, 
   # GET /ride_requests/1.json
   def show
     @ride_request = RideRequest.find(params[:id])
-
+    @product = Product.find_by_id(11)
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json => @ride_request }

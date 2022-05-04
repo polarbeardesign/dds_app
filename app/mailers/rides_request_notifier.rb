@@ -13,6 +13,7 @@ end
   #
   def created(ride_request)
     @ride_request = ride_request
+    @price = Product.find_by_id(11)
 
       if Rails.env.production?
         mail :to => @ride_request.email, 
