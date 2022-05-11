@@ -89,7 +89,7 @@
 Click checkbox to send email notification to following trip participants. <%= check_box_tag 'email_notice' %>
 <hr />
 <ol>
-<% @trip.event.event_signups.each do |event_signup,i| %>
+<% @event.event_signups.each do |event_signup,i| %>
   <li><%= event_signup.member.user.email %></li>
 <% end %>
 </ol>

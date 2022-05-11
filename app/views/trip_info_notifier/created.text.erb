@@ -1,4 +1,4 @@
-The following schedule information has been published on the website for the <%= @trip.event.title %> in <%= @trip.event.location.city + ', ' + @trip.event.location.state %> flight.
+The following schedule information has been published on the website for the <%= @trip.event.title %> trip to <%= @trip.event.location.icao_identifier + ' - ' + @trip.event.location.city + ', ' + @trip.event.location.state %>.
 
 Crew Arrival: <%= @trip.crew_arrival.strftime("%H:%M - %a %b %d, %Y") %>
 

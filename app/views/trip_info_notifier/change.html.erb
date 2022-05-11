@@ -1,4 +1,4 @@
-<p style="font-size: 14pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;">The following schedule information has been has been updated on the website for the <span style="font-style: italic;font-weight: bold;"><%= @trip.event.title %></span> in <%= @trip.event.location.city + ', ' + @trip.event.location.state %> flight.</p>
+<p style="font-size: 14pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;">The following schedule information has been has been updated on the website for the <span style="font-style: italic;font-weight: bold;"><%= @trip.event.title %></span> trip to <%= @trip.event.location.icao_identifier + ' - ' + @trip.event.location.city + ', ' + @trip.event.location.state %>.</p>
 
 <div style="max-width:600px">
 <table style="margin-left: 20px;border: solid #333;border-width: thin;border-collapse: separate;border-spacing: 0px;font-size: 14pt; font-family: Helvetica, Verdana, Geneva, Arial, sans-serif; color: #191919;">
