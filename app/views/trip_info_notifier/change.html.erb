@@ -7,7 +7,7 @@
   </tr>
   <tr style="background: #fff;">
     <td width="150px" style="border-bottom: #d6d68b;border-right: #d6d68b;border-width: 0 1px 1px 0;border-style: none solid solid none;padding: 3px;vertical-align: top;">Crew Arrival:</td>
-    <td style="border-bottom: #d6d68b;border-right: #d6d68b;border-width: 0 1px 1px 0;border-style: none solid solid none;padding: 3px;vertical-align: top;"><strong><%= @trip.crew_arrival.strftime("%H:%M - %b %d, %Y") %></strong></td>
+    <td style="border-bottom: #d6d68b;border-right: #d6d68b;border-width: 0 1px 1px 0;border-style: none solid solid none;padding: 3px;vertical-align: top;"><strong><%= @trip.crew_arrival.strftime("%H:%M - %a %b %d, %Y") %></strong></td>
   </tr>
   <tr style="background: #feffea;">
     <td style="border-bottom: #d6d68b;border-right: #d6d68b;border-width: 0 1px 1px 0;border-style: none solid solid none;padding: 3px;vertical-align: top;">Tug Time:</td>
@@ -23,7 +23,7 @@
   </tr>
   <tr style="background: #fff;">
     <td style="border-bottom: #d6d68b;border-right: #d6d68b;border-width: 0 1px 1px 0;border-style: none solid solid none;padding: 3px;vertical-align: top;">Return ETA:</td>
-    <td style="border-bottom: #d6d68b;border-right: #d6d68b;border-width: 0 1px 1px 0;border-style: none solid solid none;padding: 3px;vertical-align: top;"><strong><%= @trip.return_eta.strftime("%H:%M - %b %d, %Y") %></strong></td>
+    <td style="border-bottom: #d6d68b;border-right: #d6d68b;border-width: 0 1px 1px 0;border-style: none solid solid none;padding: 3px;vertical-align: top;"><strong><%= @trip.return_eta.strftime("%H:%M - %a %b %d, %Y") %></strong></td>
   </tr>
   <tr style="background: #feffea;">
     <td style="border-bottom: #d6d68b;border-right: #d6d68b;border-width: 0 1px 1px 0;border-style: none solid solid none;padding: 3px;vertical-align: top;">Distance (nm):</td>
