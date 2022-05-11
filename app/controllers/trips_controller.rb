@@ -2,7 +2,7 @@ class TripsController < ApplicationController
   # GET /trips
   # GET /trips.json
   def index
-    @trips = Trip.all
+    @trips = Trip.all.reverse
 
     respond_to do |format|
       format.html # index.html.erb

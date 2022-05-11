@@ -2,54 +2,74 @@
 <script src="https://maps.google.com/maps?file=api&amp;v=2&amp;key=AIzaSyBTLIEMHnR7-4zunQEj0NYdn0r8e7_fkig"
       type="text/javascript"></script>
 
-<% map_url = "https://maps.googleapis.com/maps/api/staticmap?zoom=8&size=200x200&maptype=roadmap&markers=color:red%7Clabel:X%7C"+@event.location.latitude+","+@event.location.longitude+"&sensor=false&key=AIzaSyBTLIEMHnR7-4zunQEj0NYdn0r8e7_fkig" %>
+<% map_url = "https://maps.googleapis.com/maps/api/staticmap?zoom=11&size=400x400&maptype=roadmap&markers=color:red%7Clabel:X%7C"+@event.location.latitude+","+@event.location.longitude+"&sensor=false&key=AIzaSyBTLIEMHnR7-4zunQEj0NYdn0r8e7_fkig" %>
 
 
-<h3><%= @event.title %></h3>
+
+<div class="row">
+  <div class="col-xs-12 col-sm-7">
+      <h1><%= @event.title %></h1>
+    <% if @event.graphic_address? %>
+      <div class="event_graphic"><%= image_tag '/uploads/misc_images/' +@event.graphic_address, :class => 'event-graphic'  %></div>
+    <% end %>
+  </div>
+  <div class="col-xs-12 col-sm-5">
+    <div class='row'>
+      <% if @event.start.strftime("%b %d" ) == @event.end.strftime("%b %d") %>
+      <div class="col-xs-12">
+        <div class="calendar">
+          <div class="calendar_year">
+            <%= @event.start.strftime("%Y") %>
+          </div>
+          <div class="calendar_month">
+            <%= @event.start.strftime("%b") %>
+          </div>
+          <div class="calendar_day">
+            <%= @event.start.strftime("%A") %>
+          </div>
+          <div class="calendar_date">
+            <%= @event.start.strftime("%d") %>
+          </div>
+        </div>
+        <% else %>
+        <div class="col-xs-6 col-sm-6">
+          <div class="calendar">
+            <div class="calendar_year">
+              <%= @event.start.strftime("%Y") %>
+            </div>
+            <div class="calendar_month">
+              <%= @event.start.strftime("%b") %>
+            </div>
+            <div class="calendar_day">
+              <%= @event.start.strftime("%A") %>
+            </div>
+            <div class="calendar_date">
+              <%= @event.start.strftime("%d") %>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-6 col-sm-6">
+          <div class="calendar">
+            <div class="calendar_year">
+              <%= @event.end.strftime("%Y") %>
+            </div>
+            <div class="calendar_month">
+              <%= @event.end.strftime("%b") %>
+            </div>
+            <div class="calendar_day">
+              <%= @event.end.strftime("%A") %>
+            </div>
+            <div class="calendar_date">
+              <%= @event.end.strftime("%d") %>
+            </div>
+          </div>
+      <% end %>
+      </div>
+      </div>
+      </div>
+</div>
+
 <div class="clearer"></div>
-<div class="row" style="width: 100%;">
-<div class="calendar-css" style="float: left;">
-  <div class="calendar_year">
-    <%= @event.start.strftime("%Y") %>
-  </div>
-  <div class="calendar_month">
-    <%= @event.start.strftime("%b") %>
-  </div>
-  <div class="calendar_day">
-    <%= @event.start.strftime("%A") %>
-  </div>
-  <div class="calendar_date">
-    <%= @event.start.strftime("%d") %>
-  </div>
-  <div style="margin: 2em 1em;">
-  <strong><%= @event.start.strftime("%H:%M %p") %></strong>
-  </div>
-</div>
-<span style="float: left; font-size: 2em; margin: 1.4em 0.1em;">&#8211; </span>
-<div class="calendar-css" style="float: left;">
-  <div class="calendar_year">
-    <%= @event.end.strftime("%Y") %>
-  </div>
-  <div class="calendar_month">
-    <%= @event.end.strftime("%b") %>
-  </div>
-  <div class="calendar_day">
-    <%= @event.end.strftime("%A") %>
-  </div>
-  <div class="calendar_date">
-    <%= @event.end.strftime("%d") %>
-  </div>
-  <div style="margin: 2em 1em;">
-  <strong><%= @event.end.strftime("%H:%M %p") %></strong>
-  </div>
-</div>
-</div>
 
-<div class="clearer"></div>
 
-<p style="margin: 3em 0 0 0;"><b>Where:</b> <%= @event.location.short_name %> - <%= @event.location.city %>, <%= @event.location.state %></p>
-
-  <% if @event.location.latitude? %>
-    <div style="float: right; border: 1px solid #ccc; margin: 1em 0 1em 1em;"><%= link_to image_tag(map_url), "https://maps.googleapis.com/maps/api/staticmap?zoom=8&size=200x200&maptype=roadmap&markers=color:red%7Clabel:X%7C"+@event.location.latitude+","+@event.location.longitude+"&sensor=false&key=AIzaSyBTLIEMHnR7-4zunQEj0NYdn0r8e7_fkig", :target => "_blank" %></div>
-  <% end %>
   
