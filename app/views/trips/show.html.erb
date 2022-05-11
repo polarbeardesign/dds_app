@@ -1,37 +1,43 @@
-<% content_for :sidebar do %>
-  <%= render "events/event_details" %>
-<% end %>
 
-<h1><%= @trip.event.title %></h1>
-<table width="500" class="table_border">
+<script src="https://maps.google.com/maps?file=api&amp;v=2&amp;key=AIzaSyBTLIEMHnR7-4zunQEj0NYdn0r8e7_fkig"
+      type="text/javascript"></script>
+
+<% map_url = "https://maps.googleapis.com/maps/api/staticmap?zoom=11&size=400x400&maptype=roadmap&markers=color:red%7Clabel:X%7C"+@trip.event.location.latitude+","+@trip.event.location.longitude+"&sensor=false&key=AIzaSyBTLIEMHnR7-4zunQEj0NYdn0r8e7_fkig" %>
+
+
+<%= render "events/event_details" %>
+<div class="row">
+  <div class="col-xs-12 col-sm-7">
+<h3>Trip Details:</h3>
+<table class="table_border" style="width:100%;margin-bottom: 1em;">
   <tr>
-    <td width="150">Crew arrival</td>
-    <td><strong><%= @trip.crew_arrival.strftime("%b %d - %H:%M") %></strong></td>
+    <td width="180">Distance (nm)</td>
+    <td><strong><%= @trip.event.location.one_way_distance %> | ~<%= (@trip.event.location.one_way_distance.to_f/185).round(2) %> hours</strong></td>
   </tr>
   <tr>
-    <td width="150">Distance (nm)</td>
-    <td><strong><%= @trip.event.location.one_way_distance %> | ~<%= (@trip.event.location.one_way_distance.to_f/185).round(2) %> hours</strong></td>
+    <td width="150">Crew arrival</td>
+    <td><strong><%= @trip.crew_arrival.strftime("%a %b %d - %H:%M") %></strong></td>
   </tr>
   <tr>
     <td>Tug time</td>
     <% if !@trip.tug_time.nil? %>
-      <td><strong><%= @trip.tug_time.strftime("%b %d - %H:%M") %></strong></td>
+      <td><strong><%= @trip.tug_time.strftime("%H:%M") %></strong></td>
     <% end %>
   </tr>
   <tr>
     <td>Wheels up</td>
-    <td><strong><%= @trip.wheels_up.strftime("%b %d - %H:%M") %></strong></td>
+    <td><strong><%= @trip.wheels_up.strftime("%H:%M") %></strong></td>
   </tr>
   <tr>
     <td>Destination ETA</td>
     <% if !@trip.destination_eta.nil? %>
-      <td><strong><%= @trip.destination_eta.strftime("%b %d - %H:%M") %></strong></td>
+      <td><strong><%= @trip.destination_eta.strftime("%H:%M") %></strong></td>
     <% end %>
   </tr>
   <tr>
     <td>Return ETA</td>
     <% if !@trip.return_eta.nil? %>
-      <td><strong><%= @trip.return_eta.strftime("%b %d - %H:%M") %></strong></td>
+      <td><strong><%= @trip.return_eta.strftime("%a %b %d - %H:%M") %></strong></td>
     <% end %>
   </tr>
   <tr>
@@ -39,10 +45,26 @@
     <td><%= markdown @trip.notes %></td>
   </tr>
 </table>
+</div>
+  <div class="col-xs-12 col-sm-5" style="text-align: center;">
 
+      <p style="margin: 0 0 0 0;"><b>Where:</b> <%= @event.location.short_name %> - <%= @event.location.city %>, <%= @event.location.state %></p>
+
+  <% if @trip.event.location.latitude? %>
+    <div style="margin: 1em auto;">
+    <%= link_to image_tag(map_url), raw("https://www.google.com/maps/place/" + @trip.event.location.latitude + ' ' + @trip.event.location.longitude + "/@" + @trip.event.location.latitude + "," + @trip.event.location.longitude + ",13z/"), :target => "_blank" %>
+    </div>
+  <% end %>
+</div>
+</div>
+
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
 <div style="text-align: center; display: block;">
-  <%= button_to "Trip Financials", trip_financials_path(@trip) %>
+  <%= button_to "Trip Financials", trip_financials_path(@trip), :method => "GET",:class => "btn-default btn btn-big btn-primary" %>
 </div>
 
 <%= link_to 'Edit', edit_trip_path(@trip) %> |
 <%= link_to 'Back', trips_path %>
+<% end %>
+<% end %>

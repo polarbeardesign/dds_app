@@ -1,6 +1,4 @@
-<% content_for :sidebar do %>
-  <%= render "events/event_details" %>
-<% end %>
+<%= render "events/event_details" %>
 
 <% total_fuel  = 0 %>
 <% total_oil   = 0 %>
@@ -29,7 +27,6 @@
   <% lfhe_total = @trip.pax_income - @trip.hq_amount_paid %>
 <% end %>
 
-<h1><%= @trip.event.title %></h1>
 <h2>Overview</h2>
 <div class="indent_row">
 <p>Total Income:<strong> <%= number_to_currency(show_income + t_shirts + lfhe_total) %></strong><br />

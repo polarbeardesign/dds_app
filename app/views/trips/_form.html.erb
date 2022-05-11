@@ -78,6 +78,7 @@
   <%= f.text_area :notes, :size => "50x5", :placeholder => "Enter other relevant trip details such as fuel stops, lodging details, etc. Also crew member trip responsibilities." %>
   </div>
 </div>
+<%= f.hidden_field :event_id, :value => @event.id %>
 <div class="clearer"></div>
 
 

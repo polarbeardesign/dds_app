@@ -9,3 +9,4 @@ app/views/.DS_Store
 config/database.yml
 .sass-cache/
 .idea
+public/uploads/
