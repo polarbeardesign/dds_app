@@ -1,21 +1,21 @@
-<% content_for :sidebar do %>
-  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
-    <div align="center">
-      <%= button_to 'New term', new_term_path, :method => :get %>
-    </div>
+<% last_position = "" %>
+<h1>Squadron Officer Positions/Terms</h1>
+
+<% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
     <p>To create a new term (assign a member to a position and start and end dates).</p>
+
+    <div align="center">
+      <%= button_to 'New term', new_term_path, :method => :get,:class => "btn-default btn btn-big btn-primary" %>
+    </div>
   <% end %>
 
-See <%= link_to "Officer Positions and descriptions", officer_positions_path %> or go to individual position:
+<p>See <%= link_to "Officer Positions and descriptions", officer_positions_path %> or go to individual position:</p>
   <ul>
   <% @officer_positions.each do |officer_position| %>
   <li><%= link_to officer_position.position_name, officer_position %></li>
   <% end %>
   </ul>
-<% end %>
 
-<% last_position = "" %>
-<h1>Squadron Officer Positions/Terms</h1>
 
 <p><%= link_to 'Click for a list of position summaries.', officer_positions_path %></p>
 

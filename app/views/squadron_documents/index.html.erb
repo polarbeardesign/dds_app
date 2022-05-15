@@ -1,9 +1,35 @@
+<script>
+
+  $(function() {
+$('th').click(function(){
+    var table = $(this).parents('table').eq(0)
+    var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()))
+    this.asc = !this.asc
+    if (!this.asc){rows = rows.reverse()}
+    for (var i = 0; i < rows.length; i++){table.append(rows[i])}
+})
+function comparer(index) {
+    return function(a, b) {
+        var valA = getCellValue(a, index), valB = getCellValue(b, index)
+        return $.isNumeric(valA) && $.isNumeric(valB) ? valA - valB : valA.localeCompare(valB)
+    }
+}
+function getCellValue(row, index){ return $(row).children('td').eq(index).html() }
+  });
+
+</script>
+
 <% lastcategory = "" %>
-<% content_for :sidebar do %>
-  <%= render "sidebars/members" %>
-<% end %>
+
 <h1>Squadron Documents</h1>
 
+<form id="live-search" action="" class="styled formfilter"" method="post">
+  <fieldset>
+    <input type="text" class="text-input" id="table-row-filter" placeholder='filter' value="" autofocus />
+    <span id="filter-count"></span>
+  </fieldset>
+</form>
+<br />
 <table  class="table_border">
   <tr>
     <th>Title</th>
@@ -16,7 +42,7 @@
     <th colspan="2"><strong><em><%= squadron_document.document_category.category_name %></em></strong></td>
   </tr>
   <% end %>
-  <tr class="<%= cycle('odd_row', 'even_row') %>">
+  <tr class='result'>
     <td><strong><%= link_to squadron_document.title, '../uploads/docs/' + squadron_document.file_url %></strong>
         <% if squadron_document.description? %>
       <br /><div style="margin: 0.5em 0.75em"><%= markdown squadron_document.description %></div>
