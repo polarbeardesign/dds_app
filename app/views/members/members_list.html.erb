@@ -20,6 +20,14 @@ function getCellValue(row, index){ return $(row).children('td').eq(index).html()
 
 <h1>Members List - [<%= @members.size %>]</h1> 
 
+<form id="live-search" action="" class="styled formfilter"" method="post">
+  <fieldset>
+    <input type="text" class="text-input" id="table-row-filter" placeholder='filter' value="" autofocus />
+    <span id="filter-count"></span>
+  </fieldset>
+</form>
+<br />
+
 <table class="table_border">
   <tr>
     <th>Name</th>
@@ -29,7 +37,7 @@ function getCellValue(row, index){ return $(row).children('td').eq(index).html()
   </tr>
 
 <% @members.each do |member| %>
-  <tr class="<%= cycle('odd_row', 'even_row') %>">
+  <tr class='result'>
     <td><%= member.last_name+", "+member.first_name %></td>
     <% if member.city? %>
       <td><%= member.city+", "+member.state %></td>

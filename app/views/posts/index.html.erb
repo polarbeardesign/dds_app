@@ -1,14 +1,12 @@
-<% content_for :sidebar do %>
+<h1>Devil Dog Squadron Bulletin Board</h1>
+
+<p>The purpose of this Bulletin Board is to make information more transparent and available to the membership. Should you have any comments or input, please contact the Adjutant, Operations or Maintenance officer for additional information. The content of this board is administered by the Adjutant Officer who is the primary contact for postings.</p>
+
  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
   <div align="center">
-  <%= button_to "Add new post", new_post_path, :method => :get %>
+  <%= button_to "Add new post", new_post_path, :method => :get,:class => "btn-default btn btn-big btn-primary" %>
   </div>
 <% end %>
-  <%= render "sidebars/members" %>
-  <%= render "sidebars/blog" %>
-<% end %>
-
-<h1>Devil Dog Squadron Bulletin Board</h1>
 
 <div class="pagination-nav"><%= will_paginate @posts %></div>
 <hr />
