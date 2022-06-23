@@ -1,6 +1,10 @@
 <p>
   <b>Member:</b>
-  <%= @dues_payment.member.last_name + ', ' + @dues_payment.member.first_name %> [ <%= link_to 'Go To Members Page', member_path(@dues_payment.member) %> ]
+  <% if !@dues_payment.member.blank? %>
+    <%= @dues_payment.member.last_name + ', ' + @dues_payment.member.first_name %> [ <%= link_to 'Go To Members Page', member_path(@dues_payment.member) %> ]
+  <% else %>
+    Member <%= @dues_payment.member_id %> deleted 
+  <% end %>
 </p>
 
 <p>

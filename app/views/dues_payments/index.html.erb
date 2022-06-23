@@ -28,6 +28,13 @@ function getCellValue(row, index){ return $(row).children('td').eq(index).html()
     <% end %>
 <% end %>
 
+<form id="live-search" action="" class="styled formfilter"" method="post" style="margin-bottom:1em;">
+  <fieldset>
+    <input type="text" class="text-input" id="table-row-filter" placeholder='search/filter' value="" autofocus />
+    <span id="filter-count"></span>
+  </fieldset>
+</form>
+
 <table class="table_border">
   <tr>
     <th>Member</th>
@@ -39,11 +46,11 @@ function getCellValue(row, index){ return $(row).children('td').eq(index).html()
   </tr>
 
 <% @dues_payments.each do |dues_payment| %>
-  <tr>
+  <tr class='result'>
     <td><% if !dues_payment.member.blank? %>
       <%= link_to dues_payment.member.last_name + ', ' + dues_payment.member.first_name, dues_payment %>
     <% else %>
-      <%= link_to dues_payment.id, dues_payment %>
+      <%= link_to "Member " + dues_payment.member_id.to_s + " deleted", dues_payment %>
     <% end %></td>
     <td><%= dues_payment.date_paid %></td>
     <td><%= dues_payment.payment_method %></td>
