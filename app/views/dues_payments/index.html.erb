@@ -22,8 +22,8 @@ function getCellValue(row, index){ return $(row).children('td').eq(index).html()
 
 <% if signed_in?%>
     <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
-         <div align="center">
-           <%= button_to 'New Dues Payment', new_dues_payment_path, :method => "GET" %>
+         <div style="text-align:center;margin-bottom:1em;">
+           <%= button_to 'New Dues Payment', new_dues_payment_path, :method => "GET",:class => "btn-default btn btn-big btn-primary" %>
          </div>
     <% end %>
 <% end %>
@@ -39,8 +39,12 @@ function getCellValue(row, index){ return $(row).children('td').eq(index).html()
   </tr>
 
 <% @dues_payments.each do |dues_payment| %>
-  <tr class="<%= cycle('odd_row', 'even_row') %>">
-    <td><%= link_to dues_payment.member.last_name + ', ' + dues_payment.member.first_name, dues_payment %></td>
+  <tr>
+    <td><% if !dues_payment.member.blank? %>
+      <%= link_to dues_payment.member.last_name + ', ' + dues_payment.member.first_name, dues_payment %>
+    <% else %>
+      <%= link_to dues_payment.id, dues_payment %>
+    <% end %></td>
     <td><%= dues_payment.date_paid %></td>
     <td><%= dues_payment.payment_method %></td>
     <td><%= dues_payment.payment_type %></td>
