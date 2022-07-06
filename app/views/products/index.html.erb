@@ -22,7 +22,7 @@
     <td><%= link_to product.item_no, edit_product_path(product) %></td>
     <td><%= product.name %></td>
     <td> <% if product.photo_path? %>
-           <%= image_tag product.photo_path, :width => 64, :height => 43, :border => 0 %></td>
+             <img src="uploads/images/<%=product.photo_path %>" width="100%"></td>
          <% end %>
     <td><%= product.description %></td>
     <td align="right"><%= number_to_currency(product.value) %></td>
