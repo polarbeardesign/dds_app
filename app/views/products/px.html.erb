@@ -12,7 +12,7 @@
 <% @products.each do |product| %>
 <div class="product-card">
 <% if product.photo_path? %>
-  <div style="padding:1em;"><%= image_tag 'sm_' + product.photo_path %></div>
+  <div style="padding:1em;"> <img src="uploads/images/<%=product.photo_path %>" width="100%"> </div>
 <% end %>
 <div style="padding: 1em;"><h2><%= product.name %></h2></div>
 <div style="padding: 1em;"><%= product.description %></div>

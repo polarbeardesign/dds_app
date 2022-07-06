@@ -1,12 +1,10 @@
-<% content_for :sidebar do %>
+<h1>Listing products</h1>
+
 <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
-  <div align="center">
-  <%= button_to 'Add New Product', new_product_path, :method => :get %>
+  <div style="text-align:right;margin-bottom: 1em;">
+  <%= button_to 'Add New Product', new_product_path, :method => :get, :class => "btn-default btn btn-big btn-primary" %>
   </div>
 <% end %>
-<% end %>
-
-<h1>Listing products</h1>
 
 <table width="560" class="table_border">
   <tr>
@@ -20,7 +18,7 @@
   </tr>
 
 <% @products.each do |product| %>
-  <tr class="<%= cycle('odd_row', 'even_row') %>"> 
+  <tr> 
     <td><%= link_to product.item_no, edit_product_path(product) %></td>
     <td><%= product.name %></td>
     <td> <% if product.photo_path? %>
@@ -29,8 +27,8 @@
     <td><%= product.description %></td>
     <td align="right"><%= number_to_currency(product.value) %></td>
     <td align="right"><%= number_to_currency(product.ship_handling) %></td>
-    <td align="center"><%= product.available %></td>
+    <td align="center"><% if product.available == false %>&#x274C;<% else %>&#x2705; <% end %></td>
   </tr>
 <% end %>
 </table>
-
+    

@@ -11,95 +11,58 @@
     </div>
   <% end %>
 
-<div class="form_row">
-  <div class="form_cell">
-    <div class="field">
-      <%= f.label :name, "Product Name" %><br />
-      <%= f.text_field :name %>
+  <div class="row">
+    <div class="field col-sm-4">
+      <%= f.label :name, "Product Name" %>*<br />
+      <%= f.text_field :name, :size => 25 %>
+    </div>
+    <div class="field col-sm-4">
+      <%= f.label :item_no %>*<br />
+      <%= f.text_field :item_no, :size => 25 %><br /><span class="form_tip">Used for PayPal buttons - e.g. "500"</span>
+    </div>
+     <div class="field col-sm-4">
+      <%= f.label :photo_path %><br />
+      <%= f.text_field :photo_path, :size => 25 %><br /><span class="form_tip">e.g. 600.jpg</span>
     </div>
   </div>
-  <div class="form_cell">
-    <div class="field">
-      <%= f.label :item_no %><br />
-      <%= f.text_field :item_no, :size => 15 %><br /><span class="form_tip">Used for PayPal buttons - e.g. "500"</span>
-    </div>
-  </div>
-</div>
-<div class="form_row">
-  <div class="form_cell">
-    <div class="field">
-      <%= f.label :description %><br />
+
+  <div class="row">
+    <div class="field col-sm-12">
+      <%= f.label :description %>*<br />
       <%= f.text_area :description, :size => "50x5"  %>
     </div>
   </div>
-</div>
-<div class="form_row">
-  <div class="form_cell" style="width: 30%;">
-    <div class="field">
-      <%= f.label :value %><br />
+
+  <div class="row">
+    <div class="field col-sm-4">
+      <%= f.label :value %>*<br />
       <%= f.text_field :value, :size => '10' %><br /> <span class="form_tip">Item's price</span>
     </div>
-  </div>
-  <div class="form_cell" style="width: 30%;">
-    <div class="field">
-      <%= f.label :alt_value, "Alternate Value" %><br />
-      <%= f.text_field :alt_value, :size => '10' %><br /> <span class="form_tip">Item's alternate price i.e. Rides price at an event.</span>
+    <div class="field col-sm-4">
+      <%= f.label :alt_value, "Alternate Value" %>*<br />
+      <%= f.text_field :alt_value, :size => '10' %><br /> <span class="form_tip">Item's alternate price i.e. Rides price at an event. If no alternate value, enter same as Value</span>
     </div>
-  </div>
-  <div class="form_cell" style="width: 30%;">
-    <div class="field">
-      <%= f.label :ship_handling %><br />
+    <div class="field col-sm-4">
+      <%= f.label :ship_handling %>*<br />
       <%= f.text_field :ship_handling, :size => '10' %><br /><span class="form_tip">Shipping and Handling Charge</span>
     </div>
   </div>
-</div>
-<div class="form_row">
-  <div class="form_cell">
-  <div class="field">
-    <%= f.label :available, "Item Available" %><br />
-    <div align="center"><%= f.check_box :available %></div>
+
+  <div class="row">
+    <div class="field col-sm-4">
+      <%= f.label :available, "Item Available" %><br />
+      <%= f.check_box :available %>
     </div>
+    <div class="field col-sm-4">
+      <%= f.label :sizes %>*<br />
+      <% @sizes.each do |size| %>
+        <%= check_box_tag('size_list[]', size.id, @product.sizes.collect {|obj| obj.id}.include?(size.id)) %><%= size.size %><br />
+      <% end %>
+    </div>
+
   </div>
-</div>
 
-
-<div class="form_row">
-  <div class="form_cell">
-    <strong>Sizes:</strong>
+  <div class="actions" style="text-align: center;">
+    <%= f.submit :data => { :disable_with => "Submitting..." },:class => "btn-default btn btn-big btn-primary" %>
   </div>
-  <div class="form_cell">
-    <% @sizes.each_with_index do |size, i| %>
-    <% if i == 0 %>
-      <div class="form_cell">
-    <% elsif i == 4 %>
-      </div>
-      <div class="form_cell"> 
-    <% elsif i == 8 %>
-      </div>
-      <div class="form_cell">
-    <% end %>
-    
-    <%= check_box_tag('size_list[]', size.id, @product.sizes.collect {|obj| obj.id}.include?(size.id)) %><%= size.size %><br />
- 
-    <% end %>
-    </div>
- </div>
-</div>
-
-
-<div class="form_row">
-  <div class="form_cell">
-    <div class="field">
-      <%= f.label :photo_path %><br />
-      <%= f.text_field :photo_path %><br /><span class="form_tip">e.g. 600.jpg</span>
-    </div>
-</div>
-</div>
-<div class="form_row">
-  <div class="form_cell">
-    <div class="actions">
-      <%= f.submit :data => { :disable_with => "Submitting..." } %>
-    </div>
-  </div>
-</div>
 <% end %>
