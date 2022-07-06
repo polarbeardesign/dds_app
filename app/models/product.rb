@@ -9,7 +9,7 @@ class Product < ActiveRecord::Base
   scope :membership, where(:id => 15)
   default_scope :order => "field(item_no,'100','350','300','500','501','510','600','601','400','401')"
 
-  validates :name, :item_no, :description, :value, :ship_handling, :sizes, :presence => true, :on => :create
+  validates :name, :item_no, :description, :value, :alt_value, :ship_handling, :sizes, :presence => true, :on => :create
 
   has_paper_trail
 

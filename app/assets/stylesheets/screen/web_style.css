@@ -301,6 +301,12 @@ legend {
   width: auto;
 }
 
+.form_tip {
+  color: #888888;
+  font-size: 0.85em;
+  font-style: italic;
+}
+
 /* =Flex Elements
 -------------------------------------------------------------- */
 
