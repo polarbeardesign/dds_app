@@ -8,7 +8,7 @@
   </tr>
   <tr class=""> 
     <td> <% if @product.photo_path? %>
-           <%= image_tag 'sm_' + @product.photo_path %>
+           <img src="uploads/images/<%=product.photo_path %>" width="100%">
          <% end %>
     </td>
     <td><strong><%= @product.name %></strong><br /><%= simple_format(@product.description) %></td>
