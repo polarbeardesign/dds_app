@@ -174,15 +174,17 @@
 
 <% if current_user %>
 
-<h2>Members Info:</h2>
+<h2>Trip Info:</h2>
 
-
+  <div class="row">
+    <div class="col-sm-5">
   <% if @event.location.latitude? %>
     <div class="map-image">
-    <%= image_tag("https://vfrmap.com/api?req=map&type=sectc&lat=" + @event.location.latitude + "&lon=" + @event.location.longitude + "&zoom=10&width=350&height=350") %>
+    <%= image_tag("https://vfrmap.com/api?req=map&type=sectc&lat=" + @event.location.latitude + "&lon=" + @event.location.longitude + "&zoom=11&width=350&height=350") %>
     </div>
   <% end %>
-
+</div>
+    <div class="col-sm-7">
 
 
 <% if !@event.trip.blank? %>
@@ -212,7 +214,7 @@
     <td><strong><%= @event.trip.wheels_up.strftime("%b %d - %H:%M") %></strong></td>
   </tr>
   <tr class="even_row">
-    <td>Destination ETA:</td>
+    <td>Destination (<%= @event.location.icao_identifier %>) ETA:</td>
     <% if !@event.trip.destination_eta.nil? %>
       <td><strong><%= @event.trip.destination_eta.strftime("%b %d - %H:%M") %></strong></td>
     <% else %>
@@ -235,10 +237,11 @@
 <% else %>
 <p>No trip details yet...</p>
 <% end %>
-
+</div>
+</div>
 
 <% if signed_in?%>
-<fieldset>
+<fieldset style="margin-top: 2em;">
 <legend>&nbsp;Flight Sign Up&nbsp;</legend>
 <div class="col-xs-12">
   <% if current_user.roles.any? {|role| role.name == "admin" or role.name == "member"} %>
