@@ -6,7 +6,7 @@ class LhfeRidersController < ApplicationController
   def index
     @lhfe_riders = LhfeRider.reverse_chron.all
 
-    @events = LhfeRider.reverse_chron.select('DISTINCT event_id')
+    @events = LhfeRider.reverse_chron.select('DISTINCT event_id, ride_date')
 
     @males = LhfeRider.male
     @females = LhfeRider.female
