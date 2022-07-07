@@ -15,7 +15,7 @@
 
     <div class="field">
       <%= f.label :event_id, "Event" %><br />
-      <%= f.collection_select :event_id, Event.recent.air_show.all, :id, :event_date, options = {:order => 'event_date ASC', :prompt => true, :selected => params['event_id']}, html_options = {:class => "styled-select"} %>
+      <%= f.collection_select :event_id, Event.air_show.all, :id, :event_date, options = {:order => 'event_date ASC', :prompt => true}, html_options = {:class => "styled-select"} %>
 
     </div>
 <div class="row">
@@ -42,15 +42,16 @@
     <%= f.text_field :last_name, :class =>"boxsizingBorder" %>
   </div>
 </div>
-
-  <div class="field">
+<div class="row">
+  <div class="col-sm-6 field">
     <%= f.label :street_1 %><br />
-    <%= f.text_field :street_1 %>
+    <%= f.text_field :street_1, :class =>"boxsizingBorder" %>
   </div>
-  <div class="field">
+  <div class="col-sm-6 field">
     <%= f.label :street_2 %><br />
-    <%= f.text_field :street_2 %>
+    <%= f.text_field :street_2, :class =>"boxsizingBorder" %>
   </div>
+ </div> 
 <div class="row">
   <div class="col-sm-4 field">
     <%= f.label :city %><br />
@@ -80,13 +81,13 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-sm-3 field">
+  <div class="col-sm-2 field">
     <%= f.label 'DOB', :dob %><br />
     <%= f.text_field :dob, :class =>"boxsizingBorder" %>
   </div>
-  <div class="col-sm-1 field">
+  <div class="col-sm-2 field">
     <%= f.label :gender %><br />
-    <%= f.select :gender, options_for_select([["n/a"], ["Female"], ["Male"]]) %>
+    <%= f.select :gender, options_for_select([["n/a"], ["Female"], ["Male"]]), html_options = {:class => "styled-select"} %>
   </div>
   <div class="col-sm-2 field">
     <%= f.label :married %><br />
