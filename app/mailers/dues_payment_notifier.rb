@@ -1,7 +1,7 @@
 class DuesPaymentNotifier < ActionMailer::Base
 
 if Rails.env.production?
-  default :from => "info@devildogsquadron.com"
+  default :from => "dues@devildogsquadron.com"
 else
   default :from => "jim@polarbeardesign.net"
 end
@@ -16,7 +16,7 @@ end
 
       if Rails.env.production?
         mail :to => @dues_payment.member.user.email, 
-             :cc => 'info@devildogsquadron.com', 
+             :cc => 'dues@devildogsquadron.com', 
              :subject => 'Devil Dog Squadron Dues Reminder'
       else
         mail :to => "jim@polarbeardesign.net", 
