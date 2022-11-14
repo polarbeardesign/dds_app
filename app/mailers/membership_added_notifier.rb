@@ -1,5 +1,5 @@
 class MembershipAddedNotifier < ActionMailer::Base
-  default :from => "jim.ivanoff@devildogsquadron.com"
+  default :from => "info@devildogsquadron.com"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
