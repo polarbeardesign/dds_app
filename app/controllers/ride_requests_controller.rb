@@ -1,6 +1,6 @@
 class RideRequestsController < ApplicationController
 
-skip_before_filter :check_authorization, :check_authentication, :only => [:new, :create, :show]
+skip_before_filter :check_authorization, :check_authentication, :only => [:new, :create, :show, :ride_request_error]
 
   # GET /ride_requests
   # GET /ride_requests.json
@@ -39,6 +39,14 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:new, 
     end
   end
 
+  def ride_request_error
+
+    respond_to do |format|
+      format.html # show.html.erb
+    end
+  end
+
+
   # GET /ride_requests/1/edit
   def edit
     @ride_request = RideRequest.find(params[:id])
@@ -49,7 +57,10 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:new, 
   def create
     @ride_request = RideRequest.new(params[:ride_request])
     @air_shows_public = Event.air_show.confirmed.ordered.published.tease.all
-
+    @last_update = RideRequest.last.created_at
+    @area_code = @ride_request.phone.slice(1,3)
+    @valid_area_codes = AreaCode.find(:all)
+    
     checked_air_shows = []
     checked_params = params[:air_show_list] || []
     for check_box_id in checked_params
@@ -59,6 +70,21 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:new, 
       end
       checked_air_shows << event
     end
+
+# anti spam measures 
+if params[:caf_nickname].present?
+
+redirect_to ride_request_error_path, :notice => 'Error: One of the values entered is not valid. [cn]' 
+
+elsif @last_update > (Time.zone.now - 5.minute)
+
+redirect_to ride_request_error_path, :notice => 'Error: Application Form Currently Unavailable.' 
+
+elsif !@valid_area_codes.any? {|h| h['area_code'] == @area_code.to_i}
+
+redirect_to ride_request_error_path, :notice => 'Error: One of the values entered is not valid [ac]'
+
+else
     
     respond_to do |format|
       if @ride_request.save
@@ -71,6 +97,7 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:new, 
       end
     end
   end
+end
 
   # PUT /ride_requests/1
   # PUT /ride_requests/1.json
