@@ -83,6 +83,13 @@
 <% end %>
 
 <div class="clearer"></div>
+<div class="indent_row_special">
+  <div class="cell field"> 
+    <%= f.label :caf_nickname, "CAF Nickname" %><br />   
+    <%= text_field_tag :caf_nickname %>
+  </div>
+</div>  
+
   <div class="actions">
 
     <%= f.submit  "Put me on the list", :data => { :disable_with => "Submitting..." },:class => "btn-default btn btn-big btn-primary" %>

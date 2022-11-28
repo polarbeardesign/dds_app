@@ -232,6 +232,8 @@ devise_for :users, :skip => [:registrations]
 
   match 'members_application_error' => 'members#members_application_error', :as => :members_application_error
 
+  match 'ride_request_error' => 'ride_requests#ride_request_error', :as => :ride_request_error
+ 
   match 'members_application_received' => 'members#members_application_received', :as => :members_application_received
 
   match 'change_password/:id' => 'users#change_password', :as => :change_password
