@@ -35,6 +35,7 @@ scope :meeting, where("event_type_id = 1")
 scope :air_show, where("event_type_id = 2")
 scope :special, where("event_type_id = 3")
 scope :maint, where("event_type_id = 4")
+scope :flying_event, where("event_type_id = 2 OR event_type_id = 3")
 
 scope :needs_roster, lambda {where("events.flight_roster = ?", true) }
 scope :has_lhfe, lambda {where("events.rides_available = ?", true) }

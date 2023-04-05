@@ -22,7 +22,7 @@
 
     <div class="field col-xs-12">
       <%= f.label :event_id, "Event" %><br />
-      <%= f.collection_select :event_id, Event.published.air_show.all, :id, :event_date, options = {:order => 'event_date ASC', :prompt => true, :selected => params['event_id']}, html_options = {:class => "styled-select"} %>
+      <%= f.collection_select :event_id, Event.published.flying_event.all, :id, :event_date, options = {:order => 'event_date ASC', :prompt => true, :selected => params['event_id']}, html_options = {:class => "styled-select"} %>
     </div>
 
   <div class="field col-xs-12">
