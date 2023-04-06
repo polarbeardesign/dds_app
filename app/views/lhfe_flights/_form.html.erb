@@ -31,12 +31,12 @@
   </div>
 
     <div class="field col-xs-6">
-      <%= f.label :discount_price %><div class="form_note" style="padding-top: 0.5em;"> usually $425</div><br />
+      <%= f.label :discount_price %><div class="form_note" style="padding-top: 0.5em;"> currently listed as <%= number_to_currency(@lhfe_prices.value) %> in PX</div><br />
     <%= f.text_field :discount_price, :size => 20 %>
     </div>
 
     <div class="field col-xs-6">
-      <%= f.label :price %><div class="form_note" style="padding-top: 0.5em;"> usually $450</div><br />
+      <%= f.label :price %><div class="form_note" style="padding-top: 0.5em;"> currently listed as <%= number_to_currency(@lhfe_prices.alt_value) %> in PX</div><br />
     <%= f.text_field :price, :size => 20 %>
     </div>
 
