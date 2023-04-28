@@ -48,6 +48,7 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:show,
   # GET /lhfe_flights/1/edit
   def edit
     @lhfe_flight = LhfeFlight.find(params[:id])
+    @lhfe_prices = Product.find_by_id(11)
   end
 
   # POST /lhfe_flights
