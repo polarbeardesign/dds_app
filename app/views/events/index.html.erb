@@ -153,7 +153,7 @@
 
       <% end %>
     <% else %>
-    <% if event.event_type_id == 2 %>
+    <% if event.flight_roster == true %>
 
 <div class="signup_box" style = "border: 1px solid #999;padding:0 0.5em 0.5em;background: #eee; border-radius: 3px;">
 <p>Put me on the signup list for this airshow:</p>
@@ -167,6 +167,7 @@
   </div>
 </div>
 <% end %>
+<p>There are currently <%= event.event_signups.size %> people on the list.</p>
   </div>
   
     <% end %>
