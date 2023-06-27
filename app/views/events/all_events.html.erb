@@ -1,49 +1,155 @@
+<% current_event_type = "" %>
+<% initial_date = "" %>
+<%= render "scripts" %>
 
 
-<% content_for :sidebar do %>
-  <%= render "sidebars/newsletter_signup" %>
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+    <div class="admin-section" >
+      <div class='row'>
+        <div class='col-sm-12'>
+            <p class="admin_heading">Admin</p>
+            <p class="form_note admin_heading">You are seeing this admin area because you are logged in with admin privileges.</p>
+            <div class='row' style="padding-top:1em;">
+              <div class="col-xs-4">
+                <%= button_to 'New Event', new_event_path, method: :get, :class => "btn-default btn" %>
+              </div>
+              <div class="col-xs-4">
+                <%= button_to 'See All Events (History', all_events_path, method: :get, :class => "btn-default btn" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> 
+    <% end %>
 <% end %>
 
 <h1>Devil Dog Calendar:</h1>
 
-
-<h2>Special Events</h2>
-
-<% @events.each do |event| %>
-<div class="calendar_row" style="width: 90%; padding-top: 0.25em">
-  <div class="cell" style="width: 30%;">
-    <% if event.start.strftime("%b %d" ) == event.end.strftime("%b %d") %>
-    <div class="calendar-ii" style="margin: 0 0 0 2.5em;">
-      <div class="calendar_month-ii"><%= event.start.strftime("%b") %></div>
-      <div class="calendar_date-ii"><%= event.start.strftime("%d") %></div>
-    </div>
-    <% else %>
-    <div class="calendar-ii" style="float: left;">
-      <div class="calendar_month-ii"><%= event.start.strftime("%b") %></div>
-      <div class="calendar_date-ii"><%= event.start.strftime("%d") %></div>
-    </div>
-    <span style="float: left; font-size: 1em;margin: 0.5em 0 0 0;">&#8211; </span>
-    <div class="calendar-ii">
-      <div class="calendar_month-ii"><%= event.end.strftime("%b") %></div>
-      <div class="calendar_date-ii"><%= event.end.strftime("%d") %></div>
-    </div>
-    <% end %>
-    <div style="clear: both;margin: 0 3em;"><em><%= event.start.strftime("%Y") %></em></div>
-  </div>
-  <div class="cell" style="width: 65%;">
-    <strong><em><%= link_to event.title, event %></em></strong><br /><%= sanitize(event.details) %>
-  </div>
+<div id="live-search" class="styled formfilter">
+  <fieldset>
+      <label>Search/Filter:</label>
+      <input type="text" class="text-input" id="filter" value="" />
+      <span id="filter-count"></span>
+  </fieldset>
+  <p class="form_note">examples include: type like "airshow" or "meeting", state like "tx" </p>
 </div>
-<% current_event_type = event.event_type.title %>
+
+<% if !@events.blank? %>
+<% @events.each do |event| %>
+  <% if initial_date == "" %>
+<div class="month-subheader">
+   <strong><%= event.start.strftime("%B - %Y") %></strong>
+</div>
+  <% elsif event.start.strftime("%B - %Y") != initial_date %>
+<div class="month-subheader">
+   <strong><%= event.start.strftime("%B - %Y") %></strong>
+</div>
+  <% end %>
+<div class="calendar_row">
+<div class='row'>
+<div class="col-xs-12 col-sm-5 col-md-4">
+<div class='row'>
+  <% if event.start.strftime("%b %d" ) == event.end.strftime("%b %d") %>
+<div class="col-xs-12">
+  <div class="calendar">
+    <div class="calendar_year">
+      <%= event.start.strftime("%Y") %>
+    </div>
+    <div class="calendar_month">
+      <%= event.start.strftime("%b") %>
+    </div>
+    <div class="calendar_day">
+      <%= event.start.strftime("%A") %>
+    </div>
+    <div class="calendar_date">
+      <%= event.start.strftime("%d") %>
+    </div>
+  </div>
+  <% else %>
+  <div class="col-xs-6 col-sm-6">
+    <div class="calendar">
+      <div class="calendar_year">
+        <%= event.start.strftime("%Y") %>
+      </div>
+      <div class="calendar_month">
+        <%= event.start.strftime("%b") %>
+      </div>
+      <div class="calendar_day">
+        <%= event.start.strftime("%A") %>
+      </div>
+      <div class="calendar_date">
+        <%= event.start.strftime("%d") %>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-6 col-sm-6">
+    <div class="calendar">
+      <div class="calendar_year">
+        <%= event.end.strftime("%Y") %>
+      </div>
+      <div class="calendar_month">
+        <%= event.end.strftime("%b") %>
+      </div>
+      <div class="calendar_day">
+        <%= event.end.strftime("%A") %>
+      </div>
+      <div class="calendar_date">
+        <%= event.end.strftime("%d") %>
+      </div>
+    </div>
 <% end %>
 
+</div>
+</div>
 
-<br />
-
-<% if signed_in?%>
-    <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
-       <%= link_to 'New Event', new_event_path %>
+<div class='row'>
+<div class="col-xs-12">
+<div class="location"><%= event.location.city + ", " + event.location.state %></div>
+</div>
+</div>
+</div>
+  <div class="col-xs-12 col-sm-7 col-md-8">
+    <h2 class='event-title'><%= link_to event.title, event %></h2>
+    <% if event.event_statuses_id == 2 %>
+      <span class="event-flag">Tentative</span>
+    <% elsif event.event_statuses_id == 3 %>
+      <span class="event-flag">Canceled</span>
     <% end %>
+    <br />
+      <% if event.details.length > 220 %>
+        <p><%= truncate(event.details, :length => 220, :separator => ' ') %> <em><%= link_to "Go to event", event %></em></p>
+      <% else %>
+        <p><%= event.details %></p>
+      <% end %>
+
+<% if event.rides_available? %>
+<p class='rides-teaser'><%= image_tag '/uploads/images/dd_illustration_flying_sm.png' %><br /><%= link_to "Devil Dog Rides available at this event !", living_history_flight_experience_path %></p>
+
+	<% if !event.lhfe_flights.empty? %>
+	  <p>Scheduled ride times:</p>
+	  <ul>
+      <% event.lhfe_flights.each do |flight| %>
+        <li><%= link_to flight.flight_start_time.strftime("%A @ %I:%M %p"), lhfe_flight_path(flight) %></li>
+      <% end %>
+    </ul>
+ <% end %>
 <% end %>
+  </div>
+  
+  </div>
+  </div>
+<% current_event_type = event.event_type.title %>
+<% initial_date = event.start.strftime("%B - %Y").to_s %>
+<div class="clearer"></div>
+<% end %>
+
+<% else %>
+   <div class="calendar_row" style="width: 90%; padding-top: 0.25em">
+     <div class="cell" style="width: 25%;">&nbsp;</div>
+       No scheduled events at this time.
+   </div>
+<% end %>
+
 
 
