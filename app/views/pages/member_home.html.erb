@@ -8,13 +8,25 @@
 
 <div class="row">
 <div class="col-sm-6">
-  <h2>Membership Dues:</h2>
+  <h2>Membership Status:</h2>
   
-  <% if (@dues_paid.date_paid + 1.year) > DateTime.now %><div class="dues_current">CURRENT</div><%else %><div class="dues_not_current">NOT CURRENT</div><% end %>
+  <% if !@dues_paid.nil? %>  
   
-  <p>Current records indicate you last paid dues: <strong><%= @dues_paid.date_paid.strftime("%b %d, %Y") %></strong>. If you feel this is in error, please contact the Finance Officer.</p>
-  <p><%= link_to "Renew Membership Online", membership_path %></p>
+    <% if (@dues_paid.date_paid + 1.year) > DateTime.now %>
+      <div class="dues_current">CURRENT</div>
+    <%else %>
+      <div class="dues_not_current">NOT CURRENT</div>
+    <% end %>
+  
+    <p>Current records indicate you last paid dues: <strong><%= @dues_paid.date_paid.strftime("%b %d, %Y") %></strong>. If you feel this is in error, please contact the Finance Officer.</p>
+  
+    <p><%= link_to "Renew Membership Online", membership_path %></p>
+  <% else %>
+    <div class="dues_not_current">DUES NOT PAID</div>
+    <p><%= link_to "Pay Membership Dues Online", membership_path %></p>
+  <% end %>
 </div>
+
 <div class="col-sm-6">
 <%= render 'quick_links' %>
 </div>
