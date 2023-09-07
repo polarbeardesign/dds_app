@@ -83,9 +83,9 @@ class DuesPaymentsController < ApplicationController
 
   def dues_reminders_list
     @dues_reminders = DuesPayment.find_by_sql("SELECT dp.id,dp.member_id, dp.date_paid, dp.payment_method, dp.payment_type 
-FROM (SELECT id, member_id, MAX(date_paid) as date_paid, payment_method, payment_type 
+FROM (SELECT MAX(id) as id, MAX(member_id) as member_id, MAX(date_paid) as date_paid, payment_method, payment_type 
 FROM dues_payments
-GROUP BY member_id) as dp
+GROUP BY member_id, payment_method, payment_type) as dp
 WHERE dp.date_paid between DATE_ADD(LAST_DAY(DATE_SUB(NOW(), INTERVAL 16 MONTH)), INTERVAL 1 DAY) AND LAST_DAY(DATE_SUB(NOW(), INTERVAL 11 MONTH))")
     respond_to do |format|
       format.html # dues_reminders.html.erb
