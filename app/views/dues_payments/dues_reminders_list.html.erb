@@ -24,6 +24,8 @@ function getCellValue(row, index){ return $(row).children('td').eq(index).html()
 
 <p>Qty: <%= @dues_reminders.size %></p>
 
+<p>Current Lookup Date Range: <%= @date_start.strftime("%Y-%m-%d") %> - <%= @date_end.strftime("%Y-%m-%d") %></p>
+
 <table class="table_border">
   <tr>
     <th>Member</th>
