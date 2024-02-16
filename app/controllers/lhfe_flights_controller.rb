@@ -55,7 +55,8 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:show,
   # POST /lhfe_flights.json
   def create
     @lhfe_flight = LhfeFlight.new(params[:lhfe_flight])
-
+    @lhfe_prices = Product.find_by_id(11)
+    
     respond_to do |format|
       if @lhfe_flight.save
         format.html { redirect_to @lhfe_flight, :notice => 'Lhfe flight was successfully created.' }
