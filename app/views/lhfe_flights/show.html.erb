@@ -2,7 +2,7 @@
 
 <% if signed_in?%>
     <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
-      <%= link_to 'Edit', edit_lhfe_flight_path(@lhfe_flight) %> | <%= link_to 'Back', lhfe_flights_path %>
+      <%= link_to 'Edit', edit_lhfe_flight_path(@lhfe_flight) %> | <%= link_to 'Back', lhfe_flights_path %> | <%= link_to 'Delete', @lhfe_flight, :confirm => 'Are you sure?', :method => :delete %>
     <% end %>
 <% end %>
 <div class="row">
