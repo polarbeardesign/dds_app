@@ -203,6 +203,8 @@ ActiveRecord::Schema.define(:version => 20171102143447) do
     t.integer  "event_id"
     t.integer  "aircraft_id"
     t.text     "flight_notes"
+    t.decimal  "price",             :precision => 10, :scale => 2, :default => 0.0, :null => false
+    t.decimal  "discount_price",    :precision => 10, :scale => 2, :default => 0.0, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -450,7 +452,6 @@ ActiveRecord::Schema.define(:version => 20171102143447) do
     t.integer  "position",     :default => 0, :null => false
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
-
   end
 
   create_table "squadron_documents", :force => true do |t|
