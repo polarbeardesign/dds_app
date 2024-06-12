@@ -61,9 +61,10 @@ By email: <a href="mailto:rides@devildogsquadron.com">rides@devildogsquadron.com
 
   <% if @lhfe_flight.flight_start_time < Time.now %>
   <p style="font-size: 0.75em;">This flight is no longer available to book online. Check at the aircraft to see if seats are still available.</p>
-  <% else if @lhfe_flight.id == 106 ||  @lhfe_flight.id == 107 %>
+  <% elsif @lhfe_flight.id == 106 ||  @lhfe_flight.id == 107 %>
      <p>This flight is sold out</p>
-  <% else %>  
+
+   <% else %>  
 
   <% if ((@lhfe_flight.event.start - Time.now).to_f / 1.day).floor >= 1 %>
     <%= number_to_currency(@lhfe_flight.discount_price) %>
