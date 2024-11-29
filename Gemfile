@@ -1,9 +1,9 @@
 source 'http://rubygems.org'
 
 # to avoid railties conflict...
-gem 'i18n', '0.6.11'
+gem 'i18n', '1.14.1'
 
-gem 'rails', '3.2.22'
+gem 'rails', '7.0.6'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
@@ -13,12 +13,12 @@ gem 'mysql2', '~> 0.3.10'
 # gem 'activerecord-mysql2-adapter'
 gem 'devise'
 gem 'json'
-gem 'paper_trail', '~> 4.0.0.rc'
+gem 'paper_trail', '~> 14.0.0'
 gem 'diffy'
-gem 'acts_as_list', '< 0.3.0'
+gem 'acts_as_list', '< 1.2.0'
 gem 'will_paginate'
 gem 'redcarpet', '<= 2.3.0'
-gem 'exception_notification', '~> 3.0.1'
+gem 'exception_notification', '~> 4.5.0'
 
 # Deploy with Capistrano
  gem 'capistrano', '< 2.15.5'
