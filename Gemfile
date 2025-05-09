@@ -1,5 +1,7 @@
 source 'http://rubygems.org'
 
+# ruby 2.1.6p336 (2015-04-13 revision 50298) [x86_64-linux]
+
 # to avoid railties conflict...
 gem 'i18n', '0.6.11'
 

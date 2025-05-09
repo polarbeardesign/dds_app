@@ -14,7 +14,7 @@ class MembershipAddedNotifier < ActionMailer::Base
 
       if Rails.env.production?
         mail :to => member.user.email, 
-             :cc => 'jim.ivanoff@devildogsquadron.com,earnie.henderson@gmail.com', 
+             :cc => 'jim.ivanoff@devildogsquadron.com,jdjmoacct@ymail.com', 
              :subject => 'Welcome! Devil Dog Squadron Website Login'
       else
         mail :to => 'jim.ivanoff@devildogsquadron.com',
