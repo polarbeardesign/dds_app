@@ -45,7 +45,7 @@
   <% end %></p>
   
   <% if flight.id == 146 ||  flight.id == 147  %>
-   - SOLD OUT
+   - SOLD OUT  </div>
   <% else %>
   
   <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
@@ -71,6 +71,7 @@
   <input type="hidden" name="bn" value="PP-ShopCartBF">
   </form>
   </div>
+  <% end %>
   <% end %>
   <% end %>
   <% end %>
