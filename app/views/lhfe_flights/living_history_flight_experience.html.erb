@@ -43,6 +43,11 @@
   <% else %>
    <%= number_to_currency(flight.price) %>
   <% end %></p>
+  
+  <% if flight.id == 146 ||  flight.id == 147  %>
+   - SOLD OUT
+  <% else %>
+  
   <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
   <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_SM.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
   <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
@@ -57,10 +62,6 @@
   <% else %>
     <input type="hidden" name="amount" value="<%= flight.price %>">
   <% end %>
-  <% if flight.id == 146 ||  flight.id == 147  %> - SOLD OUT
-  <% else %>
-
-
   <input type="hidden" name="page_style" value="Primary">
   <input type="hidden" name="shipping" value="0">
   <input type="hidden" name="no_shipping" value="2">
