@@ -98,7 +98,9 @@
       <% if !@event.lhfe_flights.empty? %>
         <ul>
           <% @event.lhfe_flights.each do |flight| %>
-            <li><%= link_to flight.flight_start_time.strftime("%A @ %I:%M %p"), lhfe_flight_path(flight) %></li>
+            <li><%= link_to flight.flight_start_time.strftime("%A @ %I:%M %p"), lhfe_flight_path(flight) %>
+            <% if flight.id == 146 ||  flight.id == 147  %> - SOLD OUT<% end %>
+            </li>
           <% end %>
         </ul>
       <% end %>
