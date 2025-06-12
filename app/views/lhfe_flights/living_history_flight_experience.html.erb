@@ -57,7 +57,10 @@
   <% else %>
     <input type="hidden" name="amount" value="<%= flight.price %>">
   <% end %>
-  
+  <% if flight.id == 146 ||  flight.id == 147  %> - SOLD OUT
+  <% else %>
+
+
   <input type="hidden" name="page_style" value="Primary">
   <input type="hidden" name="shipping" value="0">
   <input type="hidden" name="no_shipping" value="2">
@@ -67,6 +70,7 @@
   <input type="hidden" name="bn" value="PP-ShopCartBF">
   </form>
   </div>
+  <% end %>
   <% end %>
   <% end %>
   </div>
